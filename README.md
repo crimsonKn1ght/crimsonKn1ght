@@ -1,5 +1,8 @@
-### Hi there 👋
+### Gourab Here!
 
+- Someone who recently transitioned to the Computer Science Field!! 😑🫡
+- Kinda interested in Data Science.. 💪
+- Hit me up if you have some projects to work on!! 😎
 <!--
 **crimsonKn1ght/crimsonKn1ght** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
