@@ -4,6 +4,7 @@
 
 Welcome to my GitHub profile! I'm passionate about extracting insights from data and developing intelligent vision systems that can understand and interpret the world around us. My work spans machine learning, deep learning, and computer vision applications across various domains.
 
+View my resume [here](https://resume-gr.vercel.app/).
 
 ### 🔍 What I'm currently working on:
 - 🧠 Computer Vision models
