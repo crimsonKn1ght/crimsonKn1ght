@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourab Roy - Research Statement</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to use the Inter font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* A dark blue-gray background */
+            color: #d1d5db; /* A light gray for text */
+        }
+        /* Custom gradient for titles */
+        .text-gradient {
+            background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        /* Card styles for projects and proposals */
+        .card {
+            background-color: #1f2937; /* A slightly lighter dark shade */
+            border-radius: 0.75rem;
+            padding: 2rem;
+            border: 1px solid #374151;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 bg-gray-900 bg-opacity-80 backdrop-blur-sm z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-white">Gourab Roy</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-300 hover:text-blue-400 transition-colors">About</a>
+                <a href="#experience" class="text-gray-300 hover:text-blue-400 transition-colors">Experience</a>
+                <a href="#proposals" class="text-gray-300 hover:text-blue-400 transition-colors">Proposals</a>
+                <a href="#contact" class="text-gray-300 hover:text-blue-400 transition-colors">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-24">
+
+        <!-- Hero Section -->
+        <section id="hero" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">
+                    Gourab Roy
+                </h1>
+                <p class="mt-4 text-xl md:text-2xl font-medium text-gradient">
+                    CSE PhD Applicant, Fall 2025
+                </p>
+                <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-400">
+                    Exploring the frontiers of 4D dynamic scene reconstruction and real-time rendering with 3D Gaussian Splatting.
+                </p>
+                <div class="mt-8 flex justify-center space-x-4">
+                    <a href="https://github.com/crimsonKn1ght/" target="_blank" class="inline-flex items-center px-6 py-3 bg-gray-700 text-white font-semibold rounded-lg hover:bg-gray-600 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                        GitHub
+                    </a>
+                    <a href="mailto:gourab.roy.aiml@gmail.com" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                        Email Me
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                 <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12 text-gradient">Introduction & Motivation</h2>
+                <div class="max-w-4xl mx-auto text-lg text-gray-300 leading-relaxed text-center">
+                    <p>
+                        3D Gaussian Splatting (3DGS) has emerged as a state-of-the-art technique for real-time rendering and reconstruction, establishing itself as a compelling foundation for my doctoral research. My work aims to leverage the capabilities of 3DGS to address core challenges in 4D dynamic scene reconstruction, pushing the boundaries of what's possible in capturing and understanding our dynamic world.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Experience Section -->
+        <section id="experience" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12 text-gradient">My Research Experience</h2>
+                <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-white mb-2">Knee Osteoarthritis Detection</h3>
+                        <p class="mb-4 text-gray-400">Developed a model combining a spatial attention mechanism with hierarchical feature fusion, emphasizing medically significant areas to learn both fine-grained local details and global joint structures.</p>
+                        <div class="mt-auto">
+                           <span class="inline-block bg-green-500 text-white text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">🏆 Best Paper Award, ISAI 2025</span>
+                           <a href="https://github.com/crimsonKn1ght/Code-OA-detection-model" target="_blank" class="mt-4 inline-block text-blue-400 font-semibold hover:text-blue-300">View Code &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-white mb-2">Automated Knee Osteoporosis Detection</h3>
+                        <p class="mb-4 text-gray-400">Proposed a hybrid method combining a CBAM-enhanced U-Net with handcrafted texture features for osteoporosis classification from sparse X-ray data, achieving strong performance without large-scale training data.</p>
+                         <div class="mt-auto">
+                           <span class="inline-block bg-yellow-500 text-white text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">📄 Submitted to ICDSINC 2025</span>
+                           <a href="https://github.com/crimsonKn1ght/Code-OP-detection-model" target="_blank" class="mt-4 inline-block text-blue-400 font-semibold hover:text-blue-300">View Code &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-white mb-2">End-to-End CT Scan Reconstruction</h3>
+                        <p class="mb-4 text-gray-400">As an intern at IIT Kharagpur, I am developing an end-to-end deep learning model that converts raw sinogram data directly into CT images, with promising results in parallel-beam reconstructions.</p>
+                         <div class="mt-auto">
+                           <span class="inline-block bg-purple-500 text-white text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">🔬 In Preparation for Journal Submission</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PhD Proposals Section -->
+        <section id="proposals" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12 text-gradient">PhD Research Proposals</h2>
+                <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Proposal 1 -->
+                    <div class="card">
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-gradient mb-3">Generalizable 4D Gaussian Splatting Models</h3>
+                            <p class="font-semibold text-gray-300 mb-4">Going Beyond Per-Scene Optimization</p>
+                            <p class="mb-6 text-gray-400">
+                                Current 4DGS techniques require slow, per-scene optimization, limiting their practical application. This research aims to shatter that bottleneck by creating a generalizable, feed-forward model. The goal is to produce high-fidelity 4D reconstructions of dynamic scenes from monocular videos instantaneously, enabling real-time performance on new, unseen footage without retraining.
+                            </p>
+                            <h4 class="font-semibold text-white mb-3">Research Plan:</h4>
+                            <div class="space-y-4 text-gray-400">
+                                <p><strong>1. Structured Feed-Forward Architecture:</strong> I will design a transformer-based network that decomposes the problem into predicting a canonical 3D Gaussian model of the object and a separate deformation field. This structured approach simplifies the learning task and improves generalizability.</p>
+                                <p><strong>2. Learning from In-the-Wild Videos:</strong> To train the model, I will leverage vast amounts of online video data. This requires a self-supervised approach that uses temporal consistency constraints, such as optical flow, to ensure smooth and realistic motion without relying on brittle SfM pre-processing for camera poses.</p>
+                                <p><strong>3. Synthetic Data Engine for Controlled Development:</strong> I will build a large-scale, procedurally generated 4D dataset, the "4D Objaverse." This controlled environment, with perfect ground truth, will be crucial for iterating on the core architecture and systematically addressing the sim-to-real transfer challenge.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Proposal 2 -->
+                    <div class="card">
+                         <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-gradient mb-3">Physics-Informed Deformable Gaussian Splatting</h3>
+                            <p class="font-semibold text-gray-300 mb-4">From Photorealism to Plausibility</p>
+                            <p class="mb-6 text-gray-400">
+                                While 4DGS can achieve photorealism, it lacks an understanding of the underlying physics, leading to visually plausible but physically impossible results. This research seeks to infuse these models with a physical understanding, enabling them to generate not just what a scene *looks* like, but what is physically *possible*.
+                            </p>
+                             <h4 class="font-semibold text-white mb-3">Research Plan:</h4>
+                            <div class="space-y-4 text-gray-400">
+                               <p><strong>1. Bridge the Representation Mismatch:</strong> The core challenge is the mismatch between the rendering-focused 3DGS representation (a cloud of Gaussians) and physics engines that require surfaces. I will develop methods to derive a proxy surface mesh or density field from the Gaussians at each timestep, allowing for the application of differentiable physical penalties.</p>
+                               <p><strong>2. Incrementally Learn Physical Properties:</strong> The model will infer latent physical properties directly from video. I will start with simpler rigid body dynamics—inferring mass and friction—before tackling complex deformable objects and their properties like elasticity. Each Gaussian could be assigned a learned "physics code" to represent these properties.</p>
+                               <p><strong>3. Advance Towards Causal Reasoning:</strong> By developing a physics-regularized framework, this work aims to move beyond simple simulation and towards genuine scene understanding. Solving the representation mismatch is the key to unlocking forecasting and providing a foundational step toward true machine intelligence.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 border-t border-gray-800">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <h2 class="text-4xl font-bold text-gradient mb-4">Let's Connect</h2>
+            <p class="mt-4 max-w-xl mx-auto text-gray-400">
+                I'm actively seeking PhD opportunities for Fall 2025 and am eager to discuss my research. Please feel free to reach out.
+            </p>
+            <div class="mt-8 flex justify-center space-x-4">
+                <a href="https://github.com/crimsonKn1ght/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <span class="sr-only">GitHub</span>
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                </a>
+                <a href="mailto:gourab.roy.aiml@gmail.com" class="text-gray-400 hover:text-white transition-colors">
+                    <span class="sr-only">Email</span>
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                </a>
+            </div>
+            <p class="mt-8 text-sm text-gray-500">&copy; Created by Gourab Roy.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
