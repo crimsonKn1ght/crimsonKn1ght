@@ -1,9 +1,38 @@
-import React, { useEffect, useRef } from 'react';
-import { Mail, Linkedin, Github, FileText, ChevronDown, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Mail, Linkedin, Github, FileText, ChevronDown, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X } from 'lucide-react';
+
+const Modal = ({ isOpen, onClose, title, children }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <div className="bg-stone-800 border border-stone-600 rounded-2xl p-8 max-w-2xl w-full relative">
+        <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-white">
+          <X className="w-6 h-6" />
+        </button>
+        <h2 className="text-2xl font-bold text-white mb-4">{title}</h2>
+        <div className="text-gray-300 leading-relaxed">{children}</div>
+      </div>
+    </div>
+  );
+};
+
 
 function App() {
   const heroRef = useRef<HTMLDivElement>(null);
   const floatingElementsRef = useRef<HTMLDivElement>(null);
+  const [modalContent, setModalContent] = useState(null);
+  const [isGreExpanded, setIsGreExpanded] = useState(false);
+  const [isToeflExpanded, setIsToeflExpanded] = useState(false);
+
+  const openModal = (content) => {
+    setModalContent(content);
+  };
+
+  const closeModal = () => {
+    setModalContent(null);
+  };
+
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -27,10 +56,65 @@ function App() {
     document.getElementById('summary')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const publicationDetails = {
+    osteoarthritis: {
+      title: "Knee Osteoarthritis Detection and Categorization using Deep Learning Models",
+      content: (
+        <>
+          <p className="mb-4">To be published in the Proceedings of ISAI (2025), Lecture Notes in Networks and Systems (Springer).</p>
+          <p>This research achieved 80.12% accuracy in classifying knee X-ray images based on osteoarthritis severity using a deep learning model trained on the Kellgren-Lawrence (KL) grading scale.</p>
+        </>
+      )
+    },
+    osteoporosis: {
+      title: "Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection",
+      content: (
+        <>
+        <p className="mb-4">Manuscript communicated with ICDSINC conference (2025).</p>
+        <p>A deep learning-based binary classification model was developed for detecting knee osteoporosis from X-ray images, achieving 88% and 84% accuracy in binary and multi-class osteoporosis classification, respectively.</p>
+      </>
+      )
+    },
+    ctReconstruction: {
+      title: "End-to-End Deep Learning for CT Scan Reconstruction with Integrated Explainable AI",
+      content: (
+        <>
+        <p className="mb-4">Manuscript in preparation for submission to a reputed peer-reviewed journal (2025).</p>
+        <p>This work involves designing an end-to-end deep learning pipeline for CT image reconstruction, integrating explainable AI techniques to enhance model interpretability and trustworthiness.</p>
+      </>
+      )
+    }
+  };
+  
+  const experienceDetails = {
+    iitKharagpur: {
+      title: "IIT Kharagpur - Research Intern",
+      content: (
+        <>
+          <p className="mb-4">Conducting ongoing research on CT image reconstruction as part of a deep learning internship, using a parallel-beam, fan-beam, cone-beam datasets consisting of 20,000+ sinogram-image pairs to improve reconstruction quality from sparse and noisy projections, with a focus on real-world medical imaging challenges.</p>
+          <p className="mb-4">Developing various deep learning architectures, including U-Nets for 2D slices and experimenting with 3D CNNs for volumetric reconstruction, to improve image quality from low-signal, noisy sinogram data.</p>
+          <p>Employed a combined SSIM and MSE loss function to optimize both structural and pixel-level accuracy, achieving a test SSIM of 0.9+.</p>
+        </>
+      )
+    },
+    axtria: {
+      title: "Axtria - Data Engineering Intern",
+      content: (
+        <p>Developed and optimized data processing workflows and ETL pipelines using Python and SQL, ensuring efficient integration, transformation, and validation of large, heterogeneous data.</p>
+      )
+    },
+    virtuallyTesting: {
+      title: "Virtually Testing Foundation - Security Intern",
+      content: (
+        <p>Completed 8-week hands-on training in offensive and defensive cybersecurity, applying red and blue team techniques using Python-based tools.</p>
+      )
+    }
+  };
+
   return (
     <div className="min-h-screen bg-stone-900 text-white overflow-x-hidden">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-stone-900/70 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-amber-600 rounded-lg flex items-center justify-center">
@@ -41,10 +125,12 @@ function App() {
           
           <div className="hidden md:flex items-center space-x-8 text-sm text-gray-300">
             <a href="#summary" className="hover:text-white transition-colors">Research</a>
-            <a href="#experience" className="hover:text-white transition-colors">Experience</a>
+            {/* <a href="#experience" className="hover:text-white transition-colors">Experience</a> */}
             <a href="#publications" className="hover:text-white transition-colors">Publications</a>
             <a href="#projects" className="hover:text-white transition-colors">Projects</a>
-            <a href="mailto:gouroy345@gmail.com" className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg text-white transition-colors">
+            <a href="#skills" className="hover:text-white transition-colors">Technical Expertise</a>
+            <a href="#education" className="hover:text-white transition-colors">Education & Recognition</a>
+            <a href="mailto:gourab.roy.aiml@gmail.com"  target="_blank" rel="noopener noreferrer" className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg text-white transition-colors">
               Contact
             </a>
           </div>
@@ -125,11 +211,14 @@ function App() {
             </span>
           </h1>
           
-          <div className="flex items-center justify-center mb-8">
-            <span className="text-gray-400 text-lg md:text-xl mr-4">A discovery engine for</span>
+          <div className="flex items-center justify-center mb-8 gap-2 sm:gap-4 md:gap-6">
             <div className="border border-orange-500/50 bg-orange-500/10 backdrop-blur-sm rounded-full px-6 py-2">
-              <span className="text-orange-400 font-semibold text-lg md:text-xl">AI/ML innovation</span>
+              <span className="text-orange-400 font-semibold text-lg md:text-xl">AI/ML</span>
             </div>
+              
+            <div className="border border-orange-500/50 bg-orange-500/10 backdrop-blur-sm rounded-full px-6 py-2">
+              <span className="text-orange-400 font-semibold text-lg md:text-xl">Computer Vision Researcher</span>
+            </div>            
           </div>
 
           <p className="text-gray-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
@@ -139,7 +228,8 @@ function App() {
           {/* Social Links */}
           <div className="flex justify-center space-x-6 mb-16">
             <a 
-              href="mailto:gouroy345@gmail.com" 
+              href="mailto:gourab.roy.aiml@gmail.com"
+              target="_blank" rel="noopener noreferrer" 
               className="group flex items-center space-x-2 bg-white/10 hover:bg-orange-500/20 backdrop-blur-sm border border-white/20 hover:border-orange-500/50 rounded-full px-6 py-3 transition-all duration-300"
             >
               <Mail className="w-5 h-5 text-gray-400 group-hover:text-orange-400 transition-colors" />
@@ -148,6 +238,7 @@ function App() {
             
             <a 
               href="https://www.linkedin.com/in/gourab-roy/" 
+              target="_blank" rel="noopener noreferrer"
               className="group flex items-center space-x-2 bg-white/10 hover:bg-blue-500/20 backdrop-blur-sm border border-white/20 hover:border-blue-500/50 rounded-full px-6 py-3 transition-all duration-300"
             >
               <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors" />
@@ -156,6 +247,7 @@ function App() {
             
             <a 
               href="https://github.com/crimsonKn1ght/" 
+              target="_blank" rel="noopener noreferrer"
               className="group flex items-center space-x-2 bg-white/10 hover:bg-gray-500/20 backdrop-blur-sm border border-white/20 hover:border-gray-500/50 rounded-full px-6 py-3 transition-all duration-300"
             >
               <Github className="w-5 h-5 text-gray-400 group-hover:text-gray-300 transition-colors" />
@@ -164,6 +256,7 @@ function App() {
             
             <a 
               href="research-statement.html" 
+              target="_blank" rel="noopener noreferrer"
               className="group flex items-center space-x-2 bg-white/10 hover:bg-purple-500/20 backdrop-blur-sm border border-white/20 hover:border-purple-500/50 rounded-full px-6 py-3 transition-all duration-300"
             >
               <FileText className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
@@ -187,15 +280,15 @@ function App() {
       {/* Rest of the content */}
       <main className="container mx-auto px-6">
         {/* Summary Section */}
-        <section id="summary" className="py-16">
+        {/* <section id="summary" className="py-16">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2 className="text-5xl font-black mb-8 text-white leading-tight">
-                  Build research excellence with AI.
+                  Building the Future of AI Through Vision
                 </h2>
                 <p className="text-xl text-gray-300 leading-relaxed mb-8">
-                  Specializing in deep learning for computer vision, developing robust and interpretable architectures for challenging, data-scarce environments using convolutional and attention mechanisms.
+                  Specializing in deep learning for computer vision, developing robust and interpretable architectures for challenging, data-scarce environments.
                 </p>
                 <div className="flex space-x-4">
                   <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
@@ -236,7 +329,7 @@ function App() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Experience Section */}
         <section id="experience" className="py-16">
@@ -265,11 +358,7 @@ function App() {
                 <p className="text-gray-300 text-sm leading-relaxed mb-4">
                   Deep Learning for Medical Imaging - CT reconstruction, U-Nets, 3D CNNs
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">PyTorch</span>
-                  <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded">Computer Vision</span>
-                  <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded">Medical AI</span>
-                </div>
+                <button onClick={() => openModal(experienceDetails.iitKharagpur)} className="text-orange-400 font-semibold hover:text-orange-300 transition-colors">View Details &rarr;</button>
               </div>
               
               {/* Axtria */}
@@ -286,11 +375,7 @@ function App() {
                 <p className="text-gray-300 text-sm leading-relaxed mb-4">
                   Enhanced ETL pipelines, reduced latency by 18%, improved data quality
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded">Python</span>
-                  <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">SQL</span>
-                  <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded">ETL</span>
-                </div>
+                <button onClick={() => openModal(experienceDetails.axtria)} className="text-orange-400 font-semibold hover:text-orange-300 transition-colors">View Details &rarr;</button>
               </div>
               
               {/* Virtually Testing Foundation */}
@@ -307,118 +392,116 @@ function App() {
                 <p className="text-gray-300 text-sm leading-relaxed mb-4">
                   Cybersecurity training, red/blue team exercises, vulnerability assessments
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="text-xs bg-red-500/20 text-red-300 px-2 py-1 rounded">Security</span>
-                  <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded">Penetration Testing</span>
-                </div>
+                <button onClick={() => openModal(experienceDetails.virtuallyTesting)} className="text-orange-400 font-semibold hover:text-orange-300 transition-colors">View Details &rarr;</button>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Publications Section */}
+         {/* Publications Section */}
         <section id="publications" className="py-16">
-          <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-5xl font-black mb-6 text-white">
+            <h2 className="text-5xl font-black mb-6 text-white">
                 Research Publications
-              </h2>
-              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
                 Contributing to the advancement of AI and computer vision through peer-reviewed research
-              </p>
+            </p>
             </div>
             
             <div className="space-y-8">
-              {/* Publication 1 */}
-              <div className="bg-gradient-to-r from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-8 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
+            {/* Publication 1 */}
+            <div className="bg-gradient-to-r from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-8 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-                  <div className="flex-1">
+                <div className="flex-1">
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="text-xs bg-green-500/20 text-green-300 px-3 py-1 rounded-full">Published</span>
-                      <span className="text-xs text-gray-400">ISAI 2025 • Springer</span>
+                    <span className="text-xs bg-green-500/20 text-green-300 px-3 py-1 rounded-full">To be published soon</span>
+                    <span className="text-xs text-gray-400">ISAI 2025 • Springer</span>
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-3">Knee Osteoarthritis Detection and Categorization using Deep Learning Models</h3>
                     <p className="text-gray-300 leading-relaxed mb-4">
-                      Achieved 80.12% accuracy in classifying knee X-ray images using the Kellgren-Lawrence grading scale, providing automated diagnosis capabilities for clinical assessment.
+                    Achieved 80.12% accuracy in classifying knee X-ray images using the Kellgren-Lawrence grading scale, providing automated diagnosis capabilities for clinical assessment.
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">Deep Learning</span>
-                      <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded">Medical Imaging</span>
-                      <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded">Classification</span>
+                    <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">Deep Learning</span>
+                    <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded">Medical Imaging</span>
+                    <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded">Classification</span>
                     </div>
-                  </div>
-                  <div className="flex flex-col space-y-3">
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
-                      View Paper
-                    </button>
-                    <a href="https://github.com/crimsonKn1ght/Code-OA-detection-model" target="_blank" className="border border-gray-600 hover:border-orange-500 text-gray-300 hover:text-white px-6 py-2 rounded-lg font-semibold transition-colors text-center">
-                      View Code
-                    </a>
-                  </div>
                 </div>
-              </div>
-              
-              {/* Publication 2 */}
-              <div className="bg-gradient-to-r from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-8 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
+                <div className="flex flex-col space-y-3">
+                <button onClick={() => openModal(publicationDetails.osteoarthritis)} className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
+                    More details
+                    </button>
+                    <a href="https://github.com/crimsonKn1ght/Code-OA-detection-model" target="_blank"  rel="noopener noreferrer" className="inline-flex items-center justify-center border border-gray-600 hover:border-orange-500 text-gray-300 hover:text-white px-6 py-2 rounded-lg font-semibold transition-colors text-center">
+                    <Github className="w-4 h-4 mr-2" />
+                    View Code
+                    </a>
+                </div>
+                </div>
+            </div>
+            
+            {/* Publication 2 */}
+            <div className="bg-gradient-to-r from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-8 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-                  <div className="flex-1">
+                <div className="flex-1">
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full">Under Review</span>
-                      <span className="text-xs text-gray-400">ICDSINC 2025</span>
+                    <span className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full">Under Review</span>
+                    <span className="text-xs text-gray-400">ICDSINC 2025</span>
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-3">Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection</h3>
                     <p className="text-gray-300 leading-relaxed mb-4">
-                      Novel framework achieving 88% binary and 84% multi-class classification accuracy by integrating texture features with attention mechanisms for osteoporosis detection.
+                    Novel framework achieving 88% binary and 84% multi-class classification accuracy by integrating texture features with attention mechanisms for osteoporosis detection.
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">U-Net</span>
-                      <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded">Attention Mechanism</span>
-                      <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded">Feature Extraction</span>
+                    <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">U-Net</span>
+                    <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded">Attention Mechanism</span>
+                    <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded">Feature Extraction</span>
                     </div>
-                  </div>
-                  <div className="flex flex-col space-y-3">
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
-                      View Details
-                    </button>
-                    <a href="https://github.com/crimsonKn1ght/Code-OP-detection-model" target="_blank" className="border border-gray-600 hover:border-orange-500 text-gray-300 hover:text-white px-6 py-2 rounded-lg font-semibold transition-colors text-center">
-                      View Code
-                    </a>
-                  </div>
                 </div>
-              </div>
-              
-              {/* Publication 3 */}
-              <div className="bg-gradient-to-r from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-8 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
+                <div className="flex flex-col space-y-3">
+                <button onClick={() => openModal(publicationDetails.osteoporosis)} className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
+                    More details
+                    </button>
+                    <a href="https://github.com/crimsonKn1ght/Code-OP-detection-model" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border border-gray-600 hover:border-orange-500 text-gray-300 hover:text-white px-6 py-2 rounded-lg font-semibold transition-colors text-center">
+                    <Github className="w-4 h-4 mr-2" />
+                    View Code
+                    </a>
+                </div>
+                </div>
+            </div>
+            
+            {/* Publication 3 */}
+            <div className="bg-gradient-to-r from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-8 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-                  <div className="flex-1">
+                <div className="flex-1">
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full">In Preparation</span>
-                      <span className="text-xs text-gray-400">2025</span>
+                    <span className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full">In Preparation</span>
+                    <span className="text-xs text-gray-400">2025</span>
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-3">End-to-End Deep Learning for CT Scan Reconstruction with Integrated Explainable AI</h3>
                     <p className="text-gray-300 leading-relaxed mb-4">
-                      Developing an interpretable CT reconstruction pipeline that combines high-quality image generation with explainable AI for clinical transparency and trust.
+                    Developing an interpretable CT reconstruction pipeline that combines high-quality image generation with explainable AI for clinical transparency and trust.
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">CT Reconstruction</span>
-                      <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded">Explainable AI</span>
-                      <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded">Medical Imaging</span>
+                    <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">CT Reconstruction</span>
+                    <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded">Explainable AI</span>
+                    <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded">Medical Imaging</span>
                     </div>
-                  </div>
-                  <div className="flex flex-col space-y-3">
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
-                      View Details
+                </div>
+                <div className="flex flex-col space-y-3">
+                <button onClick={() => openModal(publicationDetails.ctReconstruction)} className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
+                    More details
                     </button>
                     <button className="border border-gray-600 text-gray-400 px-6 py-2 rounded-lg font-semibold cursor-not-allowed">
-                      Code Soon
+                    Code Soon
                     </button>
-                  </div>
                 </div>
-              </div>
+                </div>
             </div>
-          </div>
-        </section>
-        
+            </div>
+        </div>
+        </section>        
         {/* Projects Section */}
         <section id="projects" className="py-16">
           <div className="max-w-7xl mx-auto">
@@ -614,7 +697,7 @@ function App() {
                 <div className="space-y-6">
                   <div className="bg-gradient-to-br from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-6 hover:border-orange-500/50 transition-all duration-300">
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full">Current</span>
+                      <span className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full">Completed</span>
                       <span className="text-sm text-gray-400">2023 - 2025</span>
                     </div>
                     <h4 className="text-lg font-bold text-white mb-1">M.Tech in Computer Science and Engineering</h4>
@@ -635,6 +718,32 @@ function App() {
                     <div className="flex items-center">
                       <span className="text-gray-400 text-sm">GPA: </span>
                       <span className="text-white font-semibold ml-1">7.58/10.0</span>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-6 hover:border-orange-500/50 transition-all duration-300">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-xs bg-gray-500/20 text-gray-300 px-3 py-1 rounded-full">Completed</span>
+                      <span className="text-sm text-gray-400">2019</span>
+                    </div>
+                    <h4 className="text-lg font-bold text-white mb-1">Higher Secondary Certificate (XII)</h4>
+                    <p className="font-medium text-orange-400 mb-2">CBSE Board</p>
+                    <div className="flex items-center">
+                      <span className="text-gray-400 text-sm">Percentage: </span>
+                      <span className="text-white font-semibold ml-1">93%</span>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-6 hover:border-orange-500/50 transition-all duration-300">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-xs bg-gray-500/20 text-gray-300 px-3 py-1 rounded-full">Completed</span>
+                      <span className="text-sm text-gray-400">2017</span>
+                    </div>
+                    <h4 className="text-lg font-bold text-white mb-1">Secondary School Certificate (X)</h4>
+                    <p className="font-medium text-orange-400 mb-2">CBSE Board</p>
+                    <div className="flex items-center">
+                      <span className="text-gray-400 text-sm">CGPA: </span>
+                      <span className="text-white font-semibold ml-1">10.0/10.0</span>
                     </div>
                   </div>
                 </div>
@@ -664,37 +773,61 @@ function App() {
                   <ChartBar className="w-5 h-5 mr-2 text-orange-400" />
                   Test Scores
                 </h4>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-4 items-start">
                   {/* GRE Score */}
                   <div className="bg-gradient-to-br from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-6 text-center hover:border-orange-500/50 transition-all duration-300">
-                    <div className="text-3xl font-bold text-white mb-1">325</div>
-                    <div className="text-sm text-gray-400 mb-3">GRE Score</div>
-                    <div className="text-xs text-gray-300 space-y-1">
-                      <div className="flex justify-between">
-                        <span>Quant:</span>
-                        <span className="text-white font-semibold">167</span>
+                    <div className="text-3xl font-bold text-white mb-1">325/340</div>
+                    <div className="text-sm text-gray-400 mb-2">GRE Score</div>
+                    <button onClick={() => setIsGreExpanded(!isGreExpanded)} className="text-orange-400/80 hover:text-orange-400 text-xs flex items-center justify-center w-full mb-2 transition-colors">
+                      Click to expand
+                      <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isGreExpanded ? 'rotate-180' : ''}`} />
+                    </button>
+                    {isGreExpanded && (
+                      <div className="text-xs text-gray-300 space-y-1 text-left pt-2 border-t border-stone-700">
+                        <div className="flex justify-between">
+                          <span>Quant:</span>
+                          <span className="text-white font-semibold">167/170</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Verbal:</span>
+                          <span className="text-white font-semibold">158/170</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Writing:</span>
+                          <span className="text-white font-semibold">4.0/6.0</span>
+                        </div>
                       </div>
-                      <div className="flex justify-between">
-                        <span>Verbal:</span>
-                        <span className="text-white font-semibold">158</span>
-                      </div>
-                    </div>
+                    )}
                   </div>
                   
                   {/* TOEFL Score */}
                   <div className="bg-gradient-to-br from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-6 text-center hover:border-orange-500/50 transition-all duration-300">
-                    <div className="text-3xl font-bold text-white mb-1">105</div>
-                    <div className="text-sm text-gray-400 mb-3">TOEFL Score</div>
-                    <div className="text-xs text-gray-300 space-y-1">
-                      <div className="flex justify-between">
-                        <span>Reading:</span>
-                        <span className="text-white font-semibold">26</span>
+                    <div className="text-3xl font-bold text-white mb-1">105/120</div>
+                    <div className="text-sm text-gray-400 mb-2">TOEFL Score</div>
+                     <button onClick={() => setIsToeflExpanded(!isToeflExpanded)} className="text-orange-400/80 hover:text-orange-400 text-xs flex items-center justify-center w-full mb-2 transition-colors">
+                      Click to expand
+                      <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isToeflExpanded ? 'rotate-180' : ''}`} />
+                    </button>
+                    {isToeflExpanded && (
+                      <div className="text-xs text-gray-300 space-y-1 text-left pt-2 border-t border-stone-700">
+                        <div className="flex justify-between">
+                          <span>Reading:</span>
+                          <span className="text-white font-semibold">26/30</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Speaking:</span>
+                          <span className="text-white font-semibold">27/30</span>
+                        </div>
+                         <div className="flex justify-between">
+                          <span>Listening:</span>
+                          <span className="text-white font-semibold">25/30</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Writing:</span>
+                          <span className="text-white font-semibold">27/30</span>
+                        </div>
                       </div>
-                      <div className="flex justify-between">
-                        <span>Speaking:</span>
-                        <span className="text-white font-semibold">27</span>
-                      </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -702,20 +835,8 @@ function App() {
           </div>
         </section>
         
-        {/* Company Logos Section */}
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <p className="text-gray-400 text-lg">Trusted by leading institutions</p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center opacity-60">
-              <div className="text-2xl font-bold text-gray-500">IIT Kharagpur</div>
-              <div className="text-2xl font-bold text-gray-500">IIT Dhanbad</div>
-              <div className="text-2xl font-bold text-gray-500">IIEST Shibpur</div>
-              <div className="text-2xl font-bold text-gray-500">Axtria</div>
-            </div>
-          </div>
-        </section>
+        
+
       </main>
 
       {/* Footer */}
@@ -733,13 +854,13 @@ function App() {
                 AI/ML researcher passionate about advancing computer vision and medical imaging through innovative deep learning solutions.
               </p>
               <div className="flex space-x-4">
-                <a href="mailto:gouroy345@gmail.com" className="text-gray-400 hover:text-orange-400 transition-colors">
+                <a href="mailto:gourab.roy.aiml@gmail.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition-colors">
                   <Mail className="w-5 h-5" />
                 </a>
-                <a href="https://www.linkedin.com/in/gourab-roy/" className="text-gray-400 hover:text-orange-400 transition-colors">
+                <a href="https://www.linkedin.com/in/gourab-roy/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition-colors">
                   <Linkedin className="w-5 h-5" />
                 </a>
-                <a href="https://github.com/crimsonKn1ght/" className="text-gray-400 hover:text-orange-400 transition-colors">
+                <a href="https://github.com/crimsonKn1ght/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition-colors">
                   <Github className="w-5 h-5" />
                 </a>
               </div>
@@ -755,6 +876,9 @@ function App() {
           </div>
         </div>
       </footer>
+      <Modal isOpen={!!modalContent} onClose={closeModal} title={modalContent?.title}>
+        {modalContent?.content}
+      </Modal>
     </div>
   );
 }
