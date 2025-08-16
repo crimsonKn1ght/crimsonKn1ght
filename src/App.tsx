@@ -255,7 +255,7 @@ function App() {
             </a>
             
             <a 
-              href="research-statement.html" 
+              href="./research-statement" 
               target="_blank" rel="noopener noreferrer"
               className="group flex items-center space-x-2 bg-white/10 hover:bg-purple-500/20 backdrop-blur-sm border border-white/20 hover:border-purple-500/50 rounded-full px-6 py-3 transition-all duration-300"
             >
@@ -884,3 +884,4 @@ function App() {
 }
 
 export default App;
+
