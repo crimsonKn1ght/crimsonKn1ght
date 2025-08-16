@@ -1,474 +1,441 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gourab Roy - AI/ML Researcher</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #1c1917; /* Dark warm gray (stone-900) */
-            color: #E5E7EB; /* Light gray text */
-        }
-        .section-title {
-            font-weight: 900;
-            font-size: 2.5rem;
-            background: -webkit-linear-gradient(45deg, #f97316, #f59e0b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .card {
-            background-color: #292524; /* Lighter warm gray (stone-800) */
-            border: 1px solid #44403c;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.1), 0 4px 6px -2px rgba(249, 115, 22, 0.05);
-        }
-        .interactive-card {
-            cursor: pointer;
-        }
-        .tag {
-            background-color: #44403c; /* stone-700 */
-            color: #9CA3AF;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .tag:hover {
-            background-color: #f97316;
-            color: #ffffff;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 1rem;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #44403c; /* stone-700 */
-        }
-        .timeline-item .dot {
-            position: absolute;
-            left: 0;
-            transform: translateX(-45%);
-            width: 1.25rem;
-            height: 1.25rem;
-            border-radius: 50%;
-            background-color: #1c1917;
-            border: 3px solid #f97316;
-        }
-        .modal-backdrop {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 40;
-            opacity: 0;
-            pointer-events: none;
-        }
-        .modal {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            z-index: 50;
-            opacity: 0;
-            pointer-events: none;
-        }
-        .animated-element {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        .score-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-        }
-    </style>
-</head>
-<body class="antialiased">
+import React, { useEffect, useRef } from 'react';
+import { Mail, Linkedin, Github, FileText, ChevronDown, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity } from 'lucide-react';
 
-    <!-- Header -->
-    <header class="container mx-auto px-6 py-16 text-center">
-        <div class="animated-element">
-            <h1 class="text-5xl md:text-7xl font-black tracking-tight text-white">GOURAB ROY</h1>
-            <p class="mt-4 text-xl md:text-2xl text-amber-300">AI/ML & Computer Vision Researcher</p>
-        </div>
-        <div class="mt-8 flex justify-center space-x-6 animated-element">
-            <a href="mailto:gouroy345@gmail.com" class="text-gray-400 hover:text-orange-400 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-            </a>
-            <a href="https://www.linkedin.com/in/gourab-roy/" class="text-gray-400 hover:text-orange-400 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            </a>
-            <a href="https://github.com/crimsonKn1ght/" class="text-gray-400 hover:text-orange-400 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-            <a href="research-statement.html" class="text-gray-400 hover:text-orange-400 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-            </a>
-        </div>
-    </header>
+function App() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const floatingElementsRef = useRef<HTMLDivElement>(null);
 
-    <main class="container mx-auto px-6">
-        <!-- Summary Section -->
-        <section id="summary" class="py-16">
-            <h2 class="section-title text-center mb-12 animated-element">Summary</h2>
-            <p class="max-w-3xl mx-auto text-center text-lg md:text-xl text-gray-300 leading-relaxed animated-element">
-                AI/ML researcher specializing in deep learning for computer vision, focused on developing robust and interpretable architectures for challenging, data-scarce environments using convolutional and attention mechanisms.
-            </p>
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      
+      const deltaX = (clientX - centerX) * 0.005;
+      const deltaY = (clientY - centerY) * 0.005;
+      
+      if (floatingElementsRef.current) {
+        floatingElementsRef.current.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  const scrollToContent = () => {
+    document.getElementById('summary')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <div className="min-h-screen bg-stone-900 text-white overflow-x-hidden">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-amber-600 rounded-lg flex items-center justify-center">
+              <Brain className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-xl font-bold">Portfolio</span>
+          </div>
+          
+          <div className="hidden md:flex items-center space-x-8 text-sm text-gray-300">
+            <a href="#summary" className="hover:text-white transition-colors">Research</a>
+            <a href="#experience" className="hover:text-white transition-colors">Experience</a>
+            <a href="#publications" className="hover:text-white transition-colors">Publications</a>
+            <a href="#projects" className="hover:text-white transition-colors">Projects</a>
+            <a href="mailto:gouroy345@gmail.com" className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg text-white transition-colors">
+              Contact
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <div ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Floating Background Elements */}
+        <div ref={floatingElementsRef} className="absolute inset-0 transition-transform duration-1000 ease-out">
+          {/* Research Papers */}
+          <div className="absolute top-20 left-16 w-32 h-20 bg-gradient-to-br from-orange-500/20 to-amber-600/20 backdrop-blur-sm border border-orange-500/30 rounded-lg rotate-12 transform hover:scale-105 transition-transform duration-300">
+            <div className="p-3 h-full flex flex-col justify-between">
+              <div className="w-full h-2 bg-orange-400/40 rounded"></div>
+              <div className="space-y-1">
+                <div className="w-3/4 h-1 bg-gray-400/40 rounded"></div>
+                <div className="w-1/2 h-1 bg-gray-400/40 rounded"></div>
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute top-32 right-24 w-28 h-32 bg-gradient-to-br from-blue-500/20 to-purple-600/20 backdrop-blur-sm border border-blue-500/30 rounded-lg -rotate-6 transform hover:scale-105 transition-transform duration-300">
+            <div className="p-3 h-full flex flex-col items-center justify-center">
+              <Eye className="w-8 h-8 text-blue-400/60 mb-2" />
+              <div className="w-full h-1 bg-blue-400/40 rounded"></div>
+            </div>
+          </div>
+
+          <div className="absolute bottom-32 left-32 w-36 h-24 bg-gradient-to-br from-green-500/20 to-teal-600/20 backdrop-blur-sm border border-green-500/30 rounded-lg rotate-6 transform hover:scale-105 transition-transform duration-300">
+            <div className="p-3 h-full flex items-center">
+              <Code className="w-6 h-6 text-green-400/60 mr-3" />
+              <div className="flex-1 space-y-1">
+                <div className="w-full h-1 bg-green-400/40 rounded"></div>
+                <div className="w-2/3 h-1 bg-green-400/40 rounded"></div>
+                <div className="w-3/4 h-1 bg-green-400/40 rounded"></div>
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute top-1/2 right-16 w-24 h-28 bg-gradient-to-br from-purple-500/20 to-pink-600/20 backdrop-blur-sm border border-purple-500/30 rounded-lg rotate-12 transform hover:scale-105 transition-transform duration-300">
+            <div className="p-3 h-full flex flex-col items-center justify-center">
+              <Cpu className="w-8 h-8 text-purple-400/60 mb-2" />
+              <ChartBar className="w-6 h-6 text-purple-400/40" />
+            </div>
+          </div>
+
+          <div className="absolute bottom-20 right-32 w-30 h-22 bg-gradient-to-br from-red-500/20 to-orange-600/20 backdrop-blur-sm border border-red-500/30 rounded-lg -rotate-3 transform hover:scale-105 transition-transform duration-300">
+            <div className="p-3 h-full flex items-center justify-center">
+              <Activity className="w-8 h-8 text-red-400/60" />
+            </div>
+          </div>
+
+          <div className="absolute top-1/3 left-20 w-28 h-20 bg-gradient-to-br from-yellow-500/20 to-orange-600/20 backdrop-blur-sm border border-yellow-500/30 rounded-lg -rotate-12 transform hover:scale-105 transition-transform duration-300">
+            <div className="p-3 h-full flex items-center">
+              <Database className="w-6 h-6 text-yellow-400/60 mr-2" />
+              <div className="flex-1 space-y-1">
+                <div className="w-full h-1 bg-yellow-400/40 rounded"></div>
+                <div className="w-1/2 h-1 bg-yellow-400/40 rounded"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Additional floating elements */}
+          <div className="absolute top-16 right-1/3 w-20 h-20 bg-gradient-to-br from-indigo-500/15 to-blue-600/15 backdrop-blur-sm border border-indigo-500/25 rounded-full rotate-45 transform hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+            <Zap className="w-6 h-6 text-indigo-400/60" />
+          </div>
+
+          <div className="absolute bottom-1/3 left-1/4 w-24 h-16 bg-gradient-to-br from-teal-500/15 to-green-600/15 backdrop-blur-sm border border-teal-500/25 rounded-lg rotate-8 transform hover:scale-105 transition-transform duration-300">
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+          <h1 className="text-7xl md:text-8xl lg:text-9xl font-black tracking-tight mb-6">
+            <span className="block text-white">GOURAB</span>
+            <span className="block bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600 bg-clip-text text-transparent">
+              ROY
+            </span>
+          </h1>
+          
+          <div className="flex items-center justify-center mb-8">
+            <span className="text-gray-400 text-lg md:text-xl mr-4">A discovery engine for</span>
+            <div className="border border-orange-500/50 bg-orange-500/10 backdrop-blur-sm rounded-full px-6 py-2">
+              <span className="text-orange-400 font-semibold text-lg md:text-xl">AI/ML innovation</span>
+            </div>
+          </div>
+
+          <p className="text-gray-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
+            Specializing in deep learning for computer vision, developing robust architectures for challenging environments
+          </p>
+
+          {/* Social Links */}
+          <div className="flex justify-center space-x-6 mb-16">
+            <a 
+              href="mailto:gouroy345@gmail.com" 
+              className="group flex items-center space-x-2 bg-white/10 hover:bg-orange-500/20 backdrop-blur-sm border border-white/20 hover:border-orange-500/50 rounded-full px-6 py-3 transition-all duration-300"
+            >
+              <Mail className="w-5 h-5 text-gray-400 group-hover:text-orange-400 transition-colors" />
+              <span className="text-gray-400 group-hover:text-white transition-colors">Email</span>
+            </a>
+            
+            <a 
+              href="https://www.linkedin.com/in/gourab-roy/" 
+              className="group flex items-center space-x-2 bg-white/10 hover:bg-blue-500/20 backdrop-blur-sm border border-white/20 hover:border-blue-500/50 rounded-full px-6 py-3 transition-all duration-300"
+            >
+              <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors" />
+              <span className="text-gray-400 group-hover:text-white transition-colors">LinkedIn</span>
+            </a>
+            
+            <a 
+              href="https://github.com/crimsonKn1ght/" 
+              className="group flex items-center space-x-2 bg-white/10 hover:bg-gray-500/20 backdrop-blur-sm border border-white/20 hover:border-gray-500/50 rounded-full px-6 py-3 transition-all duration-300"
+            >
+              <Github className="w-5 h-5 text-gray-400 group-hover:text-gray-300 transition-colors" />
+              <span className="text-gray-400 group-hover:text-white transition-colors">GitHub</span>
+            </a>
+            
+            <a 
+              href="research-statement.html" 
+              className="group flex items-center space-x-2 bg-white/10 hover:bg-purple-500/20 backdrop-blur-sm border border-white/20 hover:border-purple-500/50 rounded-full px-6 py-3 transition-all duration-300"
+            >
+              <FileText className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
+              <span className="text-gray-400 group-hover:text-white transition-colors">Research</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 right-8 flex items-center space-x-2 text-gray-400">
+          <span className="text-sm hidden md:block">Scroll to explore</span>
+          <button 
+            onClick={scrollToContent}
+            className="w-10 h-10 bg-white/10 hover:bg-orange-500/20 backdrop-blur-sm border border-white/20 hover:border-orange-500/50 rounded-full flex items-center justify-center transition-all duration-300"
+          >
+            <ChevronDown className="w-5 h-5 animate-bounce" />
+          </button>
+        </div>
+      </div>
+
+      {/* Rest of the content */}
+      <main className="container mx-auto px-6">
+        {/* Summary Section */}
+        <section id="summary" className="py-16">
+          <h2 className="text-4xl font-black text-center mb-12 bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
+            Summary
+          </h2>
+          <p className="max-w-3xl mx-auto text-center text-lg md:text-xl text-gray-300 leading-relaxed">
+            AI/ML researcher specializing in deep learning for computer vision, focused on developing robust and interpretable architectures for challenging, data-scarce environments using convolutional and attention mechanisms.
+          </p>
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="py-16">
-            <h2 class="section-title text-center mb-16 animated-element">Experience</h2>
-            <div class="relative max-w-3xl mx-auto timeline">
-                <!-- IIT Kharagpur -->
-                <div class="timeline-item mb-12 pl-12 animated-element">
-                    <div class="dot"></div>
-                    <p class="text-sm text-orange-400">May 2025 - Present</p>
-                    <h3 class="text-xl font-bold text-white mt-1">Research Intern - Deep Learning for Medical Imaging</h3>
-                    <p class="text-md font-medium text-gray-400">IIT Kharagpur</p>
-                    <ul class="mt-4 list-disc list-inside text-gray-300 space-y-2">
-                        <li>Conducting research on CT image reconstruction to improve quality from sparse and noisy projections.</li>
-                        <li>Designing U-Nets and 3D CNNs for volumetric reconstruction from low-signal sinogram data.</li>
-                        <li>Employed a combined SSIM and MSE loss function, achieving a test SSIM of 0.9+.</li>
-                    </ul>
-                </div>
-                <!-- Axtria -->
-                <div class="timeline-item mb-12 pl-12 animated-element">
-                    <div class="dot"></div>
-                    <p class="text-sm text-orange-400">May 2024 - July 2024</p>
-                    <h3 class="text-xl font-bold text-white mt-1">Data Engineering Intern</h3>
-                    <p class="text-md font-medium text-gray-400">Axtria (Bengaluru)</p>
-                    <ul class="mt-4 list-disc list-inside text-gray-300 space-y-2">
-                        <li>Enhanced data processing workflows using Python and SQL, reducing latency by 18%.</li>
-                        <li>Developed and deployed robust ETL pipelines from 5+ disparate sources.</li>
-                        <li>Improved reporting accuracy by 15% by resolving over 50 data quality issues.</li>
-                    </ul>
-                </div>
-                <!-- Virtually Testing Foundation -->
-                <div class="timeline-item pl-12 animated-element">
-                    <div class="dot"></div>
-                    <p class="text-sm text-orange-400">May 2022 - July 2022</p>
-                    <h3 class="text-xl font-bold text-white mt-1">Security Intern</h3>
-                    <p class="text-md font-medium text-gray-400">Virtually Testing Foundation</p>
-                    <ul class="mt-4 list-disc list-inside text-gray-300 space-y-2">
-                        <li>Completed hands-on training in offensive and defensive cybersecurity.</li>
-                        <li>Participated in practical red and blue team exercises, including simulated cyber-attacks and vulnerability assessments.</li>
-                    </ul>
-                </div>
+        {/* Experience Section */}
+        <section id="experience" className="py-16">
+          <h2 className="text-4xl font-black text-center mb-16 bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
+            Experience
+          </h2>
+          <div className="relative max-w-3xl mx-auto">
+            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-orange-400 to-amber-600"></div>
+            
+            {/* IIT Kharagpur */}
+            <div className="mb-12 pl-12 relative">
+              <div className="absolute left-0 top-2 transform -translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full border-4 border-stone-900"></div>
+              <p className="text-sm text-orange-400 mb-2">May 2025 - Present</p>
+              <h3 className="text-xl font-bold text-white mb-1">Research Intern - Deep Learning for Medical Imaging</h3>
+              <p className="text-md font-medium text-gray-400 mb-4">IIT Kharagpur</p>
+              <ul className="list-disc list-inside text-gray-300 space-y-2">
+                <li>Conducting research on CT image reconstruction to improve quality from sparse and noisy projections.</li>
+                <li>Designing U-Nets and 3D CNNs for volumetric reconstruction from low-signal sinogram data.</li>
+                <li>Employed a combined SSIM and MSE loss function, achieving a test SSIM of 0.9+.</li>
+              </ul>
             </div>
+            
+            {/* Axtria */}
+            <div className="mb-12 pl-12 relative">
+              <div className="absolute left-0 top-2 transform -translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full border-4 border-stone-900"></div>
+              <p className="text-sm text-orange-400 mb-2">May 2024 - July 2024</p>
+              <h3 className="text-xl font-bold text-white mb-1">Data Engineering Intern</h3>
+              <p className="text-md font-medium text-gray-400 mb-4">Axtria (Bengaluru)</p>
+              <ul className="list-disc list-inside text-gray-300 space-y-2">
+                <li>Enhanced data processing workflows using Python and SQL, reducing latency by 18%.</li>
+                <li>Developed and deployed robust ETL pipelines from 5+ disparate sources.</li>
+                <li>Improved reporting accuracy by 15% by resolving over 50 data quality issues.</li>
+              </ul>
+            </div>
+            
+            {/* Virtually Testing Foundation */}
+            <div className="pl-12 relative">
+              <div className="absolute left-0 top-2 transform -translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full border-4 border-stone-900"></div>
+              <p className="text-sm text-orange-400 mb-2">May 2022 - July 2022</p>
+              <h3 className="text-xl font-bold text-white mb-1">Security Intern</h3>
+              <p className="text-md font-medium text-gray-400 mb-4">Virtually Testing Foundation</p>
+              <ul className="list-disc list-inside text-gray-300 space-y-2">
+                <li>Completed hands-on training in offensive and defensive cybersecurity.</li>
+                <li>Participated in practical red and blue team exercises, including simulated cyber-attacks and vulnerability assessments.</li>
+              </ul>
+            </div>
+          </div>
         </section>
 
-        <!-- Publications Section -->
-        <section id="publications" class="py-16">
-            <h2 class="section-title text-center mb-12 animated-element">Publications</h2>
-            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <!-- Publication 1 -->
-                <div class="card p-6 rounded-lg animated-element">
-                    <h3 class="text-lg font-bold text-white">Knee Osteoarthritis Detection and Categorization using Deep Learning Models</h3>
-                    <p class="text-sm text-gray-400 mt-1">Proceedings of ISAI (2025), Lecture Notes in Networks and Systems (Springer).</p>
-                    <button class="modal-trigger mt-4 text-orange-400 font-semibold hover:text-orange-300" data-modal-target="modal1">View Details &rarr;</button>
-                </div>
-                <!-- Publication 2 -->
-                <div class="card p-6 rounded-lg animated-element">
-                    <h3 class="text-lg font-bold text-white">Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection</h3>
-                    <p class="text-sm text-gray-400 mt-1">Manuscript communicated with ICDSINC conference (2025).</p>
-                    <button class="modal-trigger mt-4 text-orange-400 font-semibold hover:text-orange-300" data-modal-target="modal2">View Details &rarr;</button>
-                </div>
-                 <!-- Publication 3 -->
-                <div class="card p-6 rounded-lg lg:col-span-2 animated-element">
-                    <h3 class="text-lg font-bold text-white">End-to-End Deep Learning for CT Scan Reconstruction with Integrated Explainable AI</h3>
-                    <p class="text-sm text-gray-400 mt-1">Manuscript in preparation for submission to a reputed peer-reviewed journal (2025).</p>
-                    <button class="modal-trigger mt-4 text-orange-400 font-semibold hover:text-orange-300" data-modal-target="modal3">View Details &rarr;</button>
-                </div>
+        {/* Publications Section */}
+        <section id="publications" className="py-16">
+          <h2 className="text-4xl font-black text-center mb-12 bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
+            Publications
+          </h2>
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Publication 1 */}
+            <div className="bg-stone-800/50 backdrop-blur-sm border border-stone-700 p-6 rounded-xl hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
+              <h3 className="text-lg font-bold text-white mb-2">Knee Osteoarthritis Detection and Categorization using Deep Learning Models</h3>
+              <p className="text-sm text-gray-400 mb-4">Proceedings of ISAI (2025), Lecture Notes in Networks and Systems (Springer).</p>
+              <button className="text-orange-400 font-semibold hover:text-orange-300 transition-colors">
+                View Details →
+              </button>
             </div>
+            
+            {/* Publication 2 */}
+            <div className="bg-stone-800/50 backdrop-blur-sm border border-stone-700 p-6 rounded-xl hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
+              <h3 className="text-lg font-bold text-white mb-2">Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection</h3>
+              <p className="text-sm text-gray-400 mb-4">Manuscript communicated with ICDSINC conference (2025).</p>
+              <button className="text-orange-400 font-semibold hover:text-orange-300 transition-colors">
+                View Details →
+              </button>
+            </div>
+            
+            {/* Publication 3 */}
+            <div className="bg-stone-800/50 backdrop-blur-sm border border-stone-700 p-6 rounded-xl lg:col-span-2 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
+              <h3 className="text-lg font-bold text-white mb-2">End-to-End Deep Learning for CT Scan Reconstruction with Integrated Explainable AI</h3>
+              <p className="text-sm text-gray-400 mb-4">Manuscript in preparation for submission to a reputed peer-reviewed journal (2025).</p>
+              <button className="text-orange-400 font-semibold hover:text-orange-300 transition-colors">
+                View Details →
+              </button>
+            </div>
+          </div>
         </section>
         
-        <!-- Projects Section -->
-        <section id="projects" class="py-16">
-            <h2 class="section-title text-center mb-12 animated-element">Projects</h2>
-            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <!-- Project 1 -->
-                <div class="card p-6 rounded-lg animated-element">
-                    <h3 class="text-lg font-bold text-white">Real-Time Object Detector</h3>
-                    <p class="text-gray-300 mt-2">A web-based real-time object detection application using YOLO and TensorFlow.js.</p>
-                    <a href="https://github.com/crimsonkn1ght/real-time-object-detector" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-orange-400 font-semibold hover:text-orange-300 transition-colors">
-                        View on GitHub &rarr;
-                    </a>
-                </div>
-                <!-- Project 2 -->
-                <div class="card p-6 rounded-lg animated-element">
-                    <h3 class="text-lg font-bold text-white">Movie Recommender System</h3>
-                    <p class="text-gray-300 mt-2">A content-based filtering system that suggests movies to users based on their preferences and movie metadata.</p>
-                     <a href="https://github.com/crimsonkn1ght/movie-recommender" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-orange-400 font-semibold hover:text-orange-300 transition-colors">
-                        View on GitHub &rarr;
-                    </a>
-                </div>
-                <!-- Project 3 -->
-                <div class="card p-6 rounded-lg animated-element">
-                    <h3 class="text-lg font-bold text-white">My AI/ML Implementations</h3>
-                    <p class="text-gray-300 mt-2">A collection of self-implemented AI and ML models and algorithms from scratch.</p>
-                     <a href="https://github.com/crimsonkn1ght/my-ai-ml-codes" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-orange-400 font-semibold hover:text-orange-300 transition-colors">
-                        View on GitHub &rarr;
-                    </a>
-                </div>
-                <!-- Project 4 -->
-                <div class="card p-6 rounded-lg animated-element">
-                    <h3 class="text-lg font-bold text-white">dirStrike</h3>
-                    <p class="text-gray-300 mt-2">A directory and file bruteforcing tool for web security assessments.</p>
-                     <a href="https://github.com/crimsonkn1ght/dirstrike" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-orange-400 font-semibold hover:text-orange-300 transition-colors">
-                        View on GitHub &rarr;
-                    </a>
-                </div>
+        {/* Projects Section */}
+        <section id="projects" className="py-16">
+          <h2 className="text-4xl font-black text-center mb-12 bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
+            Projects
+          </h2>
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Project 1 */}
+            <div className="bg-stone-800/50 backdrop-blur-sm border border-stone-700 p-6 rounded-xl hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
+              <h3 className="text-lg font-bold text-white mb-2">Real-Time Object Detector</h3>
+              <p className="text-gray-300 mb-4">A web-based real-time object detection application using YOLO and TensorFlow.js.</p>
+              <a href="https://github.com/crimsonkn1ght/real-time-object-detector" target="_blank" rel="noopener noreferrer" className="text-orange-400 font-semibold hover:text-orange-300 transition-colors">
+                View on GitHub →
+              </a>
             </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="py-16">
-            <h2 class="section-title text-center mb-12 animated-element">Technical Skills</h2>
-            <div class="max-w-5xl mx-auto">
-                <div class="mb-8 animated-element">
-                    <h3 class="text-xl font-bold text-white mb-4">Programming & Frameworks</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">Python</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">C/C++</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">PyTorch</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">TensorFlow</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">Keras</span>
-                    </div>
-                </div>
-                <div class="mb-8 animated-element">
-                    <h3 class="text-xl font-bold text-white mb-4">Data Science & Computer Vision</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">NumPy</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">Pandas</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">Scikit-learn</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">Matplotlib</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">OpenCV</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">Image Reconstruction</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">Image Segmentation</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">Object Detection</span>
-                    </div>
-                </div>
-                <div class="animated-element">
-                    <h3 class="text-xl font-bold text-white mb-4">Tools & Platforms</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">Docker</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">Git</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">Jupyter</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">Linux</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">SQL</span>
-                        <span class="tag py-2 px-4 rounded-full text-sm font-medium">ETL</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education and Awards Section -->
-        <section id="education" class="py-16">
-            <div class="max-w-6xl mx-auto grid md:grid-cols-5 gap-12">
-                <div class="md:col-span-3">
-                    <h2 class="section-title mb-12 animated-element">Education</h2>
-                    <div class="space-y-8">
-                        <div class="animated-element">
-                            <p class="text-sm text-gray-400">2023 - 2025</p>
-                            <h3 class="text-xl font-bold text-white">M.Tech in Computer Science and Engineering</h3>
-                            <p class="font-medium text-gray-300">IIT Dhanbad</p>
-                            <p class="text-gray-400">GPA: 8.57/10.0</p>
-                        </div>
-                        <div class="animated-element">
-                            <p class="text-sm text-gray-400">2019 - 2023</p>
-                            <h3 class="text-xl font-bold text-white">B.Tech in Electronics & Telecommunications Engineering</h3>
-                            <p class="font-medium text-gray-300">IIEST Shibpur</p>
-                             <p class="text-gray-400">GPA: 7.58/10.0</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:col-span-2">
-                    <h2 class="section-title mb-12 animated-element">Awards</h2>
-                    <div class="card p-6 rounded-lg animated-element">
-                        <p class="text-sm text-gray-400">2025</p>
-                        <h3 class="text-lg font-bold text-white mt-1">Best Paper Award <span role="img" aria-label="trophy">🏆</span></h3>
-                        <p class="text-gray-300">Received at the International Symposium on Artificial Intelligence (ISAI 2025), out of 78 accepted submissions.</p>
-                    </div>
-                     <h2 class="section-title mt-12 mb-8 animated-element">Test Scores</h2>
-                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-center animated-element">
-                        <!-- GRE Score Card -->
-                        <div class="card interactive-card p-4 rounded-lg score-card">
-                            <div class="score-summary">
-                                <p class="text-2xl font-bold text-white">325<span class="text-base font-normal text-gray-400">/340</span></p>
-                                <p class="text-sm text-gray-400">GRE</p>
-                            </div>
-                            <div class="score-details">
-                                <ul class="mt-4 text-gray-300 space-y-1 text-left text-sm px-2">
-                                    <li class="flex justify-between border-t border-stone-700 pt-2"><span>Quantitative:</span> <span class="font-semibold text-white">167/170</span></li>
-                                    <li class="flex justify-between"><span>Verbal:</span> <span class="font-semibold text-white">158/170</span></li>
-                                    <li class="flex justify-between"><span>Writing:</span> <span class="font-semibold text-white">4.0/6.0</span></li>
-                                </ul>
-                            </div>
-                             <div class="expand-trigger text-xs text-orange-400 flex items-center justify-center mt-2">
-                                <span class="trigger-text">Details</span>
-                                <svg class="w-4 h-4 ml-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </div>
-                        </div>
-                        <!-- TOEFL Score Card -->
-                        <div class="card interactive-card p-4 rounded-lg score-card">
-                            <div class="score-summary">
-                                <p class="text-2xl font-bold text-white">105<span class="text-base font-normal text-gray-400">/120</span></p>
-                                <p class="text-sm text-gray-400">TOEFL</p>
-                            </div>
-                            <div class="score-details">
-                                <ul class="mt-4 text-gray-300 space-y-1 text-left text-sm px-2">
-                                    <li class="flex justify-between border-t border-stone-700 pt-2"><span>Reading:</span> <span class="font-semibold text-white">26/30</span></li>
-                                    <li class="flex justify-between"><span>Listening:</span> <span class="font-semibold text-white">25/30</span></li>
-                                    <li class="flex justify-between"><span>Speaking:</span> <span class="font-semibold text-white">27/30</span></li>
-                                    <li class="flex justify-between"><span>Writing:</span> <span class="font-semibold text-white">27/30</span></li>
-                                </ul>
-                            </div>
-                             <div class="expand-trigger text-xs text-orange-400 flex items-center justify-center mt-2">
-                                <span class="trigger-text">Details</span>
-                                <svg class="w-4 h-4 ml-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </div>
-                        </div>
-                     </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="text-center py-8 mt-16 border-t border-stone-800">
-        <p class="text-gray-500">Feel free to drop a mail.</p>
-    </footer>
-
-    <!-- Modals (for publications) -->
-    <div id="modal-backdrop" class="modal-backdrop"></div>
-
-    <div id="modal1" class="modal w-11/12 max-w-2xl bg-gray-800 rounded-lg shadow-lg p-8">
-        <h3 class="text-2xl font-bold text-white">Knee Osteoarthritis Detection and Categorization using Deep Learning Models</h3>
-        <p class="text-sm text-gray-400 mt-1">To be published in: Proceedings of ISAI (2025), Lecture Notes in Networks and Systems (Springer).</p>
-        <div class="mt-4 text-gray-300 space-y-3">
-            <p><strong>Abstract:</strong> This paper presents a deep learning model that achieves 80.12% accuracy in classifying knee X-ray images based on osteoarthritis severity. The model was trained using the Kellgren-Lawrence (KL) grading scale, providing a robust method for automated diagnosis.</p>
-            <p><strong>Contribution:</strong> Developed a multi-class classification system to accurately grade the severity of knee osteoarthritis, aiding in faster and more consistent clinical assessments.</p>
-            <a href="https://github.com/crimsonKn1ght/Code-OA-detection-model" target="_blank" class="inline-block text-orange-400 font-semibold hover:text-orange-300 transition-colors"> <!-- Replace # with actual GitHub URL -->
-                View Code on GitHub &rarr;
-            </a>
-        </div>
-        <div class="mt-6 text-right">
-            <button class="modal-close-btn bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">Close</button>
-        </div>
-    </div>
-
-    <div id="modal2" class="modal w-11/12 max-w-2xl bg-gray-800 rounded-lg shadow-lg p-8">
-        <h3 class="text-2xl font-bold text-white">Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection</h3>
-        <p class="text-sm text-gray-400 mt-1">Status: Manuscript communicated with ICDSINC conference (2025).</p>
-        <div class="mt-4 text-gray-300 space-y-3">
-            <p><strong>Abstract:</strong> This work introduces a novel deep learning framework for detecting knee osteoporosis from X-ray images. By integrating texture-based feature extraction with a CBAM-enhanced U-Net, the model achieves high accuracy in both binary (88%) and multi-class (84%) classification tasks.</p>
-            <p><strong>Contribution:</strong> Created a highly accurate binary and multi-class classification model for a challenging medical imaging problem, demonstrating the power of attention mechanisms in enhancing diagnostic models.</p>
-            <a href="https://github.com/crimsonKn1ght/Code-OP-detection-model" target="_blank" class="inline-block text-orange-400 font-semibold hover:text-orange-300 transition-colors"> <!-- Replace # with actual GitHub URL -->
-                View Code on GitHub &rarr;
-            </a>
-        </div>
-        <div class="mt-6 text-right">
-            <button class="modal-close-btn bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">Close</button>
-        </div>
-    </div>
-    
-    <div id="modal3" class="modal w-11/12 max-w-2xl bg-gray-800 rounded-lg shadow-lg p-8">
-        <h3 class="text-2xl font-bold text-white">End-to-End Deep Learning for CT Scan Reconstruction with Integrated Explainable AI</h3>
-        <p class="text-sm text-gray-400 mt-1">Status: Manuscript in preparation for submission (2025).</p>
-        <div class="mt-4 text-gray-300 space-y-2">
-            <p><strong>Abstract:</strong> This research focuses on an end-to-end deep learning pipeline for reconstructing high-quality CT images from raw data. A key component is the integration of explainable AI (XAI) techniques, which aim to make the model's decision-making process transparent and trustworthy for clinical use.</p>
-            <p><strong>Contribution:</strong> Designed a novel CT reconstruction pipeline that not only improves image quality but also incorporates XAI to build trust and interpretability, addressing a critical barrier to AI adoption in medicine.</p>
-        </div>
-        <div class="mt-6 text-right">
-            <button class="modal-close-btn bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">Close</button>
-        </div>
-    </div>
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- On-scroll animations ---
-            const animatedElements = document.querySelectorAll('.animated-element');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        anime({
-                            targets: entry.target,
-                            translateY: 0,
-                            opacity: 1,
-                            duration: 800,
-                            easing: 'easeOutExpo',
-                            delay: anime.stagger(100, {start: 100})
-                        });
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            animatedElements.forEach(el => observer.observe(el));
-
-            // --- Publication Modal logic ---
-            const modalBackdrop = document.getElementById('modal-backdrop');
-            const modalTriggers = document.querySelectorAll('.modal-trigger');
-            const closeModalButtons = document.querySelectorAll('.modal-close-btn');
-
-            const openModal = (modal) => {
-                if (!modal) return;
-                anime({ targets: modalBackdrop, opacity: 1, duration: 400, easing: 'easeInOutQuad', begin: () => { modalBackdrop.style.pointerEvents = 'auto'; } });
-                anime({ targets: modal, opacity: 1, scale: 1, translateY: '-50%', duration: 400, easing: 'easeOutExpo', begin: () => { modal.style.pointerEvents = 'auto'; } });
-            };
-
-            const closeModal = (modal) => {
-                if (!modal) return;
-                anime({ targets: modalBackdrop, opacity: 0, duration: 400, easing: 'easeInOutQuad', complete: () => { modalBackdrop.style.pointerEvents = 'none'; } });
-                anime({ targets: modal, opacity: 0, scale: 0.9, duration: 400, easing: 'easeInExpo', complete: () => { modal.style.pointerEvents = 'none'; } });
-            };
-
-            modalTriggers.forEach(button => {
-                button.addEventListener('click', () => {
-                    const modalId = button.getAttribute('data-modal-target');
-                    const modal = document.getElementById(modalId);
-                    openModal(modal);
-                });
-            });
-
-            closeModalButtons.forEach(button => button.addEventListener('click', () => closeModal(button.closest('.modal'))));
-            modalBackdrop.addEventListener('click', () => closeModal(document.querySelector('.modal[style*="opacity: 1"]')));
             
-            // --- Score Card Expand/Collapse Logic ---
-            const scoreCards = document.querySelectorAll('.score-card');
-            scoreCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const details = card.querySelector('.score-details');
-                    const icon = card.querySelector('.expand-trigger svg');
-                    const text = card.querySelector('.trigger-text');
-                    
-                    const isCollapsed = details.style.maxHeight === '0px' || !details.style.maxHeight;
+            {/* Project 2 */}
+            <div className="bg-stone-800/50 backdrop-blur-sm border border-stone-700 p-6 rounded-xl hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
+              <h3 className="text-lg font-bold text-white mb-2">Movie Recommender System</h3>
+              <p className="text-gray-300 mb-4">A content-based filtering system that suggests movies to users based on their preferences and movie metadata.</p>
+              <a href="https://github.com/crimsonkn1ght/movie-recommender" target="_blank" rel="noopener noreferrer" className="text-orange-400 font-semibold hover:text-orange-300 transition-colors">
+                View on GitHub →
+              </a>
+            </div>
+            
+            {/* Project 3 */}
+            <div className="bg-stone-800/50 backdrop-blur-sm border border-stone-700 p-6 rounded-xl hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
+              <h3 className="text-lg font-bold text-white mb-2">My AI/ML Implementations</h3>
+              <p className="text-gray-300 mb-4">A collection of self-implemented AI and ML models and algorithms from scratch.</p>
+              <a href="https://github.com/crimsonkn1ght/my-ai-ml-codes" target="_blank" rel="noopener noreferrer" className="text-orange-400 font-semibold hover:text-orange-300 transition-colors">
+                View on GitHub →
+              </a>
+            </div>
+            
+            {/* Project 4 */}
+            <div className="bg-stone-800/50 backdrop-blur-sm border border-stone-700 p-6 rounded-xl hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
+              <h3 className="text-lg font-bold text-white mb-2">dirStrike</h3>
+              <p className="text-gray-300 mb-4">A directory and file bruteforcing tool for web security assessments.</p>
+              <a href="https://github.com/crimsonkn1ght/dirstrike" target="_blank" rel="noopener noreferrer" className="text-orange-400 font-semibold hover:text-orange-300 transition-colors">
+                View on GitHub →
+              </a>
+            </div>
+          </div>
+        </section>
 
-                    if (isCollapsed) {
-                        details.style.maxHeight = details.scrollHeight + 'px';
-                        icon.style.transform = 'rotate(180deg)';
-                        text.textContent = 'Collapse';
-                    } else {
-                        details.style.maxHeight = '0px';
-                        icon.style.transform = 'rotate(0deg)';
-                        text.textContent = 'Details';
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+        {/* Skills Section */}
+        <section id="skills" className="py-16">
+          <h2 className="text-4xl font-black text-center mb-12 bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
+            Technical Skills
+          </h2>
+          <div className="max-w-5xl mx-auto space-y-8">
+            <div>
+              <h3 className="text-xl font-bold text-white mb-4">Programming & Frameworks</h3>
+              <div className="flex flex-wrap gap-3">
+                {['Python', 'C/C++', 'PyTorch', 'TensorFlow', 'Keras'].map((skill) => (
+                  <span key={skill} className="bg-stone-700/50 hover:bg-orange-500/20 border border-stone-600 hover:border-orange-500/50 py-2 px-4 rounded-full text-sm font-medium text-gray-300 hover:text-white transition-all duration-300">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-bold text-white mb-4">Data Science & Computer Vision</h3>
+              <div className="flex flex-wrap gap-3">
+                {['NumPy', 'Pandas', 'Scikit-learn', 'Matplotlib', 'OpenCV', 'Image Reconstruction', 'Image Segmentation', 'Object Detection'].map((skill) => (
+                  <span key={skill} className="bg-stone-700/50 hover:bg-orange-500/20 border border-stone-600 hover:border-orange-500/50 py-2 px-4 rounded-full text-sm font-medium text-gray-300 hover:text-white transition-all duration-300">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-bold text-white mb-4">Tools & Platforms</h3>
+              <div className="flex flex-wrap gap-3">
+                {['Docker', 'Git', 'Jupyter', 'Linux', 'SQL', 'ETL'].map((skill) => (
+                  <span key={skill} className="bg-stone-700/50 hover:bg-orange-500/20 border border-stone-600 hover:border-orange-500/50 py-2 px-4 rounded-full text-sm font-medium text-gray-300 hover:text-white transition-all duration-300">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Education and Awards Section */}
+        <section id="education" className="py-16">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-12">
+            <div className="md:col-span-3">
+              <h2 className="text-4xl font-black mb-12 bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
+                Education
+              </h2>
+              <div className="space-y-8">
+                <div className="bg-stone-800/50 backdrop-blur-sm border border-stone-700 p-6 rounded-xl">
+                  <p className="text-sm text-gray-400 mb-2">2023 - 2025</p>
+                  <h3 className="text-xl font-bold text-white mb-1">M.Tech in Computer Science and Engineering</h3>
+                  <p className="font-medium text-gray-300 mb-2">IIT Dhanbad</p>
+                  <p className="text-gray-400">GPA: 8.57/10.0</p>
+                </div>
+                
+                <div className="bg-stone-800/50 backdrop-blur-sm border border-stone-700 p-6 rounded-xl">
+                  <p className="text-sm text-gray-400 mb-2">2019 - 2023</p>
+                  <h3 className="text-xl font-bold text-white mb-1">B.Tech in Electronics & Telecommunications Engineering</h3>
+                  <p className="font-medium text-gray-300 mb-2">IIEST Shibpur</p>
+                  <p className="text-gray-400">GPA: 7.58/10.0</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="md:col-span-2">
+              <h2 className="text-4xl font-black mb-12 bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
+                Awards
+              </h2>
+              <div className="bg-stone-800/50 backdrop-blur-sm border border-stone-700 p-6 rounded-xl mb-8">
+                <p className="text-sm text-gray-400 mb-2">2025</p>
+                <h3 className="text-lg font-bold text-white mb-1">Best Paper Award 🏆</h3>
+                <p className="text-gray-300">Received at the International Symposium on Artificial Intelligence (ISAI 2025), out of 78 accepted submissions.</p>
+              </div>
+              
+              <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
+                Test Scores
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* GRE Score */}
+                <div className="bg-stone-800/50 backdrop-blur-sm border border-stone-700 p-4 rounded-xl text-center hover:border-orange-500/50 transition-all duration-300">
+                  <p className="text-2xl font-bold text-white">325<span className="text-base font-normal text-gray-400">/340</span></p>
+                  <p className="text-sm text-gray-400 mb-2">GRE</p>
+                  <div className="text-xs text-gray-300 space-y-1">
+                    <div className="flex justify-between"><span>Quantitative:</span> <span className="text-white">167/170</span></div>
+                    <div className="flex justify-between"><span>Verbal:</span> <span className="text-white">158/170</span></div>
+                    <div className="flex justify-between"><span>Writing:</span> <span className="text-white">4.0/6.0</span></div>
+                  </div>
+                </div>
+                
+                {/* TOEFL Score */}
+                <div className="bg-stone-800/50 backdrop-blur-sm border border-stone-700 p-4 rounded-xl text-center hover:border-orange-500/50 transition-all duration-300">
+                  <p className="text-2xl font-bold text-white">105<span className="text-base font-normal text-gray-400">/120</span></p>
+                  <p className="text-sm text-gray-400 mb-2">TOEFL</p>
+                  <div className="text-xs text-gray-300 space-y-1">
+                    <div className="flex justify-between"><span>Reading:</span> <span className="text-white">26/30</span></div>
+                    <div className="flex justify-between"><span>Listening:</span> <span className="text-white">25/30</span></div>
+                    <div className="flex justify-between"><span>Speaking:</span> <span className="text-white">27/30</span></div>
+                    <div className="flex justify-between"><span>Writing:</span> <span className="text-white">27/30</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="text-center py-8 mt-16 border-t border-stone-800">
+        <p className="text-gray-500">Feel free to drop a mail.</p>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
