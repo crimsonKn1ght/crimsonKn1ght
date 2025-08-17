@@ -5,13 +5,13 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    exclude: ['lucide-react'],
+    exclude: ['lucide-react'], // avoid pre-bundling issues with lucide-react
   },
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
-        'research-statement': resolve(__dirname, 'research.html'),
+        main: resolve(__dirname, 'index.html'),       // homepage
+        research: resolve(__dirname, 'research.html') // research page
       },
     },
   },

@@ -1,3 +1,5 @@
 {
-  "cleanUrls": true
+  "rewrites": [
+    { "source": "/research", "destination": "/research.html" }
+  ]
 }
