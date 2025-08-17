@@ -108,8 +108,85 @@ function App() {
       content: (
         <p>Completed 8-week hands-on training in offensive and defensive cybersecurity, applying red and blue team techniques using Python-based tools.</p>
       )
+    },
+    cyberSecuredIndia: {
+      title: "Cyber Secured India - Digital Forensics Intern",
+      content: (
+        <>
+          <p className="mb-4">Gained practical experience in offensive and defensive security through an 8-week internship, executing real-world red and blue team operations.</p>
+          <p className="mb-4">Participated in penetration testing, threat analysis, and incident response exercises as part of a hands-on cybersecurity training program.</p>
+          <p>Implemented and tested defensive measures against simulated attacks, enhancing skills in network monitoring and intrusion detection.</p>
+        </>
+      )
+    },
+    sistmrAustralia: {
+      title: "SISTMR Australia - Cyber Security Intern",
+      content: (
+        <>
+        <p className="mb-4">Successfully completed an 8-week internship in cybersecurity, gaining hands-on experience with practical red team (offensive) and blue team (defensive) operations.</p>
+        <p>Executed simulated cyber-attacks, performed vulnerability assessments, and contributed to defense strategy planning to enhance system security.</p>
+      </>
+      )
     }
   };
+
+  const experiences = [
+    {
+      id: 'iitKharagpur',
+      status: 'Current',
+      title: 'Research Intern',
+      company: 'IIT Kharagpur',
+      date: 'May 2025 - Present',
+      description: 'Deep Learning for Medical Imaging - CT reconstruction, U-Nets, 3D CNNs',
+      icon: <Brain className="w-6 h-6 text-white" />,
+      iconBg: 'bg-gradient-to-br from-blue-500 to-purple-600',
+      details: experienceDetails.iitKharagpur
+    },
+    {
+      id: 'axtria',
+      status: '2024',
+      title: 'Data Engineering Intern',
+      company: 'Axtria',
+      date: 'May 2024 - July 2024',
+      description: 'Enhanced ETL pipelines, reduced latency by 18%, improved data quality',
+      icon: <Database className="w-6 h-6 text-white" />,
+      iconBg: 'bg-gradient-to-br from-orange-500 to-red-600',
+      details: experienceDetails.axtria
+    },
+    {
+      id: 'virtuallyTesting',
+      status: '2022',
+      title: 'Security Intern',
+      company: 'Virtually Testing Foundation',
+      date: 'May 2022 - July 2022',
+      description: 'Cybersecurity training, red/blue team exercises, vulnerability assessments',
+      icon: <Zap className="w-6 h-6 text-white" />,
+      iconBg: 'bg-gradient-to-br from-red-500 to-pink-600',
+      details: experienceDetails.virtuallyTesting
+    },
+    {
+      id: 'cyberSecuredIndia',
+      status: '2022',
+      title: 'Digital Forensics Intern',
+      company: 'Cyber Secured India',
+      date: '2022',
+      description: 'Gained practical experience in offensive and defensive security, executing real-world red and blue team operations.',
+      icon: <Zap className="w-6 h-6 text-white" />,
+      iconBg: 'bg-gradient-to-br from-red-500 to-pink-600',
+      details: experienceDetails.cyberSecuredIndia
+    },
+    {
+      id: 'sistmrAustralia',
+      status: '2022',
+      title: 'Cyber Security Intern',
+      company: 'SISTMR Australia',
+      date: '2022',
+      description: 'Completed an 8-week internship, gaining hands-on experience with practical red team and blue team operations.',
+      icon: <Zap className="w-6 h-6 text-white" />,
+      iconBg: 'bg-gradient-to-br from-red-500 to-pink-600',
+      details: experienceDetails.sistmrAustralia
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-stone-900 text-white overflow-x-hidden">
@@ -124,8 +201,8 @@ function App() {
           </div>
           
           <div className="hidden md:flex items-center space-x-8 text-sm text-gray-300">
-            <a href="#summary" className="hover:text-white transition-colors">Research</a>
-            {/* <a href="#experience" className="hover:text-white transition-colors">Experience</a> */}
+            {/* <a href="#summary" className="hover:text-white transition-colors">Research</a> */}
+            <a href="#experience" className="hover:text-white transition-colors">Experience</a>
             <a href="#publications" className="hover:text-white transition-colors">Publications</a>
             <a href="#projects" className="hover:text-white transition-colors">Projects</a>
             <a href="#skills" className="hover:text-white transition-colors">Technical Expertise</a>
@@ -279,58 +356,6 @@ function App() {
 
       {/* Rest of the content */}
       <main className="container mx-auto px-6">
-        {/* Summary Section */}
-        {/* <section id="summary" className="py-16">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="text-5xl font-black mb-8 text-white leading-tight">
-                  Building the Future of AI Through Vision
-                </h2>
-                <p className="text-xl text-gray-300 leading-relaxed mb-8">
-                  Specializing in deep learning for computer vision, developing robust and interpretable architectures for challenging, data-scarce environments.
-                </p>
-                <div className="flex space-x-4">
-                  <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
-                    View Research
-                  </button>
-                  <button className="border border-gray-600 hover:border-orange-500 text-gray-300 hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors">
-                    Download CV
-                  </button>
-                </div>
-              </div>
-              <div className="relative">
-                <div className="bg-gradient-to-br from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-8 shadow-2xl">
-                  <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-lg font-semibold text-white">Research Focus</h3>
-                    <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                        <Eye className="w-4 h-4 text-blue-400" />
-                      </div>
-                      <span className="text-gray-300">Computer Vision</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center">
-                        <Brain className="w-4 h-4 text-purple-400" />
-                      </div>
-                      <span className="text-gray-300">Deep Learning</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center">
-                        <Activity className="w-4 h-4 text-green-400" />
-                      </div>
-                      <span className="text-gray-300">Medical Imaging</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> */}
-
         {/* Experience Section */}
         <section id="experience" className="py-16">
           <div className="max-w-7xl mx-auto">
@@ -343,57 +368,28 @@ function App() {
               </p>
             </div>
             
-            <div className="grid lg:grid-cols-3 gap-8">
-              {/* IIT Kharagpur */}
-              <div className="bg-gradient-to-br from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-8 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-                    <Brain className="w-6 h-6 text-white" />
+            <div className="flex flex-wrap justify-center -mx-4">
+              {experiences.map(exp => (
+                <div key={exp.id} className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
+                  <div className="bg-gradient-to-br from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-8 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300 h-full flex flex-col">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className={`w-12 h-12 ${exp.iconBg} rounded-xl flex items-center justify-center`}>
+                        {exp.icon}
+                      </div>
+                      <span className={`text-xs ${exp.status === 'Current' ? 'text-green-400 bg-green-400/10' : 'text-gray-400 bg-gray-400/10'} px-3 py-1 rounded-full`}>{exp.status}</span>
+                    </div>
+                    <div className="flex-grow">
+                      <h3 className="text-xl font-bold text-white mb-2">{exp.title}</h3>
+                      <p className="text-orange-400 font-medium mb-1">{exp.company}</p>
+                      <p className="text-sm text-gray-400 mb-4">{exp.date}</p>
+                      <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                        {exp.description}
+                      </p>
+                    </div>
+                    <button onClick={() => openModal(exp.details)} className="text-orange-400 font-semibold hover:text-orange-300 transition-colors mt-auto self-start">View Details &rarr;</button>
                   </div>
-                  <span className="text-xs text-green-400 bg-green-400/10 px-3 py-1 rounded-full">Current</span>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Research Intern</h3>
-                <p className="text-orange-400 font-medium mb-1">IIT Kharagpur</p>
-                <p className="text-sm text-gray-400 mb-4">May 2025 - Present</p>
-                <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                  Deep Learning for Medical Imaging - CT reconstruction, U-Nets, 3D CNNs
-                </p>
-                <button onClick={() => openModal(experienceDetails.iitKharagpur)} className="text-orange-400 font-semibold hover:text-orange-300 transition-colors">View Details &rarr;</button>
-              </div>
-              
-              {/* Axtria */}
-              <div className="bg-gradient-to-br from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-8 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
-                    <Database className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-xs text-gray-400 bg-gray-400/10 px-3 py-1 rounded-full">2024</span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Data Engineering Intern</h3>
-                <p className="text-orange-400 font-medium mb-1">Axtria</p>
-                <p className="text-sm text-gray-400 mb-4">May 2024 - July 2024</p>
-                <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                  Enhanced ETL pipelines, reduced latency by 18%, improved data quality
-                </p>
-                <button onClick={() => openModal(experienceDetails.axtria)} className="text-orange-400 font-semibold hover:text-orange-300 transition-colors">View Details &rarr;</button>
-              </div>
-              
-              {/* Virtually Testing Foundation */}
-              <div className="bg-gradient-to-br from-stone-800/50 to-stone-700/50 backdrop-blur-sm border border-stone-600 rounded-2xl p-8 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl flex items-center justify-center">
-                    <Zap className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-xs text-gray-400 bg-gray-400/10 px-3 py-1 rounded-full">2022</span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Security Intern</h3>
-                <p className="text-orange-400 font-medium mb-1">Virtually Testing Foundation</p>
-                <p className="text-sm text-gray-400 mb-4">May 2022 - July 2022</p>
-                <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                  Cybersecurity training, red/blue team exercises, vulnerability assessments
-                </p>
-                <button onClick={() => openModal(experienceDetails.virtuallyTesting)} className="text-orange-400 font-semibold hover:text-orange-300 transition-colors">View Details &rarr;</button>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -884,4 +880,3 @@ function App() {
 }
 
 export default App;
-
