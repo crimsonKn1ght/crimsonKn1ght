@@ -382,9 +382,9 @@ function App() {
   };
 
   const experienceSettings = {
-      ...slickSettings,
+        ...slickSettings,
         dots: true,
-        infinite: false,       // don't loop
+        infinite: true,       // don't loop
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -406,10 +406,17 @@ function App() {
   };
 
   const projectSettings = {
-      ...slickSettings,
-      centerPadding: '60px',
-      slidesToShow: 2,
-      responsive: [
+    ...slickSettings,
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    centerMode: false,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: [
           {
               breakpoint: 1024,
               settings: { slidesToShow: 1 }
@@ -426,7 +433,7 @@ function App() {
   const educationSettings = {
     ...slickSettings,
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
