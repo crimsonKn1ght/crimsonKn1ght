@@ -1,3 +1,43 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom styles for the carousel */
+.slick-dots li button:before {
+    color: #f97316 !important;
+    opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+    opacity: 1;
+}
+
+
+/* Make slick slides auto-height and prevent clipping */
+.slick-slide {
+  height: auto !important;
+}
+
+.slick-list {
+  overflow: visible !important;
+}
+
+/* Ensure arrows stay on top of cards */
+.slick-prev,
+.slick-next {
+  z-index: 50 !important;   /* higher than the cards */
+}
+
+.slick-prev {
+  left: -35px;  /* move a bit further left if it's getting overlapped */
+}
+
+.slick-next {
+  right: -35px; /* move right */
+}
