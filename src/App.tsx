@@ -460,7 +460,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0d1117] text-white overflow-x-hidden font-mono">
+    <div className="min-h-screen bg-[#0d1117]/90 text-white overflow-x-hidden font-mono">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-[#0d1117]/70 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
