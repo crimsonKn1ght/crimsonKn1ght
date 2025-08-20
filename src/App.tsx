@@ -2,6 +2,7 @@ import React from 'react';
 import { Mail, Linkedin, Github, FileText, ChevronDown, ChevronLeft, ChevronRight, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X } from 'lucide-react';
 import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
 import Slider from 'react-slick';
+import Timeline from "./Timeline";
 
 // Import carousel styles
 import "slick-carousel/slick/slick.css"; 
@@ -102,6 +103,7 @@ function App() {
   const [modalContent, setModalContent] = React.useState(null);
   const [isGreExpanded, setIsGreExpanded] = React.useState(false);
   const [isToeflExpanded, setIsToeflExpanded] = React.useState(false);
+  const [isGateExpanded, setIsGateExpanded] = React.useState(false); // Corrected: Added missing state
 
   const openModal = (content) => {
     setModalContent(content);
@@ -128,19 +130,28 @@ function App() {
 
     window.addEventListener('mousemove', handleMouseMove);
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetElement = document.querySelector(this.getAttribute('href'));
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
+    const smoothScrollHandler = function (e: Event) {
+        e.preventDefault();
+        const targetElement = document.querySelector(this.getAttribute('href'));
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    };
+
+    const anchors = document.querySelectorAll('a[href^="#"]');
+    anchors.forEach(anchor => {
+        anchor.addEventListener('click', smoothScrollHandler);
     });
     
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    // Corrected: Added cleanup for all event listeners
+    return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+        anchors.forEach(anchor => {
+            anchor.removeEventListener('click', smoothScrollHandler);
+        });
+    };
   }, []);
 
   const scrollToContent = () => {
@@ -567,44 +578,28 @@ function App() {
       </div>
 
         <main className="container mx-auto px-6">
-            <motion.section id="experience" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                <div className="max-w-7xl mx-auto">
-                    <div className="text-center mb-16">
-                        <h2 className="text-5xl font-black mb-6 text-white">Professional Experience</h2>
-                        <p className="text-xl text-slate-400 max-w-3xl mx-auto">Building expertise across research, engineering, and security domains</p>
-                    </div>
-                    <div className="relative">
-                        <Slider {...experienceSettings}>
-                          {experiences.map(exp => (
-                            <div key={exp.id} className="px-4 group">
-                              <motion.div 
-                                className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-colors duration-300 h-[370px] flex flex-col relative group-hover:z-20"
-                                whileHover={{ scale: 1.03, y: -5 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                              >
-                                <div className="flex items-center justify-between mb-6">
-                                  <div className={`w-12 h-12 ${exp.iconBg} rounded-xl flex items-center justify-center`}>
-                                    {exp.logo ? <img src={exp.logo} alt={`${exp.company} logo`} className="w-8 h-8 object-contain p-1"/> : exp.icon}
-                                  </div>
-                                  <span className={`text-xs ${exp.status === 'Current' ? 'text-green-400 bg-green-400/10' : 'text-slate-400 bg-slate-400/10'} px-3 py-1 rounded-full`}>{exp.status}</span>
-                                </div>
-                                <div className="flex-grow">
-                                  <h3 className="text-xl font-bold text-white mb-2">{exp.title}</h3>
-                                  <p className="text-blue-400 font-medium mb-1">{exp.company}</p>
-                                  <p className="text-sm text-slate-400 mb-4">{exp.date}</p>
-                                  <p className="text-slate-300 text-sm leading-relaxed mb-4">
-                                    {exp.description}
-                                  </p>
-                                </div>
-                                <button onClick={() => openModal(exp.details)} className="text-blue-400 font-semibold hover:text-blue-300 transition-colors mt-auto self-start">View Details &rarr;</button>
-                              </motion.div>
-                            </div>
-                          ))}
-                        </Slider>
-                    </div>
+            {/* Experience Section */}
+            <motion.section
+                id="experience"
+                className="py-16"
+                variants={sectionVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+            >
+            <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-16">
+                <h2 className="text-5xl font-black mb-6 text-white">Timeline</h2>
+                <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+                    A journey across academics, research, and professional experiences
+                </p>
                 </div>
+                <Timeline />
+            </div>
             </motion.section>
 
+          
+            {/* Education Section */}
             <motion.section id="publications" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
@@ -815,46 +810,27 @@ function App() {
                 </div>
             </motion.section>
 
+            {/* Awards Section */}
             <motion.section id="education" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-5xl font-black mb-6 text-white">Education & Recognition</h2>
-                        <p className="text-xl text-slate-400 max-w-3xl mx-auto">Academic foundation and achievements in computer science and engineering</p>
+                        <h2 className="text-5xl font-black mb-6 text-white">Awards & Test Scores</h2>
+                        <p className="text-xl text-slate-400 max-w-3xl mx-auto">Achievements in computer science and engineering</p>
                     </div>
                     <div>
-                        <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
-                            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3"><Brain className="w-4 h-4 text-white" /></div>
-                            Education
-                        </h3>
-                        <div className="relative mb-12">
-                            <Slider {...educationSettings}>
-                                {educationHistory.map((edu, index) => (
-                                    <div key={index} className="px-4 group">
-                                        <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-300 h-full relative group-hover:z-20">
-                                            <div className="flex items-center justify-between mb-3">
-                                                <span className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full">{edu.status}</span>
-                                                <span className="text-sm text-slate-400">{edu.period}</span>
-                                            </div>
-                                            <h4 className="text-lg font-bold text-white mb-1">{edu.degree}</h4>
-                                            <p className="font-medium text-blue-400 mb-2">{edu.institution}</p>
-                                            <div className="flex items-center">
-                                                {edu.unit === 'CGPA' ? <span className="text-slate-400 text-sm">CGPA: <span className="text-white font-semibold ml-1">10.0/10.0</span></span> :
-                                                edu.unit === 'Percentage' ? <span className="text-slate-400 text-sm">Percentage: <AnimatedCounter to={edu.gpa} /></span> :
-                                                <AnimatedCounter to={edu.gpa} isFloat={true} />}
-                                            </div>
-                                        </motion.div>
-                                    </div>
-                                ))}
-                            </Slider>
-                        </div>
-
                         <div className="grid lg:grid-cols-2 gap-8">
                             <div>
                                 <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
                                     <div className="w-8 h-8 bg-gradient-to-br from-yellow-500 to-blue-600 rounded-lg flex items-center justify-center mr-3"><span className="text-white text-sm">🏆</span></div>
                                     Awards & Achievements
                                 </h3>
-                                <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500/50 transition-all duration-300 h-full" whileHover={{ scale: 1.02, y: -4 }} transition={{ type: "spring", stiffness: 300 }}>
+                                    <motion.div 
+                                    className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm 
+                                                border border-slate-700 rounded-2xl p-8 hover:border-blue-500/50 
+                                                transition-all duration-300 w-full" 
+                                    whileHover={{ scale: 1.02, y: -4 }} 
+                                    transition={{ type: 'spring', stiffness: 300 }}
+                                    >
                                     <div className="flex items-center justify-between mb-4">
                                         <span className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full">2025</span>
                                         <span className="text-2xl">🏆</span>
@@ -862,59 +838,90 @@ function App() {
                                     <h4 className="text-xl font-bold text-white mb-2">Best Paper Award</h4>
                                     <p className="text-blue-400 font-medium mb-3">International Symposium on Artificial Intelligence</p>
                                     <p className="text-slate-300 text-sm">Recognized among 78 accepted submissions for outstanding research contribution in AI/ML</p>
-                                </motion.div>
+                                    </motion.div>
                             </div>
-                             <div>
-                                <h3 className="text-2xl font-bold text-white mb-8 flex items-center"><ChartBar className="w-5 h-5 mr-3 text-blue-400" /> Test Scores</h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start h-full">
+                                <div>
+                                <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
+                                    <ChartBar className="w-5 h-5 mr-3 text-blue-400" /> Test Scores
+                                </h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
+                                    {/* GRE */}
                                     <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300">
-                                        <div className="text-3xl font-bold text-white mb-1"><AnimatedCounter to={325} /></div>
-                                        <div className="text-sm text-slate-400 mb-2">GRE Score</div>
-                                        <button onClick={() => setIsGreExpanded(!isGreExpanded)} className="text-blue-400/80 hover:text-blue-400 text-xs flex items-center justify-center w-full mb-2 transition-colors">
-                                            Click to expand
-                                            <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isGreExpanded ? 'rotate-180' : ''}`} />
-                                        </button>
-                                        <AnimatePresence>
+                                    <div className="text-3xl font-bold text-white mb-1"><AnimatedCounter to={325} /></div>
+                                    <div className="text-sm text-slate-400 mb-2">GRE Score</div>
+                                    <button onClick={() => setIsGreExpanded(!isGreExpanded)} className="text-blue-400/80 hover:text-blue-400 text-xs flex items-center justify-center w-full mb-2 transition-colors">
+                                        Click to expand
+                                        <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isGreExpanded ? 'rotate-180' : ''}`} />
+                                    </button>
+                                    <AnimatePresence>
                                         {isGreExpanded && (
-                                            <motion.div 
-                                                initial={{ opacity: 0, height: 0 }}
-                                                animate={{ opacity: 1, height: 'auto' }}
-                                                exit={{ opacity: 0, height: 0 }}
-                                                className="overflow-hidden text-xs text-slate-300 space-y-1 text-left"
-                                            >
-                                                <div className="pt-2 border-t border-slate-700">
-                                                    <div className="flex justify-between"><span>Quant:</span><span className="text-white font-semibold">167/170</span></div>
-                                                    <div className="flex justify-between"><span>Verbal:</span><span className="text-white font-semibold">158/170</span></div>
-                                                    <div className="flex justify-between"><span>Writing:</span><span className="text-white font-semibold">4.0/6.0</span></div>
-                                                </div>
-                                            </motion.div>
+                                        <motion.div 
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            className="overflow-hidden text-xs text-slate-300 space-y-1 text-left"
+                                        >
+                                            <div className="pt-2 border-t border-slate-700">
+                                            <div className="flex justify-between"><span>Quant:</span><span className="text-white font-semibold">167/170</span></div>
+                                            <div className="flex justify-between"><span>Verbal:</span><span className="text-white font-semibold">158/170</span></div>
+                                            <div className="flex justify-between"><span>Writing:</span><span className="text-white font-semibold">4.0/6.0</span></div>
+                                            </div>
+                                        </motion.div>
                                         )}
-                                        </AnimatePresence>
+                                    </AnimatePresence>
                                     </div>
+
+                                    {/* TOEFL */}
                                     <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300">
-                                        <div className="text-3xl font-bold text-white mb-1"><AnimatedCounter to={105} /></div>
-                                        <div className="text-sm text-slate-400 mb-2">TOEFL Score</div>
-                                        <button onClick={() => setIsToeflExpanded(!isToeflExpanded)} className="text-blue-400/80 hover:text-blue-400 text-xs flex items-center justify-center w-full mb-2 transition-colors">
-                                            Click to expand
-                                            <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isToeflExpanded ? 'rotate-180' : ''}`} />
-                                        </button>
-                                        <AnimatePresence>
+                                    <div className="text-3xl font-bold text-white mb-1"><AnimatedCounter to={105} /></div>
+                                    <div className="text-sm text-slate-400 mb-2">TOEFL Score</div>
+                                    <button onClick={() => setIsToeflExpanded(!isToeflExpanded)} className="text-blue-400/80 hover:text-blue-400 text-xs flex items-center justify-center w-full mb-2 transition-colors">
+                                        Click to expand
+                                        <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isToeflExpanded ? 'rotate-180' : ''}`} />
+                                    </button>
+                                    <AnimatePresence>
                                         {isToeflExpanded && (
-                                            <motion.div 
-                                                initial={{ opacity: 0, height: 0 }}
-                                                animate={{ opacity: 1, height: 'auto' }}
-                                                exit={{ opacity: 0, height: 0 }}
-                                                className="overflow-hidden text-xs text-slate-300 space-y-1 text-left"
-                                            >
-                                                <div className="pt-2 border-t border-slate-700">
-                                                    <div className="flex justify-between"><span>Reading:</span><span className="text-white font-semibold">26/30</span></div>
-                                                    <div className="flex justify-between"><span>Speaking:</span><span className="text-white font-semibold">27/30</span></div>
-                                                    <div className="flex justify-between"><span>Listening:</span><span className="text-white font-semibold">25/30</span></div>
-                                                    <div className="flex justify-between"><span>Writing:</span><span className="text-white font-semibold">27/30</span></div>
-                                                </div>
-                                            </motion.div>
+                                        <motion.div 
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            className="overflow-hidden text-xs text-slate-300 space-y-1 text-left"
+                                        >
+                                            <div className="pt-2 border-t border-slate-700">
+                                            <div className="flex justify-between"><span>Reading:</span><span className="text-white font-semibold">26/30</span></div>
+                                            <div className="flex justify-between"><span>Speaking:</span><span className="text-white font-semibold">27/30</span></div>
+                                            <div className="flex justify-between"><span>Listening:</span><span className="text-white font-semibold">25/30</span></div>
+                                            <div className="flex justify-between"><span>Writing:</span><span className="text-white font-semibold">27/30</span></div>
+                                            </div>
+                                        </motion.div>
                                         )}
-                                        </AnimatePresence>
+                                    </AnimatePresence>
+                                    </div>
+
+                                    {/* GATE */}
+                                    <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300">
+                                    <div className="text-3xl font-bold text-white mb-1"><AnimatedCounter to={645} /></div>
+                                    <div className="text-sm text-slate-400 mb-2">GATE Score</div>
+                                    <button onClick={() => setIsGateExpanded(!isGateExpanded)} className="text-blue-400/80 hover:text-blue-400 text-xs flex items-center justify-center w-full mb-2 transition-colors">
+                                        Click to expand
+                                        <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isGateExpanded ? 'rotate-180' : ''}`} />
+                                    </button>
+                                    <AnimatePresence>
+                                        {isGateExpanded && (
+                                        <motion.div 
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            className="overflow-hidden text-xs text-slate-300 space-y-1 text-left"
+                                        >
+                                            <div className="pt-2 border-t border-slate-700">
+                                            <div className="flex justify-between"><span>Score:</span><span className="text-white font-semibold">645 / 1000</span></div>
+                                            <div className="flex justify-between"><span>All India Rank:</span><span className="text-white font-semibold">800</span></div>
+                                            <div className="flex justify-between"><span>Total Candidates:</span><span className="text-white font-semibold">75,680</span></div>
+                                            </div>
+                                        </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                     </div>
                                 </div>
                             </div>
