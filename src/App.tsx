@@ -103,7 +103,7 @@ function App() {
   const [modalContent, setModalContent] = React.useState(null);
   const [isGreExpanded, setIsGreExpanded] = React.useState(false);
   const [isToeflExpanded, setIsToeflExpanded] = React.useState(false);
-  const [isGateExpanded, setIsGateExpanded] = React.useState(false); // Corrected: Added missing state
+  const [isGateExpanded, setIsGateExpanded] = React.useState(false);
 
   const openModal = (content) => {
     setModalContent(content);
@@ -145,7 +145,6 @@ function App() {
         anchor.addEventListener('click', smoothScrollHandler);
     });
     
-    // Corrected: Added cleanup for all event listeners
     return () => {
         window.removeEventListener('mousemove', handleMouseMove);
         anchors.forEach(anchor => {
@@ -395,12 +394,12 @@ function App() {
   const experienceSettings = {
         ...slickSettings,
         dots: true,
-        infinite: true,       // don't loop
+        infinite: true,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
-        initialSlide: 0,       // start with first array item
-        centerMode: false,     // strict left alignment
+        initialSlide: 0,
+        centerMode: false,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
 
@@ -501,7 +500,7 @@ function App() {
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-            <h1 className="text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6">
                 <motion.span 
                     className="block text-white"
                     initial={{ opacity: 0, y: -50 }}
@@ -527,10 +526,10 @@ function App() {
                 transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
             >
                 <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-6 py-2">
-                  <span className="text-blue-400 font-semibold text-lg md:text-xl">AI/ML</span>
+                  <span className="text-base md:text-xl text-blue-400 font-semibold">AI/ML</span>
                 </div>
                 <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-6 py-2">
-                  <span className="text-blue-400 font-semibold text-lg md:text-xl">Computer Vision Researcher</span>
+                  <span className="text-base md:text-xl text-blue-400 font-semibold">Computer Vision Researcher</span>
                 </div>            
             </motion.div>
 
@@ -589,8 +588,8 @@ function App() {
             >
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                <h2 className="text-5xl font-black mb-6 text-white">Timeline</h2>
-                <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+                <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Timeline</h2>
+                <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">
                     A journey across academics, research, and professional experiences
                 </p>
                 </div>
@@ -599,12 +598,12 @@ function App() {
             </motion.section>
 
           
-            {/* Education Section */}
+            {/* Publications Section */}
             <motion.section id="publications" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-5xl font-black mb-6 text-white">Research Publications</h2>
-                        <p className="text-xl text-slate-400 max-w-3xl mx-auto">Contributing to the advancement of AI and computer vision through peer-reviewed research</p>
+                        <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Research Publications</h2>
+                        <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Contributing to the advancement of AI and computer vision through peer-reviewed research</p>
                     </div>
                      <div className="relative">
                         <Slider {...publicationSettings}>
@@ -617,7 +616,7 @@ function App() {
                                                     <span className={`text-xs ${pub.statusColor} px-3 py-1 rounded-full`}>{pub.status}</span>
                                                     <span className="text-xs text-slate-400">{pub.meta}</span>
                                                 </div>
-                                                <h3 className="text-2xl font-bold text-white mb-3">{pub.title}</h3>
+                                                <h3 className="text-xl lg:text-2xl font-bold text-white mb-3">{pub.title}</h3>
                                                 <p className="text-slate-300 leading-relaxed mb-4">{pub.description}</p>
                                                 <div className="flex flex-wrap gap-2">
                                                     {pub.tags.map(tag => <span key={tag} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">{tag}</span>)}
@@ -650,8 +649,8 @@ function App() {
             <motion.section id="projects" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-5xl font-black mb-6 text-white">Featured Projects</h2>
-                        <p className="text-xl text-slate-400 max-w-3xl mx-auto">Open-source implementations and practical applications of AI/ML concepts</p>
+                        <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Featured Projects</h2>
+                        <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Open-source implementations and practical applications of AI/ML concepts</p>
                     </div>
                     <div className="relative">
                         <Slider {...projectSettings}>
@@ -663,7 +662,7 @@ function App() {
                                         </div>
                                         <span className="text-xs bg-green-500/20 text-green-300 px-3 py-1 rounded-full">Live Demo</span>
                                     </div>
-                                    <h3 className="flex items-center text-xl font-bold text-white mb-3">
+                                    <h3 className="flex items-center text-lg lg:text-xl font-bold text-white mb-3">
                                       Real-Time Object Detector
                                       <span className="glowing-light ml-3"></span>
                                     </h3>
@@ -688,7 +687,7 @@ function App() {
                                         </div>
                                         <span className="text-xs bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full">ML System</span>
                                     </div>
-                                    <h3 className="flex items-center text-xl font-bold text-white mb-3">
+                                    <h3 className="flex items-center text-lg lg:text-xl font-bold text-white mb-3">
                                       Movie Recommender System
                                       <span className="glowing-light ml-3"></span>
                                     </h3>
@@ -713,7 +712,7 @@ function App() {
                                         </div>
                                         <span className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full">Educational</span>
                                     </div>
-                                    <h3 className="flex items-center text-xl font-bold text-white mb-3">
+                                    <h3 className="flex items-center text-lg lg:text-xl font-bold text-white mb-3">
                                       My AI/ML Implementations
                                       <span className="glowing-light ml-3"></span>
                                     </h3>
@@ -738,7 +737,7 @@ function App() {
                                         </div>
                                         <span className="text-xs bg-red-500/20 text-red-300 px-3 py-1 rounded-full">Security Tool</span>
                                     </div>
-                                    <h3 className="flex items-center text-xl font-bold text-white mb-3">
+                                    <h3 className="flex items-center text-lg lg:text-xl font-bold text-white mb-3">
                                       dirStrike
                                       <span className="glowing-light ml-3"></span>
                                     </h3>
@@ -763,8 +762,8 @@ function App() {
             <motion.section id="skills" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                  <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-5xl font-black mb-6 text-white">Technical Expertise</h2>
-                        <p className="text-xl text-slate-400 max-w-3xl mx-auto">Comprehensive skill set spanning AI/ML, software engineering, and data science</p>
+                        <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Technical Expertise</h2>
+                        <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Comprehensive skill set spanning AI/ML, software engineering, and data science</p>
                     </div>
                     <div className="grid lg:grid-cols-3 gap-8">
                         <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8">
@@ -814,8 +813,8 @@ function App() {
             <motion.section id="education" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-5xl font-black mb-6 text-white">Awards & Test Scores</h2>
-                        <p className="text-xl text-slate-400 max-w-3xl mx-auto">Achievements in computer science and engineering</p>
+                        <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Awards & Test Scores</h2>
+                        <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Achievements in computer science and engineering</p>
                     </div>
                     <div>
                         <div className="grid lg:grid-cols-2 gap-8">
@@ -847,7 +846,7 @@ function App() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
                                     {/* GRE */}
                                     <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300">
-                                    <div className="text-3xl font-bold text-white mb-1"><AnimatedCounter to={325} /></div>
+                                    <div className="text-2xl sm:text-3xl font-bold text-white mb-1"><AnimatedCounter to={325} /></div>
                                     <div className="text-sm text-slate-400 mb-2">GRE Score</div>
                                     <button onClick={() => setIsGreExpanded(!isGreExpanded)} className="text-blue-400/80 hover:text-blue-400 text-xs flex items-center justify-center w-full mb-2 transition-colors">
                                         Click to expand
@@ -873,7 +872,7 @@ function App() {
 
                                     {/* TOEFL */}
                                     <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300">
-                                    <div className="text-3xl font-bold text-white mb-1"><AnimatedCounter to={105} /></div>
+                                    <div className="text-2xl sm:text-3xl font-bold text-white mb-1"><AnimatedCounter to={105} /></div>
                                     <div className="text-sm text-slate-400 mb-2">TOEFL Score</div>
                                     <button onClick={() => setIsToeflExpanded(!isToeflExpanded)} className="text-blue-400/80 hover:text-blue-400 text-xs flex items-center justify-center w-full mb-2 transition-colors">
                                         Click to expand
@@ -900,7 +899,7 @@ function App() {
 
                                     {/* GATE */}
                                     <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300">
-                                    <div className="text-3xl font-bold text-white mb-1"><AnimatedCounter to={645} /></div>
+                                    <div className="text-2xl sm:text-3xl font-bold text-white mb-1"><AnimatedCounter to={645} /></div>
                                     <div className="text-sm text-slate-400 mb-2">GATE Score</div>
                                     <button onClick={() => setIsGateExpanded(!isGateExpanded)} className="text-blue-400/80 hover:text-blue-400 text-xs flex items-center justify-center w-full mb-2 transition-colors">
                                         Click to expand
