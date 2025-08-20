@@ -113,36 +113,54 @@ const events = rawEvents.sort((a, b) => {
 
 const Timeline = () => {
   return (
-    <div className="relative max-w-6xl mx-auto py-16">
-      {/* Vertical line */}
-      <div className="absolute left-1/2 top-0 h-full w-1 bg-slate-700 rounded-full -translate-x-1/2"></div>
+    <div className="relative max-w-6xl mx-auto py-16 px-4">
+      {/* Vertical line - positioned left on mobile, center on desktop */}
+      <div className="absolute top-0 h-full w-1 bg-slate-700 rounded-full left-6 md:left-1/2 md:-translate-x-1/2"></div>
 
-      <div className="space-y-12"> {/* compact spacing */}
+      <div className="space-y-16">
         {events.map((item, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, x: item.side === "left" ? -60 : 60 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
-            className={`relative flex items-center w-full ${
-              item.side === "left" ? "justify-start pr-8" : "justify-end pl-8"
-            }`}
+            className="relative" // Each item is relative for the dot positioning
           >
-            {/* Dot + Year */}
-            <div className="absolute left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
-              {item.icon}
-              <span className="absolute top-10 text-xs text-slate-400 whitespace-nowrap">
+            {/* Dot + Year - positioned on the line */}
+            <div className="absolute top-0 left-6 md:left-1/2 -translate-x-1/2 flex flex-col items-center">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg ring-4 ring-slate-800">
+                {item.icon}
+              </div>
+              <p className="text-xs text-slate-400 mt-2 whitespace-nowrap">
                 {item.month ? `${item.month} ${item.year}` : item.year}
-              </span>
+              </p>
             </div>
 
-            {/* Card */}
-            <div className="bg-gradient-to-br from-slate-900/70 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 max-w-sm shadow-md">
-              <h3 className="text-md font-bold text-white">{item.title}</h3>
-              <p className="text-blue-400 font-medium">{item.subtitle}</p>
-              <p className="text-xs text-slate-400">{item.date}</p>
-              <p className="text-slate-300 mt-1 text-sm">{item.details}</p>
+            {/* Card container - this handles the left/right logic and spacing */}
+            <div
+              className={`
+                w-full md:w-1/2
+                ${
+                  item.side === 'left'
+                    ? 'md:pr-14' // Space from the center line on desktop
+                    : 'md:pl-14 md:ml-auto' // Push to the right half and add space
+                }
+              `}
+            >
+              <div
+                className={`
+                  ml-14 md:ml-0 // Creates space from the line on mobile
+                  ${item.side === 'left' ? 'md:text-right' : 'md:text-left'}
+                `}
+              >
+                <div className="bg-gradient-to-br from-slate-900/70 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 shadow-md inline-block max-w-md w-full">
+                  <h3 className="text-md font-bold text-white">{item.title}</h3>
+                  <p className="text-blue-400 font-medium">{item.subtitle}</p>
+                  <p className="text-xs text-slate-400">{item.date}</p>
+                  <p className="text-slate-300 mt-1 text-sm">{item.details}</p>
+                </div>
+              </div>
             </div>
           </motion.div>
         ))}
