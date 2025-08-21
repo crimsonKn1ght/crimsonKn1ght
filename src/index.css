@@ -45,3 +45,53 @@ body {
 .slick-next {
   right: -35px; /* move right */
 }
+
+/* Custom styles for larger slider arrows */
+.slick-prev,
+.slick-next {
+  top: 50% !important; /* Vertically center the arrow */
+  transform: translateY(-50%) !important; /* Fine-tune the vertical centering */
+  width: 48px !important;
+  height: 48px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 9999px !important;
+  z-index: 50 !important;
+  transition: background-color 0.3s ease !important; /* Only transition the background color */
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* This hides the default pseudo-element arrows */
+.slick-prev::before,
+.slick-next::before {
+  content: '' !important;
+  font-size: 0 !important;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  background: rgba(37, 99, 235, 0.3) !important; /* Hover effect without scaling */
+}
+
+/* Adjust icon size within the arrows */
+.slick-prev svg,
+.slick-next svg {
+  width: 28px !important;
+  height: 28px !important;
+  color: #94a3b8;
+}
+
+.slick-prev:hover svg,
+.slick-next:hover svg {
+    color: #ffffff;
+}
+
+/* Adjust arrow positions */
+.slick-prev {
+  left: -55px !important;
+}
+
+.slick-next {
+  right: -55px !important;
+}

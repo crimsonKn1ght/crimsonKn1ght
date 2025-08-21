@@ -510,7 +510,7 @@ function App() {
           </div>
 
           <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-              <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6">
+              <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mt-20">
                   <motion.span 
                       className="block text-white"
                       initial={{ opacity: 0, y: -50 }}
@@ -553,7 +553,7 @@ function App() {
               </motion.p>
 
               <motion.div 
-                  className="flex justify-center space-x-6 mb-16"
+                  className="flex justify-center space-x-6 mb-32"
                   variants={listContainerVariants}
                   initial="hidden"
                   animate="visible"
@@ -600,7 +600,7 @@ function App() {
                   <div className="text-center mb-16">
                   <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Timeline</h2>
                   <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">
-                      A journey across academics, research, and professional experiences
+                      Timeline showcasing major points in my Education [left] and Internships [right]
                   </p>
                   </div>
                   <Timeline />
@@ -660,7 +660,7 @@ function App() {
                   <div className="max-w-7xl mx-auto">
                       <div className="text-center mb-16">
                           <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Featured Projects</h2>
-                          <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Open-source implementations and practical applications of AI/ML concepts</p>
+                          <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Some more open-source implementations and practical applications of AI/ML concepts</p>
                       </div>
                       <div className="relative">
                           <Slider {...projectSettings}>
@@ -773,7 +773,7 @@ function App() {
                    <div className="max-w-7xl mx-auto">
                       <div className="text-center mb-16">
                           <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Technical Expertise</h2>
-                          <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Comprehensive skill set spanning AI/ML, software engineering, and data science</p>
+                          <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">My skill set spanning AI/ML, Computer Vision, and Data Science</p>
                       </div>
                       <div className="grid lg:grid-cols-3 gap-8">
                           <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8">
@@ -824,7 +824,7 @@ function App() {
                   <div className="max-w-7xl mx-auto">
                       <div className="text-center mb-16">
                           <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Awards & Test Scores</h2>
-                          <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Achievements in computer science and engineering</p>
+                          <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Achievements & Test Scores</p>
                       </div>
                       <div>
                           <div className="grid lg:grid-cols-2 gap-8">

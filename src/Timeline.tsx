@@ -1,7 +1,7 @@
 // src/Timeline.tsx
-import React from "react";
-import { motion } from "framer-motion";
-import { Brain, Briefcase } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Brain, Briefcase, ChevronDown } from "lucide-react";
 
 const monthOrder: { [key: string]: number } = {
   Jan: 1, Feb: 2, Mar: 3, Apr: 4,
@@ -15,11 +15,18 @@ const rawEvents = [
     side: "right",
     title: "Research Intern",
     subtitle: "IIT Kharagpur",
-    date: "Aug 2025 – Present",
+    date: "June 2025 – Aug 2025",
     year: 2025,
     month: "Aug",
-    details: "CT image reconstruction with U-Nets & 3D CNNs, SSIM 0.9+.",
+    details: "CT image reconstruction from sinograms using end-to-end DL models.",
     icon: <Briefcase className="w-4 h-4 text-white" />,
+    fullDetails: (
+      <>
+        <p className="mb-2">• Conducting ongoing research on CT image reconstruction as part of a deep learning internship, using a parallel-beam, fan-beam, cone-beam datasets consisting of 20,000+ sinogram-image pairs to improve reconstruction quality from sparse and noisy projections, with a focus on real-world medical imaging challenges.</p>
+        <p className="mb-2">• Developing various deep learning architectures, including U-Nets for 2D slices and experimenting with 3D CNNs for volumetric reconstruction, to improve image quality from low-signal, noisy sinogram data.</p>
+        <p>• Employed a combined SSIM and MSE loss function to optimize both structural and pixel-level accuracy, achieving a test SSIM of 0.9+.</p>
+      </>
+    ),
   },
   {
     side: "left",
@@ -29,8 +36,20 @@ const rawEvents = [
     year: 2025,
     month: "May",
     details:
-      "GPA: 8.57/10. Thesis on deep learning for knee osteoarthritis & osteoporosis detection.",
+      "GPA: 8.57/10.",
     icon: <Brain className="w-4 h-4 text-white" />,
+    fullDetails: (
+      <>
+        <p className="mb-2">• <b>Thesis:</b> Deep Learning based Multi-Stage Framework for Automated Detection and
+        Grading of Knee Osteoarthritis and Osteoporosis. Achieved 80% accuracy in multiclass
+        classification of osteoarthritis severity and 88% accuracy in binary classification
+        of osteoporosis from knee X-ray images.</p>
+        <p className="mb-2">• <b>Technical Proficiencies:</b>
+        Programming & ML Frameworks: Python, PyTorch, NumPy, OpenCV, SciPy, sklearn.</p>
+        <p>• <b>Relevant courses:</b> Deep Learning, Pattern Recognition, Information Retrieval, Data
+        Analytics, Advanced Data Structures and Algorithms.</p>
+      </>
+    ),
   },
   {
     side: "right",
@@ -41,6 +60,9 @@ const rawEvents = [
     month: "May",
     details: "Optimized ETL workflows with Python & SQL.",
     icon: <Briefcase className="w-4 h-4 text-white" />,
+    fullDetails: (
+        <p>• Developed and optimized data processing workflows and ETL pipelines using Python and SQL, ensuring efficient integration, transformation, and validation of large, het- erogeneous data.</p>
+    ),
   },
   {
     side: "left",
@@ -49,8 +71,14 @@ const rawEvents = [
     date: "2019 – 2023",
     year: 2023,
     month: "Jun",
-    details: "GPA: 7.58/10. Coursework in DSP, Image Processing.",
+    details: "GPA: 7.58/10.",
     icon: <Brain className="w-4 h-4 text-white" />,
+    fullDetails: (
+      <>
+        <p className="mb-2">• <b>Relevant courses:</b> Signals and Systems, Digital Signal Processing, Image Processing</p>
+        <p className="mb-2">• Graduated with <b>First class distintion</b></p>
+      </>
+    ),    
   },
   {
     side: "right",
@@ -61,42 +89,61 @@ const rawEvents = [
     month: "May",
     details: "Hands-on cybersecurity, red & blue team techniques.",
     icon: <Briefcase className="w-4 h-4 text-white" />,
+    fullDetails: (
+      <>
+        <p>• Accomplished hands-on training in offensive and defensive cybersecurity measured by completion of an 8-week internship with practical red and blue team exercises.</p>
+        <p>• Simulated cyber-attack scenarios, vulnerability assessments, and defense planning.</p>
+      </>
+    ),
   },
   {
     side: "right",
     title: "Digital Forensics Intern",
     subtitle: "Cyber Secured India",
-    date: "2022",
+    date: "Mar - May 2022",
     year: 2022,
     month: "Mar",
     details:
       "Worked on penetration testing, threat analysis, and incident response.",
     icon: <Briefcase className="w-4 h-4 text-white" />,
+      fullDetails: (
+      <>
+        <p>• Gained practical experience in offensive and defensive security through an 8-week internship, executing real-world red and blue team operations.</p>
+        <p>• Participated in penetration testing, threat analysis, and incident response exercises as part of a hands-on cybersecurity training program.</p>
+        <p>• Implemented and tested defensive measures against simulated attacks, enhancing skills in network monitoring and intrusion detection.</p>
+      </>
+    ),
   },
   {
     side: "right",
     title: "Cyber Security Intern",
     subtitle: "SISTMR Australia",
-    date: "2022",
+    date: "Jan - Mar 2022",
     year: 2022,
     month: "Jan",
     details: "Practical red & blue team operations, simulated cyber-attacks.",
     icon: <Briefcase className="w-4 h-4 text-white" />,
+      fullDetails: (
+      <>
+        <p>• Successfully completed an 8-week internship in cybersecurity, gaining hands-on experience with practical red team (offensive) and blue team (defensive) operations.</p>
+        <p>• Executed simulated cyber-attacks, performed vulnerability assessments, and contributed to defense strategy planning to enhance system security.</p>
+      </>
+    ),
   },
   {
     side: "left",
-    title: "Higher Secondary (XII), CBSE",
-    subtitle: "Science Stream",
+    title: "All India Senior School Certificate Examination (AISSCE)",
+    subtitle: "Higher Secondary (XII) Exam | CBSE Board",
     date: "2019",
     year: 2019,
     month: "Mar",
-    details: "Percentage: 93%",
+    details: "Percentage: 93% | Science Stream",
     icon: <Brain className="w-4 h-4 text-white" />,
   },
   {
     side: "left",
-    title: "Secondary (X), CBSE",
-    subtitle: "Board Exam",
+    title: "All India Secondary School Examination (AISSE)",
+    subtitle: "Secondary (X) Exam | CBSE Board",
     date: "2017",
     year: 2017,
     month: "Mar",
@@ -112,6 +159,8 @@ const events = rawEvents.sort((a, b) => {
 });
 
 const Timeline = () => {
+    const [expanded, setExpanded] = useState<number | null>(null);
+
   return (
     <div className="relative max-w-6xl mx-auto py-16 px-4">
       {/* Vertical line - positioned left on mobile, center on desktop */}
@@ -159,6 +208,29 @@ const Timeline = () => {
                   <p className="text-blue-400 font-medium">{item.subtitle}</p>
                   <p className="text-xs text-slate-400">{item.date}</p>
                   <p className="text-slate-300 mt-1 text-sm">{item.details}</p>
+                  {item.fullDetails && (
+                    <>
+                        <button
+                            onClick={() => setExpanded(expanded === index ? null : index)}
+                            className="text-blue-400/80 hover:text-blue-400 text-xs flex items-center justify-center w-full mt-2 transition-colors"
+                        >
+                            {expanded === index ? 'Show Less' : 'Show More'}
+                            <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${expanded === index ? 'rotate-180' : ''}`} />
+                        </button>
+                        <AnimatePresence>
+                            {expanded === index && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    className="overflow-hidden text-xs text-slate-300 space-y-1 text-left mt-2"
+                                >
+                                    {item.fullDetails}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
