@@ -18,8 +18,7 @@ A researcher focused on Deep Learning and Computer Vision from India.
   </a>
 </p>
 
-- 🌱 I'm currently pursuing my **M.Tech in Computer Science and Engineering** at **IIT Dhanbad**.
-- My research focuses on building robust and interpretable architectures for **medical imaging** in data-scarce scenarios.
+- My research focuses on building robust and interpretable architectures in data-scarce scenarios.
 - I'm particularly interested in **4D scene reconstruction** and **explainable AI (XAI)**.
 - Visit my [portfolio website](https://resume-gr.vercel.app/).
 - I work mostly on research-oriented and open-source projects.
