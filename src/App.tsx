@@ -1,4 +1,5 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import { Mail, Linkedin, Github, FileText, ChevronDown, ChevronLeft, ChevronRight, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X } from 'lucide-react';
 import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
 import Slider from 'react-slick';
@@ -77,24 +78,25 @@ const PrevArrow = (props) => {
 
 
 const Modal = ({ isOpen, onClose, title, children }) => {
-  if (!isOpen) return null;
+    if (!isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <motion.div 
-        className="bg-slate-900 border border-slate-700 rounded-2xl p-8 max-w-2xl w-full relative"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.9 }}
-      >
-        <button onClick={onClose} className="absolute top-4 right-4 text-slate-400 hover:text-white">
-          <X className="w-6 h-6" />
-        </button>
-        <h2 className="text-2xl font-bold text-white mb-4">{title}</h2>
-        <div className="text-slate-300 leading-relaxed">{children}</div>
-      </motion.div>
-    </div>
-  );
+    return createPortal(
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+            <motion.div 
+                className="bg-slate-900 border border-slate-700 rounded-2xl p-8 max-w-2xl w-full relative"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+            >
+                <button onClick={onClose} className="absolute top-4 right-4 text-slate-400 hover:text-white">
+                    <X className="w-6 h-6" />
+                </button>
+                <h2 className="text-2xl font-bold text-white mb-4">{title}</h2>
+                <div className="text-slate-300 leading-relaxed">{children}</div>
+            </motion.div>
+        </div>,
+        document.body
+    );
 };
 
 
@@ -520,7 +522,7 @@ function App() {
               </motion.p>
 
               <motion.div 
-                  className="flex flex-wrap justify-center space-x-2 sm:space-x-6 mb-32"
+                  className="flex flex-wrap justify-center gap-2 sm:space-x-6 mb-32"
                   variants={listContainerVariants}
                   initial="hidden"
                   animate="visible"
