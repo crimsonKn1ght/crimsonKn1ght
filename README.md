@@ -25,17 +25,38 @@ A researcher focused on Deep Learning and Computer Vision from India.
 
 ---
 
-### Key Research & Projects
+## 🚀 Featured Projects
 
-[![Knee Osteoarthritis Detection](https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&show_icons=true&bg_color=00000000)](https://github.com/crimsonKn1ght/Code-OA-detection-model)
-- My M.Tech thesis project, which achieved **80% accuracy** in multi-class classification of osteoarthritis severity from knee X-ray images.
+<div align="center">
+  <!-- Dark Mode -->
+  <a href="https://github.com/crimsonKn1ght/Code-OA-detection-model">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=tokyonight#gh-dark-mode-only"/>
+  </a>
+  <a href="https://github.com/crimsonKn1ght/real-time-object-detector">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=tokyonight#gh-dark-mode-only"/>
+  </a>
+  <a href="https://github.com/crimsonKn1ght/img-gen">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=tokyonight#gh-dark-mode-only"/>
+  </a>
+  <a href="https://github.com/crimsonKn1ght/movie-recommender">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=tokyonight#gh-dark-mode-only"/>
+  </a>
 
-[![Real Time Object Detector](https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&show_icons=true&bg_color=00000000)](https://github.com/crimsonKn1ght/real-time-object-detector)
-- Detects objects in real time
+  <!-- Light Mode -->
+  <a href="https://github.com/crimsonKn1ght/Code-OA-detection-model">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=vue#gh-light-mode-only"/>
+  </a>
+  <a href="https://github.com/crimsonKn1ght/real-time-object-detector">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=vue#gh-light-mode-only"/>
+  </a>
+  <a href="https://github.com/crimsonKn1ght/img-gen">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=vue#gh-light-mode-only"/>
+  </a>
+  <a href="https://github.com/crimsonKn1ght/movie-recommender">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=vue#gh-light-mode-only"/>
+  </a>
+</div>
 
-[![Image Gen Tool](https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&show_icons=true&bg_color=00000000)](https://github.com/crimsonKn1ght/img-gen)
-- Generate images locally on PC!
----
 
 ### Languages and Tools:
 
@@ -62,27 +83,19 @@ A researcher focused on Deep Learning and Computer Vision from India.
 
 ### GitHub Analytics
 
-### 🔝 Top Contributed Repo
+<div>
+  <!-- Dark Mode -->
+  <img height="150px" src="https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&theme=tokyonight&hide_border=true&include_all_commits=false&count_private=true#gh-dark-mode-only" />
+  <img height="150px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=crimsonKn1ght&theme=tokyonight&hide_border=true&include_all_commits=false&count_private=true&layout=compact#gh-dark-mode-only" />
 
-<a href="https://github.com/anuraghazra/github-readme-stats">
-  <img height=300 align="center" src="https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&show_icons=true&bg_color=00000000&rank_icon=github" />
-</a>
-<a href="https://github.com/anuraghazra/convoychat">
-  <img height=300 align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=crimsonKn1ght&langs_count=8&card_width=320&bg_color=00000000" />
-</a>
+  <!-- Light Mode -->
+  <img height="150px" src="https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&theme=default&hide_border=true&include_all_commits=false&count_private=true#gh-light-mode-only" />
+  <img height="150px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=crimsonKn1ght&theme=default&hide_border=true&include_all_commits=false&count_private=true&layout=compact#gh-light-mode-only" />
+</div>
 
+<!-- GitHub Streak -->
+<!-- Dark Mode -->
+[![GitHub Streak](https://streak-stats.demolab.com?user=crimsonKn1ght&theme=tokyonight&hide_border=false#gh-dark-mode-only)](https://git.io/streak-stats)
 
-[![GitHub Streak](https://streak-stats.demolab.com?user=crimsonKn1ght&theme=transparent&hide_border=false)](https://git.io/streak-stats)
-
-<a href="https://github.com/crimsonKn1ght" target="_blank">
-    <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=crimsonKn1ght&theme=github_dark" alt="Profile Summary Card" />
-</a>
-
-![trophy](https://github-profile-trophy.vercel.app/?username=crimsonKn1ght&no-bg=true)
-
-  <a>
-    <img
-      src="https://github-readme-activity-graph.vercel.app/graph?username=crimsonKn1ght&theme=react&hide_border=false&hide_title=false&area=true&custom_title=Total%20contribution%20graph%20in%20all%20repo"
-      width="95%" alt="activity graph">
-  </a>
-</p>
+<!-- Light Mode -->
+[![GitHub Streak](https://streak-stats.demolab.com?user=crimsonKn1ght&theme=default&hide_border=false#gh-light-mode-only)](https://git.io/streak-stats)
