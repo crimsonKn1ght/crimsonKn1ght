@@ -26,17 +26,22 @@ A researcher focused on Deep Learning and Computer Vision from India.
 
 ## 🚀 Featured Projects
 
-<!-- Dark Mode -->
-[![Code-OA-detection-model](https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=tokyonight#gh-dark-mode-only)](https://github.com/crimsonKn1ght/Code-OA-detection-model)
-[![real-time-object-detector](https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=tokyonight#gh-dark-mode-only)](https://github.com/crimsonKn1ght/real-time-object-detector)
-[![img-gen](https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=tokyonight#gh-dark-mode-only)](https://github.com/crimsonKn1ght/img-gen)
-[![movie-recommender](https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=tokyonight#gh-dark-mode-only)](https://github.com/crimsonKn1ght/movie-recommender)
-
-<!-- Light Mode -->
-[![Code-OA-detection-model](https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=vue#gh-light-mode-only)](https://github.com/crimsonKn1ght/Code-OA-detection-model)
-[![real-time-object-detector](https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=vue#gh-light-mode-only)](https://github.com/crimsonKn1ght/real-time-object-detector)
-[![img-gen](https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=vue#gh-light-mode-only)](https://github.com/crimsonKn1ght/img-gen)
-[![movie-recommender](https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=vue#gh-light-mode-only)](https://github.com/crimsonKn1ght/movie-recommender)
+<picture>
+  <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=tokyonight" media="(prefers-color-scheme: dark)">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=vue" alt="Code-OA-detection-model">
+</picture>
+<picture>
+  <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=tokyonight" media="(prefers-color-scheme: dark)">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=vue" alt="real-time-object-detector">
+</picture>
+<picture>
+  <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=tokyonight" media="(prefers-color-scheme: dark)">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=vue" alt="img-gen">
+</picture>
+<picture>
+  <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=tokyonight" media="(prefers-color-scheme: dark)">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=vue" alt="movie-recommender">
+</picture>
 
 ---
 
@@ -64,17 +69,17 @@ A researcher focused on Deep Learning and Computer Vision from India.
 
 ### GitHub Analytics
 
-<!-- Dark Mode -->
-![Stats Dark](https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&theme=tokyonight&hide_border=true&include_all_commits=false&count_private=true#gh-dark-mode-only)
-![Top Langs Dark](https://github-readme-stats.vercel.app/api/top-langs/?username=crimsonKn1ght&theme=tokyonight&hide_border=true&include_all_commits=false&count_private=true&layout=compact#gh-dark-mode-only)
+<picture>
+  <source srcset="https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&theme=tokyonight&hide_border=true&include_all_commits=false&count_private=true" media="(prefers-color-scheme: dark)">
+  <img src="https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&theme=default&hide_border=true&include_all_commits=false&count_private=true" alt="GitHub Stats">
+</picture>
 
-<!-- Light Mode -->
-![Stats Light](https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&theme=default&hide_border=true&include_all_commits=false&count_private=true#gh-light-mode-only)
-![Top Langs Light](https://github-readme-stats.vercel.app/api/top-langs/?username=crimsonKn1ght&theme=default&hide_border=true&include_all_commits=false&count_private=true&layout=compact#gh-light-mode-only)
+<picture>
+  <source srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=crimsonKn1ght&theme=tokyonight&hide_border=true&include_all_commits=false&count_private=true&layout=compact" media="(prefers-color-scheme: dark)">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=crimsonKn1ght&theme=default&hide_border=true&include_all_commits=false&count_private=true&layout=compact" alt="Top Languages">
+</picture>
 
-<!-- GitHub Streak -->
-<!-- Dark Mode -->
-[![GitHub Streak Dark](https://streak-stats.demolab.com?user=crimsonKn1ght&theme=tokyonight&hide_border=false#gh-dark-mode-only)](https://git.io/streak-stats)
-
-<!-- Light Mode -->
-[![GitHub Streak Light](https://streak-stats.demolab.com?user=crimsonKn1ght&theme=default&hide_border=false#gh-light-mode-only)](https://git.io/streak-stats)
+<picture>
+  <source srcset="https://streak-stats.demolab.com?user=crimsonKn1ght&theme=tokyonight&hide_border=false" media="(prefers-color-scheme: dark)">
+  <img src="https://streak-stats.demolab.com?user=crimsonKn1ght&theme=default&hide_border=false" alt="GitHub Streak">
+</picture>
