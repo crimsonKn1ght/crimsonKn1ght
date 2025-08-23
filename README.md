@@ -1,15 +1,14 @@
-<div style="width: 100%;" align="center">
-    <a target="_blank" rel="noopener noreferrer" href="https://github.com/crimsonKn1ght">
-        <img src="https://img.shields.io/badge/Gourab%20Roy-black?logo=github&logoColor=white&style=for-the-badge" alt="Gourab Roy">
-    </a>
-    <a target="_blank" rel="noopener noreferrer" href="https://github.com/crimsonKn1ght?tab=followers">
-        <img src="https://komarev.com/ghpvc/?username=crimsonKn1ght&label=Guests&color=0e75b6&style=for-the-badge" />
-    </a>
-    <img src="https://img.shields.io/badge/dynamic/json?color=orange&label=Followers&query=followers&url=https%3A%2F%2Fapi.github.com%2Fusers%2FcrimsonKn1ght&style=for-the-badge" />
-</div>
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=300&section=header&text=I%20am%20crimsonKn1ght%20👋&fontSize=60&fontAlign=50&fontAlignY=40&animation=twinkling" width="100%"/>
+</p>
 
-# <img src="https://github.com/crimsonKn1ght.png" alt="Gourab Roy" height="32" /> Hey there 👋🏽 I'm Gourab Roy
-A researcher focused on Deep Learning and Computer Vision from India.
+![Total Stars](https://img.shields.io/badge/dynamic/json?label=Total%20Stars&query=%24.stars&url=https://api.github-star-counter.workers.dev/user/crimsonKn1ght)
+![Followers](https://img.shields.io/github/followers/crimsonKn1ght?style=flat)
+![Repos](https://img.shields.io/badge/dynamic/json?label=Public%20Repos&query=%24.public_repos&url=https://api.github.com/users/crimsonKn1ght)
+![Visitor Count](https://komarev.com/ghpvc/?username=crimsonKn1ght&label=Visitor+Count&color=0e75b6&style=flat)
+
+
+A researcher focused on Deep Learning and Computer Vision.
 
 <p align="center">
   <a href="https://git.io/typing-svg">
@@ -77,17 +76,30 @@ A researcher focused on Deep Learning and Computer Vision from India.
 
 ### GitHub Analytics
 
-<picture>
-  <source srcset="https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&theme=tokyonight&hide_border=true&include_all_commits=false&count_private=true" media="(prefers-color-scheme: dark)">
-  <img src="https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&theme=default&hide_border=true&include_all_commits=false&count_private=true" alt="GitHub Stats">
-</picture>
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
 
-<picture>
-  <source srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=crimsonKn1ght&theme=tokyonight&hide_border=true&include_all_commits=false&count_private=true&layout=compact" media="(prefers-color-scheme: dark)">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=crimsonKn1ght&theme=default&hide_border=true&include_all_commits=false&count_private=true&layout=compact" alt="Top Languages">
-</picture>
+  <!-- GitHub Stats -->
+  <picture>
+    <source srcset="https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&theme=tokyonight&hide_border=false&include_all_commits=false&count_private=true" media="(prefers-color-scheme: dark)">
+    <img src="https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&theme=default&hide_border=false&include_all_commits=false&count_private=true" alt="GitHub Stats" height="150">
+  </picture>
 
-<picture>
-  <source srcset="https://streak-stats.demolab.com?user=crimsonKn1ght&theme=tokyonight&hide_border=false" media="(prefers-color-scheme: dark)">
-  <img src="https://streak-stats.demolab.com?user=crimsonKn1ght&theme=default&hide_border=false" alt="GitHub Streak">
-</picture>
+  <!-- Top Languages -->
+  <picture>
+    <source srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=crimsonKn1ght&theme=tokyonight&hide_border=false&include_all_commits=false&count_private=true&layout=compact" media="(prefers-color-scheme: dark)">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=crimsonKn1ght&theme=default&hide_border=false&include_all_commits=false&count_private=true&layout=compact" alt="Top Languages" height="150">
+  </picture>
+
+  <!-- GitHub Streak -->
+  <picture>
+    <source srcset="https://streak-stats.demolab.com?user=crimsonKn1ght&theme=tokyonight&hide_border=false" media="(prefers-color-scheme: dark)">
+    <img src="https://streak-stats.demolab.com?user=crimsonKn1ght&theme=default&hide_border=false" alt="GitHub Streak" height="150">
+  </picture>
+
+</div>
+
+![Trophies](https://github-trophies.vercel.app/?username=crimsonKn1ght)
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=200&section=footer&animation=twinkling" width="100%"/>
+</p>
