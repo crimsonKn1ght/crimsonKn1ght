@@ -26,22 +26,30 @@ A researcher focused on Deep Learning and Computer Vision from India.
 
 ## 🚀 Featured Projects
 
-<picture>
-  <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=tokyonight" media="(prefers-color-scheme: dark)">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=vue" alt="Code-OA-detection-model">
-</picture>
-<picture>
-  <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=tokyonight" media="(prefers-color-scheme: dark)">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=vue" alt="real-time-object-detector">
-</picture>
-<picture>
-  <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=tokyonight" media="(prefers-color-scheme: dark)">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=vue" alt="img-gen">
-</picture>
-<picture>
-  <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=tokyonight" media="(prefers-color-scheme: dark)">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=vue" alt="movie-recommender">
-</picture>
+<a href="https://github.com/crimsonKn1ght/Code-OA-detection-model" target="_blank">
+    <picture>
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=tokyonight" media="(prefers-color-scheme: dark)">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=vue" alt="Code-OA-detection-model">
+    </picture>
+</a>
+<a href="https://github.com/crimsonKn1ght/real-time-object-detector" target="_blank">
+    <picture>
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=tokyonight" media="(prefers-color-scheme: dark)">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=vue" alt="real-time-object-detector">
+    </picture>
+</a>
+<a href="https://github.com/crimsonKn1ght/img-gen" target="_blank">
+    <picture>
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=tokyonight" media="(prefers-color-scheme: dark)">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=vue" alt="img-gen">
+    </picture>
+</a>
+<a href="https://github.com/crimsonKn1ght/movie-recommender" target="_blank">
+    <picture>
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=tokyonight" media="(prefers-color-scheme: dark)">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=vue" alt="movie-recommender">
+    </picture>
+</a>
 
 ---
 
