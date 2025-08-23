@@ -95,3 +95,13 @@ body {
 .slick-next {
   right: -55px !important;
 }
+
+@media (max-width: 768px) {
+    .slick-prev {
+        left: -10px !important;
+    }
+
+    .slick-next {
+        right: -10px !important;
+    }
+}

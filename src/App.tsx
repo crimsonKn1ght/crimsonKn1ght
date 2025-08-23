@@ -385,7 +385,6 @@ function App() {
       dots: true,
       infinite: true,
       speed: 500,
-      centerMode: true,
       slidesToScroll: 1,
       initialSlide: 0,
       nextArrow: <NextArrow />,
@@ -394,17 +393,8 @@ function App() {
 
   const experienceSettings = {
         ...slickSettings,
-        dots: true,
-        infinite: true,
-        speed: 500,
         slidesToShow: 3,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        centerMode: false,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
-
-      responsive: [
+        responsive: [
           {
               breakpoint: 1280,
               settings: { slidesToShow: 2 }
@@ -418,40 +408,17 @@ function App() {
 
   const projectSettings = {
     ...slickSettings,
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    centerMode: false,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    responsive: [
-          {
-              breakpoint: 1024,
-              settings: { slidesToShow: 1 }
-          }
-      ]
+    slidesToShow: 1,
   };
 
   const publicationSettings = {
     ...slickSettings,
-    centerPadding: '80px',
     slidesToShow: 1,
   };
 
   const educationSettings = {
     ...slickSettings,
-    dots: true,
-    infinite: true,
-    speed: 500,
     slidesToShow: 2,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    centerMode: false,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
     responsive: [
           {
               breakpoint: 768,
@@ -510,7 +477,7 @@ function App() {
           </div>
 
           <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-              <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mt-20">
+              <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mt-20">
                   <motion.span 
                       className="block text-white"
                       initial={{ opacity: 0, y: -50 }}
@@ -530,21 +497,21 @@ function App() {
               </h1>
             
               <motion.div 
-                  className="flex items-center justify-center mb-8 gap-2 sm:gap-4 md:gap-6"
+                  className="flex flex-col sm:flex-row items-center justify-center mb-8 gap-2 sm:gap-4 md:gap-6"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
               >
-                  <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-6 py-2">
-                    <span className="text-base md:text-xl text-blue-400 font-semibold">AI/ML</span>
+                  <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-4 py-2">
+                    <span className="text-sm md:text-xl text-blue-400 font-semibold">AI/ML</span>
                   </div>
-                  <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-6 py-2">
-                    <span className="text-base md:text-xl text-blue-400 font-semibold">Computer Vision Researcher</span>
+                  <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-4 py-2">
+                    <span className="text-sm md:text-xl text-blue-400 font-semibold">Computer Vision Researcher</span>
                   </div>            
               </motion.div>
 
               <motion.p 
-                  className="text-slate-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto"
+                  className="text-slate-400 text-base md:text-xl mb-12 max-w-2xl mx-auto"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
@@ -553,27 +520,27 @@ function App() {
               </motion.p>
 
               <motion.div 
-                  className="flex justify-center space-x-6 mb-32"
+                  className="flex flex-wrap justify-center space-x-2 sm:space-x-6 mb-32"
                   variants={listContainerVariants}
                   initial="hidden"
                   animate="visible"
                   transition={{ delay: 1 }}
               >
-                  <motion.a variants={listItemVariants} href="mailto:gourab.roy.aiml@gmail.com" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full px-6 py-3 transition-all duration-300">
-                      <Mail className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors" />
-                      <span className="text-slate-400 group-hover:text-white transition-colors">Email</span>
+                  <motion.a variants={listItemVariants} href="mailto:gourab.roy.aiml@gmail.com" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
+                      <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-hover:text-blue-400 transition-colors" />
+                      <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">Email</span>
                   </motion.a>
-                  <motion.a variants={listItemVariants} href="https://www.linkedin.com/in/gourab-roy/" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full px-6 py-3 transition-all duration-300">
-                      <Linkedin className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors" />
-                      <span className="text-slate-400 group-hover:text-white transition-colors">LinkedIn</span>
+                  <motion.a variants={listItemVariants} href="https://www.linkedin.com/in/gourab-roy/" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
+                      <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-hover:text-blue-400 transition-colors" />
+                      <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">LinkedIn</span>
                   </motion.a>
-                  <motion.a variants={listItemVariants} href="https://github.com/crimsonKn1ght/" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-slate-500/20 backdrop-blur-sm border border-white/10 hover:border-slate-500/50 rounded-full px-6 py-3 transition-all duration-300">
-                      <Github className="w-5 h-5 text-slate-400 group-hover:text-slate-300 transition-colors" />
-                      <span className="text-slate-400 group-hover:text-white transition-colors">GitHub</span>
+                  <motion.a variants={listItemVariants} href="https://github.com/crimsonKn1ght/" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-slate-500/20 backdrop-blur-sm border border-white/10 hover:border-slate-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
+                      <Github className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-hover:text-slate-300 transition-colors" />
+                      <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">GitHub</span>
                   </motion.a>
-                  <motion.a variants={listItemVariants} href="/research.html" className="group flex items-center space-x-2 bg-white/5 hover:bg-purple-500/20 backdrop-blur-sm border border-white/10 hover:border-purple-500/50 rounded-full px-6 py-3 transition-all duration-300">
-                      <FileText className="w-5 h-5 text-slate-400 group-hover:text-purple-400 transition-colors" />
-                      <span className="text-slate-400 group-hover:text-white transition-colors">Research</span>
+                  <motion.a variants={listItemVariants} href="/research.html" className="group flex items-center space-x-2 bg-white/5 hover:bg-purple-500/20 backdrop-blur-sm border border-white/10 hover:border-purple-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
+                      <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-hover:text-purple-400 transition-colors" />
+                      <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">Research</span>
                   </motion.a>
               </motion.div>
           </div>
@@ -618,35 +585,33 @@ function App() {
                        <div className="relative">
                           <Slider {...publicationSettings}>
                               {publications.map(pub => (
-                                  <div key={pub.id} className="px-4 group">
-                                      <motion.div className="bg-gradient-to-r from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500/50 transition-colors duration-300 relative group-hover:z-20" whileHover={{ scale: 1.02, y: -4 }} transition={{ type: "spring", stiffness: 300 }}>
-                                          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-                                              <div className="flex-1">
-                                                  <div className="flex items-center gap-3 mb-4">
-                                                      <span className={`text-xs ${pub.statusColor} px-3 py-1 rounded-full`}>{pub.status}</span>
-                                                      <span className="text-xs text-slate-400">{pub.meta}</span>
-                                                  </div>
-                                                  <h3 className="text-xl lg:text-2xl font-bold text-white mb-3">{pub.title}</h3>
-                                                  <p className="text-slate-300 leading-relaxed mb-4">{pub.description}</p>
-                                                  <div className="flex flex-wrap gap-2">
-                                                      {pub.tags.map(tag => <span key={tag} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">{tag}</span>)}
-                                                  </div>
+                                  <div key={pub.id} className="px-2 sm:px-4 group">
+                                      <motion.div className="bg-gradient-to-r from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 sm:p-8 hover:border-blue-500/50 transition-colors duration-300 relative group-hover:z-20 h-full flex flex-col" whileHover={{ scale: 1.02, y: -4 }} transition={{ type: "spring", stiffness: 300 }}>
+                                          <div className="flex-grow">
+                                              <div className="flex items-center gap-3 mb-4">
+                                                  <span className={`text-xs ${pub.statusColor} px-3 py-1 rounded-full`}>{pub.status}</span>
+                                                  <span className="text-xs text-slate-400">{pub.meta}</span>
                                               </div>
-                                              <div className="flex flex-col space-y-3">
-                                                  <button onClick={() => openModal(pub.details)} className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
-                                                      More details
+                                              <h3 className="text-lg sm:text-xl font-bold text-white mb-3">{pub.title}</h3>
+                                              <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-4">{pub.description}</p>
+                                              <div className="flex flex-wrap gap-2">
+                                                  {pub.tags.map(tag => <span key={tag} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">{tag}</span>)}
+                                              </div>
+                                          </div>
+                                          <div className="flex flex-col sm:flex-row sm:items-center gap-3 mt-6">
+                                              <button onClick={() => openModal(pub.details)} className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors w-full sm:w-auto">
+                                                  More details
+                                              </button>
+                                              {pub.codeLink ? (
+                                                  <a href={pub.codeLink} target="_blank"  rel="noopener noreferrer" className="inline-flex items-center justify-center border border-slate-600 hover:border-blue-500 text-slate-300 hover:text-white px-6 py-2 rounded-lg font-semibold transition-colors text-center w-full sm:w-auto">
+                                                      <Github className="w-4 h-4 mr-2" />
+                                                      View Code
+                                                  </a>
+                                              ) : (
+                                                  <button className="border border-slate-600 text-slate-400 px-6 py-2 rounded-lg font-semibold cursor-not-allowed w-full sm:w-auto">
+                                                      Code Soon
                                                   </button>
-                                                  {pub.codeLink ? (
-                                                      <a href={pub.codeLink} target="_blank"  rel="noopener noreferrer" className="inline-flex items-center justify-center border border-slate-600 hover:border-blue-500 text-slate-300 hover:text-white px-6 py-2 rounded-lg font-semibold transition-colors text-center">
-                                                          <Github className="w-4 h-4 mr-2" />
-                                                          View Code
-                                                      </a>
-                                                  ) : (
-                                                      <button className="border border-slate-600 text-slate-400 px-6 py-2 rounded-lg font-semibold cursor-not-allowed">
-                                                          Code Soon
-                                                      </button>
-                                                  )}
-                                              </div>
+                                              )}
                                           </div>
                                       </motion.div>
                                   </div>
@@ -664,19 +629,19 @@ function App() {
                       </div>
                       <div className="relative">
                           <Slider {...projectSettings}>
-                              <div className="px-4 group">
-                                  <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-colors duration-300 h-[340px] flex flex-col relative group-hover:z-20" whileHover={{ scale: 1.03, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
+                              <div className="px-2 sm:px-4 group">
+                                  <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 sm:p-8 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-colors duration-300 h-full flex flex-col relative group-hover:z-20" whileHover={{ scale: 1.03, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
                                       <div className="flex items-center justify-between mb-6">
                                           <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl flex items-center justify-center">
                                               <Eye className="w-6 h-6 text-white" />
                                           </div>
                                           <span className="text-xs bg-green-500/20 text-green-300 px-3 py-1 rounded-full">Live Demo</span>
                                       </div>
-                                      <h3 className="flex items-center text-lg lg:text-xl font-bold text-white mb-3">
+                                      <h3 className="flex items-center text-base sm:text-lg font-bold text-white mb-3">
                                         Real-Time Object Detector
                                         <span className="glowing-light ml-3"></span>
                                       </h3>
-                                      <p className="text-slate-300 leading-relaxed mb-6">
+                                      <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 flex-grow">
                                           Web-based real-time object detection application using YOLO and TensorFlow.js.
                                       </p>
                                       <div className="flex flex-wrap gap-2 mb-6">
@@ -689,19 +654,19 @@ function App() {
                                       </a>
                                   </motion.div>
                               </div>
-                              <div className="px-4 group">
-                                  <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-colors duration-300 h-[340px] flex flex-col relative group-hover:z-20" whileHover={{ scale: 1.03, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
+                              <div className="px-2 sm:px-4 group">
+                                  <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 sm:p-8 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-colors duration-300 h-full flex flex-col relative group-hover:z-20" whileHover={{ scale: 1.03, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
                                       <div className="flex items-center justify-between mb-6">
                                           <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
                                               <ChartBar className="w-6 h-6 text-white" />
                                           </div>
                                           <span className="text-xs bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full">ML System</span>
                                       </div>
-                                      <h3 className="flex items-center text-lg lg:text-xl font-bold text-white mb-3">
+                                      <h3 className="flex items-center text-base sm:text-lg font-bold text-white mb-3">
                                         Movie Recommender System
                                         <span className="glowing-light ml-3"></span>
                                       </h3>
-                                      <p className="text-slate-300 leading-relaxed mb-6">
+                                      <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 flex-grow">
                                           Content-based filtering system that suggests movies using advanced feature extraction.
                                       </p>
                                       <div className="flex flex-wrap gap-2 mb-6">
@@ -714,19 +679,19 @@ function App() {
                                       </a>
                                   </motion.div>
                               </div>
-                              <div className="px-4 group">
-                                  <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-colors duration-300 h-[340px] flex flex-col relative group-hover:z-20" whileHover={{ scale: 1.03, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
+                              <div className="px-2 sm:px-4 group">
+                                  <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 sm:p-8 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-colors duration-300 h-full flex flex-col relative group-hover:z-20" whileHover={{ scale: 1.03, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
                                       <div className="flex items-center justify-between mb-6">
                                           <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
                                               <Code className="w-6 h-6 text-white" />
                                           </div>
                                           <span className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full">Educational</span>
                                       </div>
-                                      <h3 className="flex items-center text-lg lg:text-xl font-bold text-white mb-3">
+                                      <h3 className="flex items-center text-base sm:text-lg font-bold text-white mb-3">
                                         My AI/ML Implementations
                                         <span className="glowing-light ml-3"></span>
                                       </h3>
-                                      <p className="text-slate-300 leading-relaxed mb-6">
+                                      <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 flex-grow">
                                           Collection of AI and ML models and algorithms built from scratch for learning.
                                       </p>
                                       <div className="flex flex-wrap gap-2 mb-6">
@@ -739,19 +704,19 @@ function App() {
                                       </a>
                                   </motion.div>
                               </div>
-                              <div className="px-4 group">
-                                  <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-colors duration-300 h-[340px] flex flex-col relative group-hover:z-20" whileHover={{ scale: 1.03, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
+                              <div className="px-2 sm:px-4 group">
+                                  <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 sm:p-8 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-colors duration-300 h-full flex flex-col relative group-hover:z-20" whileHover={{ scale: 1.03, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
                                       <div className="flex items-center justify-between mb-6">
                                           <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-blue-600 rounded-xl flex items-center justify-center">
                                               <Zap className="w-6 h-6 text-white" />
                                           </div>
                                           <span className="text-xs bg-red-500/20 text-red-300 px-3 py-1 rounded-full">Security Tool</span>
                                       </div>
-                                      <h3 className="flex items-center text-lg lg:text-xl font-bold text-white mb-3">
+                                      <h3 className="flex items-center text-base sm:text-lg font-bold text-white mb-3">
                                         dirStrike
                                         <span className="glowing-light ml-3"></span>
                                       </h3>
-                                      <p className="text-slate-300 leading-relaxed mb-6">
+                                      <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 flex-grow">
                                           High-performance directory and file bruteforcing tool for web security assessments.
                                       </p>
                                       <div className="flex flex-wrap gap-2 mb-6">
