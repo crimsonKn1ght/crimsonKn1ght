@@ -7,9 +7,6 @@
 ![Repos](https://img.shields.io/badge/dynamic/json?label=Public%20Repos&query=%24.public_repos&url=https://api.github.com/users/crimsonKn1ght)
 ![Visitor Count](https://komarev.com/ghpvc/?username=crimsonKn1ght&label=Visitor+Count&color=0e75b6&style=flat)
 
-
-A researcher focused on Deep Learning and Computer Vision.
-
 <p align="center">
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=26&duration=3000&pause=700&color=abd202&center=true&vCenter=true&random=false&width=600&lines=Deep+Learning+Researcher;Computer+Vision+Engineer;AI+/+ML+Researher" alt="Typing SVG" />
