@@ -24,25 +24,25 @@
 
 <a href="https://github.com/crimsonKn1ght/Code-OA-detection-model" target="_blank">
     <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=tokyonight" media="(prefers-color-scheme: dark)">
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=solarized-dark" media="(prefers-color-scheme: dark)">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=vue" alt="Code-OA-detection-model">
     </picture>
 </a>
 <a href="https://github.com/crimsonKn1ght/real-time-object-detector" target="_blank">
     <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=tokyonight" media="(prefers-color-scheme: dark)">
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=solarized-dark" media="(prefers-color-scheme: dark)">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=vue" alt="real-time-object-detector">
     </picture>
 </a>
 <a href="https://github.com/crimsonKn1ght/img-gen" target="_blank">
     <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=tokyonight" media="(prefers-color-scheme: dark)">
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=solarized-dark" media="(prefers-color-scheme: dark)">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=vue" alt="img-gen">
     </picture>
 </a>
 <a href="https://github.com/crimsonKn1ght/movie-recommender" target="_blank">
     <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=tokyonight" media="(prefers-color-scheme: dark)">
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=solarized-dark" media="(prefers-color-scheme: dark)">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=vue" alt="movie-recommender">
     </picture>
 </a>
@@ -73,27 +73,25 @@
 
 ### GitHub Analytics
 
-<div style="display: flex; gap: 10px; flex-wrap: wrap;">
-
   <!-- GitHub Stats -->
   <picture>
-    <source srcset="https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&theme=tokyonight&hide_border=false&include_all_commits=false&count_private=true" media="(prefers-color-scheme: dark)">
+    <source srcset="https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&theme=solarized-dark&hide_border=false&include_all_commits=false&count_private=true" media="(prefers-color-scheme: dark)">
     <img src="https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&theme=default&hide_border=false&include_all_commits=false&count_private=true" alt="GitHub Stats" height="150">
   </picture>
 
   <!-- Top Languages -->
   <picture>
-    <source srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=crimsonKn1ght&theme=tokyonight&hide_border=false&include_all_commits=false&count_private=true&layout=compact" media="(prefers-color-scheme: dark)">
+    <source srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=crimsonKn1ght&theme=solarized-dark&hide_border=false&include_all_commits=false&count_private=true&layout=compact" media="(prefers-color-scheme: dark)">
     <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=crimsonKn1ght&theme=default&hide_border=false&include_all_commits=false&count_private=true&layout=compact" alt="Top Languages" height="150">
   </picture>
 
   <!-- GitHub Streak -->
   <picture>
-    <source srcset="https://streak-stats.demolab.com?user=crimsonKn1ght&theme=tokyonight&hide_border=false" media="(prefers-color-scheme: dark)">
+    <source srcset="https://streak-stats.demolab.com?user=crimsonKn1ght&theme=solarized-dark&hide_border=false" media="(prefers-color-scheme: dark)">
     <img src="https://streak-stats.demolab.com?user=crimsonKn1ght&theme=default&hide_border=false" alt="GitHub Streak" height="150">
   </picture>
 
-</div>
+
 
 ![Trophies](https://github-trophies.vercel.app/?username=crimsonKn1ght)
 
