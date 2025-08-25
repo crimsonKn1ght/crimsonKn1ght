@@ -2,12 +2,9 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import { Mail, Linkedin, Github, FileText, ChevronDown, ChevronLeft, ChevronRight, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X } from 'lucide-react';
 import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
-import Slider from 'react-slick';
 import Timeline from "./Timeline";
-
-// Import carousel styles
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
+import { Marquee } from "./components/magicui/marquee";
+import { cn } from "./lib/utils";
 
 // Import company logos
 import iitKharagpurLogo from './assets/iit-kharagpur-logo.png';
@@ -34,7 +31,7 @@ const AnimatedCounter = ({ to, isFloat = false }) => {
         }
     }, [isInView, to, isFloat]);
     
-    const suffix = 
+    const suffix =
         to === 325 ? "/340" :
         to === 105 ? "/120" :
         to === 93 ? "%" :
@@ -50,39 +47,12 @@ const AnimatedCounter = ({ to, isFloat = false }) => {
     );
 };
 
-
-// --- Custom Slider Arrows ---
-const NextArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={`${className} custom-arrow next-arrow`}
-            onClick={onClick}
-        >
-            <ChevronRight size={24} />
-        </div>
-    );
-};
-
-const PrevArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={`${className} custom-arrow prev-arrow`}
-            onClick={onClick}
-        >
-            <ChevronLeft size={24} />
-        </div>
-    );
-};
-
-
 const Modal = ({ isOpen, onClose, title, children }) => {
     if (!isOpen) return null;
 
     return createPortal(
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <motion.div 
+            <motion.div
                 className="bg-slate-900 border border-slate-700 rounded-2xl p-8 max-w-2xl w-full relative"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -98,6 +68,119 @@ const Modal = ({ isOpen, onClose, title, children }) => {
         document.body
     );
 };
+
+const projects = [
+    {
+      name: "Real-Time Object Detector",
+      description: "Web-based real-time object detection application using YOLO and TensorFlow.js.",
+      tags: ["YOLO", "TensorFlow.js"],
+      link: "https://github.com/crimsonkn1ght/real-time-object-detector",
+      icon: <Eye className="w-6 h-6 text-white" />
+    },
+    {
+        name: "Movie Recommender System",
+        description: "Content-based filtering system that suggests movies using advanced feature extraction.",
+        tags: ["Recommendation", "Filtering"],
+        link: "https://github.com/crimsonkn1ght/movie-recommender",
+        icon: <ChartBar className="w-6 h-6 text-white" />
+    },
+    {
+        name: "My AI/ML Implementations",
+        description: "Collection of AI and ML models and algorithms built from scratch for learning.",
+        tags: ["From Scratch", "Algorithms"],
+        link: "https://github.com/crimsonkn1ght/my-ai-ml-codes",
+        icon: <Code className="w-6 h-6 text-white" />
+    },
+    {
+        name: "dirStrike",
+        description: "High-performance directory and file bruteforcing tool for web security assessments.",
+        tags: ["Security", "Penetration Testing"],
+        link: "https://github.com/crimsonkn1ght/dirstrike",
+        icon: <Zap className="w-6 h-6 text-white" />
+    },
+    {
+      name: "Image generation tool with diffusion models",
+      description: "Image generation using huggingface models.",
+      tags: ["huggingface models", "diffusion models"],
+      link: "https://github.com/crimsonKn1ght/img-gen",
+      icon: <Cpu className="w-6 h-6 text-white" />
+    },
+    {
+      name: "PDF OCR and summarizer",
+      description: "Multimodal PDF Q&A Assistant that allows you to upload PDFs and ask questions about their content.",
+      tags: ["OCR", "PDF", "Q&A"],
+      link: "https://github.com/crimsonkn1ght/pdf-qna",
+      icon: <FileText className="w-6 h-6 text-white" />
+    }
+  ];
+
+  const ProjectCard = ({ name, description, tags, link, icon }) => (
+    <a href={link} target="_blank" rel="noopener noreferrer">
+    <figure
+      className={cn(
+        "relative w-80 h-full cursor-pointer overflow-hidden rounded-xl border p-4",
+        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+      )}
+    >
+        <div className="flex items-center justify-between mb-6">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                {icon}
+            </div>
+        </div>
+      <h3 className="flex items-center text-base sm:text-lg font-bold text-white mb-3">
+        {name}
+      </h3>
+      <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 flex-grow">
+        {description}
+      </p>
+      <div className="flex flex-wrap gap-2 mb-6">
+        {tags.map(tag => <span key={tag} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">{tag}</span>)}
+      </div>
+      <div className="inline-flex items-center text-blue-400 font-semibold hover:text-blue-300 transition-colors mt-auto">
+          <Github className="w-4 h-4 mr-2" />
+          View on GitHub
+      </div>
+    </figure>
+    </a>
+  );
+
+  const PublicationCard = ({ pub, openModal }) => (
+    <figure
+        className={cn(
+            "relative w-96 h-full cursor-pointer overflow-hidden rounded-xl border p-6 flex flex-col",
+            "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+            "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+        )}
+    >
+        <div className="flex-grow">
+            <div className="flex items-center gap-3 mb-4">
+                <span className={`text-xs ${pub.statusColor} px-3 py-1 rounded-full`}>{pub.status}</span>
+                <span className="text-xs text-slate-400">{pub.meta}</span>
+            </div>
+            <h3 className="text-lg font-bold text-white mb-3">{pub.title}</h3>
+            <p className="text-sm text-slate-300 leading-relaxed mb-4">{pub.description}</p>
+            <div className="flex flex-wrap gap-2">
+                {pub.tags.map(tag => <span key={tag} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">{tag}</span>)}
+            </div>
+        </div>
+        <div className="flex items-center gap-3 mt-6">
+            <button onClick={() => openModal(pub.details)} className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors w-full sm:w-auto">
+                More details
+            </button>
+            {pub.codeLink ? (
+                <a href={pub.codeLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border border-slate-600 hover:border-blue-500 text-slate-300 hover:text-white px-6 py-2 rounded-lg font-semibold transition-colors text-center w-full sm:w-auto">
+                    <Github className="w-4 h-4 mr-2" />
+                    View Code
+                </a>
+            ) : (
+                <button className="border border-slate-600 text-slate-400 px-6 py-2 rounded-lg font-semibold cursor-not-allowed w-full sm:w-auto">
+                    Code Soon
+                </button>
+            )}
+        </div>
+    </figure>
+);
 
 
 function App() {
@@ -168,7 +251,7 @@ function App() {
         statusColor: 'bg-green-500/20 text-green-300',
         meta: 'ISAI 2025 • Springer',
         title: 'Knee Osteoarthritis Detection and Categorization using Deep Learning Models',
-        description: 'Achieved 80.12% accuracy in classifying knee X-ray images using the Kellgren-Lawrence grading scale, providing automated diagnosis capabilities for clinical assessment.',
+        description: 'Achieved 80.12% accuracy in classifying knee X-ray images using the Kellgren-Lawrence grading scale.',
         tags: ['Deep Learning', 'Medical Imaging', 'Classification'],
         details: {
             title: "Knee Osteoarthritis Detection and Categorization using Deep Learning Models",
@@ -187,7 +270,7 @@ function App() {
         statusColor: 'bg-yellow-500/20 text-yellow-300',
         meta: 'ICDSINC 2025',
         title: 'Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection',
-        description: 'Novel framework achieving 88% binary and 84% multi-class classification accuracy by integrating texture features with attention mechanisms for osteoporosis detection.',
+        description: 'Novel framework achieving 88% binary and 84% multi-class classification accuracy for osteoporosis detection.',
         tags: ['U-Net', 'Attention Mechanism', 'Feature Extraction'],
         details: {
             title: "Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection",
@@ -206,7 +289,7 @@ function App() {
         statusColor: 'bg-blue-500/20 text-blue-300',
         meta: '2025',
         title: 'End-to-End Deep Learning for CT Scan Reconstruction with Integrated Explainable AI',
-        description: 'Developing an interpretable CT reconstruction pipeline that combines high-quality image generation with explainable AI for clinical transparency and trust.',
+        description: 'Developing an interpretable CT reconstruction pipeline that combines high-quality image generation with explainable AI.',
         tags: ['CT Reconstruction', 'Explainable AI', 'Medical Imaging'],
         details: {
             title: "End-to-End Deep Learning for CT Scan Reconstruction with Integrated Explainable AI",
@@ -219,148 +302,6 @@ function App() {
         },
         codeLink: null
       }
-  ];
-
-  const educationHistory = [
-      {
-          degree: 'M.Tech in Computer Science and Engineering',
-          institution: 'IIT Dhanbad',
-          period: '2023 - 2025',
-          gpa: 8.57,
-          isFloat: true,
-          status: 'Completed'
-      },
-      {
-          degree: 'B.Tech in Electronics & Telecommunications',
-          institution: 'IIEST Shibpur',
-          period: '2019 - 2023',
-          gpa: 7.58,
-          isFloat: true,
-          status: 'Completed'
-      },
-      {
-          degree: 'Higher Secondary Certificate (XII)',
-          institution: 'CBSE Board',
-          period: '2019',
-          gpa: 93,
-          isFloat: false,
-          unit: 'Percentage',
-          status: 'Completed'
-      },
-      {
-          degree: 'Secondary School Certificate (X)',
-          institution: 'CBSE Board',
-          period: '2017',
-          gpa: 10.0,
-          isFloat: true,
-          unit: 'CGPA',
-          status: 'Completed'
-      }
-  ];
-  
-  const experienceDetails = {
-    iitKharagpur: {
-      title: "IIT Kharagpur - Research Intern",
-      content: (
-        <>
-          <p className="mb-4">Conducting ongoing research on CT image reconstruction as part of a deep learning internship, using a parallel-beam, fan-beam, cone-beam datasets consisting of 20,000+ sinogram-image pairs to improve reconstruction quality from sparse and noisy projections, with a focus on real-world medical imaging challenges.</p>
-          <p className="mb-4">Developing various deep learning architectures, including U-Nets for 2D slices and experimenting with 3D CNNs for volumetric reconstruction, to improve image quality from low-signal, noisy sinogram data.</p>
-          <p>Employed a combined SSIM and MSE loss function to optimize both structural and pixel-level accuracy, achieving a test SSIM of 0.9+.</p>
-        </>
-      )
-    },
-    axtria: {
-      title: "Axtria - Data Engineering Intern",
-      content: (
-        <p>Developed and optimized data processing workflows and ETL pipelines using Python and SQL, ensuring efficient integration, transformation, and validation of large, heterogeneous data.</p>
-      )
-    },
-    virtuallyTesting: {
-      title: "Virtually Testing Foundation - Security Intern",
-      content: (
-        <p>Completed 8-week hands-on training in offensive and defensive cybersecurity, applying red and blue team techniques using Python-based tools.</p>
-      )
-    },
-    cyberSecuredIndia: {
-      title: "Cyber Secured India - Digital Forensics Intern",
-      content: (
-        <>
-          <p className="mb-4">Gained practical experience in offensive and defensive security through an 8-week internship, executing real-world red and blue team operations.</p>
-          <p className="mb-4">Participated in penetration testing, threat analysis, and incident response exercises as part of a hands-on cybersecurity training program.</p>
-          <p>Implemented and tested defensive measures against simulated attacks, enhancing skills in network monitoring and intrusion detection.</p>
-        </>
-      )
-    },
-    sistmrAustralia: {
-      title: "SISTMR Australia - Cyber Security Intern",
-      content: (
-        <>
-        <p className="mb-4">Successfully completed an 8-week internship in cybersecurity, gaining hands-on experience with practical red team (offensive) and blue team (defensive) operations.</p>
-        <p>Executed simulated cyber-attacks, performed vulnerability assessments, and contributed to defense strategy planning to enhance system security.</p>
-      </>
-      )
-    }
-  };
-
-  const experiences = [
-    {
-      id: 'iitKharagpur',
-      status: 'Current',
-      title: 'Research Intern',
-      company: 'IIT Kharagpur',
-      date: 'May 2025 - Present',
-      description: 'Deep Learning for Medical Imaging - CT reconstruction, U-Nets, 3D CNNs',
-      icon: <Brain className="w-6 h-6 text-white" />,
-      iconBg: 'bg-gradient-to-br from-blue-500 to-purple-600',
-      logo: iitKharagpurLogo,
-      details: experienceDetails.iitKharagpur
-    },
-    {
-      id: 'axtria',
-      status: '2024',
-      title: 'Data Engineering Intern',
-      company: 'Axtria',
-      date: 'May 2024 - July 2024',
-      description: 'Enhanced ETL pipelines, reduced latency by 18%, improved data quality',
-      icon: <Database className="w-6 h-6 text-white" />,
-      iconBg: 'bg-gradient-to-br from-green-500 to-teal-600',
-      logo: axtriaLogo,
-      details: experienceDetails.axtria
-    },
-    {
-      id: 'virtuallyTesting',
-      status: '2022',
-      title: 'Security Intern',
-      company: 'Virtually Testing Foundation',
-      date: 'May 2022 - July 2022',
-      description: 'Cybersecurity training, red/blue team exercises, vulnerability assessments',
-      icon: <Zap className="w-6 h-6 text-white" />,
-      iconBg: 'bg-gradient-to-br from-red-500 to-pink-600',
-      logo: virtuallyTestingLogo,
-      details: experienceDetails.virtuallyTesting
-    },
-    {
-      id: 'cyberSecuredIndia',
-      status: '2022',
-      title: 'Digital Forensics Intern',
-      company: 'Cyber Secured India',
-      date: '2022',
-      description: 'Gained practical experience in offensive and defensive security, executing real-world red and blue team operations.',
-      icon: <Zap className="w-6 h-6 text-white" />,
-      iconBg: 'bg-gradient-to-br from-red-500 to-pink-600',
-      details: experienceDetails.cyberSecuredIndia
-    },
-    {
-      id: 'sistmrAustralia',
-      status: '2022',
-      title: 'Cyber Security Intern',
-      company: 'SISTMR Australia',
-      date: '2022',
-      description: 'Completed an 8-week internship, gaining hands-on experience with practical red team and blue team operations.',
-      icon: <Zap className="w-6 h-6 text-white" />,
-      iconBg: 'bg-gradient-to-br from-red-500 to-pink-600',
-      details: experienceDetails.sistmrAustralia
-    }
   ];
 
   // --- Animation Variants ---
@@ -382,55 +323,8 @@ function App() {
       visible: { opacity: 1, y: 0 }
   };
   
-  // --- Updated Carousel Settings ---
-  const slickSettings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToScroll: 1,
-      initialSlide: 0,
-      nextArrow: <NextArrow />,
-      prevArrow: <PrevArrow />,
-  };
-
-  const experienceSettings = {
-        ...slickSettings,
-        slidesToShow: 3,
-        responsive: [
-          {
-              breakpoint: 1280,
-              settings: { slidesToShow: 2 }
-          },
-          {
-              breakpoint: 768,
-              settings: { slidesToShow: 1 }
-          }
-      ]
-  };
-
-  const projectSettings = {
-    ...slickSettings,
-    slidesToShow: 1,
-  };
-
-  const publicationSettings = {
-    ...slickSettings,
-    slidesToShow: 1,
-  };
-
-  const educationSettings = {
-    ...slickSettings,
-    slidesToShow: 2,
-    responsive: [
-          {
-              breakpoint: 768,
-              settings: { slidesToShow: 1 }
-          }
-      ]
-  };
-
   return (
-    <div 
+    <div
       className="min-h-screen text-white overflow-x-hidden font-mono"
       style={{
         backgroundImage: `url(${glitchBackground})`,
@@ -466,12 +360,12 @@ function App() {
         {/* Hero Section */}
         <div ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
           <div ref={floatingElementsRef} className="absolute inset-0 transition-transform duration-1000 ease-out">
-              <motion.div 
+              <motion.div
                   className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full filter blur-2xl"
                   animate={{ y: [0, 20, 0], x: [0, -10, 0] }}
                   transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
               />
-              <motion.div 
+              <motion.div
                   className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full filter blur-3xl"
                   animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
                   transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
@@ -480,7 +374,7 @@ function App() {
 
           <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
               <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mt-20">
-                  <motion.span 
+                  <motion.span
                       className="block text-white"
                       initial={{ opacity: 0, y: -50 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -488,7 +382,7 @@ function App() {
                   >
                       GOURAB
                   </motion.span>
-                  <motion.span 
+                  <motion.span
                       className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent"
                       initial={{ opacity: 0, y: 50 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -498,7 +392,7 @@ function App() {
                   </motion.span>
               </h1>
             
-              <motion.div 
+              <motion.div
                   className="flex flex-col sm:flex-row items-center justify-center mb-8 gap-2 sm:gap-4 md:gap-6"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -512,7 +406,7 @@ function App() {
                   </div>            
               </motion.div>
 
-              <motion.p 
+              <motion.p
                   className="text-slate-400 text-base md:text-xl mb-12 max-w-2xl mx-auto"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -521,7 +415,7 @@ function App() {
                   Specializing in deep learning for computer vision, developing robust architectures for challenging environments
               </motion.p>
 
-              <motion.div 
+              <motion.div
                   className="flex flex-wrap justify-center gap-2 sm:space-x-6 mb-32"
                   variants={listContainerVariants}
                   initial="hidden"
@@ -584,41 +478,14 @@ function App() {
                           <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Research Publications</h2>
                           <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Contributing to the advancement of AI and computer vision through peer-reviewed research</p>
                       </div>
-                       <div className="relative">
-                          <Slider {...publicationSettings}>
-                              {publications.map(pub => (
-                                  <div key={pub.id} className="px-2 sm:px-4 group">
-                                      <motion.div className="bg-gradient-to-r from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 sm:p-8 hover:border-blue-500/50 transition-colors duration-300 relative group-hover:z-20 h-full flex flex-col" whileHover={{ scale: 1.02, y: -4 }} transition={{ type: "spring", stiffness: 300 }}>
-                                          <div className="flex-grow">
-                                              <div className="flex items-center gap-3 mb-4">
-                                                  <span className={`text-xs ${pub.statusColor} px-3 py-1 rounded-full`}>{pub.status}</span>
-                                                  <span className="text-xs text-slate-400">{pub.meta}</span>
-                                              </div>
-                                              <h3 className="text-lg sm:text-xl font-bold text-white mb-3">{pub.title}</h3>
-                                              <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-4">{pub.description}</p>
-                                              <div className="flex flex-wrap gap-2">
-                                                  {pub.tags.map(tag => <span key={tag} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">{tag}</span>)}
-                                              </div>
-                                          </div>
-                                          <div className="flex flex-col sm:flex-row sm:items-center gap-3 mt-6">
-                                              <button onClick={() => openModal(pub.details)} className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors w-full sm:w-auto">
-                                                  More details
-                                              </button>
-                                              {pub.codeLink ? (
-                                                  <a href={pub.codeLink} target="_blank"  rel="noopener noreferrer" className="inline-flex items-center justify-center border border-slate-600 hover:border-blue-500 text-slate-300 hover:text-white px-6 py-2 rounded-lg font-semibold transition-colors text-center w-full sm:w-auto">
-                                                      <Github className="w-4 h-4 mr-2" />
-                                                      View Code
-                                                  </a>
-                                              ) : (
-                                                  <button className="border border-slate-600 text-slate-400 px-6 py-2 rounded-lg font-semibold cursor-not-allowed w-full sm:w-auto">
-                                                      Code Soon
-                                                  </button>
-                                              )}
-                                          </div>
-                                      </motion.div>
-                                  </div>
-                              ))}
-                          </Slider>
+                       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+                          <Marquee pauseOnHover className="[--duration:10s]">
+                            {publications.map((pub) => (
+                                <PublicationCard key={pub.id} pub={pub} openModal={openModal} />
+                            ))}
+                          </Marquee>
+                          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-stone-900"></div>
+                          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-stone-900"></div>
                       </div>
                   </div>
               </motion.section>
@@ -629,110 +496,15 @@ function App() {
                           <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Featured Projects</h2>
                           <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Some more open-source implementations and practical applications of AI/ML concepts</p>
                       </div>
-                      <div className="relative">
-                          <Slider {...projectSettings}>
-                              <div className="px-2 sm:px-4 group">
-                                  <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 sm:p-8 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-colors duration-300 h-full flex flex-col relative group-hover:z-20" whileHover={{ scale: 1.03, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                      <div className="flex items-center justify-between mb-6">
-                                          <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl flex items-center justify-center">
-                                              <Eye className="w-6 h-6 text-white" />
-                                          </div>
-                                          <span className="text-xs bg-green-500/20 text-green-300 px-3 py-1 rounded-full">Live Demo</span>
-                                      </div>
-                                      <h3 className="flex items-center text-base sm:text-lg font-bold text-white mb-3">
-                                        Real-Time Object Detector
-                                        <span className="glowing-light ml-3"></span>
-                                      </h3>
-                                      <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 flex-grow">
-                                          Web-based real-time object detection application using YOLO and TensorFlow.js.
-                                      </p>
-                                      <div className="flex flex-wrap gap-2 mb-6">
-                                          <span className="text-xs bg-yellow-500/20 text-yellow-300 px-2 py-1 rounded">YOLO</span>
-                                          <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">TensorFlow.js</span>
-                                      </div>
-                                      <a href="https://github.com/crimsonkn1ght/real-time-object-detector" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-400 font-semibold hover:text-blue-300 transition-colors mt-auto">
-                                          <Github className="w-4 h-4 mr-2" />
-                                          View on GitHub
-                                      </a>
-                                  </motion.div>
-                              </div>
-                              <div className="px-2 sm:px-4 group">
-                                  <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 sm:p-8 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-colors duration-300 h-full flex flex-col relative group-hover:z-20" whileHover={{ scale: 1.03, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                      <div className="flex items-center justify-between mb-6">
-                                          <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
-                                              <ChartBar className="w-6 h-6 text-white" />
-                                          </div>
-                                          <span className="text-xs bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full">ML System</span>
-                                      </div>
-                                      <h3 className="flex items-center text-base sm:text-lg font-bold text-white mb-3">
-                                        Movie Recommender System
-                                        <span className="glowing-light ml-3"></span>
-                                      </h3>
-                                      <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 flex-grow">
-                                          Content-based filtering system that suggests movies using advanced feature extraction.
-                                      </p>
-                                      <div className="flex flex-wrap gap-2 mb-6">
-                                          <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded">Recommendation</span>
-                                          <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">Filtering</span>
-                                      </div>
-                                      <a href="https://github.com/crimsonkn1ght/movie-recommender" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-400 font-semibold hover:text-blue-300 transition-colors mt-auto">
-                                          <Github className="w-4 h-4 mr-2" />
-                                          View on GitHub
-                                      </a>
-                                  </motion.div>
-                              </div>
-                              <div className="px-2 sm:px-4 group">
-                                  <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 sm:p-8 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-colors duration-300 h-full flex flex-col relative group-hover:z-20" whileHover={{ scale: 1.03, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                      <div className="flex items-center justify-between mb-6">
-                                          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
-                                              <Code className="w-6 h-6 text-white" />
-                                          </div>
-                                          <span className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full">Educational</span>
-                                      </div>
-                                      <h3 className="flex items-center text-base sm:text-lg font-bold text-white mb-3">
-                                        My AI/ML Implementations
-                                        <span className="glowing-light ml-3"></span>
-                                      </h3>
-                                      <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 flex-grow">
-                                          Collection of AI and ML models and algorithms built from scratch for learning.
-                                      </p>
-                                      <div className="flex flex-wrap gap-2 mb-6">
-                                          <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">From Scratch</span>
-                                          <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded">Algorithms</span>
-                                      </div>
-                                      <a href="https://github.com/crimsonkn1ght/my-ai-ml-codes" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-400 font-semibold hover:text-blue-300 transition-colors mt-auto">
-                                          <Github className="w-4 h-4 mr-2" />
-                                          View on GitHub
-                                      </a>
-                                  </motion.div>
-                              </div>
-                              <div className="px-2 sm:px-4 group">
-                                  <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 sm:p-8 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-colors duration-300 h-full flex flex-col relative group-hover:z-20" whileHover={{ scale: 1.03, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                      <div className="flex items-center justify-between mb-6">
-                                          <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-blue-600 rounded-xl flex items-center justify-center">
-                                              <Zap className="w-6 h-6 text-white" />
-                                          </div>
-                                          <span className="text-xs bg-red-500/20 text-red-300 px-3 py-1 rounded-full">Security Tool</span>
-                                      </div>
-                                      <h3 className="flex items-center text-base sm:text-lg font-bold text-white mb-3">
-                                        dirStrike
-                                        <span className="glowing-light ml-3"></span>
-                                      </h3>
-                                      <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 flex-grow">
-                                          High-performance directory and file bruteforcing tool for web security assessments.
-                                      </p>
-                                      <div className="flex flex-wrap gap-2 mb-6">
-                                          <span className="text-xs bg-red-500/20 text-red-300 px-2 py-1 rounded">Security</span>
-                                          <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">Penetration Testing</span>
-                                      </div>
-                                      <a href="https://github.com/crimsonkn1ght/dirstrike" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-400 font-semibold hover:text-blue-300 transition-colors mt-auto">
-                                          <Github className="w-4 h-4 mr-2" />
-                                          View on GitHub
-                                      </a>
-                                  </motion.div>
-                              </div>
-                          </Slider>
-                      </div>
+                      <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+                            <Marquee pauseOnHover className="[--duration:20s]">
+                                {projects.map((project) => (
+                                    <ProjectCard key={project.name} {...project} />
+                                ))}
+                            </Marquee>
+                            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-stone-900"></div>
+                            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-stone-900"></div>
+                        </div>
                   </div>
               </motion.section>
 
@@ -800,11 +572,11 @@ function App() {
                                       <div className="w-8 h-8 bg-gradient-to-br from-yellow-500 to-blue-600 rounded-lg flex items-center justify-center mr-3"><span className="text-white text-sm">🏆</span></div>
                                       Awards & Achievements
                                   </h3>
-                                      <motion.div 
-                                      className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm 
-                                                  border border-slate-700 rounded-2xl p-8 hover:border-blue-500/50 
-                                                  transition-all duration-300 w-full" 
-                                      whileHover={{ scale: 1.02, y: -4 }} 
+                                      <motion.div
+                                      className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm
+                                                  border border-slate-700 rounded-2xl p-8 hover:border-blue-500/50
+                                                  transition-all duration-300 w-full"
+                                      whileHover={{ scale: 1.02, y: -4 }}
                                       transition={{ type: 'spring', stiffness: 300 }}
                                       >
                                       <div className="flex items-center justify-between mb-4">
@@ -831,7 +603,7 @@ function App() {
                                       </button>
                                       <AnimatePresence>
                                           {isGreExpanded && (
-                                          <motion.div 
+                                          <motion.div
                                               initial={{ opacity: 0, height: 0 }}
                                               animate={{ opacity: 1, height: 'auto' }}
                                               exit={{ opacity: 0, height: 0 }}
@@ -857,7 +629,7 @@ function App() {
                                       </button>
                                       <AnimatePresence>
                                           {isToeflExpanded && (
-                                          <motion.div 
+                                          <motion.div
                                               initial={{ opacity: 0, height: 0 }}
                                               animate={{ opacity: 1, height: 'auto' }}
                                               exit={{ opacity: 0, height: 0 }}
@@ -884,7 +656,7 @@ function App() {
                                       </button>
                                       <AnimatePresence>
                                           {isGateExpanded && (
-                                          <motion.div 
+                                          <motion.div
                                               initial={{ opacity: 0, height: 0 }}
                                               animate={{ opacity: 1, height: 'auto' }}
                                               exit={{ opacity: 0, height: 0 }}
