@@ -5,12 +5,16 @@ import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
 import Timeline from "./Timeline";
 import { Marquee } from "./components/magicui/marquee";
 import { cn } from "./lib/utils";
+import { Carousel } from "./components/ui/carousel";
 
 // Import company logos
 import iitKharagpurLogo from './assets/iit-kharagpur-logo.png';
 import axtriaLogo from './assets/axtria-logo.png';
 import virtuallyTestingLogo from './assets/virtually-testing-logo.png';
 import glitchBackground from './assets/glitch-background.jpg';
+import publicationImage1 from './assets/publication1.png';
+import publicationImage2 from './assets/publication2.png';
+import publicationImage3 from './assets/publication3.png';
 
 
 // --- Reusable Animated Counter Component ---
@@ -145,44 +149,6 @@ const projects = [
     </a>
   );
 
-  const PublicationCard = ({ pub, openModal }) => (
-    <figure
-        className={cn(
-            "relative w-96 h-full cursor-pointer overflow-hidden rounded-xl border p-6 flex flex-col",
-            "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-            "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
-        )}
-    >
-        <div className="flex-grow">
-            <div className="flex items-center gap-3 mb-4">
-                <span className={`text-xs ${pub.statusColor} px-3 py-1 rounded-full`}>{pub.status}</span>
-                <span className="text-xs text-slate-400">{pub.meta}</span>
-            </div>
-            <h3 className="text-lg font-bold text-white mb-3">{pub.title}</h3>
-            <p className="text-sm text-slate-300 leading-relaxed mb-4">{pub.description}</p>
-            <div className="flex flex-wrap gap-2">
-                {pub.tags.map(tag => <span key={tag} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">{tag}</span>)}
-            </div>
-        </div>
-        <div className="flex items-center gap-3 mt-6">
-            <button onClick={() => openModal(pub.details)} className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors w-full sm:w-auto">
-                More details
-            </button>
-            {pub.codeLink ? (
-                <a href={pub.codeLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border border-slate-600 hover:border-blue-500 text-slate-300 hover:text-white px-6 py-2 rounded-lg font-semibold transition-colors text-center w-full sm:w-auto">
-                    <Github className="w-4 h-4 mr-2" />
-                    View Code
-                </a>
-            ) : (
-                <button className="border border-slate-600 text-slate-400 px-6 py-2 rounded-lg font-semibold cursor-not-allowed w-full sm:w-auto">
-                    Code Soon
-                </button>
-            )}
-        </div>
-    </figure>
-);
-
-
 function App() {
   const heroRef = React.useRef<HTMLDivElement>(null);
   const floatingElementsRef = React.useRef<HTMLDivElement>(null);
@@ -247,6 +213,7 @@ function App() {
   const publications = [
       {
         id: 'osteoarthritis',
+        image: publicationImage1,
         status: 'To be published soon',
         statusColor: 'bg-green-500/20 text-green-300',
         meta: 'ISAI 2025 • Springer',
@@ -266,6 +233,7 @@ function App() {
       },
       {
         id: 'osteoporosis',
+        image: publicationImage2,
         status: 'Under Review',
         statusColor: 'bg-yellow-500/20 text-yellow-300',
         meta: 'ICDSINC 2025',
@@ -285,6 +253,7 @@ function App() {
       },
       {
         id: 'ctReconstruction',
+        image: publicationImage3,
         status: 'In Preparation',
         statusColor: 'bg-blue-500/20 text-blue-300',
         meta: '2025',
@@ -303,6 +272,9 @@ function App() {
         codeLink: null
       }
   ];
+  
+  const firstRow = projects.slice(0, Math.ceil(projects.length / 2));
+  const secondRow = projects.slice(Math.ceil(projects.length / 2));
 
   // --- Animation Variants ---
   const sectionVariants = {
@@ -478,14 +450,8 @@ function App() {
                           <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Research Publications</h2>
                           <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Contributing to the advancement of AI and computer vision through peer-reviewed research</p>
                       </div>
-                       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-                          <Marquee pauseOnHover className="[--duration:10s]">
-                            {publications.map((pub) => (
-                                <PublicationCard key={pub.id} pub={pub} openModal={openModal} />
-                            ))}
-                          </Marquee>
-                          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-stone-900"></div>
-                          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-stone-900"></div>
+                      <div className="relative overflow-hidden w-full h-full py-20">
+                          <Carousel slides={publications} openModal={openModal} />
                       </div>
                   </div>
               </motion.section>
@@ -498,7 +464,12 @@ function App() {
                       </div>
                       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
                             <Marquee pauseOnHover className="[--duration:20s]">
-                                {projects.map((project) => (
+                                {firstRow.map((project) => (
+                                    <ProjectCard key={project.name} {...project} />
+                                ))}
+                            </Marquee>
+                            <Marquee reverse pauseOnHover className="[--duration:20s]">
+                                {secondRow.map((project) => (
                                     <ProjectCard key={project.name} {...project} />
                                 ))}
                             </Marquee>
