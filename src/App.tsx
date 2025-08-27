@@ -2,7 +2,7 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import { ChevronDown, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X } from 'lucide-react';
 import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
-import Timeline from "./Timeline";
+import { TimelineDemo } from "./Timeline";
 import { Marquee } from "./components/magicui/marquee";
 import { cn } from "./lib/utils";
 import { Carousel } from "./components/ui/carousel";
@@ -277,19 +277,18 @@ function App() {
                 <main className="container mx-auto px-6">
                     <motion.section id="experience" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                         <div className="max-w-7xl mx-auto">
-                            <div className="text-center mb-16">
-                                <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Timeline</h2>
-                                <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Timeline showcasing major points in my Education [left] and Internships [right]</p>
-                            </div>
-                            <Timeline />
+                            <TimelineDemo />
                         </div>
                     </motion.section>
 
                     <motion.section id="publications" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                         <div className="max-w-7xl mx-auto">
-                            <div className="text-center mb-16">
-                                <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Research Publications</h2>
-                                <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Contributing to the advancement of AI and computer vision through peer-reviewed research</p>
+                            <div className="mb-16">
+                                <h2 className="text-4xl sm:text-5xl font-black mb-6 pb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 flex items-center">
+                                    <BookmarkIcon size={40} className="mr-4 text-purple-400" />
+                                    Research Publications
+                                </h2>
+                                <p className="text-md md:text-lg text-slate-400 max-w-3xl">Contributing to the advancement of AI and computer vision through peer-reviewed research</p>
                             </div>
                             <div className="relative overflow-hidden w-full h-full py-20">
                                 <Carousel slides={publications} openModal={openModal} />
@@ -299,12 +298,12 @@ function App() {
 
                     <motion.section id="projects" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                         <div className="max-w-7xl mx-auto">
-                            <div className="text-center mb-16">
-                                <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white flex items-center justify-center">
+                            <div className="mb-16">
+                                <h2 className="text-4xl sm:text-5xl font-black mb-6 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 pb-2">
                                     <BlocksIcon size={40} className="mr-4 text-blue-400" />
                                     Featured Projects
                                 </h2>
-                                <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Some more open-source implementations and practical applications of AI/ML concepts</p>
+                                <p className="text-md md:text-lg text-slate-400 max-w-3xl">Some more open-source implementations and practical applications of AI/ML concepts</p>
                             </div>
                             <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
                                 <Marquee pauseOnHover className="[--duration:20s]">{firstRow.map((project) => (<ProjectCard key={project.name} {...project} />))}</Marquee>
@@ -318,12 +317,12 @@ function App() {
 
                     <motion.section id="education" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                         <div className="max-w-7xl mx-auto">
-                            <div className="text-center mb-16">
-                                <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white flex items-center justify-center">
+                            <div className="mb-16">
+                                <h2 className="text-4xl sm:text-5xl font-black mb-6 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 pb-2">
                                     <StarIcon size={40} className="mr-4 text-yellow-400" />
                                     Awards & Test Scores
                                 </h2>
-                                <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Achievements & Test Scores</p>
+                                <p className="text-md md:text-lg text-slate-400 max-w-3xl">Achievements & Test Scores</p>
                             </div>
                             <div className="grid lg:grid-cols-2 gap-8 lg:items-start">
                                 <div>
@@ -383,12 +382,12 @@ function App() {
 
                                         <motion.section id="skills" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                         <div className="max-w-7xl mx-auto">
-                            <div className="text-center mb-16">
-                                <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white flex items-center justify-center">
+                            <div className="mb-16">
+                                <h2 className="text-4xl sm:text-5xl font-black mb-6 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 pb-2">
                                     <BoltIcon size={40} className="mr-4 text-yellow-400" />
                                     Technical Expertise
                                 </h2>
-                                <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">My skill set spanning AI/ML, Computer Vision, and Data Science</p>
+                                <p className="text-md md:text-lg text-slate-400 max-w-3xl">My skill set spanning AI/ML, Computer Vision, and Data Science</p>
                             </div>
                             <div className="grid lg:grid-cols-3 gap-8 lg:items-start">
                                 {Object.entries(skills).map(([category, skillList]) => (
