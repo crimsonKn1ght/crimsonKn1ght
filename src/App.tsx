@@ -283,7 +283,7 @@ function App() {
 
                     <motion.section id="publications" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                         <div className="max-w-7xl mx-auto">
-                            <div className="mb-16">
+                            <div className="mb-2">
                                 <h2 className="text-4xl sm:text-5xl font-black mb-6 pb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 flex items-center">
                                     <BookmarkIcon size={40} className="mr-4 text-purple-400" />
                                     Research Publications
