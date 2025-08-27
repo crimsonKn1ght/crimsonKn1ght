@@ -1,5 +1,7 @@
 import React from 'react';
 import { Github, Mail, Brain } from 'lucide-react';
+// Correct the import path to where the shadcn CLI added the icon
+import { AtomIcon } from '@/components/ui/AtomIcon'; 
 
 const ResearchStatement = () => {
   return (
@@ -7,7 +9,10 @@ const ResearchStatement = () => {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 bg-stone-900/80 backdrop-blur-sm z-50">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="/" className="text-xl font-bold text-white">Gourab Roy</a>
+          <a href="/" className="text-xl font-bold text-white flex items-center">
+            <Brain className="w-6 h-6 mr-2" />
+            Gourab Roy
+          </a>
           <nav className="hidden md:flex space-x-8">
             <a href="/" className="text-gray-300 hover:text-blue-400 transition-colors">Back to Portfolio</a>
           </nav>
@@ -33,7 +38,11 @@ const ResearchStatement = () => {
         {/* Introduction Section */}
         <section id="about" className="py-20 bg-stone-950/50">
             <div className="container mx-auto px-6">
-                 <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">Introduction & Motivation</h2>
+                 <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent flex items-center justify-center">
+                    {/* The change is in the className below */}
+                    <AtomIcon className="w-12 h-12 mr-4 text-blue-400" />
+                    Introduction & Motivation
+                </h2>
                 <div className="max-w-4xl mx-auto text-lg text-gray-300 leading-relaxed text-center">
                     <p>
                         3D Gaussian Splatting (3DGS) has emerged as a state-of-the-art technique for real-time rendering and reconstruction, establishing itself as a compelling foundation for my doctoral research. My work aims to leverage the capabilities of 3DGS to address core challenges in 4D dynamic scene reconstruction, pushing the boundaries of what's possible in capturing and understanding our dynamic world.
@@ -53,7 +62,7 @@ const ResearchStatement = () => {
                         <p className="mb-4 text-gray-400 flex-grow">Developed a model combining a spatial attention mechanism with hierarchical feature fusion, emphasizing medically significant areas to learn both fine-grained local details and global joint structures.</p>
                         <div className="mt-auto">
                            <span className="inline-block bg-green-500 text-white text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">🏆 Best Paper Award, ISAI 2025</span>
-                           <a href="https://github.com/crimsonKn1ght/Code-OA-detection-model" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-blue-400 font-semibold hover:text-blue-300">View Code &rarr;</a>
+                           <a href="https://github.com/crimsonkn1ght/Code-OA-detection-model" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-blue-400 font-semibold hover:text-blue-300">View Code &rarr;</a>
                         </div>
                     </div>
                     <div className="bg-stone-800/50 border border-stone-700 rounded-2xl p-8 flex flex-col hover:border-blue-500/50 transition-all duration-300">
@@ -61,7 +70,7 @@ const ResearchStatement = () => {
                         <p className="mb-4 text-gray-400 flex-grow">Proposed a hybrid method combining a CBAM-enhanced U-Net with handcrafted texture features for osteoporosis classification from sparse X-ray data, achieving strong performance without large-scale training data.</p>
                          <div className="mt-auto">
                            <span className="inline-block bg-yellow-500 text-white text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">📄 Submitted to ICDSINC 2025</span>
-                           <a href="https://github.com/crimsonKn1ght/Code-OP-detection-model" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-blue-400 font-semibold hover:text-blue-300">View Code &rarr;</a>
+                           <a href="https://github.com/crimsonkn1ght/Code-OP-detection-model" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-blue-400 font-semibold hover:text-blue-300">View Code &rarr;</a>
                         </div>
                     </div>
                     <div className="bg-stone-800/50 border border-stone-700 rounded-2xl p-8 flex flex-col hover:border-blue-500/50 transition-all duration-300">
@@ -120,7 +129,7 @@ const ResearchStatement = () => {
                 I'm actively seeking PhD opportunities for Fall 2025 and am eager to discuss my research. Please feel free to reach out.
             </p>
             <div className="mt-8 flex justify-center space-x-4">
-                <a href="https://github.com/crimsonKn1ght/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://github.com/crimsonkn1ght/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                     <span className="sr-only">GitHub</span>
                     <Github className="w-8 h-8" />
                 </a>

@@ -1,12 +1,24 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { Mail, Linkedin, Github, FileText, ChevronDown, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X } from 'lucide-react';
+import { ChevronDown, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X } from 'lucide-react';
 import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
 import Timeline from "./Timeline";
 import { Marquee } from "./components/magicui/marquee";
 import { cn } from "./lib/utils";
 import { Carousel } from "./components/ui/carousel";
 import { CometCard } from "./components/ui/comet-card";
+
+// Animated Icons
+import { ContactIcon } from "./components/ui/ContactIcon";
+import { LinkedInIcon } from "./components/ui/LinkedInIcon";
+import { MailsIcon } from './components/ui/MailsIcon';
+import { GithubIcon } from './components/ui/GithubIcon';
+import { BookmarkIcon } from './components/ui/BookmarkIcon';
+import { BlocksIcon } from './components/ui/BlocksIcon';
+import { BoltIcon } from './components/ui/BoltIcon';
+import { StarIcon } from './components/ui/StarIcon';
+import { CircleChevronDownIcon } from './components/ui/CircleChevronDownIcon';
+
 
 // Import company logos
 import glitchBackground from './assets/glitch-background.jpg';
@@ -106,7 +118,7 @@ const projects = [
     { name: "My AI/ML Implementations", description: "Collection of AI and ML models and algorithms built from scratch for learning.", tags: ["From Scratch", "Algorithms"], link: "https://github.com/crimsonkn1ght/my-ai-ml-codes", icon: <Code className="w-6 h-6 text-white" /> },
     { name: "dirStrike", description: "High-performance directory and file bruteforcing tool for web security assessments.", tags: ["Security", "Penetration Testing"], link: "https://github.com/crimsonkn1ght/dirstrike", icon: <Zap className="w-6 h-6 text-white" /> },
     { name: "Image generation tool with diffusion models", description: "Image generation using huggingface models.", tags: ["huggingface models", "diffusion models"], link: "https://github.com/crimsonKn1ght/img-gen", icon: <Cpu className="w-6 h-6 text-white" /> },
-    { name: "PDF OCR and summarizer", description: "Multimodal PDF Q&A Assistant that allows you to upload PDFs and ask questions about their content.", tags: ["OCR", "PDF", "Q&A"], link: "https://github.com/crimsonkn1ght/pdf-qna", icon: <FileText className="w-6 h-6 text-white" /> }
+    { name: "PDF OCR and summarizer", description: "Multimodal PDF Q&A Assistant that allows you to upload PDFs and ask questions about their content.", tags: ["OCR", "PDF", "Q&A"], link: "https://github.com/crimsonkn1ght/pdf-qna", icon: <BookmarkIcon className="w-6 h-6 text-white" /> }
 ];
 
 const ProjectCard = ({ name, description, tags, link, icon }) => (
@@ -123,7 +135,7 @@ const ProjectCard = ({ name, description, tags, link, icon }) => (
                 {tags.map(tag => <span key={tag} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">{tag}</span>)}
             </div>
             <div className="inline-flex items-center text-blue-400 font-semibold hover:text-blue-300 transition-colors mt-auto">
-                <Github className="w-4 h-4 mr-2" />
+                <GithubIcon className="w-4 h-4 mr-2" />
                 View on GitHub
             </div>
         </figure>
@@ -212,7 +224,8 @@ function App() {
                         <a href="#projects" className="hover:text-white transition-colors">Projects</a>
                         <a href="#skills" className="hover:text-white transition-colors">Technical Expertise</a>
                         <a href="#education" className="hover:text-white transition-colors">Education & Recognition</a>
-                        <a href="mailto:gourab.roy.aiml@gmail.com"  target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg text-white transition-colors">
+                        <a href="mailto:gourab.roy.aiml@gmail.com"  target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg text-white transition-colors flex items-center">
+                            <ContactIcon className="w-5 h-5 mr-2" />
                             Contact
                         </a>
                         </div>
@@ -235,16 +248,28 @@ function App() {
                         </motion.div>
                         <motion.p className="text-slate-400 text-base md:text-xl mb-12 max-w-2xl mx-auto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.8 }}>Specializing in deep learning for computer vision, developing robust architectures for challenging environments</motion.p>
                         <motion.div className="flex flex-wrap justify-center gap-2 sm:space-x-6 mb-32" variants={listContainerVariants} initial="hidden" animate="visible" transition={{ delay: 1 }}>
-                            <motion.a variants={listItemVariants} href="mailto:gourab.roy.aiml@gmail.com" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300"><Mail className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-hover:text-blue-400 transition-colors" /><span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">Email</span></motion.a>
-                            <motion.a variants={listItemVariants} href="https://www.linkedin.com/in/gourab-roy/" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300"><Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-hover:text-blue-400 transition-colors" /><span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">LinkedIn</span></motion.a>
-                            <motion.a variants={listItemVariants} href="https://github.com/crimsonkn1ght/" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-slate-500/20 backdrop-blur-sm border border-white/10 hover:border-slate-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300"><Github className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-hover:text-slate-300 transition-colors" /><span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">GitHub</span></motion.a>
-                            <motion.a variants={listItemVariants} href="/research.html" className="group flex items-center space-x-2 bg-white/5 hover:bg-purple-500/20 backdrop-blur-sm border border-white/10 hover:border-purple-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300"><FileText className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-hover:text-purple-400 transition-colors" /><span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">Research</span></motion.a>
+                            <motion.a variants={listItemVariants} href="mailto:gourab.roy.aiml@gmail.com" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
+                                <MailsIcon size={20} className="text-slate-400 group-hover:text-blue-400 transition-colors" />
+                                <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">Email</span>
+                            </motion.a>
+                            <motion.a variants={listItemVariants} href="https://www.linkedin.com/in/gourab-roy/" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
+                                <LinkedInIcon size={20} className="text-slate-400 group-hover:text-blue-400 transition-colors" />
+                                <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">LinkedIn</span>
+                            </motion.a>
+                            <motion.a variants={listItemVariants} href="https://github.com/crimsonkn1ght/" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-slate-500/20 backdrop-blur-sm border border-white/10 hover:border-slate-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
+                                <GithubIcon size={20} className="text-slate-400 group-hover:text-slate-300 transition-colors" />
+                                <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">GitHub</span>
+                            </motion.a>
+                            <motion.a variants={listItemVariants} href="/research.html" className="group flex items-center space-x-2 bg-white/5 hover:bg-purple-500/20 backdrop-blur-sm border border-white/10 hover:border-purple-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
+                                <BookmarkIcon size={20} className="text-slate-400 group-hover:text-purple-400 transition-colors" />
+                                <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">Research</span>
+                            </motion.a>
                         </motion.div>
                     </div>
                     <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2">
                         <span className="text-sm text-slate-400">Scroll to explore</span>
                         <button onClick={scrollToContent} className="w-10 h-10 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full flex items-center justify-center transition-all duration-300">
-                            <ChevronDown className="w-5 h-5 animate-bounce" />
+                            <CircleChevronDownIcon size={20} className="text-slate-400" />
                         </button>
                     </div>
                 </div>
@@ -275,7 +300,10 @@ function App() {
                     <motion.section id="projects" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                         <div className="max-w-7xl mx-auto">
                             <div className="text-center mb-16">
-                                <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Featured Projects</h2>
+                                <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white flex items-center justify-center">
+                                    <BlocksIcon size={40} className="mr-4 text-blue-400" />
+                                    Featured Projects
+                                </h2>
                                 <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Some more open-source implementations and practical applications of AI/ML concepts</p>
                             </div>
                             <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
@@ -287,43 +315,14 @@ function App() {
                         </div>
                     </motion.section>
 
-                    <motion.section id="skills" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                        <div className="max-w-7xl mx-auto">
-                            <div className="text-center mb-16">
-                                <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Technical Expertise</h2>
-                                <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">My skill set spanning AI/ML, Computer Vision, and Data Science</p>
-                            </div>
-                            <div className="grid lg:grid-cols-3 gap-8 lg:items-start">
-                                {Object.entries(skills).map(([category, skillList]) => (
-                                    <CometCard key={category} rotateDepth={10} translateDepth={10}>
-                                        <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 h-full">
-                                            <div className="flex items-center mb-6">
-                                                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
-                                                    {category === "Programming & Frameworks" && <Code className="w-6 h-6 text-white" />}
-                                                    {category === "Data Science & Computer Vision" && <Eye className="w-6 h-6 text-white" />}
-                                                    {category === "Tools & Platforms" && <Database className="w-6 h-6 text-white" />}
-                                                </div>
-                                                <h3 className="text-xl font-bold text-white">{category}</h3>
-                                            </div>
-                                            <motion.div className="grid grid-cols-2 gap-4" variants={listContainerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                                                {skillList.map((skill) => (
-                                                    <motion.div key={skill.name} variants={listItemVariants} className={`flex items-center space-x-3 bg-slate-700/50 hover:bg-blue-500/20 border border-slate-600 hover:border-blue-500/50 p-3 rounded-lg transition-all duration-300 ${skill.name.length > 15 ? 'col-span-2' : ''}`}>
-                                                        {skill.logo ? <img src={skill.logo} alt={skill.name} className="w-6 h-6" /> : <div className="w-6 h-6 text-white">{skill.icon}</div>}
-                                                        <span className="font-medium text-slate-300 hover:text-white transition-colors duration-300">{skill.name}</span>
-                                                    </motion.div>
-                                                ))}
-                                            </motion.div>
-                                        </div>
-                                    </CometCard>
-                                ))}
-                            </div>
-                        </div>
-                    </motion.section>
 
                     <motion.section id="education" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                         <div className="max-w-7xl mx-auto">
                             <div className="text-center mb-16">
-                                <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">Awards & Test Scores</h2>
+                                <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white flex items-center justify-center">
+                                    <StarIcon size={40} className="mr-4 text-yellow-400" />
+                                    Awards & Test Scores
+                                </h2>
                                 <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">Achievements & Test Scores</p>
                             </div>
                             <div className="grid lg:grid-cols-2 gap-8 lg:items-start">
@@ -381,6 +380,43 @@ function App() {
                             </div>
                         </div>
                     </motion.section>
+
+                                        <motion.section id="skills" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+                        <div className="max-w-7xl mx-auto">
+                            <div className="text-center mb-16">
+                                <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white flex items-center justify-center">
+                                    <BoltIcon size={40} className="mr-4 text-yellow-400" />
+                                    Technical Expertise
+                                </h2>
+                                <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">My skill set spanning AI/ML, Computer Vision, and Data Science</p>
+                            </div>
+                            <div className="grid lg:grid-cols-3 gap-8 lg:items-start">
+                                {Object.entries(skills).map(([category, skillList]) => (
+                                    <CometCard key={category} rotateDepth={10} translateDepth={10}>
+                                        <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 h-full">
+                                            <div className="flex items-center mb-6">
+                                                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
+                                                    {category === "Programming & Frameworks" && <Code className="w-6 h-6 text-white" />}
+                                                    {category === "Data Science & Computer Vision" && <Eye className="w-6 h-6 text-white" />}
+                                                    {category === "Tools & Platforms" && <Database className="w-6 h-6 text-white" />}
+                                                </div>
+                                                <h3 className="text-xl font-bold text-white">{category}</h3>
+                                            </div>
+                                            <motion.div className="grid grid-cols-2 gap-4" variants={listContainerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+                                                {skillList.map((skill) => (
+                                                    <motion.div key={skill.name} variants={listItemVariants} className={`flex items-center space-x-3 bg-slate-700/50 hover:bg-blue-500/20 border border-slate-600 hover:border-blue-500/50 p-3 rounded-lg transition-all duration-300 ${skill.name.length > 15 ? 'col-span-2' : ''}`}>
+                                                        {skill.logo ? <img src={skill.logo} alt={skill.name} className="w-6 h-6" /> : <div className="w-6 h-6 text-white">{skill.icon}</div>}
+                                                        <span className="font-medium text-slate-300 hover:text-white transition-colors duration-300">{skill.name}</span>
+                                                    </motion.div>
+                                                ))}
+                                            </motion.div>
+                                        </div>
+                                    </CometCard>
+                                ))}
+                            </div>
+                        </div>
+                    </motion.section>
+
                 </main>
 
                 <footer className="bg-slate-900/30 border-t border-slate-800 mt-24">
@@ -395,9 +431,9 @@ function App() {
                                 </div>
                                 <p className="text-slate-400 mb-6">AI/ML researcher passionate about advancing computer vision and medical imaging through innovative deep learning solutions.</p>
                                 <div className="flex space-x-4">
-                                    <a href="mailto:gourab.roy.aiml@gmail.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-400 transition-colors"><Mail className="w-5 h-5" /></a>
-                                    <a href="https://www.linkedin.com/in/gourab-roy/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-400 transition-colors"><Linkedin className="w-5 h-5" /></a>
-                                    <a href="https://github.com/crimsonkn1ght/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-400 transition-colors"><Github className="w-5 h-5" /></a>
+                                    <a href="mailto:gourab.roy.aiml@gmail.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-400 transition-colors"><MailsIcon className="w-5 h-5" /></a>
+                                    <a href="https://www.linkedin.com/in/gourab-roy/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-400 transition-colors"><LinkedInIcon className="w-5 h-5" /></a>
+                                    <a href="https://github.com/crimsonkn1ght/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-400 transition-colors"><GithubIcon className="w-5 h-5" /></a>
                                 </div>
                             </div>
                             <div className="text-right">
