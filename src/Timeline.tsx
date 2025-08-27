@@ -75,7 +75,7 @@ export function TimelineDemo() {
               <img
                 src={axtriaLogo}
                 alt="Axtria"
-                className="max-h-full max-w-full object-contain"
+                className="max-h-[70%] max-w-[70%] object-contain"
               />
             </div>
           </div>
@@ -87,12 +87,16 @@ export function TimelineDemo() {
       content: (
         <div>
           <div className="mb-8">
-            <h4 className="font-bold text-lg mb-1 text-white">B.Tech in Electronics & Telecommunications</h4>
+            <h4 className="font-bold text-lg mb-1 text-white">B.Tech in Electronics & Telecommunications Engineering</h4>
             <p className="text-blue-400 font-medium">IIEST Shibpur</p>
             <p className="text-xs text-slate-400 mb-2">2019 – 2023</p>
             <p className="text-sm text-slate-300">
               GPA: 7.58/10.
             </p>
+            <ul className="list-disc list-inside text-sm text-slate-400 mt-2 space-y-1">
+                <li><b>Relevant coursework included:</b> Signals and Systems, Digital Signal Processing, and Image Processing.</li>
+                <li>Graduated with First Class.</li>
+            </ul>
             <div className="mt-4 h-24 flex items-center justify-center">
               <img
                   src={iiestShibpurLogo}

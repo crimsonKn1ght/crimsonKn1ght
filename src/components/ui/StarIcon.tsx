@@ -2,56 +2,28 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
-import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
-
-export interface StarIconHandle {
-	startAnimation: () => void;
-	stopAnimation: () => void;
-}
+import { motion } from "motion/react";
+import { forwardRef } from "react";
 
 interface StarIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
 }
 
-const StarIcon = forwardRef<StarIconHandle, StarIconProps>(
+const StarIcon = forwardRef<HTMLDivElement, StarIconProps>(
 	({ className, size = 28, ...props }, ref) => {
-		const controls = useAnimation();
-		const isControlled = useRef(false);
-
-		useImperativeHandle(ref, () => {
-			isControlled.current = true;
-			return {
-				startAnimation: () => controls.start("animate"),
-				stopAnimation: () => controls.start("idle"),
-			};
-		});
-
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) controls.start("animate");
-		}, [controls]);
-
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) controls.start("idle");
-		}, [controls]);
 
 		const starVariants: Variants = {
-			idle: {
-				scale: [1, 1.02, 0.98, 1],
-				transition: { duration: 2.5, repeat: Infinity, ease: "easeInOut" },
-			},
 			animate: {
 				scale: [1, 1.2, 0.95, 1.05, 1],
 				rotate: [0, -10, 10, 0],
-				transition: { duration: 1.2, ease: "easeInOut" },
+				transition: { duration: 1.2, ease: "easeInOut", repeat: Infinity, repeatDelay: 1.5 },
 			},
 		};
 
 		return (
 			<motion.div
+				ref={ref}
 				className={cn("inline-flex", className)}
-				onMouseEnter={handleEnter}
-				onMouseLeave={handleLeave}
 				{...props}
 			>
 				<motion.svg
@@ -64,8 +36,7 @@ const StarIcon = forwardRef<StarIconHandle, StarIconProps>(
 					strokeWidth="2"
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					animate={controls}
-					initial="idle"
+					animate="animate"
 					variants={starVariants}
 				>
 					<motion.path

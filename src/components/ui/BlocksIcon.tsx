@@ -2,82 +2,58 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
-import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
-
-export interface BlocksIconHandle {
-	startAnimation: () => void;
-	stopAnimation: () => void;
-}
+import { motion } from "motion/react";
+import { forwardRef } from "react";
 
 interface BlocksIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
 }
 
-const BlocksIcon = forwardRef<BlocksIconHandle, BlocksIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
-		const controls = useAnimation();
-		const isControlled = useRef(false);
-
-		useImperativeHandle(ref, () => {
-			isControlled.current = true;
-			return {
-				startAnimation: () => controls.start("animate"),
-				stopAnimation: () => controls.start("normal"),
-			};
-		});
-
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) controls.start("animate");
-		}, [controls]);
-
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) controls.start("normal");
-		}, [controls]);
+const BlocksIcon = forwardRef<HTMLDivElement, BlocksIconProps>(
+	({ className, size = 28, ...props }, ref) => {
 
 		const svgVariants: Variants = {
-			normal: { rotate: 0, scale: 1 },
 			animate: {
 				rotate: [0, -2, 2, 0],
 				scale: [1, 1.05, 0.95, 1],
 				transition: {
 					duration: 1.6,
 					ease: [0.42, 0, 0.58, 1],
-					repeat: 0,
+					repeat: Infinity,
+          repeatDelay: 1.2
 				},
 			},
 		};
 
 		const pathVariants: Variants = {
-			normal: { pathLength: 1, opacity: 1 },
 			animate: {
 				pathLength: [0, 1],
 				opacity: [0.5, 1],
 				transition: {
 					duration: 1.4,
 					ease: [0.42, 0, 0.58, 1],
-					repeat: 0,
+					repeat: Infinity,
+          repeatDelay: 1.4
 				},
 			},
 		};
 
 		const rectVariants: Variants = {
-			normal: { scale: 1 },
 			animate: {
 				scale: [1, 1.2, 0.9, 1],
 				transition: {
 					duration: 1.2,
 					ease: [0.42, 0, 0.58, 1],
-					repeat: 0,
+					repeat: Infinity,
+          repeatDelay: 1.6
 				},
 			},
 		};
 
 		return (
 			<motion.div
+				ref={ref}
 				className={cn("inline-flex items-center justify-center", className)}
-				onMouseEnter={handleEnter}
-				onMouseLeave={handleLeave}
 				{...props}
 			>
 				<motion.svg
@@ -90,8 +66,7 @@ const BlocksIcon = forwardRef<BlocksIconHandle, BlocksIconProps>(
 					strokeWidth="2"
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					animate={controls}
-					initial="normal"
+					animate="animate"
 					variants={svgVariants}
 				>
 					<motion.path

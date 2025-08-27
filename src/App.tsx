@@ -306,8 +306,8 @@ function App() {
                                 <p className="text-md md:text-lg text-slate-400 max-w-3xl">Some more open-source implementations and practical applications of AI/ML concepts</p>
                             </div>
                             <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-                                <Marquee pauseOnHover className="[--duration:20s]">{firstRow.map((project) => (<ProjectCard key={project.name} {...project} />))}</Marquee>
-                                <Marquee reverse pauseOnHover className="[--duration:20s]">{secondRow.map((project) => (<ProjectCard key={project.name} {...project} />))}</Marquee>
+                                <Marquee pauseOnHover className="[--duration:10s]">{firstRow.map((project) => (<ProjectCard key={project.name} {...project} />))}</Marquee>
+                                <Marquee reverse pauseOnHover className="[--duration:10s]">{secondRow.map((project) => (<ProjectCard key={project.name} {...project} />))}</Marquee>
                                 <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-stone-900"></div>
                                 <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-stone-900"></div>
                             </div>

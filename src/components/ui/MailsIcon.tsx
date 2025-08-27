@@ -2,82 +2,59 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
-import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
+import { motion } from "motion/react";
+import { forwardRef } from "react";
 
-export interface MailsIconHandle {
-	startAnimation: () => void;
-	stopAnimation: () => void;
-}
 
 interface MailsIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
 }
 
-const MailsIcon = forwardRef<MailsIconHandle, MailsIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
-		const controls = useAnimation();
-		const isControlled = useRef(false);
-
-		useImperativeHandle(ref, () => {
-			isControlled.current = true;
-			return {
-				startAnimation: () => controls.start("animate"),
-				stopAnimation: () => controls.start("normal"),
-			};
-		});
-
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) controls.start("animate");
-		}, [controls]);
-
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) controls.start("normal");
-		}, [controls]);
+const MailsIcon = forwardRef<HTMLDivElement, MailsIconProps>(
+	({ className, size = 28, ...props }, ref) => {
 
 		const svgVariants: Variants = {
-			normal: { y: 0, scale: 1 },
 			animate: {
 				y: [0, -3, 3, -2, 0],
 				scale: [1, 1.05, 0.95, 1],
 				transition: {
 					duration: 1.6,
 					ease: [0.42, 0, 0.58, 1],
-					repeat: 0,
+					repeat: Infinity,
+          repeatDelay: 1.5,
 				},
 			},
 		};
 
 		const flapVariants: Variants = {
-			normal: { rotate: 0, opacity: 1 },
 			animate: {
 				rotate: [-4, 4, -3, 0],
 				opacity: [1, 0.7, 1],
 				transition: {
 					duration: 1.2,
 					ease: [0.42, 0, 0.58, 1],
-					repeat: 0,
+					repeat: Infinity,
+          repeatDelay: 1.7,
 				},
 			},
 		};
 
 		const outlineVariants: Variants = {
-			normal: { opacity: 1 },
 			animate: {
 				opacity: [0.7, 1, 0.5, 1],
 				transition: {
 					duration: 1.4,
 					ease: [0.42, 0, 0.58, 1],
-					repeat: 0,
+					repeat: Infinity,
+          repeatDelay: 1,
 				},
 			},
 		};
 
 		return (
 			<motion.div
+				ref={ref}
 				className={cn("inline-flex items-center justify-center", className)}
-				onMouseEnter={handleEnter}
-				onMouseLeave={handleLeave}
 				{...props}
 			>
 				<motion.svg
@@ -90,8 +67,7 @@ const MailsIcon = forwardRef<MailsIconHandle, MailsIconProps>(
 					strokeWidth="2"
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					animate={controls}
-					initial="normal"
+					animate="animate"
 					variants={svgVariants}
 				>
 					<motion.path

@@ -2,62 +2,37 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
-import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
+import { motion } from "motion/react";
+import { forwardRef } from "react";
 
-export interface LinkedInIconHandle {
-	startAnimation: () => void;
-	stopAnimation: () => void;
-}
 
 interface LinkedInIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
 }
 
-const LinkedInIcon = forwardRef<LinkedInIconHandle, LinkedInIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
-		const controls = useAnimation();
-		const isControlled = useRef(false);
-
-		useImperativeHandle(ref, () => {
-			isControlled.current = true;
-			return {
-				startAnimation: () => controls.start("animate"),
-				stopAnimation: () => controls.start("normal"),
-			};
-		});
-
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) controls.start("animate");
-		}, [controls]);
-
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) controls.start("normal");
-		}, [controls]);
+const LinkedInIcon = forwardRef<HTMLDivElement, LinkedInIconProps>(
+	({ className, size = 28, ...props }, ref) => {
 
 		const iconVariants: Variants = {
-			normal: { scale: 1, rotate: 0 },
 			animate: {
 				scale: [1, 1.08, 0.95, 1],
 				rotate: [0, -3, 3, 0],
-				transition: { duration: 1.3, ease: "easeInOut", repeat: 0 },
+				transition: { duration: 1.3, ease: "easeInOut", repeat: Infinity, repeatDelay: 1 },
 			},
 		};
 
 		const drawVariants: Variants = {
-			normal: { pathLength: 1, opacity: 1 },
 			animate: {
 				pathLength: [0, 1],
 				opacity: [0.7, 1],
-				transition: { duration: 1.5, ease: "easeInOut", repeat: 0 },
+				transition: { duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 1.2 },
 			},
 		};
 
 		return (
 			<motion.div
+				ref={ref}
 				className={cn("inline-flex items-center justify-center", className)}
-				onMouseEnter={handleEnter}
-				onMouseLeave={handleLeave}
 				{...props}
 			>
 				<motion.svg
@@ -70,8 +45,7 @@ const LinkedInIcon = forwardRef<LinkedInIconHandle, LinkedInIconProps>(
 					strokeWidth="2"
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					animate={controls}
-					initial="normal"
+					animate="animate"
 					variants={iconVariants}
 				>
 					<motion.path

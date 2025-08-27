@@ -2,74 +2,35 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
-import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
-
-export interface BookmarkIconHandle {
-	startAnimation: () => void;
-	stopAnimation: () => void;
-}
+import { motion } from "motion/react";
+import { forwardRef } from "react";
 
 interface BookmarkIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
 }
 
-const BookmarkIcon = forwardRef<BookmarkIconHandle, BookmarkIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
-		const controls = useAnimation();
-		const sparkControls = useAnimation();
-		const isControlled = useRef(false);
-
-		useImperativeHandle(ref, () => {
-			isControlled.current = true;
-			return {
-				startAnimation: () => {
-					controls.start("animate");
-					sparkControls.start("animate");
-				},
-				stopAnimation: () => {
-					controls.start("normal");
-					sparkControls.start("normal");
-				},
-			};
-		});
-
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) {
-				controls.start("animate");
-				sparkControls.start("animate");
-			}
-		}, [controls, sparkControls]);
-
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) {
-				controls.start("normal");
-				sparkControls.start("normal");
-			}
-		}, [controls, sparkControls]);
+const BookmarkIcon = forwardRef<HTMLDivElement, BookmarkIconProps>(
+	({ className, size = 28, ...props }, ref) => {
 
 		const bookmarkVariants: Variants = {
-			normal: { scale: 1 },
 			animate: {
 				scale: [1, 1.15, 0.9, 1],
-				transition: { duration: 1.2, repeat: 0, ease: "easeInOut" },
+				transition: { duration: 1.2, repeat: Infinity, ease: "easeInOut", repeatDelay: 1.3 },
 			},
 		};
 
 		const sparkVariants: Variants = {
-			normal: { opacity: 0, scale: 0 },
 			animate: {
 				opacity: [0.8, 0, 0],
 				scale: [1, 1.5, 0],
-				transition: { duration: 1.2, repeat: 0, ease: "easeOut" },
+				transition: { duration: 1.2, repeat: Infinity, ease: "easeOut", repeatDelay: 1.3 },
 			},
 		};
 
 		return (
 			<motion.div
+				ref={ref}
 				className={cn("relative inline-flex", className)}
-				onMouseEnter={handleEnter}
-				onMouseLeave={handleLeave}
 				{...props}
 			>
 				<motion.svg
@@ -83,16 +44,14 @@ const BookmarkIcon = forwardRef<BookmarkIconHandle, BookmarkIconProps>(
 					strokeLinecap="round"
 					strokeLinejoin="round"
 					variants={bookmarkVariants}
-					animate={controls}
-					initial="normal"
+					animate="animate"
 				>
 					<path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
 				</motion.svg>
 
 				<motion.div
 					className="absolute -top-1 right-0"
-					animate={sparkControls}
-					initial="normal"
+					animate="animate"
 				>
 					<motion.svg
 						xmlns="http://www.w3.org/2000/svg"

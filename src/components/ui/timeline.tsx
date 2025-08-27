@@ -6,6 +6,7 @@ import {
   motion,
 } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
+import { RoadIcon } from "./RoadIcon"; // Import the new icon
 
 interface TimelineEntry {
   title: string;
@@ -38,7 +39,8 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       ref={containerRef}
     >
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-        <h2 className="text-2xl md:text-5xl mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 max-w-4xl font-bold pb-4">
+        <h2 className="text-2xl md:text-5xl mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 max-w-4xl font-bold pb-4 flex items-center">
+          <RoadIcon size={40} className="mr-4 text-cyan-400" />
           My Journey
         </h2>
         <p className="text-neutral-300 text-md md:text-lg max-w-sm">
