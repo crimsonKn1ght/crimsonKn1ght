@@ -10,7 +10,7 @@ import { CometCard } from "./components/ui/comet-card";
 
 // Animated Icons
 import { ContactIcon } from "./components/ui/ContactIcon";
-import { LinkedInIcon } from "./components/ui/LinkedInIcon";
+import { LinkedInIcon } from "./components/ui/LinkedinIcon";
 import { MailsIcon } from './components/ui/MailsIcon';
 import { GithubIcon } from './components/ui/GithubIcon';
 import { BookmarkIcon } from './components/ui/BookmarkIcon';
