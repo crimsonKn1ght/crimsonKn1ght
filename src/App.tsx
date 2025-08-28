@@ -26,6 +26,21 @@ import publicationImage1 from './assets/publication1.png';
 import publicationImage2 from './assets/publication2.png';
 import publicationImage3 from './assets/publication3.png';
 import awardImage from './assets/award.png';
+import img1 from './assets/img1.jpg';
+import img2 from './assets/img2.jpg';
+import img3 from './assets/img3.jpg';
+import img4 from './assets/img4.jpg';
+import img5 from './assets/img5.jpg';
+import img6 from './assets/img6.jpg';
+import badge1 from './assets/badge1.jpg';
+import badge2 from './assets/badge2.jpg';
+import badge3 from './assets/badge3.jpg';
+import badge4 from './assets/badge4.jpg';
+import badge5 from './assets/badge5.jpg';
+import badge6 from './assets/badge6.jpg';
+import badge7 from './assets/badge7.jpg';
+import badge8 from './assets/badge8.jpg';
+import badge9 from './assets/badge9.jpg';
 
 const skills = {
   "Programming & Frameworks": [
@@ -117,7 +132,7 @@ const projects = [
     { name: "Movie Recommender System", description: "Content-based filtering system that suggests movies using advanced feature extraction.", tags: ["Recommendation", "Filtering"], link: "https://github.com/crimsonkn1ght/movie-recommender", icon: <ChartBar className="w-6 h-6 text-white" /> },
     { name: "My AI/ML Implementations", description: "Collection of AI and ML models and algorithms built from scratch for learning.", tags: ["From Scratch", "Algorithms"], link: "https://github.com/crimsonkn1ght/my-ai-ml-codes", icon: <Code className="w-6 h-6 text-white" /> },
     { name: "dirStrike", description: "High-performance directory and file bruteforcing tool for web security assessments.", tags: ["Security", "Penetration Testing"], link: "https://github.com/crimsonkn1ght/dirstrike", icon: <Zap className="w-6 h-6 text-white" /> },
-    { name: "Image generation tool with diffusion models", description: "Image generation using huggingface models.", tags: ["huggingface models", "diffusion models"], link: "https://github.com/crimsonKn1ght/img-gen", icon: <Cpu className="w-6 h-6 text-white" /> },
+    { name: "Image generation tool with diffusion models", description: "Image generation using huggingface models.", tags: ["huggingface models", "diffusion models"], link: "https://github.com/crimsonkn1ght/img-gen", icon: <Cpu className="w-6 h-6 text-white" /> },
     { name: "PDF OCR and summarizer", description: "Multimodal PDF Q&A Assistant that allows you to upload PDFs and ask questions about their content.", tags: ["OCR", "PDF", "Q&A"], link: "https://github.com/crimsonkn1ght/pdf-qna", icon: <BookmarkIcon className="w-6 h-6 text-white" /> }
 ];
 
@@ -142,6 +157,24 @@ const ProjectCard = ({ name, description, tags, link, icon }) => (
     </a>
 );
 
+const CertificateCard = ({ title, image, link }) => (
+    <a href={link} target="_blank" rel="noopener noreferrer" className="w-full p-4 block">
+        <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-4 flex flex-col items-center text-center h-full hover:border-blue-500/50 transition-all duration-300">
+            <h4 className="text-sm font-bold text-white mb-2 flex-grow">{title}</h4>
+            <img src={image} alt={title} className="w-24 h-auto mt-2" />
+        </div>
+    </a>
+);
+
+const BadgeCard = ({ title, image, link }) => (
+    <a href={link} target="_blank" rel="noopener noreferrer" className="w-full p-4 block">
+        <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-4 flex flex-col items-center text-center h-full hover:border-blue-500/50 transition-all duration-300">
+            <h4 className="text-sm font-bold text-white mb-2 flex-grow">{title}</h4>
+            <img src={image} alt={title} className="w-24 h-auto mt-2" />
+        </div>
+    </a>
+);
+
 function App() {
     const heroRef = React.useRef<HTMLDivElement>(null);
     const floatingElementsRef = React.useRef<HTMLDivElement>(null);
@@ -149,6 +182,8 @@ function App() {
     const [isGreExpanded, setIsGreExpanded] = React.useState(false);
     const [isToeflExpanded, setIsToeflExpanded] = React.useState(false);
     const [isGateExpanded, setIsGateExpanded] = React.useState(false);
+    const awardSectionRef = React.useRef<HTMLDivElement>(null);
+    const [sliderHeight, setSliderHeight] = React.useState('auto');
 
     const openModal = (content) => setModalContent(content);
     const closeModal = () => setModalContent(null);
@@ -180,12 +215,22 @@ function App() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', smoothScrollHandler as EventListener);
         });
+        
+        const setSliderHeightFromAwardSection = () => {
+            if (awardSectionRef.current) {
+                setSliderHeight(`${awardSectionRef.current.offsetHeight}px`);
+            }
+        };
+
+        setSliderHeightFromAwardSection();
+        window.addEventListener('resize', setSliderHeightFromAwardSection);
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.removeEventListener('click', smoothScrollHandler as EventListener);
             });
+            window.removeEventListener('resize', setSliderHeightFromAwardSection);
         };
     }, []);
 
@@ -197,6 +242,27 @@ function App() {
         { id: 'osteoarthritis', image: publicationImage1, status: 'To be published soon', statusColor: 'bg-green-500/20 text-green-300', meta: 'ISAI 2025 • Springer', title: 'Knee Osteoarthritis Detection and Categorization using Deep Learning Models', description: 'Achieved 80.12% accuracy in classifying knee X-ray images using the Kellgren-Lawrence grading scale.', tags: ['Deep Learning', 'Medical Imaging', 'Classification'], details: { title: "Knee Osteoarthritis Detection and Categorization using Deep Learning Models", content: (<><p className="mb-4">To be published in the Proceedings of ISAI (2025), Lecture Notes in Networks and Systems (Springer).</p><p>This research achieved 80.12% accuracy in classifying knee X-ray images based on osteoarthritis severity using a deep learning model trained on the Kellgren-Lawrence (KL) grading scale.</p></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OA-detection-model' },
         { id: 'osteoporosis', image: publicationImage2, status: 'Under Review', statusColor: 'bg-yellow-500/20 text-yellow-300', meta: 'ICDSINC 2025', title: 'Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection', description: 'Novel framework achieving 88% binary and 84% multi-class classification accuracy for osteoporosis detection.', tags: ['U-Net', 'Attention Mechanism', 'Feature Extraction'], details: { title: "Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection", content: (<><p className="mb-4">Manuscript communicated with ICDSINC conference (2025).</p><p>A deep learning-based binary classification model was developed for detecting knee osteoporosis from X-ray images, achieving 88% and 84% accuracy in binary and multi-class osteoporosis classification, respectively.</p></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OP-detection-model' },
         { id: 'ctReconstruction', image: publicationImage3, status: 'In Preparation', statusColor: 'bg-blue-500/20 text-blue-300', meta: '2025', title: 'End-to-End Deep Learning for CT Scan Reconstruction with Integrated Explainable AI', description: 'Developing an interpretable CT reconstruction pipeline that combines high-quality image generation with explainable AI.', tags: ['CT Reconstruction', 'Explainable AI', 'Medical Imaging'], details: { title: "End-to-End Deep Learning for CT Scan Reconstruction with Integrated Explainable AI", content: (<><p className="mb-4">Manuscript in preparation for submission to a reputed peer-reviewed journal (2025).</p><p>This work involves designing an end-to-end deep learning pipeline for CT image reconstruction, integrating explainable AI techniques to enhance model interpretability and trustworthiness.</p></>) }, codeLink: null }
+    ];
+    
+    const certificates = [
+        { title: "Machine Learning with Python (With Honors Project)", image: img1, link: "https://www.coursera.org/account/accomplishments/verify/UERHBGUT34WG" },
+        { title: "Machine Learning Specialization", image: img2, link: "https://www.coursera.org/account/accomplishments/specialization/YE8JF8JRUZTG" },
+        { title: "MongoDB Certified Developer, Associate (C100DEV)", image: img3, link: "https://www.credly.com/badges/5628852b-07e7-4fbd-bdc1-6e3eff356474" },
+        { title: "Computer Forensics Specialization", image: img4, link: "https://www.coursera.org/account/accomplishments/specialization/N6A5C8377USV" },
+        { title: "Python for Cybersecurity Specialization", image: img5, link: "https://www.coursera.org/account/accomplishments/specialization/TJH6LY4Z79R7" },
+        { title: "IBM Cybersecurity Analyst Specialization", image: img6, link: "https://www.coursera.org/account/accomplishments/professional-cert/S8UM4H55FERW" }
+    ];
+
+    const badges = [
+        { title: "Python Essentials 1", image: badge1, link: "https://www.credly.com/badges/7d07660e-cf20-491d-93cc-d0acbe46a66f" },
+        { title: "Machine Learning with Python", image: badge2, link: "https://www.credly.com/badges/9eb4689d-3724-464d-8396-7c07e6728f8b" },
+        { title: "MongoDB Associate Developer", image: badge3, link: "https://www.credly.com/badges/5628852b-07e7-4fbd-bdc1-6e3eff356474" },
+        { title: "R Programming for Data Science Essentials", image: badge4, link: "https://www.credly.com/badges/97dcc640-172e-4049-bb8a-57814336f58a" },
+        { title: "Data Analytics Essentials", image: badge5, link: "https://www.credly.com/badges/d0f5445b-37ee-482a-a3af-5300d98a817a" },
+        { title: "Foundations of Operationalizing MITRE ATT&CK", image: badge6, link: "https://www.credly.com/badges/40a35b03-a86b-410d-8421-9888583968f0" },
+        { title: "IBM Cybersecurity Analyst Professional Certificate", image: badge7, link: "https://www.credly.com/badges/6261c24b-1f4a-4d0e-b4b5-9629c1279897" },
+        { title: "Cybersecurity Breach Case Studies", image: badge8, link: "https://www.credly.com/badges/6c39dfd4-0448-4288-a7db-b1311468aa1d" },
+        { title: "Cybersecurity Compliance Framework & System Administration", image: badge9, link: "https://www.credly.com/badges/c6af540a-cbe3-4f07-85d4-7cc6a1d7999b" }
     ];
 
     const firstRow = projects.slice(0, Math.ceil(projects.length / 2));
@@ -325,7 +391,7 @@ function App() {
                                 <p className="text-md md:text-lg text-slate-400 max-w-3xl">Achievements & Test Scores</p>
                             </div>
                             <div className="grid lg:grid-cols-2 gap-8 lg:items-start">
-                                <div>
+                                <div ref={awardSectionRef}>
                                     <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
                                         <div className="w-8 h-8 bg-gradient-to-br from-yellow-500 to-blue-600 rounded-lg flex items-center justify-center mr-3"><span className="text-white text-sm">🏆</span></div>
                                         Awards & Achievements
@@ -347,7 +413,7 @@ function App() {
                                     <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
                                         <ChartBar className="w-5 h-5 mr-3 text-blue-400" /> Test Scores
                                     </h3>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 gap-4">
                                         <CometCard rotateDepth={10} translateDepth={10}>
                                             <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col">
                                                 <div className="text-2xl sm:text-3xl font-bold text-white mb-1"><AnimatedCounter to={325} /></div>
@@ -364,7 +430,7 @@ function App() {
                                                 <AnimatePresence>{isToeflExpanded && (<motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden text-xs text-slate-300 space-y-1 text-left"><div className="pt-2 border-t border-slate-700"><div className="flex justify-between"><span>Reading:</span><span className="text-white font-semibold">26/30</span></div><div className="flex justify-between"><span>Speaking:</span><span className="text-white font-semibold">27/30</span></div><div className="flex justify-between"><span>Listening:</span><span className="text-white font-semibold">25/30</span></div><div className="flex justify-between"><span>Writing:</span><span className="text-white font-semibold">27/30</span></div></div></motion.div>)}</AnimatePresence>
                                             </div>
                                         </CometCard>
-                                        <div className="md:col-span-2">
+                                        <div>
                                             <CometCard rotateDepth={10} translateDepth={10}>
                                                 <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col">
                                                     <div className="text-2xl sm:text-3xl font-bold text-white mb-1"><AnimatedCounter to={645} /></div>
@@ -374,6 +440,32 @@ function App() {
                                                 </div>
                                             </CometCard>
                                         </div>
+                                    </div>
+                                    <div className="grid md:grid-cols-2 gap-8 mt-8">
+                                    <div>
+                                        <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
+                                            <Zap className="w-5 h-5 mr-3 text-yellow-400" /> Certifications
+                                        </h3>
+                                        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-700 bg-slate-800/50" style={{ height: '480px' }}>
+                                            <Marquee vertical pauseOnHover>
+                                                {certificates.map((cert) => (
+                                                    <CertificateCard key={cert.title} {...cert}/>
+                                                ))}
+                                            </Marquee>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
+                                            <StarIcon className="w-5 h-5 mr-3 text-yellow-400" /> Badges
+                                        </h3>
+                                        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-700 bg-slate-800/50" style={{ height: '480px' }}>
+                                            <Marquee vertical pauseOnHover>
+                                                {badges.map((badge) => (
+                                                    <BadgeCard key={badge.title} {...badge} />
+                                                ))}
+                                            </Marquee>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
