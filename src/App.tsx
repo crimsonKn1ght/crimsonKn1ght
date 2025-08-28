@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { ChevronDown, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X } from 'lucide-react';
 import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
@@ -184,9 +184,17 @@ function App() {
     const [isGateExpanded, setIsGateExpanded] = React.useState(false);
     const awardSectionRef = React.useRef<HTMLDivElement>(null);
     const [sliderHeight, setSliderHeight] = React.useState('auto');
+    const [isLoading, setIsLoading] = useState(true);
 
     const openModal = (content) => setModalContent(content);
     const closeModal = () => setModalContent(null);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1500); // Simulate a 1.5-second load time
+        return () => clearTimeout(timer);
+    }, []);
 
     React.useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
@@ -528,8 +536,8 @@ function App() {
                                 </div>
                             </div>
                             <div className="text-right">
-                                <p className="text-slate-500 text-sm">© 2025 Gourab Roy. All rights reserved.</p>
-                                <p className="text-slate-600 text-xs mt-2">Built with React & Tailwind CSS</p>
+                                <p className="text-slate-500 text-sm"> What do you think of my Resume ?</p>
+                                <p className="text-slate-600 text-xs mt-2">Contact me if you are interested in AI/ML projects</p>
                             </div>
                         </div>
                     </div>
