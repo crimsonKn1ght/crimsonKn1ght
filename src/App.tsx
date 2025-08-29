@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { ChevronDown, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X } from 'lucide-react';
+import { ChevronDown, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X, Star, GitFork, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
 import { TimelineDemo } from "./Timeline";
-import { Marquee } from "./components/magicui/marquee";
 import { cn } from "./lib/utils";
 import { Carousel } from "./components/ui/carousel";
 import { CometCard } from "./components/ui/comet-card";
+import { ScaleSlider } from "./components/ui/ScaleSlider";
 
 // Animated Icons
 import { ContactIcon } from "./components/ui/ContactIcon";
@@ -128,34 +128,109 @@ const Modal = ({ isOpen, onClose, title, children }) => {
 };
 
 const projects = [
-    { name: "Real-Time Object Detector", description: "Web-based real-time object detection application using YOLO and TensorFlow.js.", tags: ["YOLO", "TensorFlow.js"], link: "https://github.com/crimsonkn1ght/real-time-object-detector", icon: <Eye className="w-6 h-6 text-white" /> },
-    { name: "Movie Recommender System", description: "Content-based filtering system that suggests movies using advanced feature extraction.", tags: ["Recommendation", "Filtering"], link: "https://github.com/crimsonkn1ght/movie-recommender", icon: <ChartBar className="w-6 h-6 text-white" /> },
-    { name: "My AI/ML Implementations", description: "Collection of AI and ML models and algorithms built from scratch for learning.", tags: ["From Scratch", "Algorithms"], link: "https://github.com/crimsonkn1ght/my-ai-ml-codes", icon: <Code className="w-6 h-6 text-white" /> },
-    { name: "dirStrike", description: "High-performance directory and file bruteforcing tool for web security assessments.", tags: ["Security", "Penetration Testing"], link: "https://github.com/crimsonkn1ght/dirstrike", icon: <Zap className="w-6 h-6 text-white" /> },
-    { name: "Image generation tool with diffusion models", description: "Image generation using huggingface models.", tags: ["huggingface models", "diffusion models"], link: "https://github.com/crimsonkn1ght/img-gen", icon: <Cpu className="w-6 h-6 text-white" /> },
-    { name: "PDF OCR and summarizer", description: "Multimodal PDF Q&A Assistant that allows you to upload PDFs and ask questions about their content.", tags: ["OCR", "PDF", "Q&A"], link: "https://github.com/crimsonkn1ght/pdf-qna", icon: <BookmarkIcon className="w-6 h-6 text-white" /> }
+  { 
+    name: "PDF OCR and summarizer",
+    description: "Multimodal PDF Q&A Assistant that allows you to upload PDFs and ask questions about their content.",
+    tags: ["OCR", "PDF", "Q&A"],
+    repo: "crimsonKn1ght/pdf-qna",
+    icon: <BookmarkIcon className="w-6 h-6 text-white" />
+  },
+  { 
+    name: "Image generation tool with diffusion models",
+    description: "Image generation using huggingface models.",
+    tags: ["huggingface models", "diffusion models"],
+    repo: "crimsonKn1ght/img-gen",
+    icon: <Cpu className="w-6 h-6 text-white" />
+  },
+  { 
+    name: "Movie Recommender System",
+    description: "Content-based filtering system that suggests movies using advanced feature extraction.",
+    tags: ["Recommendation", "Filtering"],
+    repo: "crimsonKn1ght/movie-recommender",
+    icon: <ChartBar className="w-6 h-6 text-white" />
+  },
+  { 
+    name: "Real-Time Object Detector",
+    description: "Web-based real-time object detection application using YOLO and TensorFlow.js.",
+    tags: ["YOLO", "TensorFlow.js"],
+    repo: "crimsonKn1ght/real-time-object-detector",
+    icon: <Eye className="w-6 h-6 text-white" />
+  },
+  { 
+    name: "dirStrike",
+    description: "High-performance directory and file bruteforcing tool for web security assessments.",
+    tags: ["Security", "Penetration Testing"],
+    repo: "crimsonKn1ght/dirstrike",
+    icon: <Zap className="w-6 h-6 text-white" />
+  },
+  { 
+    name: "My AI/ML Implementations",
+    description: "Collection of AI and ML models and algorithms built from scratch for learning.",
+    tags: ["From Scratch", "Algorithms"],
+    repo: "crimsonKn1ght/my-ai-ml-codes",
+    icon: <Code className="w-6 h-6 text-white" />
+  }
 ];
 
-const ProjectCard = ({ name, description, tags, link, icon }) => (
-    <a href={link} target="_blank" rel="noopener noreferrer">
-        <figure className={cn("relative w-80 h-full cursor-pointer overflow-hidden rounded-xl border p-4", "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]", "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]")}>
-            <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
-                    {icon}
-                </div>
+const ProjectCard = ({ name, description, tags, repo, icon }) => {
+  const [stats, setStats] = React.useState({ stars: 0, forks: 0 });
+
+  React.useEffect(() => {
+    fetch(`https://api.github.com/repos/${repo}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && !data.message) {
+          setStats({
+            stars: data.stargazers_count,
+            forks: data.forks_count
+          });
+        }
+      })
+      .catch(err => console.error("Error fetching repo stats:", err));
+  }, [repo]);
+
+  return (
+    <a href={`https://github.com/${repo}`} target="_blank" rel="noopener noreferrer">
+      <figure className={cn(
+        "relative w-80 h-full cursor-pointer overflow-hidden rounded-xl border p-4",
+        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
+      )}>
+        <div className="flex items-center justify-between mb-6">
+          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
+            {icon}
+          </div>
+        </div>
+        <h3 className="flex items-center text-base sm:text-lg font-bold text-white mb-3">{name}</h3>
+        <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 flex-grow">{description}</p>
+        <div className="flex flex-wrap gap-2 mb-6">
+          {tags.map(tag => (
+            <span key={tag} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className="flex justify-between items-center mt-auto">
+          <div className="inline-flex items-center text-blue-400 font-semibold hover:text-blue-300 transition-colors">
+            <GithubIcon className="w-4 h-4 mr-2" />
+            View on GitHub
+          </div>
+          <div className="flex items-center space-x-4 text-slate-400">
+            <div className="flex items-center">
+              <Star className="w-4 h-4 mr-1" />
+              <span>{stats.stars}</span>
             </div>
-            <h3 className="flex items-center text-base sm:text-lg font-bold text-white mb-3">{name}</h3>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 flex-grow">{description}</p>
-            <div className="flex flex-wrap gap-2 mb-6">
-                {tags.map(tag => <span key={tag} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">{tag}</span>)}
+            <div className="flex items-center">
+              <GitFork className="w-4 h-4 mr-1" />
+              <span>{stats.forks}</span>
             </div>
-            <div className="inline-flex items-center text-blue-400 font-semibold hover:text-blue-300 transition-colors mt-auto">
-                <GithubIcon className="w-4 h-4 mr-2" />
-                View on GitHub
-            </div>
-        </figure>
+          </div>
+        </div>
+      </figure>
     </a>
-);
+  );
+};
+
 
 const CertificateCard = ({ title, image, link }) => (
     <a href={link} target="_blank" rel="noopener noreferrer" className="w-full p-4 block">
@@ -185,6 +260,7 @@ function App() {
     const awardSectionRef = React.useRef<HTMLDivElement>(null);
     const [sliderHeight, setSliderHeight] = React.useState('auto');
     const [isLoading, setIsLoading] = useState(true);
+    const [currentProject, setCurrentProject] = useState(0);
 
     const openModal = (content) => setModalContent(content);
     const closeModal = () => setModalContent(null);
@@ -272,9 +348,6 @@ function App() {
         { title: "Cybersecurity Breach Case Studies", image: badge8, link: "https://www.credly.com/badges/6c39dfd4-0448-4288-a7db-b1311468aa1d" },
         { title: "Cybersecurity Compliance Framework & System Administration", image: badge9, link: "https://www.credly.com/badges/c6af540a-cbe3-4f07-85d4-7cc6a1d7999b" }
     ];
-
-    const firstRow = projects.slice(0, Math.ceil(projects.length / 2));
-    const secondRow = projects.slice(Math.ceil(projects.length / 2));
 
     const sectionVariants = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
     const listContainerVariants = { visible: { transition: { staggerChildren: 0.1 } } };
@@ -379,11 +452,42 @@ function App() {
                                 </h2>
                                 <p className="text-md md:text-lg text-slate-400 max-w-3xl">Some more open-source implementations and practical applications of AI/ML concepts</p>
                             </div>
-                            <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-                                <Marquee pauseOnHover className="[--duration:10s]">{firstRow.map((project) => (<ProjectCard key={project.name} {...project} />))}</Marquee>
-                                <Marquee reverse pauseOnHover className="[--duration:10s]">{secondRow.map((project) => (<ProjectCard key={project.name} {...project} />))}</Marquee>
-                                <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-stone-900"></div>
-                                <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-stone-900"></div>
+                            <div className="relative flex flex-col items-center justify-center">
+                                <div className="flex items-center w-full max-w-2xl">
+                                <button
+                                    onClick={() => setCurrentProject((prev) => (prev > 0 ? prev - 1 : projects.length - 1))}
+                                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors mr-4"
+                                >
+                                    <ChevronLeft className="w-6 h-6" />
+                                </button>
+                                <div className="w-full">
+                                    <AnimatePresence mode="wait">
+                                    <motion.div
+                                        key={currentProject}
+                                        initial={{ opacity: 0, x: 50 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: -50 }}
+                                        transition={{ duration: 0.5 }}
+                                        className="w-full flex justify-center"
+                                    >
+                                        <ProjectCard {...projects[currentProject]} />
+                                    </motion.div>
+                                    </AnimatePresence>
+                                </div>
+                                <button
+                                    onClick={() => setCurrentProject((prev) => (prev < projects.length - 1 ? prev + 1 : 0))}
+                                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors ml-4"
+                                >
+                                    <ChevronRight className="w-6 h-6" />
+                                </button>
+                                </div>
+                                <ScaleSlider
+                                    minValue={1}
+                                    maxValue={projects.length}
+                                    defaultValue={1}
+                                    value={currentProject + 1}
+                                    onChange={(value) => setCurrentProject(value - 1)}
+                                />
                             </div>
                         </div>
                     </motion.section>
@@ -455,11 +559,11 @@ function App() {
                                             <Zap className="w-5 h-5 mr-3 text-yellow-400" /> Certifications
                                         </h3>
                                         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-700 bg-slate-800/50" style={{ height: '480px' }}>
-                                            <Marquee vertical pauseOnHover>
+                                            <div className="flex flex-col w-full h-full overflow-y-auto">
                                                 {certificates.map((cert) => (
                                                     <CertificateCard key={cert.title} {...cert}/>
                                                 ))}
-                                            </Marquee>
+                                            </div>
                                         </div>
                                     </div>
                                     <div>
@@ -467,11 +571,11 @@ function App() {
                                             <StarIcon className="w-5 h-5 mr-3 text-yellow-400" /> Badges
                                         </h3>
                                         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-700 bg-slate-800/50" style={{ height: '480px' }}>
-                                            <Marquee vertical pauseOnHover>
+                                            <div className="flex flex-col w-full h-full overflow-y-auto">
                                                 {badges.map((badge) => (
                                                     <BadgeCard key={badge.title} {...badge} />
                                                 ))}
-                                            </Marquee>
+                                            </div>
                                         </div>
                                     </div>
                                     </div>
