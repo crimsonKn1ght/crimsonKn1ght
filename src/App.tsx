@@ -6,7 +6,7 @@ import { TimelineDemo } from "./Timeline";
 import { cn } from "./lib/utils";
 import { Carousel } from "./components/ui/carousel";
 import { CometCard } from "./components/ui/comet-card";
-import { ScaleSlider } from "./components/ui/ScaleSlider";
+import { ScaleSlider } from "./components/ui/scaleslider";
 
 // Animated Icons
 import { ContactIcon } from "./components/ui/ContactIcon";
