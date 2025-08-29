@@ -19,7 +19,7 @@ export function TimelineDemo() {
             <h4 className="font-bold text-lg mb-1 text-white">Research Intern</h4>
             <p className="text-blue-400 font-medium">IIT Kharagpur</p>
             <p className="text-xs text-slate-400 mb-2">June 2025 – Aug 2025</p>
-            <ul className="list-disc list-inside text-sm text-slate-400 mt-2 space-y-1">
+            <ul className="list-disc list-inside text-sm text-white mt-2 space-y-1">
               <li>Conducting ongoing research on CT image reconstruction as part of a deep learning internship, using a parallel-beam, fan-beam, cone-beam datasets consisting of 20,000+ sinogram-image pairs to improve reconstruction quality from sparse and noisy projections, with a focus on real-world medical imaging challenges.</li>
               <li>Developing various deep learning architectures, including U-Nets for 2D slices and experimenting with 3D CNNs for volumetric reconstruction, to improve image quality from low-signal, noisy sinogram data.</li>
               <li>Employed a combined SSIM and MSE loss function to optimize both structural and pixel-level accuracy, achieving a test SSIM of 0.9+.</li>
@@ -36,10 +36,10 @@ export function TimelineDemo() {
             <h4 className="font-bold text-lg mb-1 text-white">M.Tech in Computer Science and Engineering</h4>
             <p className="text-blue-400 font-medium">IIT Dhanbad</p>
             <p className="text-xs text-slate-400 mb-2">2023 – 2025</p>
-            <p className="text-sm text-slate-300">
+            <p className="text-sm text-white">
               GPA: 8.57/10.
             </p>
-            <ul className="list-disc list-inside text-sm text-slate-400 mt-2 space-y-1">
+            <ul className="list-disc list-inside text-sm text-white mt-2 space-y-1">
                 <li><b>Thesis:</b> Deep Learning based Multi-Stage Framework for Automated Detection and
         Grading of Knee Osteoarthritis and Osteoporosis. Achieved 80% accuracy in multiclass
         classification of osteoarthritis severity and 88% accuracy in binary classification
@@ -68,7 +68,7 @@ export function TimelineDemo() {
             <h4 className="font-bold text-lg mb-1 text-white">Data Engineering Intern</h4>
             <p className="text-blue-400 font-medium">Axtria, Bengaluru</p>
             <p className="text-xs text-slate-400 mb-2">May – July 2024</p>
-            <p className="text-sm text-slate-300">
+            <p className="text-sm text-white">
               Developed and optimized data processing workflows and ETL pipelines using Python and SQL, ensuring efficient integration, transformation, and validation of large, het- erogeneous data.
             </p>
             <div className="mt-4 h-24 flex items-center justify-center">
@@ -90,10 +90,10 @@ export function TimelineDemo() {
             <h4 className="font-bold text-lg mb-1 text-white">B.Tech in Electronics & Telecommunications Engineering</h4>
             <p className="text-blue-400 font-medium">IIEST Shibpur</p>
             <p className="text-xs text-slate-400 mb-2">2019 – 2023</p>
-            <p className="text-sm text-slate-300">
+            <p className="text-sm text-white">
               GPA: 7.58/10.
             </p>
-            <ul className="list-disc list-inside text-sm text-slate-400 mt-2 space-y-1">
+            <ul className="list-disc list-inside text-sm text-white mt-2 space-y-1">
                 <li><b>Relevant coursework included:</b> Signals and Systems, Digital Signal Processing, and Image Processing.</li>
                 <li>Graduated with First Class.</li>
             </ul>
@@ -116,7 +116,7 @@ export function TimelineDemo() {
                     <h4 className="font-bold text-lg mb-1 text-white">Security Intern</h4>
                     <p className="text-blue-400 font-medium">Virtually Testing Foundation</p>
                     <p className="text-xs text-slate-400 mb-2">May – July 2022</p>
-                    <p className="text-sm text-slate-300">
+                    <p className="text-sm text-white">
                         Accomplished hands-on training in offensive and defensive cybersecurity measured by completion of an 8-week internship with practical red and blue team exercises.
                     </p>
                     <div className="mt-4 h-24 flex items-center justify-center">
@@ -131,7 +131,7 @@ export function TimelineDemo() {
                     <h4 className="font-bold text-lg mb-1 text-white">Digital Forensics Intern</h4>
                     <p className="text-blue-400 font-medium">Cyber Secured India</p>
                     <p className="text-xs text-slate-400 mb-2">Mar - May 2022</p>
-                    <p className="text-sm text-slate-300">
+                    <p className="text-sm text-white">
                       Gained practical experience in offensive and defensive security through an 8-week internship, executing real-world red and blue team operations.
                     </p>
                     <div className="mt-4 h-24 flex items-center justify-center">
@@ -146,7 +146,7 @@ export function TimelineDemo() {
                     <h4 className="font-bold text-lg mb-1 text-white">Cyber Security Intern</h4>
                     <p className="text-blue-400 font-medium">SISTMR Australia</p>
                     <p className="text-xs text-slate-400 mb-2">Jan - Mar 2022</p>
-                    <p className="text-sm text-slate-300">
+                    <p className="text-sm text-white">
                       Successfully completed an 8-week internship in cybersecurity, gaining hands-on experience with practical red team (offensive) and blue team (defensive) operations.
                     </p>
                 </div>
@@ -161,7 +161,7 @@ export function TimelineDemo() {
                     <h4 className="font-bold text-lg mb-1 text-white">All India Senior School Certificate Examination (AISSCE)</h4>
                     <p className="text-blue-400 font-medium">Higher Secondary (XII) Exam | CBSE Board</p>
                     <p className="text-xs text-slate-400 mb-2">2019</p>
-                    <p className="text-sm text-slate-300">
+                    <p className="text-sm text-white">
                         Percentage: 93% | Science Stream
                     </p>
                     <div className="mt-4 h-24 flex items-center justify-center">
@@ -183,7 +183,7 @@ export function TimelineDemo() {
                     <h4 className="font-bold text-lg mb-1 text-white">All India Secondary School Examination (AISSE)</h4>
                     <p className="text-blue-400 font-medium">Secondary (X) Exam | CBSE Board</p>
                     <p className="text-xs text-slate-400 mb-2">2017</p>
-                    <p className="text-sm text-slate-300">
+                    <p className="text-sm text-white">
                         CGPA: 10.0/10.0
                     </p>
                     <div className="mt-4 h-24 flex items-center justify-center">
