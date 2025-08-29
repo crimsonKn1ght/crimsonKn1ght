@@ -7,6 +7,7 @@ import { cn } from "./lib/utils";
 import { Carousel } from "./components/ui/carousel";
 import { CometCard } from "./components/ui/comet-card";
 import { ScaleSlider } from "./components/ui/scaleslider";
+import { WavyBackground } from "./components/ui/wavy-background"; // New import
 
 // Animated Icons
 import { ContactIcon } from "./components/ui/ContactIcon";
@@ -21,7 +22,6 @@ import { CircleChevronDownIcon } from './components/ui/CircleChevronDownIcon';
 
 
 // Import company logos
-import glitchBackground from './assets/glitch-background.jpg';
 import publicationImage1 from './assets/publication1.png';
 import publicationImage2 from './assets/publication2.png';
 import publicationImage3 from './assets/publication3.png';
@@ -251,7 +251,6 @@ const BadgeCard = ({ title, image, link }) => (
 );
 
 function App() {
-    const heroRef = React.useRef<HTMLDivElement>(null);
     const floatingElementsRef = React.useRef<HTMLDivElement>(null);
     const [modalContent, setModalContent] = React.useState(null);
     const [isGreExpanded, setIsGreExpanded] = React.useState(false);
@@ -354,10 +353,17 @@ function App() {
     const listItemVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
 
     return (
-        <div className="min-h-screen text-white overflow-x-hidden font-mono" style={{ backgroundImage: `url(${glitchBackground})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
-            <div className="min-h-screen bg-black/80 backdrop-blur-sm">
-                <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-[#0d1117]/70 backdrop-blur-sm">
-                    <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <div className="min-h-screen text-white overflow-x-hidden font-mono relative bg-[#0d1117]">
+            <WavyBackground
+                containerClassName="fixed inset-0 w-full h-full z-0"
+                backgroundFill="#0d1117"
+                waveOpacity={0.6}
+                blur={15}
+                speed="slow"
+            />
+
+            <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-[#0d1117]/70 backdrop-blur-sm">
+                <div className="max-w-7xl mx-auto flex justify-between items-center">
                         <div className="flex items-center space-x-2">
                         <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
                             <Brain className="w-5 h-5 text-white" />
@@ -379,49 +385,48 @@ function App() {
                     </div>
                 </nav>
 
-                <div ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+                {/* Hero Section - now a standalone section */}
+                <section id="hero" className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-24 pb-20 md:pb-32">
                     <div ref={floatingElementsRef} className="absolute inset-0 transition-transform duration-1000 ease-out">
                         <motion.div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full filter blur-2xl" animate={{ y: [0, 20, 0], x: [0, -10, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} />
                         <motion.div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full filter blur-3xl" animate={{ y: [0, -20, 0], x: [0, 10, 0] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
                     </div>
-                    <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-                        <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mt-20">
-                            <motion.span className="block text-white" initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>GOURAB</motion.span>
-                            <motion.span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}>ROY</motion.span>
-                        </h1>
-                        <motion.div className="flex flex-col sm:flex-row items-center justify-center mb-8 gap-2 sm:gap-4 md:gap-6" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}>
-                            <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-4 py-2"><span className="text-sm md:text-xl text-blue-400 font-semibold">AI/ML</span></div>
-                            <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-4 py-2"><span className="text-sm md:text-xl text-blue-400 font-semibold">Computer Vision Researcher</span></div>
-                        </motion.div>
-                        <motion.p className="text-slate-400 text-base md:text-xl mb-12 max-w-2xl mx-auto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.8 }}>Specializing in deep learning for computer vision, developing robust architectures for challenging environments</motion.p>
-                        <motion.div className="flex flex-wrap justify-center gap-2 sm:space-x-6 mb-32" variants={listContainerVariants} initial="hidden" animate="visible" transition={{ delay: 1 }}>
-                            <motion.a variants={listItemVariants} href="mailto:gourab.roy.aiml@gmail.com" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
-                                <MailsIcon size={20} className="text-slate-400 group-hover:text-blue-400 transition-colors" />
-                                <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">Email</span>
-                            </motion.a>
-                            <motion.a variants={listItemVariants} href="https://www.linkedin.com/in/gourab-roy/" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
-                                <LinkedInIcon size={20} className="text-slate-400 group-hover:text-blue-400 transition-colors" />
-                                <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">LinkedIn</span>
-                            </motion.a>
-                            <motion.a variants={listItemVariants} href="https://github.com/crimsonkn1ght/" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-slate-500/20 backdrop-blur-sm border border-white/10 hover:border-slate-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
-                                <GithubIcon size={20} className="text-slate-400 group-hover:text-slate-300 transition-colors" />
-                                <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">GitHub</span>
-                            </motion.a>
-                            <motion.a variants={listItemVariants} href="/research.html" className="group flex items-center space-x-2 bg-white/5 hover:bg-purple-500/20 backdrop-blur-sm border border-white/10 hover:border-purple-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
-                                <BookmarkIcon size={20} className="text-slate-400 group-hover:text-purple-400 transition-colors" />
-                                <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">Research</span>
-                            </motion.a>
-                        </motion.div>
-                    </div>
+                    <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mt-20">
+                        <motion.span className="block text-white" initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>GOURAB</motion.span>
+                        <motion.span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}>ROY</motion.span>
+                    </h1>
+                    <motion.div className="flex flex-col sm:flex-row items-center justify-center mb-8 gap-2 sm:gap-4 md:gap-6" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}>
+                        <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-4 py-2"><span className="text-sm md:text-xl text-blue-400 font-semibold">AI/ML</span></div>
+                        <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-4 py-2"><span className="text-sm md:text-xl text-blue-400 font-semibold">Computer Vision Researcher</span></div>
+                    </motion.div>
+                    <motion.p className="text-slate-400 text-base md:text-xl mb-12 max-w-2xl mx-auto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.8 }}>Specializing in deep learning for computer vision, developing robust architectures for challenging environments</motion.p>
+                    <motion.div className="flex flex-wrap justify-center gap-2 sm:space-x-6 mb-32" variants={listContainerVariants} initial="hidden" animate="visible" transition={{ delay: 1 }}>
+                        <motion.a variants={listItemVariants} href="mailto:gourab.roy.aiml@gmail.com" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
+                            <MailsIcon size={20} className="text-slate-400 group-hover:text-blue-400 transition-colors" />
+                            <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">Email</span>
+                        </motion.a>
+                        <motion.a variants={listItemVariants} href="https://www.linkedin.com/in/gourab-roy/" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
+                            <LinkedInIcon size={20} className="text-slate-400 group-hover:text-blue-400 transition-colors" />
+                            <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">LinkedIn</span>
+                        </motion.a>
+                        <motion.a variants={listItemVariants} href="https://github.com/crimsonkn1ght/" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-slate-500/20 backdrop-blur-sm border border-white/10 hover:border-slate-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
+                            <GithubIcon size={20} className="text-slate-400 group-hover:text-slate-300 transition-colors" />
+                            <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">GitHub</span>
+                        </motion.a>
+                        <motion.a variants={listItemVariants} href="/research.html" className="group flex items-center space-x-2 bg-white/5 hover:bg-purple-500/20 backdrop-blur-sm border border-white/10 hover:border-purple-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
+                            <BookmarkIcon size={20} className="text-slate-400 group-hover:text-purple-400 transition-colors" />
+                            <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">Research</span>
+                        </motion.a>
+                    </motion.div>
                     <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2">
                         <span className="text-sm text-slate-400">Scroll to explore</span>
                         <button onClick={scrollToContent} className="w-10 h-10 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full flex items-center justify-center transition-all duration-300">
                             <CircleChevronDownIcon size={20} className="text-slate-400" />
                         </button>
                     </div>
-                </div>
+                </section>
 
-                <main className="container mx-auto px-6">
+                <main className="container mx-auto px-6 relative z-10">
                     <motion.section id="experience" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                         <div className="max-w-7xl mx-auto">
                             <TimelineDemo />
@@ -622,7 +627,7 @@ function App() {
 
                 </main>
 
-                <footer className="bg-slate-900/30 border-t border-slate-800 mt-24">
+                <footer className="bg-slate-900/30 border-t border-slate-800 mt-24 relative z-10">
                     <div className="max-w-7xl mx-auto px-6 py-12">
                         <div className="grid md:grid-cols-2 gap-8 items-center">
                             <div>
@@ -648,7 +653,6 @@ function App() {
                 </footer>
                 <Modal isOpen={!!modalContent} onClose={closeModal} title={modalContent?.title}>{modalContent?.content}</Modal>
             </div>
-        </div>
     );
 }
 
