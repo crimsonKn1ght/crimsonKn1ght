@@ -371,11 +371,11 @@ function App() {
                         </div>
                         
                         <div className="hidden md:flex items-center space-x-8 text-sm text-slate-300">
-                        <a href="#experience" className="hover:text-white transition-colors">Experience</a>
+                        <a href="#experience" className="hover:text-white transition-colors">Education & Internships</a>
                         <a href="#publications" className="hover:text-white transition-colors">Publications</a>
                         <a href="#projects" className="hover:text-white transition-colors">Projects</a>
-                        <a href="#skills" className="hover:text-white transition-colors">Technical Expertise</a>
-                        <a href="#education" className="hover:text-white transition-colors">Education & Recognition</a>
+                        <a href="#education" className="hover:text-white transition-colors">Awards & Test scores</a>
+                        <a href="#skills" className="hover:text-white transition-colors">Technical Skills</a>
                         <a href="mailto:gourab.roy.aiml@gmail.com"  target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg text-white transition-colors flex items-center">
                             <ContactIcon className="w-5 h-5 mr-2" />
                             Contact
@@ -656,3 +656,4 @@ function App() {
 }
 
 export default App;
+
