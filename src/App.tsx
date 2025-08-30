@@ -193,8 +193,7 @@ const ProjectCard = ({ name, description, tags, repo, icon }) => {
     <a href={`https://github.com/${repo}`} target="_blank" rel="noopener noreferrer">
       <figure className={cn(
         "relative w-80 h-full cursor-pointer overflow-hidden rounded-xl border p-4",
-        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
+        "border-slate-700 bg-slate-800/50"
       )}>
         <div className="flex items-center justify-between mb-6">
           <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
