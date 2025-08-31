@@ -1,13 +1,13 @@
 import React from "react";
 import { Timeline } from "@/components/ui/timeline";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
-import iitKharagpurLogo from './assets/iit-kharagpur-logo.png';
-import axtriaLogo from './assets/axtria-logo.png';
-import virtuallyTestingLogo from './assets/virtually-testing-logo.png';
-import cbseLogo from './assets/CBSE-logo.png';
-import cyberSecuredIndiaLogo from './assets/cybersecuredindia-logo.png';
-import iiestShibpurLogo from './assets/iiest-shibpur-logo.png';
-import iitDhanbadLogo from './assets/iit-dhanbad-logo.png';
+import iitKharagpurLogo from './assets/iit-kharagpur-logo.webp';
+import axtriaLogo from './assets/axtria-logo.webp';
+import virtuallyTestingLogo from './assets/virtually-testing-logo.webp';
+import cbseLogo from './assets/CBSE-logo.webp';
+import cyberSecuredIndiaLogo from './assets/cybersecuredindia-logo.webp';
+import iiestShibpurLogo from './assets/iiest-shibpur-logo.webp';
+import iitDhanbadLogo from './assets/iit-dhanbad-logo.webp';
 
 
 export function TimelineDemo() {

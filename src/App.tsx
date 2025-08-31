@@ -23,25 +23,25 @@ import { CircleChevronDownIcon } from './components/ui/CircleChevronDownIcon';
 
 
 // Import company logos
-import publicationImage1 from './assets/publication1.png';
-import publicationImage2 from './assets/publication2.png';
-import publicationImage3 from './assets/publication3.png';
-import awardImage from './assets/award.png';
-import img1 from './assets/img1.jpg';
-import img2 from './assets/img2.jpg';
-import img3 from './assets/img3.jpg';
-import img4 from './assets/img4.jpg';
-import img5 from './assets/img5.jpg';
-import img6 from './assets/img6.jpg';
-import badge1 from './assets/badge1.jpg';
-import badge2 from './assets/badge2.jpg';
-import badge3 from './assets/badge3.jpg';
-import badge4 from './assets/badge4.jpg';
-import badge5 from './assets/badge5.jpg';
-import badge6 from './assets/badge6.jpg';
-import badge7 from './assets/badge7.jpg';
-import badge8 from './assets/badge8.jpg';
-import badge9 from './assets/badge9.jpg';
+import publicationImage1 from './assets/publication1.webp';
+import publicationImage2 from './assets/publication2.webp';
+import publicationImage3 from './assets/publication3.webp';
+import awardImage from './assets/award.webp';
+import img1 from './assets/img1.webp';
+import img2 from './assets/img2.webp';
+import img3 from './assets/img3.webp';
+import img4 from './assets/img4.webp';
+import img5 from './assets/img5.webp';
+import img6 from './assets/img6.webp';
+import badge1 from './assets/badge1.webp';
+import badge2 from './assets/badge2.webp';
+import badge3 from './assets/badge3.webp';
+import badge4 from './assets/badge4.webp';
+import badge5 from './assets/badge5.webp';
+import badge6 from './assets/badge6.webp';
+import badge7 from './assets/badge7.webp';
+import badge8 from './assets/badge8.webp';
+import badge9 from './assets/badge9.webp';
 
 const skills = {
   "Programming & Frameworks": [
