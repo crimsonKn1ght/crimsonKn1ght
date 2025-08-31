@@ -1,0 +1,25 @@
+/* For WebKit browsers (Chrome, Safari, newer Edge) */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1e293b; /* Background of the scrollbar track (slate-800) */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #4a5568; /* Color of the scrollbar thumb (a darker slate) */
+  border-radius: 10px;
+  border: 2px solid #1e293b; /* Creates a small border/gap effect */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #6366f1; /* Hover color for the thumb (e.g., indigo-500) */
+}
+
+/* For Firefox (requires a different approach) */
+.custom-scrollbar {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: #4a5568 #1e293b; /* thumb color track color */
+}
