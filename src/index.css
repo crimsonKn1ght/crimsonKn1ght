@@ -104,6 +104,29 @@ body {
     .slick-next {
         right: -10px !important;
     }
+
+    #projects .relative.flex.flex-col.items-center.justify-center {
+      padding-bottom: 6rem;
+    }
+
+    #projects .w-full.max-w-2xl {
+      flex-direction: column;
+    }
+
+    #projects .w-full.md\:w-auto {
+      order: 1;
+    }
+
+    #projects .flex.md\:hidden {
+      order: 2;
+    }
+
+    #projects .w-full.max-w-md {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
 }
 
 

@@ -194,7 +194,7 @@ const ProjectCard = ({ name, description, tags, repo, icon }) => {
     <BackgroundGradient containerClassName="rounded-2xl">
       <a href={`https://github.com/${repo}`} target="_blank" rel="noopener noreferrer">
         <figure className={cn(
-          "relative w-80 h-full cursor-pointer overflow-hidden rounded-xl border p-4",
+          "relative w-full md:w-80 h-full cursor-pointer overflow-hidden rounded-xl border p-4",
           "border-slate-700 bg-slate-800/50"
         )}>
           <div className="flex items-center justify-between mb-6">
@@ -454,33 +454,47 @@ function App() {
                                 <p className="text-md md:text-lg text-slate-400 max-w-3xl">Some more open-source implementations and practical applications of AI/ML concepts</p>
                             </div>
                             <div className="relative flex flex-col items-center justify-center">
-                                <div className="flex items-center w-full max-w-2xl">
-                                <button
-                                    onClick={() => setCurrentProject((prev) => (prev > 0 ? prev - 1 : projects.length - 1))}
-                                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors mr-4"
-                                >
-                                    <ChevronLeft className="w-6 h-6" />
-                                </button>
-                                <div className="w-full">
-                                    <AnimatePresence mode="wait">
-                                    <motion.div
-                                        key={currentProject}
-                                        initial={{ opacity: 0, x: 50 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x: -50 }}
-                                        transition={{ duration: 0.5 }}
-                                        className="w-full flex justify-center"
+                                <div className="w-full max-w-2xl flex items-center justify-center md:justify-between">
+                                    <button
+                                        onClick={() => setCurrentProject((prev) => (prev > 0 ? prev - 1 : projects.length - 1))}
+                                        className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors hidden md:block"
                                     >
-                                        <ProjectCard {...projects[currentProject]} />
-                                    </motion.div>
-                                    </AnimatePresence>
+                                        <ChevronLeft className="w-6 h-6" />
+                                    </button>
+                                    <div className="w-full md:w-auto">
+                                        <AnimatePresence mode="wait">
+                                        <motion.div
+                                            key={currentProject}
+                                            initial={{ opacity: 0, x: 50 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            exit={{ opacity: 0, x: -50 }}
+                                            transition={{ duration: 0.5 }}
+                                            className="w-full flex justify-center"
+                                        >
+                                            <ProjectCard {...projects[currentProject]} />
+                                        </motion.div>
+                                        </AnimatePresence>
+                                    </div>
+                                    <button
+                                        onClick={() => setCurrentProject((prev) => (prev < projects.length - 1 ? prev + 1 : 0))}
+                                        className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors hidden md:block"
+                                    >
+                                        <ChevronRight className="w-6 h-6" />
+                                    </button>
                                 </div>
-                                <button
-                                    onClick={() => setCurrentProject((prev) => (prev < projects.length - 1 ? prev + 1 : 0))}
-                                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors ml-4"
-                                >
-                                    <ChevronRight className="w-6 h-6" />
-                                </button>
+                                <div className="flex md:hidden items-center justify-center mt-4 space-x-4">
+                                    <button
+                                        onClick={() => setCurrentProject((prev) => (prev > 0 ? prev - 1 : projects.length - 1))}
+                                        className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                                    >
+                                        <ChevronLeft className="w-6 h-6" />
+                                    </button>
+                                    <button
+                                        onClick={() => setCurrentProject((prev) => (prev < projects.length - 1 ? prev + 1 : 0))}
+                                        className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                                    >
+                                        <ChevronRight className="w-6 h-6" />
+                                    </button>
                                 </div>
                                 <ScaleSlider
                                     minValue={1}
