@@ -38,8 +38,8 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       className="w-full bg-transparent font-sans md:px-10"
       ref={containerRef}
     >
-      <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8">
-        <div className="max-w-7xl mx-auto py-10 px-4 md:px-8 lg:px-10">
+      <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-4 md:p-8">
+        <div className="max-w-7xl mx-auto py-10 px-2 sm:px-4 md:px-8 lg:px-10">
           <h2 className="text-2xl md:text-5xl mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 max-w-4xl font-bold pb-4 flex items-center">
             <RoadIcon size={40} className="mr-4 text-cyan-400" />
             My Journey
@@ -64,7 +64,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                 </h3>
               </div>
 
-              <div className="relative pl-20 pr-4 md:pl-4 w-full">
+              <div className="relative pl-12 pr-2 sm:pl-20 sm:pr-4 md:pl-4 w-full">
                 <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500">
                   {item.title}
                 </h3>
