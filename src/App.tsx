@@ -382,21 +382,21 @@ function App() {
                 </nav>
 
                 {/* Hero Section - now a standalone section */}
-                <section id="hero" className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-24 pb-20 md:pb-32">
+                <section id="hero" className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center max-w-5xl mx-auto">
                     <div ref={floatingElementsRef} className="absolute inset-0 transition-transform duration-1000 ease-out">
                         <motion.div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full filter blur-2xl" animate={{ y: [0, 20, 0], x: [0, -10, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} />
                         <motion.div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full filter blur-3xl" animate={{ y: [0, -20, 0], x: [0, 10, 0] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
                     </div>
-                    <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mt-20">
+                    <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-4 pt-16">
                         <motion.span className="block text-white" initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>GOURAB</motion.span>
                         <motion.span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}>ROY</motion.span>
                     </h1>
-                    <motion.div className="flex flex-col sm:flex-row items-center justify-center mb-8 gap-2 sm:gap-4 md:gap-6" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}>
+                    <motion.div className="flex flex-col sm:flex-row items-center justify-center mb-6 gap-2 sm:gap-4 md:gap-6" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}>
                         <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-4 py-2"><span className="text-sm md:text-xl text-blue-400 font-semibold">AI/ML</span></div>
                         <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-4 py-2"><span className="text-sm md:text-xl text-blue-400 font-semibold">Computer Vision Researcher</span></div>
                     </motion.div>
-                    <motion.p className="text-slate-400 text-base md:text-xl mb-12 max-w-2xl mx-auto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.8 }}>Specializing in deep learning for computer vision, developing robust architectures for challenging environments</motion.p>
-                    <motion.div className="flex flex-wrap justify-center gap-2 sm:space-x-6 mb-32" variants={listContainerVariants} initial="hidden" animate="visible" transition={{ delay: 1 }}>
+                    <motion.p className="text-slate-400 text-base md:text-xl mb-8 max-w-2xl mx-auto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.8 }}>Specializing in deep learning for computer vision, developing robust architectures for challenging environments</motion.p>
+                    <motion.div className="flex flex-wrap justify-center gap-2 sm:space-x-6 mb-24" variants={listContainerVariants} initial="hidden" animate="visible" transition={{ delay: 1 }}>
                         <motion.a variants={listItemVariants} href="mailto:gourab.roy.aiml@gmail.com" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
                             <MailsIcon size={20} className="text-slate-400 group-hover:text-blue-400 transition-colors" />
                             <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">Email</span>
