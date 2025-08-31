@@ -7,7 +7,8 @@ import { cn } from "./lib/utils";
 import { Carousel } from "./components/ui/carousel";
 import { CometCard } from "./components/ui/comet-card";
 import { ScaleSlider } from "./components/ui/scaleslider";
-import { WavyBackground } from "./components/ui/wavy-background"; // New import
+import { Boxes } from "./components/ui/boxes"; // New import
+import { BackgroundGradient } from "./components/ui/background-gradient";
 
 // Animated Icons
 import { ContactIcon } from "./components/ui/ContactIcon";
@@ -190,43 +191,45 @@ const ProjectCard = ({ name, description, tags, repo, icon }) => {
   }, [repo]);
 
   return (
-    <a href={`https://github.com/${repo}`} target="_blank" rel="noopener noreferrer">
-      <figure className={cn(
-        "relative w-80 h-full cursor-pointer overflow-hidden rounded-xl border p-4",
-        "border-slate-700 bg-slate-800/50"
-      )}>
-        <div className="flex items-center justify-between mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
-            {icon}
-          </div>
-        </div>
-        <h3 className="flex items-center text-base sm:text-lg font-bold text-white mb-3">{name}</h3>
-        <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 flex-grow">{description}</p>
-        <div className="flex flex-wrap gap-2 mb-6">
-          {tags.map(tag => (
-            <span key={tag} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">
-              {tag}
-            </span>
-          ))}
-        </div>
-        <div className="flex justify-between items-center mt-auto">
-          <div className="inline-flex items-center text-blue-400 font-semibold hover:text-blue-300 transition-colors">
-            <GithubIcon className="w-4 h-4 mr-2" />
-            View on GitHub
-          </div>
-          <div className="flex items-center space-x-4 text-slate-400">
-            <div className="flex items-center">
-              <Star className="w-4 h-4 mr-1" />
-              <span>{stats.stars}</span>
-            </div>
-            <div className="flex items-center">
-              <GitFork className="w-4 h-4 mr-1" />
-              <span>{stats.forks}</span>
+    <BackgroundGradient containerClassName="rounded-2xl">
+      <a href={`https://github.com/${repo}`} target="_blank" rel="noopener noreferrer">
+        <figure className={cn(
+          "relative w-80 h-full cursor-pointer overflow-hidden rounded-xl border p-4",
+          "border-slate-700 bg-slate-800/50"
+        )}>
+          <div className="flex items-center justify-between mb-6">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
+              {icon}
             </div>
           </div>
-        </div>
-      </figure>
-    </a>
+          <h3 className="flex items-center text-base sm:text-lg font-bold text-white mb-3">{name}</h3>
+          <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 flex-grow">{description}</p>
+          <div className="flex flex-wrap gap-2 mb-6">
+            {tags.map(tag => (
+              <span key={tag} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">
+                {tag}
+              </span>
+            ))}
+          </div>
+          <div className="flex justify-between items-center mt-auto">
+            <div className="inline-flex items-center text-blue-400 font-semibold hover:text-blue-300 transition-colors">
+              <GithubIcon className="w-4 h-4 mr-2" />
+              View on GitHub
+            </div>
+            <div className="flex items-center space-x-4 text-slate-400">
+              <div className="flex items-center">
+                <Star className="w-4 h-4 mr-1" />
+                <span>{stats.stars}</span>
+              </div>
+              <div className="flex items-center">
+                <GitFork className="w-4 h-4 mr-1" />
+                <span>{stats.forks}</span>
+              </div>
+            </div>
+          </div>
+        </figure>
+      </a>
+    </BackgroundGradient>
   );
 };
 
@@ -353,13 +356,7 @@ function App() {
 
     return (
         <div className="min-h-screen text-white overflow-x-hidden font-mono relative bg-[#0d1117]">
-            <WavyBackground
-                containerClassName="fixed inset-0 w-full h-full z-0"
-                backgroundFill="#0d1117"
-                waveOpacity={0.6}
-                blur={15}
-                speed="slow"
-            />
+            <Boxes className="fixed inset-0 w-full h-full z-0" />
 
             <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-[#0d1117]/70 backdrop-blur-sm">
                 <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -512,24 +509,27 @@ function App() {
                                         <div className="w-8 h-8 bg-gradient-to-br from-yellow-500 to-blue-600 rounded-lg flex items-center justify-center mr-3"><span className="text-white text-sm">🏆</span></div>
                                         Awards & Achievements
                                     </h3>
-                                    <CometCard rotateDepth={10} translateDepth={10}>
-                                        <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500/50 transition-all duration-300 w-full h-full" transition={{ type: 'spring', stiffness: 300 }}>
-                                            <div className="flex items-center justify-between mb-4">
-                                                <span className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full">2025</span>
-                                                <span className="text-2xl">🏆</span>
-                                            </div>
-                                            <h4 className="text-xl font-bold text-white mb-2">Best Paper Award</h4>
-                                            <p className="text-blue-400 font-medium mb-3">International Symposium on Artificial Intelligence</p>
-                                            <p className="text-slate-300 text-sm">Recognized among 78 accepted submissions for outstanding research contribution in AI/ML</p>
-                                            <img src={awardImage} alt="Award" className="mt-4 rounded-lg" />
-                                        </motion.div>
-                                    </CometCard>
+                                    <BackgroundGradient containerClassName="rounded-2xl">
+                                      <CometCard rotateDepth={10} translateDepth={10}>
+                                          <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500/50 transition-all duration-300 w-full h-full" transition={{ type: 'spring', stiffness: 300 }}>
+                                              <div className="flex items-center justify-between mb-4">
+                                                  <span className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full">2025</span>
+                                                  <span className="text-2xl">🏆</span>
+                                              </div>
+                                              <h4 className="text-xl font-bold text-white mb-2">Best Paper Award</h4>
+                                              <p className="text-blue-400 font-medium mb-3">International Symposium on Artificial Intelligence</p>
+                                              <p className="text-slate-300 text-sm">Recognized among 78 accepted submissions for outstanding research contribution in AI/ML</p>
+                                              <img src={awardImage} alt="Award" className="mt-4 rounded-lg" />
+                                          </motion.div>
+                                      </CometCard>
+                                    </BackgroundGradient>
                                 </div>
                                 <div>
                                     <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
                                         <ChartBar className="w-5 h-5 mr-3 text-blue-400" /> Test Scores
                                     </h3>
                                     <div className="grid grid-cols-1 gap-4">
+                                      <BackgroundGradient containerClassName="rounded-2xl">
                                         <CometCard rotateDepth={10} translateDepth={10}>
                                             <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col">
                                                 <div className="text-2xl sm:text-3xl font-bold text-white mb-1"><AnimatedCounter to={325} /></div>
@@ -538,6 +538,8 @@ function App() {
                                                 <AnimatePresence>{isGreExpanded && (<motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden text-xs text-slate-300 space-y-1 text-left"><div className="pt-2 border-t border-slate-700"><div className="flex justify-between"><span>Quant:</span><span className="text-white font-semibold">167/170</span></div><div className="flex justify-between"><span>Verbal:</span><span className="text-white font-semibold">158/170</span></div><div className="flex justify-between"><span>Writing:</span><span className="text-white font-semibold">4.0/6.0</span></div></div></motion.div>)}</AnimatePresence>
                                             </div>
                                         </CometCard>
+                                      </BackgroundGradient>
+                                      <BackgroundGradient containerClassName="rounded-2xl">
                                         <CometCard rotateDepth={10} translateDepth={10}>
                                             <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col">
                                                 <div className="text-2xl sm:text-3xl font-bold text-white mb-1"><AnimatedCounter to={105} /></div>
@@ -546,6 +548,8 @@ function App() {
                                                 <AnimatePresence>{isToeflExpanded && (<motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden text-xs text-slate-300 space-y-1 text-left"><div className="pt-2 border-t border-slate-700"><div className="flex justify-between"><span>Reading:</span><span className="text-white font-semibold">26/30</span></div><div className="flex justify-between"><span>Speaking:</span><span className="text-white font-semibold">27/30</span></div><div className="flex justify-between"><span>Listening:</span><span className="text-white font-semibold">25/30</span></div><div className="flex justify-between"><span>Writing:</span><span className="text-white font-semibold">27/30</span></div></div></motion.div>)}</AnimatePresence>
                                             </div>
                                         </CometCard>
+                                      </BackgroundGradient>
+                                      <BackgroundGradient containerClassName="rounded-2xl">
                                         <div>
                                             <CometCard rotateDepth={10} translateDepth={10}>
                                                 <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col">
@@ -556,6 +560,7 @@ function App() {
                                                 </div>
                                             </CometCard>
                                         </div>
+                                      </BackgroundGradient>
                                     </div>
                                     <div className="grid md:grid-cols-2 gap-8 mt-8">
                                     <div>
@@ -563,7 +568,7 @@ function App() {
                                             <Zap className="w-5 h-5 mr-3 text-yellow-400" /> Certifications
                                         </h3>
                                         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-700 bg-slate-800/50" style={{ height: '480px' }}>
-                                            <div className="flex flex-col w-full h-full overflow-y-auto">
+                                            <div className="flex flex-col w-full h-full overflow-y-auto custom-scrollbar"> {/* Ensure this class is here */}
                                                 {certificates.map((cert) => (
                                                     <CertificateCard key={cert.title} {...cert}/>
                                                 ))}
@@ -575,7 +580,7 @@ function App() {
                                             <StarIcon className="w-5 h-5 mr-3 text-yellow-400" /> Badges
                                         </h3>
                                         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-700 bg-slate-800/50" style={{ height: '480px' }}>
-                                            <div className="flex flex-col w-full h-full overflow-y-auto">
+                                            <div className="flex flex-col w-full h-full overflow-y-auto custom-scrollbar"> {/* And also here */}
                                                 {badges.map((badge) => (
                                                     <BadgeCard key={badge.title} {...badge} />
                                                 ))}
@@ -599,7 +604,8 @@ function App() {
                             </div>
                             <div className="grid lg:grid-cols-3 gap-8 lg:items-start">
                                 {Object.entries(skills).map(([category, skillList]) => (
-                                    <CometCard key={category} rotateDepth={10} translateDepth={10}>
+                                  <BackgroundGradient key={category} containerClassName="rounded-2xl">
+                                    <CometCard rotateDepth={10} translateDepth={10}>
                                         <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 h-full">
                                             <div className="flex items-center mb-6">
                                                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
@@ -619,6 +625,7 @@ function App() {
                                             </motion.div>
                                         </div>
                                     </CometCard>
+                                  </BackgroundGradient>
                                 ))}
                             </div>
                         </div>
@@ -656,4 +663,3 @@ function App() {
 }
 
 export default App;
-
