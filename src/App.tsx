@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { createPortal } from 'react-dom';
 import { ChevronDown, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X, Star, GitFork, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
-import { TimelineDemo } from "./Timeline";
 import { cn } from "./lib/utils";
 import { Carousel } from "./components/ui/carousel";
 import { CometCard } from "./components/ui/comet-card";
@@ -42,6 +41,8 @@ import badge6 from './assets/badge6.webp';
 import badge7 from './assets/badge7.webp';
 import badge8 from './assets/badge8.webp';
 import badge9 from './assets/badge9.webp';
+
+const TimelineDemo = lazy(() => import('./Timeline').then(module => ({ default: module.TimelineDemo })));
 
 const skills = {
   "Programming & Frameworks": [
@@ -129,42 +130,42 @@ const Modal = ({ isOpen, onClose, title, children }) => {
 };
 
 const projects = [
-  { 
+  {
     name: "PDF OCR and summarizer",
     description: "Multimodal PDF Q&A Assistant that allows you to upload PDFs and ask questions about their content.",
     tags: ["OCR", "PDF", "Q&A"],
     repo: "crimsonKn1ght/pdf-qna",
     icon: <BookmarkIcon className="w-6 h-6 text-white" />
   },
-  { 
+  {
     name: "Image generation tool with diffusion models",
     description: "Image generation using huggingface models.",
     tags: ["huggingface models", "diffusion models"],
     repo: "crimsonKn1ght/img-gen",
     icon: <Cpu className="w-6 h-6 text-white" />
   },
-  { 
+  {
     name: "Movie Recommender System",
     description: "Content-based filtering system that suggests movies using advanced feature extraction.",
     tags: ["Recommendation", "Filtering"],
     repo: "crimsonKn1ght/movie-recommender",
     icon: <ChartBar className="w-6 h-6 text-white" />
   },
-  { 
+  {
     name: "Real-Time Object Detector",
     description: "Web-based real-time object detection application using YOLO and TensorFlow.js.",
     tags: ["YOLO", "TensorFlow.js"],
     repo: "crimsonKn1ght/real-time-object-detector",
     icon: <Eye className="w-6 h-6 text-white" />
   },
-  { 
+  {
     name: "dirStrike",
     description: "High-performance directory and file bruteforcing tool for web security assessments.",
     tags: ["Security", "Penetration Testing"],
     repo: "crimsonKn1ght/dirstrike",
     icon: <Zap className="w-6 h-6 text-white" />
   },
-  { 
+  {
     name: "My AI/ML Implementations",
     description: "Collection of AI and ML models and algorithms built from scratch for learning.",
     tags: ["From Scratch", "Algorithms"],
@@ -238,7 +239,7 @@ const CertificateCard = ({ title, image, link }) => (
     <a href={link} target="_blank" rel="noopener noreferrer" className="w-full p-4 block">
         <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-4 flex flex-col items-center text-center h-full hover:border-blue-500/50 transition-all duration-300">
             <h4 className="text-sm font-bold text-white mb-2 flex-grow">{title}</h4>
-            <img src={image} alt={title} className="w-24 h-auto mt-2" />
+            <img loading="lazy" src={image} alt={title} className="w-24 h-auto mt-2" />
         </div>
     </a>
 );
@@ -247,7 +248,7 @@ const BadgeCard = ({ title, image, link }) => (
     <a href={link} target="_blank" rel="noopener noreferrer" className="w-full p-4 block">
         <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-4 flex flex-col items-center text-center h-full hover:border-blue-500/50 transition-all duration-300">
             <h4 className="text-sm font-bold text-white mb-2 flex-grow">{title}</h4>
-            <img src={image} alt={title} className="w-24 h-auto mt-2" />
+            <img loading="lazy" src={image} alt={title} className="w-24 h-auto mt-2" />
         </div>
     </a>
 );
@@ -300,7 +301,7 @@ function App() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', smoothScrollHandler as EventListener);
         });
-        
+
         const setSliderHeightFromAwardSection = () => {
             if (awardSectionRef.current) {
                 setSliderHeight(`${awardSectionRef.current.offsetHeight}px`);
@@ -328,7 +329,7 @@ function App() {
         { id: 'osteoporosis', image: publicationImage2, status: 'Under Review', statusColor: 'bg-yellow-500/20 text-yellow-300', meta: 'ICDSINC 2025', title: 'Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection', description: 'Novel framework achieving 88% binary and 84% multi-class classification accuracy for osteoporosis detection.', tags: ['U-Net', 'Attention Mechanism', 'Feature Extraction'], details: { title: "Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection", content: (<><p className="mb-4">Manuscript communicated with ICDSINC conference (2025).</p><p>A deep learning-based binary classification model was developed for detecting knee osteoporosis from X-ray images, achieving 88% and 84% accuracy in binary and multi-class osteoporosis classification, respectively.</p></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OP-detection-model' },
         { id: 'ctReconstruction', image: publicationImage3, status: 'In Preparation', statusColor: 'bg-blue-500/20 text-blue-300', meta: '2025', title: 'End-to-End Deep Learning for CT Scan Reconstruction with Integrated Explainable AI', description: 'Developing an interpretable CT reconstruction pipeline that combines high-quality image generation with explainable AI.', tags: ['CT Reconstruction', 'Explainable AI', 'Medical Imaging'], details: { title: "End-to-End Deep Learning for CT Scan Reconstruction with Integrated Explainable AI", content: (<><p className="mb-4">Manuscript in preparation for submission to a reputed peer-reviewed journal (2025).</p><p>This work involves designing an end-to-end deep learning pipeline for CT image reconstruction, integrating explainable AI techniques to enhance model interpretability and trustworthiness.</p></>) }, codeLink: null }
     ];
-    
+
     const certificates = [
         { title: "Machine Learning with Python (With Honors Project)", image: img1, link: "https://www.coursera.org/account/accomplishments/verify/UERHBGUT34WG" },
         { title: "Machine Learning Specialization", image: img2, link: "https://www.coursera.org/account/accomplishments/specialization/YE8JF8JRUZTG" },
@@ -366,7 +367,7 @@ function App() {
                         </div>
                         <span className="text-xl font-bold">Portfolio</span>
                         </div>
-                        
+
                         <div className="hidden md:flex items-center space-x-8 text-sm text-slate-300">
                         <a href="#experience" className="hover:text-white transition-colors">Education & Internships</a>
                         <a href="#publications" className="hover:text-white transition-colors">Publications</a>
@@ -423,227 +424,237 @@ function App() {
                 </section>
 
                 <main className="container mx-auto px-6 relative z-10">
-                    <motion.section id="experience" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                        <div className="max-w-7xl mx-auto">
-                            <TimelineDemo />
-                        </div>
-                    </motion.section>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <motion.section id="experience" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+                            <div className="max-w-7xl mx-auto">
+                                <TimelineDemo />
+                            </div>
+                        </motion.section>
+                    </Suspense>
 
-                    <motion.section id="publications" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                        <div className="max-w-7xl mx-auto">
-                            <div className="mb-2">
-                                <h2 className="text-4xl sm:text-5xl font-black mb-6 pb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 flex items-center">
-                                    <BookmarkIcon size={40} className="mr-4 text-purple-400" />
-                                    Research Publications
-                                </h2>
-                                <p className="text-md md:text-lg text-slate-400 max-w-3xl">Contributing to the advancement of AI and computer vision through peer-reviewed research</p>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <motion.section id="publications" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+                            <div className="max-w-7xl mx-auto">
+                                <div className="mb-2">
+                                    <h2 className="text-4xl sm:text-5xl font-black mb-6 pb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 flex items-center">
+                                        <BookmarkIcon size={40} className="mr-4 text-purple-400" />
+                                        Research Publications
+                                    </h2>
+                                    <p className="text-md md:text-lg text-slate-400 max-w-3xl">Contributing to the advancement of AI and computer vision through peer-reviewed research</p>
+                                </div>
+                                <div className="relative overflow-hidden w-full h-full py-20">
+                                    <Carousel slides={publications} openModal={openModal} />
+                                </div>
                             </div>
-                            <div className="relative overflow-hidden w-full h-full py-20">
-                                <Carousel slides={publications} openModal={openModal} />
-                            </div>
-                        </div>
-                    </motion.section>
+                        </motion.section>
+                    </Suspense>
 
-                    <motion.section id="projects" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                        <div className="max-w-7xl mx-auto">
-                            <div className="mb-16">
-                                <h2 className="text-4xl sm:text-5xl font-black mb-6 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 pb-2">
-                                    <BlocksIcon size={40} className="mr-4 text-blue-400" />
-                                    Featured Projects
-                                </h2>
-                                <p className="text-md md:text-lg text-slate-400 max-w-3xl">Some more open-source implementations and practical applications of AI/ML concepts</p>
-                            </div>
-                            <div className="relative flex flex-col items-center justify-center">
-                                <div className="w-full max-w-2xl flex items-center justify-center md:justify-between">
-                                    <button
-                                        onClick={() => setCurrentProject((prev) => (prev > 0 ? prev - 1 : projects.length - 1))}
-                                        className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors hidden md:block"
-                                    >
-                                        <ChevronLeft className="w-6 h-6" />
-                                    </button>
-                                    <div className="w-full md:w-auto">
-                                        <AnimatePresence mode="wait">
-                                        <motion.div
-                                            key={currentProject}
-                                            initial={{ opacity: 0, x: 50 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            exit={{ opacity: 0, x: -50 }}
-                                            transition={{ duration: 0.5 }}
-                                            className="w-full flex justify-center"
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <motion.section id="projects" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+                            <div className="max-w-7xl mx-auto">
+                                <div className="mb-16">
+                                    <h2 className="text-4xl sm:text-5xl font-black mb-6 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 pb-2">
+                                        <BlocksIcon size={40} className="mr-4 text-blue-400" />
+                                        Featured Projects
+                                    </h2>
+                                    <p className="text-md md:text-lg text-slate-400 max-w-3xl">Some more open-source implementations and practical applications of AI/ML concepts</p>
+                                </div>
+                                <div className="relative flex flex-col items-center justify-center">
+                                    <div className="w-full max-w-2xl flex items-center justify-center md:justify-between">
+                                        <button
+                                            onClick={() => setCurrentProject((prev) => (prev > 0 ? prev - 1 : projects.length - 1))}
+                                            className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors hidden md:block"
                                         >
-                                            <ProjectCard {...projects[currentProject]} />
-                                        </motion.div>
-                                        </AnimatePresence>
+                                            <ChevronLeft className="w-6 h-6" />
+                                        </button>
+                                        <div className="w-full md:w-auto">
+                                            <AnimatePresence mode="wait">
+                                            <motion.div
+                                                key={currentProject}
+                                                initial={{ opacity: 0, x: 50 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                exit={{ opacity: 0, x: -50 }}
+                                                transition={{ duration: 0.5 }}
+                                                className="w-full flex justify-center"
+                                            >
+                                                <ProjectCard {...projects[currentProject]} />
+                                            </motion.div>
+                                            </AnimatePresence>
+                                        </div>
+                                        <button
+                                            onClick={() => setCurrentProject((prev) => (prev < projects.length - 1 ? prev + 1 : 0))}
+                                            className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors hidden md:block"
+                                        >
+                                            <ChevronRight className="w-6 h-6" />
+                                        </button>
                                     </div>
-                                    <button
-                                        onClick={() => setCurrentProject((prev) => (prev < projects.length - 1 ? prev + 1 : 0))}
-                                        className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors hidden md:block"
-                                    >
-                                        <ChevronRight className="w-6 h-6" />
-                                    </button>
+                                    <div className="flex md:hidden items-center justify-center mt-4 space-x-4">
+                                        <button
+                                            onClick={() => setCurrentProject((prev) => (prev > 0 ? prev - 1 : projects.length - 1))}
+                                            className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                                        >
+                                            <ChevronLeft className="w-6 h-6" />
+                                        </button>
+                                        <button
+                                            onClick={() => setCurrentProject((prev) => (prev < projects.length - 1 ? prev + 1 : 0))}
+                                            className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                                        >
+                                            <ChevronRight className="w-6 h-6" />
+                                        </button>
+                                    </div>
+                                    <ScaleSlider
+                                        minValue={1}
+                                        maxValue={projects.length}
+                                        defaultValue={1}
+                                        value={currentProject + 1}
+                                        onChange={(value) => setCurrentProject(value - 1)}
+                                    />
                                 </div>
-                                <div className="flex md:hidden items-center justify-center mt-4 space-x-4">
-                                    <button
-                                        onClick={() => setCurrentProject((prev) => (prev > 0 ? prev - 1 : projects.length - 1))}
-                                        className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                                    >
-                                        <ChevronLeft className="w-6 h-6" />
-                                    </button>
-                                    <button
-                                        onClick={() => setCurrentProject((prev) => (prev < projects.length - 1 ? prev + 1 : 0))}
-                                        className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                                    >
-                                        <ChevronRight className="w-6 h-6" />
-                                    </button>
-                                </div>
-                                <ScaleSlider
-                                    minValue={1}
-                                    maxValue={projects.length}
-                                    defaultValue={1}
-                                    value={currentProject + 1}
-                                    onChange={(value) => setCurrentProject(value - 1)}
-                                />
                             </div>
-                        </div>
-                    </motion.section>
+                        </motion.section>
+                    </Suspense>
 
 
-                    <motion.section id="education" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                        <div className="max-w-7xl mx-auto">
-                            <div className="mb-16">
-                                <h2 className="text-4xl sm:text-5xl font-black mb-6 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 pb-2">
-                                    <StarIcon size={40} className="mr-4 text-yellow-400" />
-                                    Awards & Test Scores
-                                </h2>
-                                <p className="text-md md:text-lg text-slate-400 max-w-3xl">Achievements & Test Scores</p>
-                            </div>
-                            <div className="grid lg:grid-cols-2 gap-8 lg:items-start">
-                                <div ref={awardSectionRef}>
-                                    <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
-                                        <div className="w-8 h-8 bg-gradient-to-br from-yellow-500 to-blue-600 rounded-lg flex items-center justify-center mr-3"><span className="text-white text-sm">🏆</span></div>
-                                        Awards & Achievements
-                                    </h3>
-                                    <BackgroundGradient containerClassName="rounded-2xl">
-                                      <CometCard rotateDepth={10} translateDepth={10}>
-                                          <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500/50 transition-all duration-300 w-full h-full" transition={{ type: 'spring', stiffness: 300 }}>
-                                              <div className="flex items-center justify-between mb-4">
-                                                  <span className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full">2025</span>
-                                                  <span className="text-2xl">🏆</span>
-                                              </div>
-                                              <h4 className="text-xl font-bold text-white mb-2">Best Paper Award</h4>
-                                              <p className="text-blue-400 font-medium mb-3">International Symposium on Artificial Intelligence</p>
-                                              <p className="text-slate-300 text-sm">Recognized among 78 accepted submissions for outstanding research contribution in AI/ML</p>
-                                              <img src={awardImage} alt="Award" className="mt-4 rounded-lg" />
-                                          </motion.div>
-                                      </CometCard>
-                                    </BackgroundGradient>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <motion.section id="education" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+                            <div className="max-w-7xl mx-auto">
+                                <div className="mb-16">
+                                    <h2 className="text-4xl sm:text-5xl font-black mb-6 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 pb-2">
+                                        <StarIcon size={40} className="mr-4 text-yellow-400" />
+                                        Awards & Test Scores
+                                    </h2>
+                                    <p className="text-md md:text-lg text-slate-400 max-w-3xl">Achievements & Test Scores</p>
                                 </div>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
-                                        <ChartBar className="w-5 h-5 mr-3 text-blue-400" /> Test Scores
-                                    </h3>
-                                    <div className="grid grid-cols-1 gap-4">
-                                      <BackgroundGradient containerClassName="rounded-2xl">
-                                        <CometCard rotateDepth={10} translateDepth={10}>
-                                            <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col">
-                                                <div className="text-2xl sm:text-3xl font-bold text-white mb-1"><AnimatedCounter to={325} /></div>
-                                                <div className="text-sm text-slate-400 mb-2">GRE Score</div>
-                                                <button onClick={() => setIsGreExpanded(!isGreExpanded)} className="text-blue-400/80 hover:text-blue-400 text-xs flex items-center justify-center w-full mb-2 transition-colors mt-auto">Click to expand<ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isGreExpanded ? 'rotate-180' : ''}`} /></button>
-                                                <AnimatePresence>{isGreExpanded && (<motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden text-xs text-slate-300 space-y-1 text-left"><div className="pt-2 border-t border-slate-700"><div className="flex justify-between"><span>Quant:</span><span className="text-white font-semibold">167/170</span></div><div className="flex justify-between"><span>Verbal:</span><span className="text-white font-semibold">158/170</span></div><div className="flex justify-between"><span>Writing:</span><span className="text-white font-semibold">4.0/6.0</span></div></div></motion.div>)}</AnimatePresence>
-                                            </div>
-                                        </CometCard>
-                                      </BackgroundGradient>
-                                      <BackgroundGradient containerClassName="rounded-2xl">
-                                        <CometCard rotateDepth={10} translateDepth={10}>
-                                            <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col">
-                                                <div className="text-2xl sm:text-3xl font-bold text-white mb-1"><AnimatedCounter to={105} /></div>
-                                                <div className="text-sm text-slate-400 mb-2">TOEFL Score</div>
-                                                <button onClick={() => setIsToeflExpanded(!isToeflExpanded)} className="text-blue-400/80 hover:text-blue-400 text-xs flex items-center justify-center w-full mb-2 transition-colors mt-auto">Click to expand<ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isToeflExpanded ? 'rotate-180' : ''}`} /></button>
-                                                <AnimatePresence>{isToeflExpanded && (<motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden text-xs text-slate-300 space-y-1 text-left"><div className="pt-2 border-t border-slate-700"><div className="flex justify-between"><span>Reading:</span><span className="text-white font-semibold">26/30</span></div><div className="flex justify-between"><span>Speaking:</span><span className="text-white font-semibold">27/30</span></div><div className="flex justify-between"><span>Listening:</span><span className="text-white font-semibold">25/30</span></div><div className="flex justify-between"><span>Writing:</span><span className="text-white font-semibold">27/30</span></div></div></motion.div>)}</AnimatePresence>
-                                            </div>
-                                        </CometCard>
-                                      </BackgroundGradient>
-                                      <BackgroundGradient containerClassName="rounded-2xl">
-                                        <div>
+                                <div className="grid lg:grid-cols-2 gap-8 lg:items-start">
+                                    <div ref={awardSectionRef}>
+                                        <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
+                                            <div className="w-8 h-8 bg-gradient-to-br from-yellow-500 to-blue-600 rounded-lg flex items-center justify-center mr-3"><span className="text-white text-sm">🏆</span></div>
+                                            Awards & Achievements
+                                        </h3>
+                                        <BackgroundGradient containerClassName="rounded-2xl">
+                                          <CometCard rotateDepth={10} translateDepth={10}>
+                                              <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500/50 transition-all duration-300 w-full h-full" transition={{ type: 'spring', stiffness: 300 }}>
+                                                  <div className="flex items-center justify-between mb-4">
+                                                      <span className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full">2025</span>
+                                                      <span className="text-2xl">🏆</span>
+                                                  </div>
+                                                  <h4 className="text-xl font-bold text-white mb-2">Best Paper Award</h4>
+                                                  <p className="text-blue-400 font-medium mb-3">International Symposium on Artificial Intelligence</p>
+                                                  <p className="text-slate-300 text-sm">Recognized among 78 accepted submissions for outstanding research contribution in AI/ML</p>
+                                                  <img loading="lazy" src={awardImage} alt="Award" className="mt-4 rounded-lg" />
+                                              </motion.div>
+                                          </CometCard>
+                                        </BackgroundGradient>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
+                                            <ChartBar className="w-5 h-5 mr-3 text-blue-400" /> Test Scores
+                                        </h3>
+                                        <div className="grid grid-cols-1 gap-4">
+                                          <BackgroundGradient containerClassName="rounded-2xl">
                                             <CometCard rotateDepth={10} translateDepth={10}>
                                                 <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col">
-                                                    <div className="text-2xl sm:text-3xl font-bold text-white mb-1"><AnimatedCounter to={645} /></div>
-                                                    <div className="text-sm text-slate-400 mb-2">GATE Score</div>
-                                                    <button onClick={() => setIsGateExpanded(!isGateExpanded)} className="text-blue-400/80 hover:text-blue-400 text-xs flex items-center justify-center w-full mb-2 transition-colors mt-auto">Click to expand<ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isGateExpanded ? 'rotate-180' : ''}`} /></button>
-                                                    <AnimatePresence>{isGateExpanded && (<motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden text-xs text-slate-300 space-y-1 text-left"><div className="pt-2 border-t border-slate-700"><div className="flex justify-between"><span>Score:</span><span className="text-white font-semibold">645 / 1000</span></div><div className="flex justify-between"><span>All India Rank:</span><span className="text-white font-semibold">800</span></div><div className="flex justify-between"><span>Total Candidates:</span><span className="text-white font-semibold">75,680</span></div></div></motion.div>)}</AnimatePresence>
+                                                    <div className="text-2xl sm:text-3xl font-bold text-white mb-1"><AnimatedCounter to={325} /></div>
+                                                    <div className="text-sm text-slate-400 mb-2">GRE Score</div>
+                                                    <button onClick={() => setIsGreExpanded(!isGreExpanded)} className="text-blue-400/80 hover:text-blue-400 text-xs flex items-center justify-center w-full mb-2 transition-colors mt-auto">Click to expand<ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isGreExpanded ? 'rotate-180' : ''}`} /></button>
+                                                    <AnimatePresence>{isGreExpanded && (<motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden text-xs text-slate-300 space-y-1 text-left"><div className="pt-2 border-t border-slate-700"><div className="flex justify-between"><span>Quant:</span><span className="text-white font-semibold">167/170</span></div><div className="flex justify-between"><span>Verbal:</span><span className="text-white font-semibold">158/170</span></div><div className="flex justify-between"><span>Writing:</span><span className="text-white font-semibold">4.0/6.0</span></div></div></motion.div>)}</AnimatePresence>
                                                 </div>
                                             </CometCard>
+                                          </BackgroundGradient>
+                                          <BackgroundGradient containerClassName="rounded-2xl">
+                                            <CometCard rotateDepth={10} translateDepth={10}>
+                                                <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col">
+                                                    <div className="text-2xl sm:text-3xl font-bold text-white mb-1"><AnimatedCounter to={105} /></div>
+                                                    <div className="text-sm text-slate-400 mb-2">TOEFL Score</div>
+                                                    <button onClick={() => setIsToeflExpanded(!isToeflExpanded)} className="text-blue-400/80 hover:text-blue-400 text-xs flex items-center justify-center w-full mb-2 transition-colors mt-auto">Click to expand<ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isToeflExpanded ? 'rotate-180' : ''}`} /></button>
+                                                    <AnimatePresence>{isToeflExpanded && (<motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden text-xs text-slate-300 space-y-1 text-left"><div className="pt-2 border-t border-slate-700"><div className="flex justify-between"><span>Reading:</span><span className="text-white font-semibold">26/30</span></div><div className="flex justify-between"><span>Speaking:</span><span className="text-white font-semibold">27/30</span></div><div className="flex justify-between"><span>Listening:</span><span className="text-white font-semibold">25/30</span></div><div className="flex justify-between"><span>Writing:</span><span className="text-white font-semibold">27/30</span></div></div></motion.div>)}</AnimatePresence>
+                                                </div>
+                                            </CometCard>
+                                          </BackgroundGradient>
+                                          <BackgroundGradient containerClassName="rounded-2xl">
+                                            <div>
+                                                <CometCard rotateDepth={10} translateDepth={10}>
+                                                    <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col">
+                                                        <div className="text-2xl sm:text-3xl font-bold text-white mb-1"><AnimatedCounter to={645} /></div>
+                                                        <div className="text-sm text-slate-400 mb-2">GATE Score</div>
+                                                        <button onClick={() => setIsGateExpanded(!isGateExpanded)} className="text-blue-400/80 hover:text-blue-400 text-xs flex items-center justify-center w-full mb-2 transition-colors mt-auto">Click to expand<ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isGateExpanded ? 'rotate-180' : ''}`} /></button>
+                                                        <AnimatePresence>{isGateExpanded && (<motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden text-xs text-slate-300 space-y-1 text-left"><div className="pt-2 border-t border-slate-700"><div className="flex justify-between"><span>Score:</span><span className="text-white font-semibold">645 / 1000</span></div><div className="flex justify-between"><span>All India Rank:</span><span className="text-white font-semibold">800</span></div><div className="flex justify-between"><span>Total Candidates:</span><span className="text-white font-semibold">75,680</span></div></div></motion.div>)}</AnimatePresence>
+                                                    </div>
+                                                </CometCard>
+                                            </div>
+                                          </BackgroundGradient>
                                         </div>
-                                      </BackgroundGradient>
-                                    </div>
-                                    <div className="grid md:grid-cols-2 gap-8 mt-8">
-                                    <div>
-                                        <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
-                                            <Zap className="w-5 h-5 mr-3 text-yellow-400" /> Certifications
-                                        </h3>
-                                        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-700 bg-slate-800/50" style={{ height: '480px' }}>
-                                            <div className="flex flex-col w-full h-full overflow-y-auto custom-scrollbar"> {/* Ensure this class is here */}
-                                                {certificates.map((cert) => (
-                                                    <CertificateCard key={cert.title} {...cert}/>
-                                                ))}
+                                        <div className="grid md:grid-cols-2 gap-8 mt-8">
+                                        <div>
+                                            <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
+                                                <Zap className="w-5 h-5 mr-3 text-yellow-400" /> Certifications
+                                            </h3>
+                                            <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-700 bg-slate-800/50" style={{ height: '480px' }}>
+                                                <div className="flex flex-col w-full h-full overflow-y-auto custom-scrollbar"> {/* Ensure this class is here */}
+                                                    {certificates.map((cert) => (
+                                                        <CertificateCard key={cert.title} {...cert}/>
+                                                    ))}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
-                                            <StarIcon className="w-5 h-5 mr-3 text-yellow-400" /> Badges
-                                        </h3>
-                                        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-700 bg-slate-800/50" style={{ height: '480px' }}>
-                                            <div className="flex flex-col w-full h-full overflow-y-auto custom-scrollbar"> {/* And also here */}
-                                                {badges.map((badge) => (
-                                                    <BadgeCard key={badge.title} {...badge} />
-                                                ))}
+                                        <div>
+                                            <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
+                                                <StarIcon className="w-5 h-5 mr-3 text-yellow-400" /> Badges
+                                            </h3>
+                                            <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-700 bg-slate-800/50" style={{ height: '480px' }}>
+                                                <div className="flex flex-col w-full h-full overflow-y-auto custom-scrollbar"> {/* And also here */}
+                                                    {badges.map((badge) => (
+                                                        <BadgeCard key={badge.title} {...badge} />
+                                                    ))}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </motion.section>
+                        </motion.section>
+                    </Suspense>
 
-                                        <motion.section id="skills" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                        <div className="max-w-7xl mx-auto">
-                            <div className="mb-16">
-                                <h2 className="text-4xl sm:text-5xl font-black mb-6 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 pb-2">
-                                    <BoltIcon size={40} className="mr-4 text-yellow-400" />
-                                    Technical Expertise
-                                </h2>
-                                <p className="text-md md:text-lg text-slate-400 max-w-3xl">My skill set spanning AI/ML, Computer Vision, and Data Science</p>
-                            </div>
-                            <div className="grid lg:grid-cols-3 gap-8 lg:items-start">
-                                {Object.entries(skills).map(([category, skillList]) => (
-                                  <BackgroundGradient key={category} containerClassName="rounded-2xl">
-                                    <CometCard rotateDepth={10} translateDepth={10}>
-                                        <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 h-full">
-                                            <div className="flex items-center mb-6">
-                                                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
-                                                    {category === "Programming & Frameworks" && <Code className="w-6 h-6 text-white" />}
-                                                    {category === "Data Science & Computer Vision" && <Eye className="w-6 h-6 text-white" />}
-                                                    {category === "Tools & Platforms" && <Database className="w-6 h-6 text-white" />}
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <motion.section id="skills" className="py-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+                            <div className="max-w-7xl mx-auto">
+                                <div className="mb-16">
+                                    <h2 className="text-4xl sm:text-5xl font-black mb-6 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 pb-2">
+                                        <BoltIcon size={40} className="mr-4 text-yellow-400" />
+                                        Technical Expertise
+                                    </h2>
+                                    <p className="text-md md:text-lg text-slate-400 max-w-3xl">My skill set spanning AI/ML, Computer Vision, and Data Science</p>
+                                </div>
+                                <div className="grid lg:grid-cols-3 gap-8 lg:items-start">
+                                    {Object.entries(skills).map(([category, skillList]) => (
+                                      <BackgroundGradient key={category} containerClassName="rounded-2xl">
+                                        <CometCard rotateDepth={10} translateDepth={10}>
+                                            <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 h-full">
+                                                <div className="flex items-center mb-6">
+                                                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
+                                                        {category === "Programming & Frameworks" && <Code className="w-6 h-6 text-white" />}
+                                                        {category === "Data Science & Computer Vision" && <Eye className="w-6 h-6 text-white" />}
+                                                        {category === "Tools & Platforms" && <Database className="w-6 h-6 text-white" />}
+                                                    </div>
+                                                    <h3 className="text-xl font-bold text-white">{category}</h3>
                                                 </div>
-                                                <h3 className="text-xl font-bold text-white">{category}</h3>
+                                                <motion.div className="grid grid-cols-2 gap-4" variants={listContainerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+                                                    {skillList.map((skill) => (
+                                                        <motion.div key={skill.name} variants={listItemVariants} className={`flex items-center space-x-3 bg-slate-700/50 hover:bg-blue-500/20 border border-slate-600 hover:border-blue-500/50 p-3 rounded-lg transition-all duration-300 ${skill.name.length > 15 ? 'col-span-2' : ''}`}>
+                                                            {skill.logo ? <img loading="lazy" src={skill.logo} alt={skill.name} className="w-6 h-6" /> : <div className="w-6 h-6 text-white">{skill.icon}</div>}
+                                                            <span className="font-medium text-slate-300 hover:text-white transition-colors duration-300">{skill.name}</span>
+                                                        </motion.div>
+                                                    ))}
+                                                </motion.div>
                                             </div>
-                                            <motion.div className="grid grid-cols-2 gap-4" variants={listContainerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                                                {skillList.map((skill) => (
-                                                    <motion.div key={skill.name} variants={listItemVariants} className={`flex items-center space-x-3 bg-slate-700/50 hover:bg-blue-500/20 border border-slate-600 hover:border-blue-500/50 p-3 rounded-lg transition-all duration-300 ${skill.name.length > 15 ? 'col-span-2' : ''}`}>
-                                                        {skill.logo ? <img src={skill.logo} alt={skill.name} className="w-6 h-6" /> : <div className="w-6 h-6 text-white">{skill.icon}</div>}
-                                                        <span className="font-medium text-slate-300 hover:text-white transition-colors duration-300">{skill.name}</span>
-                                                    </motion.div>
-                                                ))}
-                                            </motion.div>
-                                        </div>
-                                    </CometCard>
-                                  </BackgroundGradient>
-                                ))}
+                                        </CometCard>
+                                      </BackgroundGradient>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    </motion.section>
+                        </motion.section>
+                    </Suspense>
 
                 </main>
 
