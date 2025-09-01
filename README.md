@@ -30,19 +30,19 @@
 </a>
 <a href="https://github.com/crimsonKn1ght/pdf-qna" target="_blank">
     <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=pdf-qna&theme=solarized-dark&refresh=0" media="(prefers-color-scheme: dark)">
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=pdf-qna&theme=solarized-dark&refresh=1" media="(prefers-color-scheme: dark)">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=vue" alt="real-time-object-detector">
     </picture>
 </a>
 <a href="https://github.com/crimsonKn1ght/img-gen" target="_blank">
     <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=solarized-dark" media="(prefers-color-scheme: dark)">
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=solarized-dark&refresh=0" media="(prefers-color-scheme: dark)">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=vue" alt="img-gen">
     </picture>
 </a>
 <a href="https://github.com/crimsonKn1ght/movie-recommender" target="_blank">
     <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=solarized-dark" media="(prefers-color-scheme: dark)">
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=solarized-dark&refresh=0" media="(prefers-color-scheme: dark)">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=vue" alt="movie-recommender">
     </picture>
 </a>
