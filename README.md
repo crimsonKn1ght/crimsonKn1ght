@@ -30,7 +30,7 @@
 </a>
 <a href="https://github.com/crimsonKn1ght/pdf-qna" target="_blank">
     <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=pdf-qna&theme=solarized-dark&refresh=1" media="(prefers-color-scheme: dark)">
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=pdf-qna&theme=solarized-dark&refresh=2" media="(prefers-color-scheme: dark)">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=vue" alt="real-time-object-detector">
     </picture>
 </a>
