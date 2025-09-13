@@ -130,10 +130,10 @@ const Modal = ({ isOpen, onClose, title, children }) => {
 
 const projects = [
   {
-    name: "PDF OCR and summarizer",
-    description: "Multimodal PDF Q&A Assistant that allows you to upload PDFs and ask questions about their content.",
-    tags: ["OCR", "PDF", "Q&A"],
-    repo: "crimsonKn1ght/pdf-qna",
+    name: "Document OCR and summarizer",
+    description: "Multimodal Document Q&A Assistant that allows you to upload PDFs and ask questions about their content.",
+    tags: ["OCR", "PDF", "Docx", "txt", "Q&A" ],
+    repo: "crimsonKn1ght/docqnatool",
     icon: <BookmarkIcon className="w-6 h-6 text-white" />
   },
   {
@@ -676,4 +676,5 @@ function App() {
 }
 
 export default App;
+
 
