@@ -28,9 +28,9 @@
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=vue" alt="Code-OA-detection-model">
     </picture>
 </a>
-<a href="https://github.com/crimsonKn1ght/pdf-qna" target="_blank">
+<a href="https://github.com/crimsonKn1ght/docqnatool" target="_blank">
     <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=pdf-qna&theme=solarized-dark&refresh=3" media="(prefers-color-scheme: dark)">
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=docqnatool&theme=solarized-dark&refresh=3" media="(prefers-color-scheme: dark)">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=vue" alt="real-time-object-detector">
     </picture>
 </a>
