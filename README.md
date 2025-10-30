@@ -34,10 +34,10 @@
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=vue" alt="real-time-object-detector">
     </picture>
 </a>
-<a href="https://github.com/crimsonKn1ght/img-gen" target="_blank">
+<a href="https://github.com/crimsonKn1ght/docqnatool" target="_blank">
     <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=solarized-dark&refresh=0" media="(prefers-color-scheme: dark)">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=img-gen&theme=vue" alt="img-gen">
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=docqnatool&theme=solarized-dark&refresh=0" media="(prefers-color-scheme: dark)">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=docqnatool&theme=vue" alt="docqnatool">
     </picture>
 </a>
 <a href="https://github.com/crimsonKn1ght/movie-recommender" target="_blank">
