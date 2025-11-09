@@ -86,10 +86,10 @@
   </picture>
 
   <!-- GitHub Streak -->
-  <picture>
+  <!--<picture>
     <source srcset="https://streak-stats.demolab.com?user=crimsonKn1ght&theme=solarized-dark&hide_border=false" media="(prefers-color-scheme: dark)">
     <img src="https://streak-stats.demolab.com?user=crimsonKn1ght&theme=default&hide_border=false" alt="GitHub Streak" height="150">
-  </picture>
+  </picture>-->
 
 
 
