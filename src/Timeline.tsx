@@ -18,6 +18,28 @@ export function TimelineDemo() {
         <div>
           <BackgroundGradient containerClassName="rounded-2xl">
             <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
+              <h4 className="font-bold text-lg mb-1 text-white">Data Scientist</h4>
+              <p className="text-blue-400 font-medium">Axtria, Bengaluru</p>
+              <p className="text-xs text-slate-400 mb-2">Sept 2025 – Present</p>
+          
+              <ul className="list-disc list-inside text-sm text-white space-y-1">
+                <li>Performed exploratory data analysis and developed predictive ML models using Python to analyze large datasets and derive insights.</li>
+                <li>Built AI-powered internal workflow agents to evaluate resumes and recommend personalized upskilling pathways.</li>
+                <li>Worked with embeddings, feature engineering, and LLM-based automation pipelines to enhance intelligent search capabilities.</li>
+                <li>Collaborated cross-functionally to deploy ML components into production and improve reliability and system performance.</li>
+              </ul>
+          
+              <div className="mt-4 h-24 flex items-center justify-center">
+                <img
+                  src={axtriaLogo}
+                  alt="Axtria"
+                  className="max-h-[70%] max-w-[70%] object-contain"
+                />
+              </div>
+            </div>
+          </BackgroundGradient>
+          <BackgroundGradient containerClassName="rounded-2xl">
+            <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
               <h4 className="font-bold text-lg mb-1 text-white">Research Intern</h4>
               <p className="text-blue-400 font-medium">IIT Kharagpur</p>
               <p className="text-xs text-slate-400 mb-2">June 2025 – Aug 2025</p>
