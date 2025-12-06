@@ -22,22 +22,22 @@
 
 ## 🚀 Featured Projects
 
-<a href="https://github.com/crimsonKn1ght/Code-OA-detection-model" target="_blank">
+<!-- <a href="https://github.com/crimsonKn1ght/rag-llm" target="_blank">
     <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=solarized-dark" media="(prefers-color-scheme: dark)">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=Code-OA-detection-model&theme=vue" alt="Code-OA-detection-model">
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=rag-llm&theme=solarized-dark" media="(prefers-color-scheme: dark)">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=rag-llm&theme=vue" alt="rag-llm">
     </picture>
-</a>
+</a> -->
 <a href="https://github.com/crimsonKn1ght/docqnatool" target="_blank">
     <picture>
         <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=docqnatool&theme=solarized-dark&refresh=3" media="(prefers-color-scheme: dark)">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=real-time-object-detector&theme=vue" alt="real-time-object-detector">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=docqnatool&theme=vue" alt="docqnatool">
     </picture>
 </a>
-<a href="https://github.com/crimsonKn1ght/docqnatool" target="_blank">
+<!-- <a href="https://github.com/crimsonKn1ght/mini-gpt" target="_blank">
     <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=docqnatool&theme=solarized-dark&refresh=0" media="(prefers-color-scheme: dark)">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=docqnatool&theme=vue" alt="docqnatool">
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=mini-gpt&theme=solarized-dark&refresh=0" media="(prefers-color-scheme: dark)">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=mini-gpt&theme=vue" alt="mini-gpt">
     </picture>
 </a>
 <a href="https://github.com/crimsonKn1ght/movie-recommender" target="_blank">
@@ -45,7 +45,7 @@
         <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=solarized-dark&refresh=0" media="(prefers-color-scheme: dark)">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=vue" alt="movie-recommender">
     </picture>
-</a>
+</a> -->
 
 ---
 
