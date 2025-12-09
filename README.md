@@ -14,7 +14,7 @@
 </p>
 
 - My research focuses on building robust and interpretable architectures in data-scarce scenarios.
-- I'm particularly interested in **4D scene reconstruction** and **explainable AI (XAI)**.
+- I'm particularly interested in **explainable and trustworthy AI**.
 - Visit my [portfolio website](https://resume-gr.vercel.app/).
 - I work mostly on research-oriented and open-source projects.
 
