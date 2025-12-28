@@ -9,15 +9,14 @@
 
 <p align="center">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=26&duration=3000&pause=700&color=abd202&center=true&vCenter=true&random=false&width=600&lines=Deep+Learning+Researcher;Computer+Vision+Engineer;AI+/+ML+Researher" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=26&duration=3000&pause=700&color=abd202&center=true&vCenter=true&random=false&width=600&lines=AI+/+ML+Researher;Writing+code+that+ships" alt="Typing SVG" />
   </a>
 </p>
 
 - My research focuses on building robust and interpretable architectures in data-scarce scenarios.
 - I'm particularly interested in **explainable and trustworthy AI**.
-- Visit my [portfolio website](https://resume-gr.vercel.app/).
-- I work mostly on research-oriented and open-source projects.
-
+- Visit my [portfolio](https://resume-gr.vercel.app/).
+- I'm on [Kaggle](https://www.kaggle.com/gourabr0y555) 
 ---
 
 ## 🚀 Featured Projects
@@ -34,15 +33,10 @@
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=docqnatool&theme=vue" alt="docqnatool">
     </picture>
 </a>
-<!-- <a href="https://github.com/crimsonKn1ght/mini-gpt" target="_blank">
+
+<!-- <a href="https://github.com/crimsonKn1ght/movie-recommender" target="_blank">
     <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=mini-gpt&theme=solarized-dark&refresh=0" media="(prefers-color-scheme: dark)">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=mini-gpt&theme=vue" alt="mini-gpt">
-    </picture>
-</a>
-<a href="https://github.com/crimsonKn1ght/movie-recommender" target="_blank">
-    <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=solarized-dark&refresh=0" media="(prefers-color-scheme: dark)">
+        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=solarized-dark&refresh=1" media="(prefers-color-scheme: dark)">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=vue" alt="movie-recommender">
     </picture>
 </a> -->
@@ -71,29 +65,6 @@
 
 ---
 
-### GitHub Analytics
-
-  <!-- GitHub Stats -->
-  <picture>
-    <source srcset="https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&theme=solarized-dark&hide_border=false&include_all_commits=false&count_private=true" media="(prefers-color-scheme: dark)">
-    <img src="https://github-readme-stats.vercel.app/api?username=crimsonKn1ght&theme=default&hide_border=false&include_all_commits=false&count_private=true" alt="GitHub Stats" height="150">
-  </picture>
-
-  <!-- Top Languages -->
-  <picture>
-    <source srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=crimsonKn1ght&theme=solarized-dark&hide_border=false&include_all_commits=false&count_private=true&layout=compact" media="(prefers-color-scheme: dark)">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=crimsonKn1ght&theme=default&hide_border=false&include_all_commits=false&count_private=true&layout=compact" alt="Top Languages" height="150">
-  </picture>
-
-  <!-- GitHub Streak -->
-  <!--<picture>
-    <source srcset="https://streak-stats.demolab.com?user=crimsonKn1ght&theme=solarized-dark&hide_border=false" media="(prefers-color-scheme: dark)">
-    <img src="https://streak-stats.demolab.com?user=crimsonKn1ght&theme=default&hide_border=false" alt="GitHub Streak" height="150">
-  </picture>-->
-
-
-
-![Trophies](https://github-trophies.vercel.app/?username=crimsonKn1ght)
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=200&section=footer&animation=twinkling" width="100%"/>
