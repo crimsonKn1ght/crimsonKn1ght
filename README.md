@@ -19,27 +19,73 @@
 - I'm on [Kaggle](https://www.kaggle.com/gourabr0y555) 
 ---
 
-## 🚀 Featured Projects
+## 🚀 Projects
 
-<!-- <a href="https://github.com/crimsonKn1ght/rag-llm" target="_blank">
-    <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=rag-llm&theme=solarized-dark" media="(prefers-color-scheme: dark)">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=rag-llm&theme=vue" alt="rag-llm">
-    </picture>
-</a> -->
-<a href="https://github.com/crimsonKn1ght/docqnatool" target="_blank">
-    <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=docqnatool&theme=solarized-dark&refresh=3" media="(prefers-color-scheme: dark)">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=docqnatool&theme=vue" alt="docqnatool">
-    </picture>
-</a>
 
-<!-- <a href="https://github.com/crimsonKn1ght/movie-recommender" target="_blank">
-    <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=solarized-dark&refresh=1" media="(prefers-color-scheme: dark)">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=crimsonKn1ght&repo=movie-recommender&theme=vue" alt="movie-recommender">
-    </picture>
-</a> -->
+<table>
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Repo name</th>
+      <th>Repo url</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan=3>NLP/LLMs</td>
+      <td>docqnatool</td>
+      <td>https://github.com/crimsonKn1ght/docqnatool</td>
+    </tr>
+    <tr>
+      <td>rag-llm</td>
+      <td>https://github.com/crimsonKn1ght/rag-llm</td>
+    </tr>
+    <tr>
+      <td>mini-gpt</td>
+      <td>https://github.com/crimsonKn1ght/mini-gpt</td>
+    </tr>
+    <tr>
+      <td rowspan=5>Vision</td>
+      <td>Knee osteoarthritis detection and categorization...</td>
+      <td>https://github.com/crimsonKn1ght/Code-OA-detection-model</td>
+    </tr>
+    <tr>
+      <td>Texture-based Feature Extraction and CBAM-Enhanced U-Net...</td>
+      <td>https://github.com/crimsonKn1ght/Code-OP-detection-model</td>
+    </tr>
+    <tr>
+      <td>CT scan reconstruction</td>
+      <td>https://github.com/crimsonKn1ght/ct_scan_reconstruction</td>
+    </tr>
+    <tr>
+      <td>Real-time object detector</td>
+      <td>https://github.com/crimsonKn1ght/real-time-object-detector</td>
+    </tr>
+    <tr>
+      <td>Img gen</td>
+      <td>https://github.com/crimsonKn1ght/img-gen</td>
+    </tr>
+    <tr>
+      <td rowspan=3>Other AI/ML projects</td>
+      <td>Movie Recommender</td>
+      <td>https://github.com/crimsonKn1ght/movie-recommender</td>
+    </tr>
+    <tr>
+      <td>Misc. AI/ML codes</td>
+      <td>https://github.com/crimsonKn1ght/My-AI-ML-codes</td>
+    </tr>
+    <tr>
+      <td>Machine Learning codes (2)</td>
+      <td>https://github.com/crimsonKn1ght/machine-learning</td>
+    </tr>
+        <tr>
+      <td>Full stack projects</td>
+      <td>App</td>
+      <td>https://github.com/crimsonKn1ght/app</td>
+    </tr>    
+  </tbody>
+</table>
+
 
 ---
 
