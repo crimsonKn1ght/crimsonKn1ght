@@ -78,11 +78,15 @@
       <td>Machine Learning codes (2)</td>
       <td>https://github.com/crimsonKn1ght/machine-learning</td>
     </tr>
-        <tr>
-      <td>Full stack projects</td>
-      <td>App</td>
-      <td>https://github.com/crimsonKn1ght/app</td>
+    <tr>
+      <td rowspan=2>Apps/projects</td>
+      <td>Django-app</td>
+      <td>https://github.com/crimsonKn1ght/django-app</td>
     </tr>    
+    <tr>
+      <td>Full stack app</td>
+      <td>https://github.com/crimsonKn1ght/app</td>
+    </tr>
   </tbody>
 </table>
 
