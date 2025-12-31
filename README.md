@@ -87,6 +87,11 @@
       <td>Full stack app</td>
       <td>https://github.com/crimsonKn1ght/app</td>
     </tr>
+    <tr>
+      <td>Kaggle submissions</td>
+      <td>My most upvoted notebooks</td>
+      <td>https://github.com/crimsonKn1ght/best-kaggle-submissions</td>
+    </tr> 
   </tbody>
 </table>
 
