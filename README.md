@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=300&section=header&text=I%20am%20crimsonKn1ght%20👋&fontSize=60&fontAlign=50&fontAlignY=40&animation=twinkling" width="100%"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=300&section=header&text=I%20am%20Gourab%20Roy%20👋&fontSize=60&fontAlign=50&fontAlignY=40&animation=twinkling" width="100%"/>
 </p>
 
 ![Total Stars](https://img.shields.io/badge/dynamic/json?label=Total%20Stars&query=%24.stars&url=https://api.github-star-counter.workers.dev/user/crimsonKn1ght)
