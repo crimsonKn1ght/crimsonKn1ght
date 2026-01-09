@@ -19,9 +19,7 @@
 - I'm on [Kaggle](https://www.kaggle.com/gourabr0y555) 
 ---
 
-## 🚀 Projects
-
-# 🔬 AI / ML Projects
+# Projects
 
 <details>
 <summary><b>NLP / LLMs</b></summary>
