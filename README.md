@@ -21,80 +21,51 @@
 
 ## 🚀 Projects
 
+# 🔬 AI / ML Projects
 
-<table>
-  <thead>
-    <tr>
-      <th>Topic</th>
-      <th>Repo name</th>
-      <th>Repo url</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td rowspan=3>NLP/LLMs</td>
-      <td>docqnatool</td>
-      <td>https://github.com/crimsonKn1ght/docqnatool</td>
-    </tr>
-    <tr>
-      <td>rag-llm</td>
-      <td>https://github.com/crimsonKn1ght/rag-llm</td>
-    </tr>
-    <tr>
-      <td>mini-gpt</td>
-      <td>https://github.com/crimsonKn1ght/mini-gpt</td>
-    </tr>
-    <tr>
-      <td rowspan=5>Vision</td>
-      <td>Knee osteoarthritis detection and categorization...</td>
-      <td>https://github.com/crimsonKn1ght/Code-OA-detection-model</td>
-    </tr>
-    <tr>
-      <td>Texture-based Feature Extraction and CBAM-Enhanced U-Net...</td>
-      <td>https://github.com/crimsonKn1ght/Code-OP-detection-model</td>
-    </tr>
-    <tr>
-      <td>CT scan reconstruction</td>
-      <td>https://github.com/crimsonKn1ght/ct_scan_reconstruction</td>
-    </tr>
-    <tr>
-      <td>Real-time object detector</td>
-      <td>https://github.com/crimsonKn1ght/real-time-object-detector</td>
-    </tr>
-    <tr>
-      <td>Img gen</td>
-      <td>https://github.com/crimsonKn1ght/img-gen</td>
-    </tr>
-    <tr>
-      <td rowspan=3>Other AI/ML projects</td>
-      <td>Movie Recommender</td>
-      <td>https://github.com/crimsonKn1ght/movie-recommender</td>
-    </tr>
-    <tr>
-      <td>Misc. AI/ML codes</td>
-      <td>https://github.com/crimsonKn1ght/My-AI-ML-codes</td>
-    </tr>
-    <tr>
-      <td>Machine Learning codes (2)</td>
-      <td>https://github.com/crimsonKn1ght/machine-learning</td>
-    </tr>
-    <tr>
-      <td rowspan=2>Apps/projects</td>
-      <td>Django-app</td>
-      <td>https://github.com/crimsonKn1ght/django-app</td>
-    </tr>    
-    <tr>
-      <td>Full stack app</td>
-      <td>https://github.com/crimsonKn1ght/app</td>
-    </tr>
-    <tr>
-      <td>Kaggle submissions</td>
-      <td>My most upvoted notebooks</td>
-      <td>https://github.com/crimsonKn1ght/best-kaggle-submissions</td>
-    </tr> 
-  </tbody>
-</table>
+<details>
+<summary><b>NLP / LLMs</b></summary>
 
+- [docqnatool](https://github.com/crimsonKn1ght/docqnatool)
+- [rag-llm](https://github.com/crimsonKn1ght/rag-llm)
+- [mini-gpt](https://github.com/crimsonKn1ght/mini-gpt)
+
+</details>
+
+<details>
+<summary><b>Vision</b></summary>
+
+- [Knee osteoarthritis detection and categorization](https://github.com/crimsonKn1ght/Code-OA-detection-model)
+- [Texture-based Feature Extraction and CBAM-Enhanced U-Net](https://github.com/crimsonKn1ght/Code-OP-detection-model)
+- [CT scan reconstruction](https://github.com/crimsonKn1ght/ct_scan_reconstruction)
+- [Real-time object detector](https://github.com/crimsonKn1ght/real-time-object-detector)
+- [Image generation](https://github.com/crimsonKn1ght/img-gen)
+
+</details>
+
+<details>
+<summary><b>ML Projects</b></summary>
+
+- [Movie Recommender](https://github.com/crimsonKn1ght/movie-recommender)
+- [Misc. AI / ML codes](https://github.com/crimsonKn1ght/My-AI-ML-codes)
+- [Machine Learning codes](https://github.com/crimsonKn1ght/machine-learning)
+
+</details>
+
+<details>
+<summary><b>Apps / Projects</b></summary>
+
+- [Django app](https://github.com/crimsonKn1ght/django-app)
+- [Full stack app](https://github.com/crimsonKn1ght/app)
+
+</details>
+
+<details>
+<summary><b>Kaggle</b></summary>
+
+- [My most upvoted notebooks](https://github.com/crimsonKn1ght/best-kaggle-submissions)
+
+</details>
 
 ---
 
