@@ -42,26 +42,26 @@
 </details>
 
 <details>
+<summary><b>Kaggle</b></summary>
+
+- [My most upvoted notebooks](https://github.com/crimsonKn1ght/best-kaggle-submissions): Some of my most voted Kaggle copies (30+ votes).
+- [Machine Learning codes](https://github.com/crimsonKn1ght/machine-learning): Some copies pertaining to Machine learning.
+
+</details>
+
+<details>
 <summary><b>ML Projects</b></summary>
 
-- [Movie Recommender](https://github.com/crimsonKn1ght/movie-recommender)
-- [Misc. AI / ML codes](https://github.com/crimsonKn1ght/My-AI-ML-codes)
-- [Machine Learning codes](https://github.com/crimsonKn1ght/machine-learning)
+- [Movie Recommender](https://github.com/crimsonKn1ght/movie-recommender): A comprehensive movie recommendation system implementing multiple machine learning algorithms with an interactive React frontend.
+- [Misc. AI / ML codes](https://github.com/crimsonKn1ght/My-AI-ML-codes): Some AI/ML tools written by me.
 
 </details>
 
 <details>
 <summary><b>Apps / Projects</b></summary>
 
-- [Django app](https://github.com/crimsonKn1ght/django-app)
-- [Full stack app](https://github.com/crimsonKn1ght/app)
-
-</details>
-
-<details>
-<summary><b>Kaggle</b></summary>
-
-- [My most upvoted notebooks](https://github.com/crimsonKn1ght/best-kaggle-submissions)
+- [Django app](https://github.com/crimsonKn1ght/django-app): To-do list app implemented in django framework.
+- [Full stack app](https://github.com/crimsonKn1ght/app): In-progress app.
 
 </details>
 
