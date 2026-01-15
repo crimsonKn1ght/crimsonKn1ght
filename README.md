@@ -33,7 +33,7 @@
 <details>
 <summary><b>Vision</b></summary>
 
-- [Knee osteoarthritis detection and categorization](https://github.com/crimsonKn1ght/Code-OA-detection-model): Code for paper "Knee osteoarthritis detection and categorization with deep learning models"
+- [Knee osteoarthritis detection and categorization](https://github.com/crimsonKn1ght/Code-OA-detection-model): Code for paper "Knee osteoarthritis detection and categorization with deep learning models". [Click for paper](https://link.springer.com/chapter/10.1007/978-981-96-9239-2_9).
 - [Texture-based Feature Extraction and CBAM-Enhanced U-Net](https://github.com/crimsonKn1ght/Code-OP-detection-model): Code for the paper titled "Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection"
 - [CT scan reconstruction](https://github.com/crimsonKn1ght/ct_scan_reconstruction): This repository implements an end-to-end CT image reconstruction pipeline that maps sinograms → reconstructed CT images using deep learning
 - [Real-time object detector](https://github.com/crimsonKn1ght/real-time-object-detector): A web-based real-time object detection application + standalone version which is a general purpose real-time detector
