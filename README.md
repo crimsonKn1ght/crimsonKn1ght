@@ -89,6 +89,11 @@
 
 ---
 
+### My kaggle competition prize certificates:
+
+<img width="480" height="296" alt="dataWr3cker - CSIRO - Image2Biomass Prediction" src="https://github.com/user-attachments/assets/9f785f87-1b35-45a5-901d-2d2a378ce958" />
+
+---
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=200&section=footer&animation=twinkling" width="100%"/>
