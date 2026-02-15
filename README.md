@@ -25,6 +25,7 @@
 <summary><b>NLP / LLMs</b></summary>
 
 - [Docqnatool](https://github.com/crimsonKn1ght/docqnatool): Docqnatool is a smart document Q&A assistant that lets you upload your files and ask meaningful questions about their content. [Click for demo](https://docqnatool.streamlit.app/).
+- [DocuMindGPT](https://github.com/crimsonKn1ght/DocuMindGPT): DocuMindGPT is a document-grounded Q&A CLI that uses RAG (Retrieval-Augmented Generation) to answer questions based on your PDFs or text files. It features a built-in evaluation agent that scores answers for hallucinations and relevance.
 - [rag-llm](https://github.com/crimsonKn1ght/rag-llm): Retrieval-Augmented Generation (RAG) demo built with LangChain, Chroma, and Streamlit, from scratch.
 - [mini-gpt](https://github.com/crimsonKn1ght/mini-gpt): Mini gpt based off Andrej's course.
 
