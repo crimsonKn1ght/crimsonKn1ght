@@ -14,9 +14,9 @@
 
 - My research focuses on building robust and interpretable architectures in data-scarce scenarios.
 - I'm particularly interested in **explainable and trustworthy AI**.
-- Visit my [portfolio](https://resume-gr.vercel.app/).
-- I'm on [Kaggle](https://www.kaggle.com/gourabr0y555)
-- My blog site: [royml.dev](https://www.royml.dev/)
+- [![](https://img.shields.io/badge/Visit%20my-%40Portfolio-blue)](https://resume-gr.vercel.app/)
+- [![](https://img.shields.io/badge/Visit%20my-%40Kaggle-blue)](https://www.kaggle.com/gourabr0y555)
+- [![](https://img.shields.io/badge/Visit%20my-%40Blog%20site-blue)](https://www.royml.dev/)
 ---
 
 # Projects
