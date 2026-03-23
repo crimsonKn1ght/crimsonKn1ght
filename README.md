@@ -45,7 +45,7 @@
 <details>
 <summary><b>Kaggle</b></summary>
 
-- [My most upvoted notebooks](https://github.com/crimsonKn1ght/best-kaggle-submissions): Some of my most voted Kaggle copies (30+ votes).
+- [Kaggle notebooks](https://github.com/crimsonKn1ght/best-kaggle-submissions): Some of my best Kaggle copies.
 - [Machine Learning codes](https://github.com/crimsonKn1ght/machine-learning): Some copies pertaining to Machine learning.
 
 </details>
