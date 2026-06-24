@@ -3,9 +3,6 @@ import { Timeline } from "@/components/ui/timeline";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import iitKharagpurLogo from './assets/iit-kharagpur-logo.webp';
 import axtriaLogo from './assets/axtria-logo.webp';
-import virtuallyTestingLogo from './assets/virtually-testing-logo.webp';
-import cbseLogo from './assets/CBSE-logo.webp';
-import cyberSecuredIndiaLogo from './assets/cybersecuredindia-logo.webp';
 import iiestShibpurLogo from './assets/iiest-shibpur-logo.webp';
 import iitDhanbadLogo from './assets/iit-dhanbad-logo.webp';
 
@@ -42,7 +39,7 @@ export function TimelineDemo() {
             <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
               <h4 className="font-bold text-lg mb-1 text-white">Research Intern</h4>
               <p className="text-blue-400 font-medium">IIT Kharagpur</p>
-              <p className="text-xs text-slate-400 mb-2">June 2025 – Aug 2025</p>
+              <p className="text-xs text-slate-400 mb-2">May 2025 – Sept 2025</p>
               <ul className="list-disc list-inside text-sm text-white mt-2 space-y-1">
                 <li>Conducting ongoing research on CT image reconstruction as part of a deep learning internship, using a parallel-beam, fan-beam, cone-beam datasets consisting of 20,000+ sinogram-image pairs to improve reconstruction quality from sparse and noisy projections, with a focus on real-world medical imaging challenges.</li>
                 <li>Developing various deep learning architectures, including U-Nets for 2D slices and experimenting with 3D CNNs for volumetric reconstruction, to improve image quality from low-signal, noisy sinogram data.</li>
@@ -93,11 +90,11 @@ export function TimelineDemo() {
         <div>
           <BackgroundGradient containerClassName="rounded-2xl">
             <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-              <h4 className="font-bold text-lg mb-1 text-white">Data Engineering Intern</h4>
+              <h4 className="font-bold text-lg mb-1 text-white">Data Science Intern</h4>
               <p className="text-blue-400 font-medium">Axtria, Bengaluru</p>
               <p className="text-xs text-slate-400 mb-2">May – July 2024</p>
               <p className="text-sm text-white">
-                Developed and optimized data processing workflows and ETL pipelines using Python and SQL, ensuring efficient integration, transformation, and validation of large, het- erogeneous data.
+                Built and validated time-series forecasting models on internal business data, surfacing predictive insights to support data-driven decision-making and automate recurring analytics workflows.
               </p>
               <div className="mt-4 h-24 flex items-center justify-center">
                 <img
@@ -138,105 +135,6 @@ export function TimelineDemo() {
           </BackgroundGradient>
         </div>
       ),
-    },
-    {
-        title: "2022",
-        content: (
-            <div>
-              <BackgroundGradient containerClassName="rounded-2xl">
-                <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-                    <h4 className="font-bold text-lg mb-1 text-white">Security Intern</h4>
-                    <p className="text-blue-400 font-medium">Virtually Testing Foundation</p>
-                    <p className="text-xs text-slate-400 mb-2">May – July 2022</p>
-                    <p className="text-sm text-white">
-                        Accomplished hands-on training in offensive and defensive cybersecurity measured by completion of an 8-week internship with practical red and blue team exercises.
-                    </p>
-                    <div className="mt-4 h-24 flex items-center justify-center">
-                      <img
-                          src={virtuallyTestingLogo}
-                          alt="Virtually Testing Foundation"
-                          className="max-h-full max-w-full object-contain"
-                      />
-                    </div>
-                </div>
-              </BackgroundGradient>
-              <BackgroundGradient containerClassName="rounded-2xl">
-                <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-                    <h4 className="font-bold text-lg mb-1 text-white">Digital Forensics Intern</h4>
-                    <p className="text-blue-400 font-medium">Cyber Secured India</p>
-                    <p className="text-xs text-slate-400 mb-2">Mar - May 2022</p>
-                    <p className="text-sm text-white">
-                      Gained practical experience in offensive and defensive security through an 8-week internship, executing real-world red and blue team operations.
-                    </p>
-                    <div className="mt-4 h-24 flex items-center justify-center">
-                      <img
-                          src={cyberSecuredIndiaLogo}
-                          alt="Cyber Secured India"
-                          className="max-h-full max-w-full object-contain"
-                      />
-                    </div>
-                </div>
-              </BackgroundGradient>
-              <BackgroundGradient containerClassName="rounded-2xl">
-                <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-                    <h4 className="font-bold text-lg mb-1 text-white">Cyber Security Intern</h4>
-                    <p className="text-blue-400 font-medium">SISTMR Australia</p>
-                    <p className="text-xs text-slate-400 mb-2">Jan - Mar 2022</p>
-                    <p className="text-sm text-white">
-                      Successfully completed an 8-week internship in cybersecurity, gaining hands-on experience with practical red team (offensive) and blue team (defensive) operations.
-                    </p>
-                </div>
-              </BackgroundGradient>
-            </div>
-        )
-    },
-    {
-        title: "2019",
-        content: (
-            <div>
-              <BackgroundGradient containerClassName="rounded-2xl">
-                <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-                    <h4 className="font-bold text-lg mb-1 text-white">All India Senior School Certificate Examination (AISSCE)</h4>
-                    <p className="text-blue-400 font-medium">Higher Secondary (XII) Exam | CBSE Board</p>
-                    <p className="text-xs text-slate-400 mb-2">2019</p>
-                    <p className="text-sm text-white">
-                        Percentage: 93% | Science Stream
-                    </p>
-                    <div className="mt-4 h-24 flex items-center justify-center">
-                      <img
-                          src={cbseLogo}
-                          alt="CBSE"
-                          className="max-h-full max-w-full object-contain"
-                      />
-                    </div>
-                </div>
-              </BackgroundGradient>
-            </div>
-        )
-    },
-    {
-        title: "2017",
-        content: (
-            <div>
-              <BackgroundGradient containerClassName="rounded-2xl">
-                <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-                    <h4 className="font-bold text-lg mb-1 text-white">All India Secondary School Examination (AISSE)</h4>
-                    <p className="text-blue-400 font-medium">Secondary (X) Exam | CBSE Board</p>
-                    <p className="text-xs text-slate-400 mb-2">2017</p>
-                    <p className="text-sm text-white">
-                        CGPA: 10.0/10.0
-                    </p>
-                    <div className="mt-4 h-24 flex items-center justify-center">
-                      <img
-                          src={cbseLogo}
-                          alt="CBSE"
-                          className="max-h-full max-w-full object-contain"
-                      />
-                    </div>
-                </div>
-              </BackgroundGradient>
-            </div>
-        )
     }
   ];
   return (
