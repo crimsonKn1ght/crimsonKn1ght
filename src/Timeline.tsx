@@ -3,9 +3,6 @@ import { Timeline } from "@/components/ui/timeline";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import iitKharagpurLogo from './assets/iit-kharagpur-logo.webp';
 import axtriaLogo from './assets/axtria-logo.webp';
-import virtuallyTestingLogo from './assets/virtually-testing-logo.webp';
-import cbseLogo from './assets/CBSE-logo.webp';
-import cyberSecuredIndiaLogo from './assets/cybersecuredindia-logo.webp';
 import iiestShibpurLogo from './assets/iiest-shibpur-logo.webp';
 import iitDhanbadLogo from './assets/iit-dhanbad-logo.webp';
 
@@ -21,12 +18,14 @@ export function TimelineDemo() {
               <h4 className="font-bold text-lg mb-1 text-white">Data Scientist</h4>
               <p className="text-blue-400 font-medium">Axtria, Bengaluru</p>
               <p className="text-xs text-slate-400 mb-2">Sept 2025 – Present</p>
-          
+              <p className="text-sm text-slate-300 italic mb-2">Multi-agent LLM platform for enterprise insights, retrieval-augmented analytics, and real-time conversational workflows.</p>
+
               <ul className="list-disc list-inside text-sm text-white space-y-1">
-                <li>Performed exploratory data analysis and developed predictive ML models using Python to analyze large datasets and derive insights.</li>
-                <li>Built AI-powered internal workflow agents to evaluate resumes and recommend personalized upskilling pathways.</li>
-                <li>Worked with embeddings, feature engineering, and LLM-based automation pipelines to enhance intelligent search capabilities.</li>
-                <li>Collaborated cross-functionally to deploy ML components into production and improve reliability and system performance.</li>
+                <li>Architected a multi-agent LangGraph workflow handling query decomposition, intent classification, retrieval orchestration, analytical tool execution, and web-augmented LLM reasoning with redaction and citation formatting.</li>
+                <li>Built an asynchronous hybrid/vector retrieval pipeline on Azure AI Search with metadata-aware filtering, semantic reranking, vector deduplication, and parallel multi-index orchestration for grounded retrieval.</li>
+                <li>Re-architected agent execution with asynchronous orchestration and decoupled processing paths, cutting time-to-first-token (TTFT) from ~90s to 10–20s.</li>
+                <li>Implemented token-level streaming across OpenAI, Gemini, and Claude via streaming-compatible handlers and event-processing workflows for real-time, user-facing responses.</li>
+                <li>Designed a query rephrasing pipeline to refine user inputs, improving retrieval accuracy and downstream agent routing in the chatbot workflow.</li>
               </ul>
           
               <div className="mt-4 h-24 flex items-center justify-center">
@@ -42,7 +41,7 @@ export function TimelineDemo() {
             <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
               <h4 className="font-bold text-lg mb-1 text-white">Research Intern</h4>
               <p className="text-blue-400 font-medium">IIT Kharagpur</p>
-              <p className="text-xs text-slate-400 mb-2">June 2025 – Aug 2025</p>
+              <p className="text-xs text-slate-400 mb-2">May 2025 – Sept 2025</p>
               <ul className="list-disc list-inside text-sm text-white mt-2 space-y-1">
                 <li>Conducting ongoing research on CT image reconstruction as part of a deep learning internship, using a parallel-beam, fan-beam, cone-beam datasets consisting of 20,000+ sinogram-image pairs to improve reconstruction quality from sparse and noisy projections, with a focus on real-world medical imaging challenges.</li>
                 <li>Developing various deep learning architectures, including U-Nets for 2D slices and experimenting with 3D CNNs for volumetric reconstruction, to improve image quality from low-signal, noisy sinogram data.</li>
@@ -93,11 +92,11 @@ export function TimelineDemo() {
         <div>
           <BackgroundGradient containerClassName="rounded-2xl">
             <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-              <h4 className="font-bold text-lg mb-1 text-white">Data Engineering Intern</h4>
+              <h4 className="font-bold text-lg mb-1 text-white">Data Science Intern</h4>
               <p className="text-blue-400 font-medium">Axtria, Bengaluru</p>
               <p className="text-xs text-slate-400 mb-2">May – July 2024</p>
               <p className="text-sm text-white">
-                Developed and optimized data processing workflows and ETL pipelines using Python and SQL, ensuring efficient integration, transformation, and validation of large, het- erogeneous data.
+                Built and validated time-series forecasting models on internal business data, surfacing predictive insights to support data-driven decision-making and automate recurring analytics workflows.
               </p>
               <div className="mt-4 h-24 flex items-center justify-center">
                 <img
@@ -138,105 +137,6 @@ export function TimelineDemo() {
           </BackgroundGradient>
         </div>
       ),
-    },
-    {
-        title: "2022",
-        content: (
-            <div>
-              <BackgroundGradient containerClassName="rounded-2xl">
-                <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-                    <h4 className="font-bold text-lg mb-1 text-white">Security Intern</h4>
-                    <p className="text-blue-400 font-medium">Virtually Testing Foundation</p>
-                    <p className="text-xs text-slate-400 mb-2">May – July 2022</p>
-                    <p className="text-sm text-white">
-                        Accomplished hands-on training in offensive and defensive cybersecurity measured by completion of an 8-week internship with practical red and blue team exercises.
-                    </p>
-                    <div className="mt-4 h-24 flex items-center justify-center">
-                      <img
-                          src={virtuallyTestingLogo}
-                          alt="Virtually Testing Foundation"
-                          className="max-h-full max-w-full object-contain"
-                      />
-                    </div>
-                </div>
-              </BackgroundGradient>
-              <BackgroundGradient containerClassName="rounded-2xl">
-                <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-                    <h4 className="font-bold text-lg mb-1 text-white">Digital Forensics Intern</h4>
-                    <p className="text-blue-400 font-medium">Cyber Secured India</p>
-                    <p className="text-xs text-slate-400 mb-2">Mar - May 2022</p>
-                    <p className="text-sm text-white">
-                      Gained practical experience in offensive and defensive security through an 8-week internship, executing real-world red and blue team operations.
-                    </p>
-                    <div className="mt-4 h-24 flex items-center justify-center">
-                      <img
-                          src={cyberSecuredIndiaLogo}
-                          alt="Cyber Secured India"
-                          className="max-h-full max-w-full object-contain"
-                      />
-                    </div>
-                </div>
-              </BackgroundGradient>
-              <BackgroundGradient containerClassName="rounded-2xl">
-                <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-                    <h4 className="font-bold text-lg mb-1 text-white">Cyber Security Intern</h4>
-                    <p className="text-blue-400 font-medium">SISTMR Australia</p>
-                    <p className="text-xs text-slate-400 mb-2">Jan - Mar 2022</p>
-                    <p className="text-sm text-white">
-                      Successfully completed an 8-week internship in cybersecurity, gaining hands-on experience with practical red team (offensive) and blue team (defensive) operations.
-                    </p>
-                </div>
-              </BackgroundGradient>
-            </div>
-        )
-    },
-    {
-        title: "2019",
-        content: (
-            <div>
-              <BackgroundGradient containerClassName="rounded-2xl">
-                <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-                    <h4 className="font-bold text-lg mb-1 text-white">All India Senior School Certificate Examination (AISSCE)</h4>
-                    <p className="text-blue-400 font-medium">Higher Secondary (XII) Exam | CBSE Board</p>
-                    <p className="text-xs text-slate-400 mb-2">2019</p>
-                    <p className="text-sm text-white">
-                        Percentage: 93% | Science Stream
-                    </p>
-                    <div className="mt-4 h-24 flex items-center justify-center">
-                      <img
-                          src={cbseLogo}
-                          alt="CBSE"
-                          className="max-h-full max-w-full object-contain"
-                      />
-                    </div>
-                </div>
-              </BackgroundGradient>
-            </div>
-        )
-    },
-    {
-        title: "2017",
-        content: (
-            <div>
-              <BackgroundGradient containerClassName="rounded-2xl">
-                <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-                    <h4 className="font-bold text-lg mb-1 text-white">All India Secondary School Examination (AISSE)</h4>
-                    <p className="text-blue-400 font-medium">Secondary (X) Exam | CBSE Board</p>
-                    <p className="text-xs text-slate-400 mb-2">2017</p>
-                    <p className="text-sm text-white">
-                        CGPA: 10.0/10.0
-                    </p>
-                    <div className="mt-4 h-24 flex items-center justify-center">
-                      <img
-                          src={cbseLogo}
-                          alt="CBSE"
-                          className="max-h-full max-w-full object-contain"
-                      />
-                    </div>
-                </div>
-              </BackgroundGradient>
-            </div>
-        )
     }
   ];
   return (
