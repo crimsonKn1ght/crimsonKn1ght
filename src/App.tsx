@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { ChevronDown, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X, Star, GitFork, ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
+import { motion, useInView, animate, AnimatePresence } from 'motion/react';
 import { TimelineDemo } from "./Timeline";
 import { cn } from "./lib/utils";
 import { Carousel } from "./components/ui/carousel";
@@ -27,7 +27,7 @@ import publicationImage1 from './assets/publication1.webp';
 import publicationImage2 from './assets/publication2.webp';
 import publicationImage3 from './assets/publication3.webp';
 import awardImage from './assets/award.webp';
-import kaggleMedalImage from './assets/kaggle-medal.png';
+import kaggleMedalImage from './assets/kaggle-medal.webp';
 import img1 from './assets/img1.webp';
 import img2 from './assets/img2.webp';
 import img3 from './assets/img3.webp';
@@ -51,6 +51,17 @@ const skills = {
     { name: 'PyTorch', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
     { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
     { name: 'Keras', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/keras/keras-original.svg' },
+  ],
+  "LLMs, RAG & Agents": [
+    { name: 'LangGraph', icon: <Cpu/> },
+    { name: 'Multi-agent Systems', icon: <Brain/> },
+    { name: 'RAG', icon: <Database/> },
+    { name: 'Hybrid/Vector Search', icon: <Database/> },
+    { name: 'Semantic Reranking', icon: <ChartBar/> },
+    { name: 'Azure AI Search', icon: <Database/> },
+    { name: 'FAISS', icon: <Database/> },
+    { name: 'SBERT', icon: <Cpu/> },
+    { name: 'LLM Streaming', icon: <Zap/> },
   ],
   "Data Science & Computer Vision": [
     { name: 'NumPy', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg' },
@@ -131,50 +142,45 @@ const Modal = ({ isOpen, onClose, title, children }) => {
 
 const projects = [
   {
-    name: "Document OCR and summarizer",
-    description: "Multimodal Document Q&A Assistant that allows you to upload PDFs and ask questions about their content.",
-    tags: ["OCR", "PDF", "Docx", "txt", "Q&A" ],
+    name: "Vision-Language Model (Frozen Encoder Alignment)",
+    description: "LLaVA-style Stage-1 feature alignment bridging a frozen CLIP ViT-B/32 encoder and a frozen Qwen2.5-0.5B LLM with a lightweight trainable MLP connector — training only ~1.49M of ~582M params on the full LLaVA-ReCap corpus (~558K samples).",
+    tags: ["VLM", "CLIP", "Qwen2.5", "PyTorch"],
+    repo: "crimsonKn1ght/vlm-model",
+    extraLinks: [{ label: "Weights (HF)", url: "https://huggingface.co/grKnight/vlm-basic-connector-full/tree/main" }],
+    icon: <Eye className="w-6 h-6 text-white" />
+  },
+  {
+    name: "LLM Chat Agent",
+    description: "Full-stack conversational AI: a React/TypeScript client and an async FastAPI + LangGraph backend with LLM-driven query routing, sub-query decomposition, hand-rolled NDJSON token streaming, resumable sessions, and optional web-search grounding.",
+    tags: ["LangGraph", "FastAPI", "Streaming", "Agents"],
+    repo: "crimsonKn1ght/llm-app-agent-data-science_v1",
+    extraLinks: [{ label: "Frontend", url: "https://github.com/crimsonKn1ght/llm-app-agent-frontend_v1" }],
+    icon: <Cpu className="w-6 h-6 text-white" />
+  },
+  {
+    name: "Scalable RAG System",
+    description: "Hybrid retrieval pipeline with semantic reranking, vector deduplication, and semantic routing across multi-index stores (OpenAI or local SBERT embeddings), plus advanced query formulation — Multi-query, RAG-Fusion, HyDE, CRAG, and Self-RAG.",
+    tags: ["RAG", "SBERT", "Hybrid Search", "Reranking"],
+    repo: "crimsonKn1ght/rag-llm",
+    icon: <ChartBar className="w-6 h-6 text-white" />
+  },
+  {
+    name: "AI-Powered Document Q&A",
+    description: "End-to-end document Q&A with hybrid TF-IDF + FAISS retrieval, multi-format parsing (PDF, DOCX, TXT), a Tesseract OCR pipeline for scanned images, and LLaMA-based generation via the Groq API.",
+    tags: ["FAISS", "OCR", "Groq", "Q&A"],
     repo: "crimsonKn1ght/docqnatool",
     icon: <BookmarkIcon className="w-6 h-6 text-white" />
   },
   {
-    name: "Image generation tool with diffusion models",
-    description: "Image generation using huggingface models.",
-    tags: ["huggingface models", "diffusion models"],
-    repo: "crimsonKn1ght/img-gen",
-    icon: <Cpu className="w-6 h-6 text-white" />
-  },
-  {
     name: "Movie Recommender System",
-    description: "Content-based filtering system that suggests movies using advanced feature extraction.",
-    tags: ["Recommendation", "Filtering"],
+    description: "Full-stack hybrid collaborative-filtering recommender with a Python backend and React frontend, containerized with Docker and deployed via a GitHub Actions CI/CD pipeline.",
+    tags: ["Recommender", "Docker", "CI/CD", "React"],
     repo: "crimsonKn1ght/movie-recommender",
-    icon: <ChartBar className="w-6 h-6 text-white" />
-  },
-  {
-    name: "Real-Time Object Detector",
-    description: "Web-based real-time object detection application using YOLO and TensorFlow.js.",
-    tags: ["YOLO", "TensorFlow.js"],
-    repo: "crimsonKn1ght/real-time-object-detector",
-    icon: <Eye className="w-6 h-6 text-white" />
-  },
-  {
-    name: "dirStrike",
-    description: "High-performance directory and file bruteforcing tool for web security assessments.",
-    tags: ["Security", "Penetration Testing"],
-    repo: "crimsonKn1ght/dirstrike",
-    icon: <Zap className="w-6 h-6 text-white" />
-  },
-  {
-    name: "My AI/ML Implementations",
-    description: "Collection of AI and ML models and algorithms built from scratch for learning.",
-    tags: ["From Scratch", "Algorithms"],
-    repo: "crimsonKn1ght/my-ai-ml-codes",
     icon: <Code className="w-6 h-6 text-white" />
   }
 ];
 
-const ProjectCard = ({ name, description, tags, repo, icon }) => {
+const ProjectCard = ({ name, description, tags, repo, icon, extraLinks = [] }) => {
   const [stats, setStats] = React.useState({ stars: 0, forks: 0 });
 
   React.useEffect(() => {
@@ -198,43 +204,61 @@ const ProjectCard = ({ name, description, tags, repo, icon }) => {
 
   return (
     <BackgroundGradient containerClassName="rounded-2xl">
-      <a href={`https://github.com/${repo}`} target="_blank" rel="noopener noreferrer">
-        <figure className={cn(
-          "relative w-full md:w-80 h-full cursor-pointer overflow-hidden rounded-xl border p-4",
-          "border-slate-700 bg-slate-800/50"
-        )}>
-          <div className="flex items-center justify-between mb-6">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
-              {icon}
+      <figure className={cn(
+        "relative w-full md:w-80 h-full overflow-hidden rounded-xl border p-4",
+        "border-slate-700 bg-slate-800/50"
+      )}>
+        <div className="flex items-center justify-between mb-6">
+          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
+            {icon}
+          </div>
+        </div>
+        <h3 className="flex items-center text-base sm:text-lg font-bold text-white mb-3">{name}</h3>
+        <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 flex-grow">{description}</p>
+        <div className="flex flex-wrap gap-2 mb-6">
+          {tags.map(tag => (
+            <span key={tag} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className="flex justify-between items-center mt-auto">
+          <a
+            href={`https://github.com/${repo}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center text-blue-400 font-semibold hover:text-blue-300 transition-colors"
+          >
+            <GithubIcon className="w-4 h-4 mr-2" />
+            View on GitHub
+          </a>
+          <div className="flex items-center space-x-4 text-slate-400">
+            <div className="flex items-center">
+              <Star className="w-4 h-4 mr-1" />
+              <span>{stats.stars}</span>
+            </div>
+            <div className="flex items-center">
+              <GitFork className="w-4 h-4 mr-1" />
+              <span>{stats.forks}</span>
             </div>
           </div>
-          <h3 className="flex items-center text-base sm:text-lg font-bold text-white mb-3">{name}</h3>
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 flex-grow">{description}</p>
-          <div className="flex flex-wrap gap-2 mb-6">
-            {tags.map(tag => (
-              <span key={tag} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">
-                {tag}
-              </span>
+        </div>
+        {extraLinks.length > 0 && (
+          <div className="flex flex-wrap gap-x-4 gap-y-1 mt-3">
+            {extraLinks.map((link) => (
+              <a
+                key={link.url}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-xs text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors"
+              >
+                {link.label} →
+              </a>
             ))}
           </div>
-          <div className="flex justify-between items-center mt-auto">
-            <div className="inline-flex items-center text-blue-400 font-semibold hover:text-blue-300 transition-colors">
-              <GithubIcon className="w-4 h-4 mr-2" />
-              View on GitHub
-            </div>
-            <div className="flex items-center space-x-4 text-slate-400">
-              <div className="flex items-center">
-                <Star className="w-4 h-4 mr-1" />
-                <span>{stats.stars}</span>
-              </div>
-              <div className="flex items-center">
-                <GitFork className="w-4 h-4 mr-1" />
-                <span>{stats.forks}</span>
-              </div>
-            </div>
-          </div>
-        </figure>
-      </a>
+        )}
+      </figure>
     </BackgroundGradient>
   );
 };
@@ -327,8 +351,8 @@ function App() {
     };
 
     const publications = [
-        { id: 'osteoarthritis', image: publicationImage1, status: 'To be published soon', statusColor: 'bg-green-500/20 text-green-300', meta: 'ISAI 2025 • Springer', title: 'Knee Osteoarthritis Detection and Categorization using Deep Learning Models', description: 'Achieved 80.12% accuracy in classifying knee X-ray images using the Kellgren-Lawrence grading scale.', tags: ['Deep Learning', 'Medical Imaging', 'Classification'], details: { title: "Knee Osteoarthritis Detection and Categorization using Deep Learning Models", content: (<><p className="mb-4">To be published in the Proceedings of ISAI (2025), Lecture Notes in Networks and Systems (Springer).</p><p>This research achieved 80.12% accuracy in classifying knee X-ray images based on osteoarthritis severity using a deep learning model trained on the Kellgren-Lawrence (KL) grading scale.</p></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OA-detection-model' },
-        { id: 'osteoporosis', image: publicationImage2, status: 'Under Review', statusColor: 'bg-yellow-500/20 text-yellow-300', meta: 'ICDSINC 2025', title: 'Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection', description: 'Novel framework achieving 88% binary and 84% multi-class classification accuracy for osteoporosis detection.', tags: ['U-Net', 'Attention Mechanism', 'Feature Extraction'], details: { title: "Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection", content: (<><p className="mb-4">Paper accepted for presentation at ICDSINC conference (9th-11th Dec, 2025).</p><p>A deep learning-based binary classification model was developed for detecting knee osteoporosis from X-ray images, achieving 88% and 84% accuracy in binary and multi-class osteoporosis classification, respectively.</p></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OP-detection-model' },
+        { id: 'osteoarthritis', image: publicationImage1, status: 'Published • Best Paper', statusColor: 'bg-green-500/20 text-green-300', meta: 'ISAI 2025 • Springer LNNS', title: 'Knee Osteoarthritis Detection and Categorization using Deep Learning Models', description: 'Achieved 80.12% accuracy in classifying knee X-ray images using the Kellgren-Lawrence grading scale.', tags: ['Deep Learning', 'Medical Imaging', 'Classification'], details: { title: "Knee Osteoarthritis Detection and Categorization using Deep Learning Models", content: (<><p className="mb-4">Published in the Proceedings of ISAI 2025, Lecture Notes in Networks and Systems (Springer), and awarded one of three Best Paper Awards out of 78 accepted submissions.</p><p>This research achieved 80.12% accuracy in classifying knee X-ray images based on osteoarthritis severity using a deep learning model trained on the Kellgren-Lawrence (KL) grading scale.</p></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OA-detection-model' },
+        { id: 'osteoporosis', image: publicationImage2, status: 'Accepted', statusColor: 'bg-green-500/20 text-green-300', meta: 'ICADCML 2026', title: 'Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection', description: 'Novel framework achieving 88% binary and 84% multi-class classification accuracy for osteoporosis detection.', tags: ['U-Net', 'Attention Mechanism', 'Feature Extraction'], details: { title: "Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection", content: (<><p className="mb-4">Accepted at the International Conference on Advances in Distributed Computing and Machine Learning (ICADCML 2026).</p><p>A deep learning-based binary classification model was developed for detecting knee osteoporosis from X-ray images, achieving 88% and 84% accuracy in binary and multi-class osteoporosis classification, respectively.</p></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OP-detection-model' },
         { id: 'ctReconstruction', image: publicationImage3, status: 'In Preparation', statusColor: 'bg-blue-500/20 text-blue-300', meta: '2025', title: 'End-to-End Deep Learning for CT Scan Reconstruction with Integrated Explainable AI', description: 'Developing an interpretable CT reconstruction pipeline that combines high-quality image generation with explainable AI.', tags: ['CT Reconstruction', 'Explainable AI', 'Medical Imaging'], details: { title: "End-to-End Deep Learning for CT Scan Reconstruction with Integrated Explainable AI", content: (<><p className="mb-4">Manuscript in preparation for submission to a reputed peer-reviewed journal (2025).</p><p>This work involves designing an end-to-end deep learning pipeline for CT image reconstruction, integrating explainable AI techniques to enhance model interpretability and trustworthiness.</p></>) }, codeLink: null }
     ];
 
@@ -632,7 +656,7 @@ function App() {
                                 </h2>
                                 <p className="text-md md:text-lg text-slate-400 max-w-3xl">My skill set spanning AI/ML, Computer Vision, and Data Science</p>
                             </div>
-                            <div className="grid lg:grid-cols-3 gap-8 lg:items-start">
+                            <div className="grid lg:grid-cols-2 gap-8 lg:items-start">
                                 {Object.entries(skills).map(([category, skillList]) => (
                                   <BackgroundGradient key={category} containerClassName="rounded-2xl">
                                     <CometCard rotateDepth={10} translateDepth={10}>
@@ -640,6 +664,7 @@ function App() {
                                             <div className="flex items-center mb-6">
                                                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
                                                     {category === "Programming & Frameworks" && <Code className="w-6 h-6 text-white" />}
+                                                    {category === "LLMs, RAG & Agents" && <Brain className="w-6 h-6 text-white" />}
                                                     {category === "Data Science & Computer Vision" && <Eye className="w-6 h-6 text-white" />}
                                                     {category === "Tools & Platforms" && <Database className="w-6 h-6 text-white" />}
                                                 </div>
