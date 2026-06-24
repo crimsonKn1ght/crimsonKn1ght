@@ -7,7 +7,7 @@ import {
   useMotionValue,
   useTransform,
   MotionValue,
-} from "framer-motion";
+} from "motion/react";
 
 interface ScaleSliderProps {
   defaultValue?: number;
