@@ -27,7 +27,7 @@ import publicationImage1 from './assets/publication1.webp';
 import publicationImage2 from './assets/publication2.webp';
 import publicationImage3 from './assets/publication3.webp';
 import awardImage from './assets/award.webp';
-import kaggleMedalImage from './assets/kaggle-medal.png';
+import kaggleMedalImage from './assets/kaggle-medal.webp';
 import img1 from './assets/img1.webp';
 import img2 from './assets/img2.webp';
 import img3 from './assets/img3.webp';
