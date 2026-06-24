@@ -18,12 +18,14 @@ export function TimelineDemo() {
               <h4 className="font-bold text-lg mb-1 text-white">Data Scientist</h4>
               <p className="text-blue-400 font-medium">Axtria, Bengaluru</p>
               <p className="text-xs text-slate-400 mb-2">Sept 2025 – Present</p>
-          
+              <p className="text-sm text-slate-300 italic mb-2">Multi-agent LLM platform for enterprise insights, retrieval-augmented analytics, and real-time conversational workflows.</p>
+
               <ul className="list-disc list-inside text-sm text-white space-y-1">
-                <li>Performed exploratory data analysis and developed predictive ML models using Python to analyze large datasets and derive insights.</li>
-                <li>Built AI-powered internal workflow agents to evaluate resumes and recommend personalized upskilling pathways.</li>
-                <li>Worked with embeddings, feature engineering, and LLM-based automation pipelines to enhance intelligent search capabilities.</li>
-                <li>Collaborated cross-functionally to deploy ML components into production and improve reliability and system performance.</li>
+                <li>Architected a multi-agent LangGraph workflow handling query decomposition, intent classification, retrieval orchestration, analytical tool execution, and web-augmented LLM reasoning with redaction and citation formatting.</li>
+                <li>Built an asynchronous hybrid/vector retrieval pipeline on Azure AI Search with metadata-aware filtering, semantic reranking, vector deduplication, and parallel multi-index orchestration for grounded retrieval.</li>
+                <li>Re-architected agent execution with asynchronous orchestration and decoupled processing paths, cutting time-to-first-token (TTFT) from ~90s to 10–20s.</li>
+                <li>Implemented token-level streaming across OpenAI, Gemini, and Claude via streaming-compatible handlers and event-processing workflows for real-time, user-facing responses.</li>
+                <li>Designed a query rephrasing pipeline to refine user inputs, improving retrieval accuracy and downstream agent routing in the chatbot workflow.</li>
               </ul>
           
               <div className="mt-4 h-24 flex items-center justify-center">
