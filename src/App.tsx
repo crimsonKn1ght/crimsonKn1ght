@@ -52,6 +52,17 @@ const skills = {
     { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
     { name: 'Keras', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/keras/keras-original.svg' },
   ],
+  "LLMs, RAG & Agents": [
+    { name: 'LangGraph', icon: <Cpu/> },
+    { name: 'Multi-agent Systems', icon: <Brain/> },
+    { name: 'RAG', icon: <Database/> },
+    { name: 'Hybrid/Vector Search', icon: <Database/> },
+    { name: 'Semantic Reranking', icon: <ChartBar/> },
+    { name: 'Azure AI Search', icon: <Database/> },
+    { name: 'FAISS', icon: <Database/> },
+    { name: 'SBERT', icon: <Cpu/> },
+    { name: 'LLM Streaming', icon: <Zap/> },
+  ],
   "Data Science & Computer Vision": [
     { name: 'NumPy', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg' },
     { name: 'Pandas', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg' },
@@ -645,7 +656,7 @@ function App() {
                                 </h2>
                                 <p className="text-md md:text-lg text-slate-400 max-w-3xl">My skill set spanning AI/ML, Computer Vision, and Data Science</p>
                             </div>
-                            <div className="grid lg:grid-cols-3 gap-8 lg:items-start">
+                            <div className="grid lg:grid-cols-2 gap-8 lg:items-start">
                                 {Object.entries(skills).map(([category, skillList]) => (
                                   <BackgroundGradient key={category} containerClassName="rounded-2xl">
                                     <CometCard rotateDepth={10} translateDepth={10}>
@@ -653,6 +664,7 @@ function App() {
                                             <div className="flex items-center mb-6">
                                                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
                                                     {category === "Programming & Frameworks" && <Code className="w-6 h-6 text-white" />}
+                                                    {category === "LLMs, RAG & Agents" && <Brain className="w-6 h-6 text-white" />}
                                                     {category === "Data Science & Computer Vision" && <Eye className="w-6 h-6 text-white" />}
                                                     {category === "Tools & Platforms" && <Database className="w-6 h-6 text-white" />}
                                                 </div>
