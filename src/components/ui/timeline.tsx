@@ -38,34 +38,34 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       className="w-full bg-transparent font-sans md:px-10"
       ref={containerRef}
     >
-      <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-4 md:p-8">
-        <div className="max-w-7xl mx-auto py-10 px-2 sm:px-4 md:px-8 lg:px-10">
-          <h2 className="text-2xl md:text-5xl mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 max-w-4xl font-bold pb-4 flex items-center">
-            <RoadIcon size={40} className="mr-4 text-cyan-400" />
-            My Journey
+      <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-4 md:p-6">
+        <div className="max-w-7xl mx-auto py-4 px-2 sm:px-4 md:px-6 lg:px-8">
+          <h2 className="text-2xl md:text-3xl mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 max-w-4xl font-bold pb-2 flex items-center">
+            <RoadIcon size={28} className="mr-3 text-cyan-400" />
+            Experience & Education
           </h2>
-          <p className="text-neutral-300 text-md md:text-lg max-w-sm">
-            Here's a timeline of my key experiences and educational milestones.
+          <p className="text-neutral-400 text-sm max-w-md">
+            A timeline of my key professional and academic milestones.
           </p>
         </div>
 
-        <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
+        <div ref={ref} className="relative max-w-7xl mx-auto pb-10">
           {data.map((item, index) => (
             <div
               key={index}
-              className="flex justify-start pt-10 md:pt-20 md:gap-10"
+              className="flex justify-start pt-8 md:pt-10 md:gap-8"
             >
-              <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
+              <div className="sticky flex flex-col md:flex-row z-40 items-center top-24 self-start max-w-[8rem] lg:max-w-[10rem] md:w-full">
                 <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-black flex items-center justify-center">
                   <div className="h-4 w-4 rounded-full bg-neutral-800 border border-neutral-700 p-2" />
                 </div>
-                <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-neutral-500 ">
+                <h3 className="hidden md:block text-xl md:pl-16 md:text-2xl font-bold text-neutral-500 ">
                   {item.title}
                 </h3>
               </div>
 
-              <div className="relative pl-12 pr-2 sm:pl-20 sm:pr-4 md:pl-4 w-full">
-                <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500">
+              <div className="relative pl-14 pr-2 sm:pl-16 sm:pr-4 md:pl-4 w-full">
+                <h3 className="md:hidden block text-xl mb-3 text-left font-bold text-neutral-500">
                   {item.title}
                 </h3>
                 {item.content}{" "}
