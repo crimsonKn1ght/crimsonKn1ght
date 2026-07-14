@@ -1,6 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { ChevronDown, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X, Star, GitFork, ExternalLink } from 'lucide-react';
+import { ChevronDown, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X, Star, GitFork, ExternalLink, FileText } from 'lucide-react';
 import { motion, useInView, animate, AnimatePresence } from 'motion/react';
 import { TimelineDemo } from "./Timeline";
 import { Boxes } from "./components/ui/boxes";
@@ -24,6 +24,7 @@ import publicationImage2 from './assets/publication2.webp';
 import astraqVlImage from './assets/astraq-vl.webp';
 import awardImage from './assets/award.webp';
 import kaggleMedalImage from './assets/kaggle-medal.webp';
+import speakerCertImage from './assets/speaker-certificate.webp';
 import img1 from './assets/img1.webp';
 import img2 from './assets/img2.webp';
 import badge1 from './assets/badge1.webp';
@@ -280,13 +281,24 @@ const PublicationCard = ({ pub, openModal }) => (
           </span>
         ))}
       </div>
-      <div className="mt-auto flex items-center gap-2">
+      <div className="mt-auto flex flex-wrap items-center gap-2">
         <button
           onClick={() => openModal(pub.details)}
           className="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-md font-semibold transition-colors"
         >
           Details
         </button>
+        {pub.paperLink && (
+          <a
+            href={pub.paperLink.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center text-xs border border-blue-500/60 bg-blue-500/10 hover:bg-blue-500/20 text-blue-300 hover:text-blue-200 px-3 py-1.5 rounded-md font-semibold transition-colors"
+          >
+            <FileText className="w-3.5 h-3.5 mr-1.5" />
+            {pub.paperLink.label}
+          </a>
+        )}
         {pub.codeLink && (
           <a
             href={pub.codeLink}
@@ -376,9 +388,9 @@ function App() {
     }, []);
 
     const publications = [
-        { id: 'osteoarthritis', image: publicationImage1, status: 'Published • Best Paper', statusColor: 'bg-green-500/20 text-green-300', meta: 'ISAI 2025 • Springer LNNS', title: 'Knee Osteoarthritis Detection and Categorization using Deep Learning Models', description: 'Achieved 80.46% accuracy in classifying knee X-ray images using the Kellgren-Lawrence grading scale.', tags: ['Deep Learning', 'Medical Imaging', 'Classification'], details: { title: "Knee Osteoarthritis Detection and Categorization using Deep Learning Models", content: (<><p className="mb-4">Published in the Proceedings of ISAI 2025, Lecture Notes in Networks and Systems (Springer), and awarded one of three Best Paper Awards out of 78 accepted submissions.</p><p className="mb-4">This research achieved 80.46% accuracy in classifying knee X-ray images based on osteoarthritis severity using a deep learning model trained on the Kellgren-Lawrence (KL) grading scale.</p><a href="https://link.springer.com/chapter/10.1007/978-981-96-9239-2_9" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline underline-offset-2">Read on Springer →</a></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OA-detection-model' },
+        { id: 'osteoarthritis', image: publicationImage1, status: 'Published • Best Paper', statusColor: 'bg-green-500/20 text-green-300', meta: 'ISAI 2025 • Springer LNNS', title: 'Knee Osteoarthritis Detection and Categorization using Deep Learning Models', description: 'Achieved 80.46% accuracy in classifying knee X-ray images using the Kellgren-Lawrence grading scale.', tags: ['Deep Learning', 'Medical Imaging', 'Classification'], paperLink: { url: 'https://link.springer.com/chapter/10.1007/978-981-96-9239-2_9', label: 'Springer' }, details: { title: "Knee Osteoarthritis Detection and Categorization using Deep Learning Models", content: (<><p className="mb-4">Published in the Proceedings of ISAI 2025, Lecture Notes in Networks and Systems (Springer), and awarded one of three Best Paper Awards out of 78 accepted submissions.</p><p className="mb-4">This research achieved 80.46% accuracy in classifying knee X-ray images based on osteoarthritis severity using a deep learning model trained on the Kellgren-Lawrence (KL) grading scale.</p><a href="https://link.springer.com/chapter/10.1007/978-981-96-9239-2_9" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline underline-offset-2">Read on Springer →</a></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OA-detection-model' },
         { id: 'osteoporosis', image: publicationImage2, status: 'Accepted', statusColor: 'bg-green-500/20 text-green-300', meta: 'ICADCML 2026', title: 'Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection', description: 'Novel framework achieving 88% binary and 84% multi-class classification accuracy for osteoporosis detection.', tags: ['U-Net', 'Attention Mechanism', 'Feature Extraction'], details: { title: "Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection", content: (<><p className="mb-4">Accepted at the International Conference on Advances in Distributed Computing and Machine Learning (ICADCML 2026).</p><p>A deep learning-based binary classification model was developed for detecting knee osteoporosis from X-ray images, achieving 88% and 84% accuracy in binary and multi-class osteoporosis classification, respectively.</p></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OP-detection-model' },
-        { id: 'astraqVl', image: astraqVlImage, status: 'Preprint', statusColor: 'bg-blue-500/20 text-blue-300', meta: 'Independent Research • Zenodo', title: 'AstraQ-VL: Efficient Astronomy Vision-Language Model with Frozen Encoder Alignment and LoRA Instruction Tuning', description: 'LLaVA-style astronomy VLM aligning frozen CLIP ViT-L/14 features with Qwen2.5-1.5B-Instruct, extended with LoRA-based visual instruction tuning.', tags: ['Vision-Language Models', 'Multimodal Learning', 'LoRA'], details: { title: "AstraQ-VL: Efficient Astronomy Vision-Language Model", content: (<><p className="mb-4">Independent research project: a LLaVA-style astronomy VLM built by aligning frozen CLIP ViT-L/14 features with Qwen2.5-1.5B-Instruct using a 3.9M-parameter connector, then extending to Stage-2 visual instruction tuning with LoRA adapters.</p><p className="mb-4">Trained on 161,653 caption/QA records with a 591-image held-out split; released reproducible checkpoints and model cards, with a held-out validation-loss improvement from 1.60 to 1.452 in Stage 2.</p><a href="https://zenodo.org/records/21284851" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline underline-offset-2">Zenodo Preprint →</a></>) }, codeLink: 'https://github.com/crimsonKn1ght/astraq-vl' }
+        { id: 'astraqVl', image: astraqVlImage, status: 'Preprint', statusColor: 'bg-blue-500/20 text-blue-300', meta: 'Independent Research • Zenodo', title: 'AstraQ-VL: Efficient Astronomy Vision-Language Model with Frozen Encoder Alignment and LoRA Instruction Tuning', description: 'LLaVA-style astronomy VLM aligning frozen CLIP ViT-L/14 features with Qwen2.5-1.5B-Instruct, extended with LoRA-based visual instruction tuning.', tags: ['Vision-Language Models', 'Multimodal Learning', 'LoRA'], paperLink: { url: 'https://zenodo.org/records/21284851', label: 'Preprint' }, details: { title: "AstraQ-VL: Efficient Astronomy Vision-Language Model", content: (<><p className="mb-4">Independent research project: a LLaVA-style astronomy VLM built by aligning frozen CLIP ViT-L/14 features with Qwen2.5-1.5B-Instruct using a 3.9M-parameter connector, then extending to Stage-2 visual instruction tuning with LoRA adapters.</p><p className="mb-4">Trained on 161,653 caption/QA records with a 591-image held-out split; released reproducible checkpoints and model cards, with a held-out validation-loss improvement from 1.60 to 1.452 in Stage 2.</p><a href="https://zenodo.org/records/21284851" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline underline-offset-2">Zenodo Preprint →</a></>) }, codeLink: 'https://github.com/crimsonKn1ght/astraq-vl' }
     ];
 
     const certificates = [
@@ -529,6 +541,7 @@ function App() {
                                     title="Distinguished Speaker"
                                     org="6th International Conference on Future of Preventive Medicine and Public Health"
                                     description="Invited as a Distinguished Speaker to present research at the international conference"
+                                    image={speakerCertImage}
                                 />
                             </div>
 
