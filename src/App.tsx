@@ -20,37 +20,28 @@ import { BlocksIcon } from './components/ui/BlocksIcon';
 import { BoltIcon } from './components/ui/BoltIcon';
 import { StarIcon } from './components/ui/StarIcon';
 import { CircleChevronDownIcon } from './components/ui/CircleChevronDownIcon';
+import { AtomIcon } from './components/ui/AtomIcon';
 
 
 // Import company logos
 import publicationImage1 from './assets/publication1.webp';
 import publicationImage2 from './assets/publication2.webp';
-import publicationImage3 from './assets/publication3.webp';
+import astraqVlImage from './assets/astraq-vl.webp';
 import awardImage from './assets/award.webp';
 import kaggleMedalImage from './assets/kaggle-medal.webp';
 import img1 from './assets/img1.webp';
 import img2 from './assets/img2.webp';
-import img3 from './assets/img3.webp';
-import img4 from './assets/img4.webp';
-import img5 from './assets/img5.webp';
-import img6 from './assets/img6.webp';
 import badge1 from './assets/badge1.webp';
 import badge2 from './assets/badge2.webp';
-import badge3 from './assets/badge3.webp';
-import badge4 from './assets/badge4.webp';
 import badge5 from './assets/badge5.webp';
-import badge6 from './assets/badge6.webp';
-import badge7 from './assets/badge7.webp';
-import badge8 from './assets/badge8.webp';
-import badge9 from './assets/badge9.webp';
 
 const skills = {
   "Programming & Frameworks": [
     { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
     { name: 'C/C++', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
     { name: 'PyTorch', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
-    { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
-    { name: 'Keras', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/keras/keras-original.svg' },
+    { name: 'SQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+    { name: 'Async Programming', icon: <Zap/> },
   ],
   "LLMs, RAG & Agents": [
     { name: 'LangGraph', icon: <Cpu/> },
@@ -58,6 +49,7 @@ const skills = {
     { name: 'RAG', icon: <Database/> },
     { name: 'Hybrid/Vector Search', icon: <Database/> },
     { name: 'Semantic Reranking', icon: <ChartBar/> },
+    { name: 'Cross-Encoders', icon: <Cpu/> },
     { name: 'Azure AI Search', icon: <Database/> },
     { name: 'FAISS', icon: <Database/> },
     { name: 'SBERT', icon: <Cpu/> },
@@ -67,21 +59,22 @@ const skills = {
     { name: 'NumPy', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg' },
     { name: 'Pandas', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg' },
     { name: 'Scikit-learn', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/1200px-Scikit_learn_logo_small.svg.png'},
-    { name: 'Matplotlib', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg' },
     { name: 'OpenCV', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
-    { name: 'CNNs', icon: <Cpu/> },
+    { name: 'CNNs & U-Net', icon: <Cpu/> },
+    { name: 'Attention (CBAM)', icon: <Brain/> },
+    { name: 'Medical Imaging', icon: <Activity/> },
     { name: 'Image Reconstruction', icon: <Cpu/> },
-    { name: 'Image Segmentation', icon: <Eye/> },
-    { name: 'Object Detection', icon: <Zap/> },
+    { name: 'Segmentation & Classification', icon: <Eye/> },
+    { name: 'Time-Series Forecasting', icon: <ChartBar/> },
   ],
   "Tools & Platforms": [
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
     { name: 'Git', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+    { name: 'GitHub Actions', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg' },
+    { name: 'PySpark', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original.svg' },
+    { name: 'Databricks', icon: <Database/> },
     { name: 'Jupyter', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg' },
     { name: 'Linux', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg' },
-    { name: 'SQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
-    { name: 'VS Code', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
-    { name: 'ETL', icon: <Database/> },
   ]
 };
 
@@ -141,6 +134,18 @@ const Modal = ({ isOpen, onClose, title, children }) => {
 };
 
 const projects = [
+  {
+    name: "AstraQ-VL: Astronomy Vision-Language Model",
+    description: "Two-stage LLaVA-style VLM for astronomy: Stage 1 aligns frozen CLIP ViT-L/14 features with Qwen2.5-1.5B-Instruct via a ~3.9M-parameter connector; Stage 2 adds visual instruction tuning with rank-16 LoRA adapters. Trained on 161,653 caption/QA records from NASA APOD, ESO, and Hubble, with reproducible checkpoints and model cards.",
+    tags: ["VLM", "LoRA", "CLIP", "Astronomy"],
+    repo: "crimsonKn1ght/astraq-vl",
+    extraLinks: [
+      { label: "Zenodo Preprint", url: "https://zenodo.org/records/21284851" },
+      { label: "Stage-1 Weights", url: "https://huggingface.co/grKnight/astraq-vl-stage1" },
+      { label: "Stage-2 Weights", url: "https://huggingface.co/grKnight/astraq-vl-stage2" },
+    ],
+    icon: <AtomIcon size={24} className="text-white" />
+  },
   {
     name: "Vision-Language Model (Frozen Encoder Alignment)",
     description: "LLaVA-style Stage-1 feature alignment bridging a frozen CLIP ViT-B/32 encoder and a frozen Qwen2.5-0.5B LLM with a lightweight trainable MLP connector — training only ~1.49M of ~582M params on the full LLaVA-ReCap corpus (~558K samples).",
@@ -351,30 +356,20 @@ function App() {
     };
 
     const publications = [
-        { id: 'osteoarthritis', image: publicationImage1, status: 'Published • Best Paper', statusColor: 'bg-green-500/20 text-green-300', meta: 'ISAI 2025 • Springer LNNS', title: 'Knee Osteoarthritis Detection and Categorization using Deep Learning Models', description: 'Achieved 80.12% accuracy in classifying knee X-ray images using the Kellgren-Lawrence grading scale.', tags: ['Deep Learning', 'Medical Imaging', 'Classification'], details: { title: "Knee Osteoarthritis Detection and Categorization using Deep Learning Models", content: (<><p className="mb-4">Published in the Proceedings of ISAI 2025, Lecture Notes in Networks and Systems (Springer), and awarded one of three Best Paper Awards out of 78 accepted submissions.</p><p>This research achieved 80.12% accuracy in classifying knee X-ray images based on osteoarthritis severity using a deep learning model trained on the Kellgren-Lawrence (KL) grading scale.</p></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OA-detection-model' },
+        { id: 'osteoarthritis', image: publicationImage1, status: 'Published • Best Paper', statusColor: 'bg-green-500/20 text-green-300', meta: 'ISAI 2025 • Springer LNNS', title: 'Knee Osteoarthritis Detection and Categorization using Deep Learning Models', description: 'Achieved 80.46% accuracy in classifying knee X-ray images using the Kellgren-Lawrence grading scale.', tags: ['Deep Learning', 'Medical Imaging', 'Classification'], details: { title: "Knee Osteoarthritis Detection and Categorization using Deep Learning Models", content: (<><p className="mb-4">Published in the Proceedings of ISAI 2025, Lecture Notes in Networks and Systems (Springer), and awarded one of three Best Paper Awards out of 78 accepted submissions.</p><p className="mb-4">This research achieved 80.46% accuracy in classifying knee X-ray images based on osteoarthritis severity using a deep learning model trained on the Kellgren-Lawrence (KL) grading scale.</p><a href="https://link.springer.com/chapter/10.1007/978-981-96-9239-2_9" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline underline-offset-2">Read on Springer →</a></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OA-detection-model' },
         { id: 'osteoporosis', image: publicationImage2, status: 'Accepted', statusColor: 'bg-green-500/20 text-green-300', meta: 'ICADCML 2026', title: 'Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection', description: 'Novel framework achieving 88% binary and 84% multi-class classification accuracy for osteoporosis detection.', tags: ['U-Net', 'Attention Mechanism', 'Feature Extraction'], details: { title: "Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection", content: (<><p className="mb-4">Accepted at the International Conference on Advances in Distributed Computing and Machine Learning (ICADCML 2026).</p><p>A deep learning-based binary classification model was developed for detecting knee osteoporosis from X-ray images, achieving 88% and 84% accuracy in binary and multi-class osteoporosis classification, respectively.</p></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OP-detection-model' },
-        { id: 'ctReconstruction', image: publicationImage3, status: 'In Preparation', statusColor: 'bg-blue-500/20 text-blue-300', meta: '2025', title: 'End-to-End Deep Learning for CT Scan Reconstruction with Integrated Explainable AI', description: 'Developing an interpretable CT reconstruction pipeline that combines high-quality image generation with explainable AI.', tags: ['CT Reconstruction', 'Explainable AI', 'Medical Imaging'], details: { title: "End-to-End Deep Learning for CT Scan Reconstruction with Integrated Explainable AI", content: (<><p className="mb-4">Manuscript in preparation for submission to a reputed peer-reviewed journal (2025).</p><p>This work involves designing an end-to-end deep learning pipeline for CT image reconstruction, integrating explainable AI techniques to enhance model interpretability and trustworthiness.</p></>) }, codeLink: null }
+        { id: 'astraqVl', image: astraqVlImage, status: 'Preprint', statusColor: 'bg-blue-500/20 text-blue-300', meta: 'Independent Research • Zenodo', title: 'AstraQ-VL: Efficient Astronomy Vision-Language Model with Frozen Encoder Alignment and LoRA Instruction Tuning', description: 'LLaVA-style astronomy VLM aligning frozen CLIP ViT-L/14 features with Qwen2.5-1.5B-Instruct, extended with LoRA-based visual instruction tuning.', tags: ['Vision-Language Models', 'Multimodal Learning', 'LoRA'], details: { title: "AstraQ-VL: Efficient Astronomy Vision-Language Model", content: (<><p className="mb-4">Independent research project: a LLaVA-style astronomy VLM built by aligning frozen CLIP ViT-L/14 features with Qwen2.5-1.5B-Instruct using a 3.9M-parameter connector, then extending to Stage-2 visual instruction tuning with LoRA adapters.</p><p className="mb-4">Trained on 161,653 caption/QA records with a 591-image held-out split; released reproducible checkpoints and model cards, with a held-out validation-loss improvement from 1.60 to 1.452 in Stage 2.</p><a href="https://zenodo.org/records/21284851" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline underline-offset-2">Zenodo Preprint →</a></>) }, codeLink: 'https://github.com/crimsonKn1ght/astraq-vl' }
     ];
 
     const certificates = [
         { title: "Machine Learning with Python (With Honors Project)", image: img1, link: "https://www.coursera.org/account/accomplishments/verify/UERHBGUT34WG" },
-        { title: "Machine Learning Specialization", image: img2, link: "https://www.coursera.org/account/accomplishments/specialization/YE8JF8JRUZTG" },
-        { title: "MongoDB Certified Developer, Associate (C100DEV)", image: img3, link: "https://www.credly.com/badges/5628852b-07e7-4fbd-bdc1-6e3eff356474" },
-        { title: "Computer Forensics Specialization", image: img4, link: "https://www.coursera.org/account/accomplishments/specialization/N6A5C8377USV" },
-        { title: "Python for Cybersecurity Specialization", image: img5, link: "https://www.coursera.org/account/accomplishments/specialization/TJH6LY4Z79R7" },
-        { title: "IBM Cybersecurity Analyst Specialization", image: img6, link: "https://www.coursera.org/account/accomplishments/professional-cert/S8UM4H55FERW" }
+        { title: "Machine Learning Specialization", image: img2, link: "https://www.coursera.org/account/accomplishments/specialization/YE8JF8JRUZTG" }
     ];
 
     const badges = [
         { title: "Python Essentials 1", image: badge1, link: "https://www.credly.com/badges/7d07660e-cf20-491d-93cc-d0acbe46a66f" },
         { title: "Machine Learning with Python", image: badge2, link: "https://www.credly.com/badges/9eb4689d-3724-464d-8396-7c07e6728f8b" },
-        { title: "MongoDB Associate Developer", image: badge3, link: "https://www.credly.com/badges/5628852b-07e7-4fbd-bdc1-6e3eff356474" },
-        { title: "R Programming for Data Science Essentials", image: badge4, link: "https://www.credly.com/badges/97dcc640-172e-4049-bb8a-57814336f58a" },
-        { title: "Data Analytics Essentials", image: badge5, link: "https://www.credly.com/badges/d0f5445b-37ee-482a-a3af-5300d98a817a" },
-        { title: "Foundations of Operationalizing MITRE ATT&CK", image: badge6, link: "https://www.credly.com/badges/40a35b03-a86b-410d-8421-9888583968f0" },
-        { title: "IBM Cybersecurity Analyst Professional Certificate", image: badge7, link: "https://www.credly.com/badges/6261c24b-1f4a-4d0e-b4b5-9629c1279897" },
-        { title: "Cybersecurity Breach Case Studies", image: badge8, link: "https://www.credly.com/badges/6c39dfd4-0448-4288-a7db-b1311468aa1d" },
-        { title: "Cybersecurity Compliance Framework & System Administration", image: badge9, link: "https://www.credly.com/badges/c6af540a-cbe3-4f07-85d4-7cc6a1d7999b" }
+        { title: "Data Analytics Essentials", image: badge5, link: "https://www.credly.com/badges/d0f5445b-37ee-482a-a3af-5300d98a817a" }
     ];
 
     const sectionVariants = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
@@ -419,10 +414,10 @@ function App() {
                         <motion.span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}>ROY</motion.span>
                     </h1>
                     <motion.div className="flex flex-col sm:flex-row items-center justify-center mb-6 gap-2 sm:gap-4 md:gap-6" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}>
-                        <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-4 py-2"><span className="text-sm md:text-xl text-blue-400 font-semibold">AI/ML</span></div>
+                        <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-4 py-2"><span className="text-sm md:text-xl text-blue-400 font-semibold">Machine Learning Engineer</span></div>
                         <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-4 py-2"><span className="text-sm md:text-xl text-blue-400 font-semibold">Computer Vision Researcher</span></div>
                     </motion.div>
-                    <motion.p className="text-slate-400 text-base md:text-xl mb-8 max-w-2xl mx-auto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.8 }}>Specializing in deep learning for computer vision, developing robust architectures for challenging environments</motion.p>
+                    <motion.p className="text-slate-400 text-base md:text-xl mb-8 max-w-2xl mx-auto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.8 }}>Building multi-agent LLM systems, RAG pipelines, and deep learning models for medical imaging — published researcher with production exposure across LLM orchestration and real-time streaming workflows</motion.p>
                     <motion.div className="flex flex-wrap justify-center gap-2 sm:space-x-6 mb-24" variants={listContainerVariants} initial="hidden" animate="visible" transition={{ delay: 1 }}>
                         <motion.a variants={listItemVariants} href="mailto:gourab.roy.aiml@gmail.com" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
                             <MailsIcon size={20} className="text-slate-400 group-hover:text-blue-400 transition-colors" />
@@ -435,10 +430,6 @@ function App() {
                         <motion.a variants={listItemVariants} href="https://github.com/crimsonkn1ght/" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-slate-500/20 backdrop-blur-sm border border-white/10 hover:border-slate-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
                             <GithubIcon size={20} className="text-slate-400 group-hover:text-slate-300 transition-colors" />
                             <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">GitHub</span>
-                        </motion.a>
-                        <motion.a variants={listItemVariants} href="/research.html" className="group flex items-center space-x-2 bg-white/5 hover:bg-purple-500/20 backdrop-blur-sm border border-white/10 hover:border-purple-500/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 transition-all duration-300">
-                            <BookmarkIcon size={20} className="text-slate-400 group-hover:text-purple-400 transition-colors" />
-                            <span className="text-xs sm:text-base text-slate-400 group-hover:text-white transition-colors">Research</span>
                         </motion.a>
                     </motion.div>
                     <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2">
@@ -571,9 +562,22 @@ function App() {
                                                   <span className="text-2xl">🥉</span>
                                               </div>
                                               <h4 className="text-xl font-bold text-white mb-2">Bronze Medal</h4>
-                                              <p className="text-blue-400 font-medium mb-3">CSIRO Competition hosted by Kaggle</p>
-                                              <p className="text-slate-300 text-sm">Won Bronze medal at CSIRO Competition hosted by Kaggle</p>
+                                              <p className="text-blue-400 font-medium mb-3">CSIRO Biomass Computer Vision Competition, Kaggle</p>
+                                              <p className="text-slate-300 text-sm">Won the Bronze Medal at the CSIRO Biomass Computer Vision competition on Kaggle, finishing in the top tier among global participants</p>
                                               <img loading="lazy" src={kaggleMedalImage} alt="Kaggle Bronze Medal" className="mt-4 rounded-lg" />
+                                          </motion.div>
+                                      </CometCard>
+                                    </BackgroundGradient>
+                                    <BackgroundGradient containerClassName="rounded-2xl">
+                                      <CometCard rotateDepth={10} translateDepth={10}>
+                                          <motion.div className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500/50 transition-all duration-300 w-full h-full" transition={{ type: 'spring', stiffness: 300 }}>
+                                              <div className="flex items-center justify-between mb-4">
+                                                  <span className="text-xs bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full">Invited Talk</span>
+                                                  <span className="text-2xl">🎤</span>
+                                              </div>
+                                              <h4 className="text-xl font-bold text-white mb-2">Distinguished Speaker</h4>
+                                              <p className="text-blue-400 font-medium mb-3">6th International Conference on Future of Preventive Medicine and Public Health</p>
+                                              <p className="text-slate-300 text-sm">Invited as a Distinguished Speaker to present research at the international conference</p>
                                           </motion.div>
                                       </CometCard>
                                     </BackgroundGradient>
@@ -621,8 +625,8 @@ function App() {
                                         <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
                                             <Zap className="w-5 h-5 mr-3 text-yellow-400" /> Certifications
                                         </h3>
-                                        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-700 bg-slate-800/50" style={{ height: '480px' }}>
-                                            <div className="flex flex-col w-full h-full overflow-y-auto custom-scrollbar"> {/* Ensure this class is here */}
+                                        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-700 bg-slate-800/50">
+                                            <div className="flex flex-col w-full max-h-[480px] overflow-y-auto custom-scrollbar">
                                                 {certificates.map((cert) => (
                                                     <CertificateCard key={cert.title} {...cert}/>
                                                 ))}
@@ -633,8 +637,8 @@ function App() {
                                         <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
                                             <StarIcon className="w-5 h-5 mr-3 text-yellow-400" /> Badges
                                         </h3>
-                                        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-700 bg-slate-800/50" style={{ height: '480px' }}>
-                                            <div className="flex flex-col w-full h-full overflow-y-auto custom-scrollbar"> {/* And also here */}
+                                        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-700 bg-slate-800/50">
+                                            <div className="flex flex-col w-full max-h-[480px] overflow-y-auto custom-scrollbar">
                                                 {badges.map((badge) => (
                                                     <BadgeCard key={badge.title} {...badge} />
                                                 ))}
