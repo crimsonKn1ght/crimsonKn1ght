@@ -24,6 +24,7 @@ import publicationImage2 from './assets/publication2.webp';
 import astraqVlImage from './assets/astraq-vl.webp';
 import awardImage from './assets/award.webp';
 import kaggleMedalImage from './assets/kaggle-medal.webp';
+import speakerCertImage from './assets/speaker-certificate.webp';
 import img1 from './assets/img1.webp';
 import img2 from './assets/img2.webp';
 import badge1 from './assets/badge1.webp';
@@ -540,6 +541,7 @@ function App() {
                                     title="Distinguished Speaker"
                                     org="6th International Conference on Future of Preventive Medicine and Public Health"
                                     description="Invited as a Distinguished Speaker to present research at the international conference"
+                                    image={speakerCertImage}
                                 />
                             </div>
 
