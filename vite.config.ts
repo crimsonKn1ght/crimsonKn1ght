@@ -15,8 +15,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),       // homepage
-        research: resolve(__dirname, 'research.html') // research page
+        main: resolve(__dirname, 'index.html'), // homepage
       },
     },
   },

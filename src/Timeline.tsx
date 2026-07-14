@@ -24,6 +24,7 @@ export function TimelineDemo() {
                 <li>Architected a multi-agent LangGraph workflow handling query decomposition, intent classification, retrieval orchestration, analytical tool execution, and web-augmented LLM reasoning with redaction and citation formatting.</li>
                 <li>Built an asynchronous hybrid/vector retrieval pipeline on Azure AI Search with metadata-aware filtering, semantic reranking, vector deduplication, and parallel multi-index orchestration for grounded retrieval.</li>
                 <li>Re-architected agent execution with asynchronous orchestration and decoupled processing paths, cutting time-to-first-token (TTFT) from ~90s to 10–20s.</li>
+                <li>Optimized end-to-end pipeline latency by eliminating redundant LLM calls and parallelizing independent calls with asynchronous execution.</li>
                 <li>Implemented token-level streaming across OpenAI, Gemini, and Claude via streaming-compatible handlers and event-processing workflows for real-time, user-facing responses.</li>
                 <li>Designed a query rephrasing pipeline to refine user inputs, improving retrieval accuracy and downstream agent routing in the chatbot workflow.</li>
               </ul>
@@ -39,13 +40,12 @@ export function TimelineDemo() {
           </BackgroundGradient>
           <BackgroundGradient containerClassName="rounded-2xl">
             <div className="mb-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-              <h4 className="font-bold text-lg mb-1 text-white">Research Intern</h4>
+              <h4 className="font-bold text-lg mb-1 text-white">Research Intern — Deep Learning for Medical Imaging</h4>
               <p className="text-blue-400 font-medium">IIT Kharagpur</p>
               <p className="text-xs text-slate-400 mb-2">May 2025 – Sept 2025</p>
               <ul className="list-disc list-inside text-sm text-white mt-2 space-y-1">
-                <li>Conducting ongoing research on CT image reconstruction as part of a deep learning internship, using a parallel-beam, fan-beam, cone-beam datasets consisting of 20,000+ sinogram-image pairs to improve reconstruction quality from sparse and noisy projections, with a focus on real-world medical imaging challenges.</li>
-                <li>Developing various deep learning architectures, including U-Nets for 2D slices and experimenting with 3D CNNs for volumetric reconstruction, to improve image quality from low-signal, noisy sinogram data.</li>
-                <li>Employed a combined SSIM and MSE loss function to optimize both structural and pixel-level accuracy, achieving a test SSIM of 0.9+.</li>
+                <li>Built and trained a modified U-Net for CT image reconstruction on 20,000+ sinogram-image pairs, targeting sparse-view and low-dose acquisition scenarios relevant to real clinical workflows.</li>
+                <li>Achieved PSNR of 35 dB+ and SSIM of 0.9+, validating reconstruction quality across varying levels of projection sparsity and measurement noise.</li>
               </ul>
               <div className="mt-4 h-24 flex items-center justify-center">
                 <img
@@ -65,14 +65,9 @@ export function TimelineDemo() {
                 GPA: 8.57/10.
               </p>
               <ul className="list-disc list-inside text-sm text-white mt-2 space-y-1">
-                  <li><b>Thesis:</b> Deep Learning based Multi-Stage Framework for Automated Detection and
-          Grading of Knee Osteoarthritis and Osteoporosis. Achieved 80% accuracy in multiclass
-          classification of osteoarthritis severity and 88% accuracy in binary classification
-          of osteoporosis from knee X-ray images.</li>
-                  <li><b>Technical Proficiencies:</b>
-          Programming & ML Frameworks: Python, PyTorch, NumPy, OpenCV, SciPy, sklearn.</li>
-                  <li><b>Relevant courses:</b> Deep Learning, Pattern Recognition, Information Retrieval, Data
-          Analytics, Advanced Data Structures and Algorithms.</li>
+                  <li><b>Thesis:</b> Multi-Stage Deep Learning Framework for Knee Osteoarthritis & Osteoporosis Detection. Achieved 80.46% accuracy in multiclass classification of osteoarthritis severity and 88% accuracy in binary classification of osteoporosis from knee X-ray images.</li>
+                  <li>Published 2 peer-reviewed papers from thesis work — 1 Best Paper Award at ISAI 2025 (Springer LNNS) and 1 accepted at ICADCML 2026.</li>
+                  <li><b>Relevant coursework:</b> Deep Learning, Computer Vision, NLP, Pattern Recognition.</li>
               </ul>
               <div className="mt-4 h-24 flex items-center justify-center">
                 <img
@@ -123,7 +118,7 @@ export function TimelineDemo() {
                 GPA: 7.58/10.
               </p>
               <ul className="list-disc list-inside text-sm text-white mt-2 space-y-1">
-                  <li><b>Relevant coursework included:</b> Signals and Systems, Digital Signal Processing, and Image Processing.</li>
+                  <li><b>Relevant coursework:</b> Signal Processing, Digital Systems, Programming, Linear Algebra.</li>
                   <li>Graduated with First Class.</li>
               </ul>
               <div className="mt-4 h-24 flex items-center justify-center">
