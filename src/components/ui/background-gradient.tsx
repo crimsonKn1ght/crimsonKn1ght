@@ -17,7 +17,7 @@ export const BackgroundGradient = ({
 
   return (
     <div className={cn("relative group", containerClassName)}>
-      {/* Blurred glow layer — CSS animation replaces Framer Motion for compositor-thread performance */}
+      {/* Blurred glow layer: CSS animation replaces Framer Motion for compositor-thread performance */}
       <div
         className={cn(
           "absolute inset-0 rounded-3xl z-[1] opacity-60 group-hover:opacity-100 blur-xl transition-opacity duration-500",
