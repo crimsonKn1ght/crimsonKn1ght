@@ -105,7 +105,7 @@ body {
   scrollbar-color: #4a5568 #1e293b; /* thumb color track color */
 }
 
-/* CSS gradient animation — runs on the compositor thread, no JS involvement */
+/* CSS gradient animation runs on the compositor thread, no JS involvement */
 @keyframes gradient-shift {
   0%, 100% { background-position: 0% 50%; }
   50%       { background-position: 100% 50%; }
