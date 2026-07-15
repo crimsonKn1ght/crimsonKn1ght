@@ -1,6 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { ChevronDown, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X, Star, GitFork, ExternalLink, FileText } from 'lucide-react';
+import { ChevronDown, Brain, Cpu, Eye, Zap, Code, Database, BarChart as ChartBar, Activity, X, Star, GitFork, ExternalLink, FileText, Maximize2 } from 'lucide-react';
 import { motion, useInView, animate, AnimatePresence } from 'motion/react';
 import { TimelineDemo } from "./Timeline";
 import { Boxes } from "./components/ui/boxes";
@@ -332,7 +332,22 @@ const AwardCard = ({ chip, chipColor, emoji, title, org, description, image }) =
         <h4 className="text-base font-bold text-white mb-1">{title}</h4>
         <p className="text-blue-400 text-xs font-medium mb-2">{org}</p>
         <p className="text-slate-300 text-xs leading-relaxed">{description}</p>
-        {image && <img loading="lazy" src={image} alt={title} className="mt-3 rounded-md h-32 w-full object-cover object-top" />}
+        {image && (
+            <a
+                href={image}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View full certificate"
+                className="mt-3 block relative rounded-md overflow-hidden group/cert"
+            >
+                <img loading="lazy" src={image} alt={`${title} certificate`} className="h-32 w-full object-cover object-top transition-transform duration-300 group-hover/cert:scale-105" />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover/cert:bg-black/50 transition-colors duration-300">
+                    <span className="flex items-center gap-1.5 text-xs font-medium text-white opacity-0 group-hover/cert:opacity-100 transition-opacity duration-300">
+                        <Maximize2 className="w-3.5 h-3.5" /> View certificate
+                    </span>
+                </div>
+            </a>
+        )}
     </div>
 );
 
