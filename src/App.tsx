@@ -144,7 +144,7 @@ const projects = [
   },
   {
     name: "Vision-Language Model (Frozen Encoder Alignment)",
-    description: "LLaVA-style Stage-1 feature alignment bridging a frozen CLIP ViT-B/32 encoder and a frozen Qwen2.5-0.5B LLM with a lightweight trainable MLP connector — training only ~1.49M of ~582M params on the full LLaVA-ReCap corpus (~558K samples).",
+    description: "LLaVA-style Stage-1 feature alignment that bridges a frozen CLIP ViT-B/32 encoder and a frozen Qwen2.5-0.5B LLM with a lightweight trainable MLP connector. Only ~1.49M of ~582M params are trained, on the full LLaVA-ReCap corpus (~558K samples).",
     tags: ["VLM", "CLIP", "Qwen2.5", "PyTorch"],
     repo: "crimsonKn1ght/vlm-model",
     extraLinks: [{ label: "Weights (HF)", url: "https://huggingface.co/grKnight/vlm-basic-connector-full/tree/main" }],
@@ -160,7 +160,7 @@ const projects = [
   },
   {
     name: "Scalable RAG System",
-    description: "Hybrid retrieval pipeline with semantic reranking, vector deduplication, and semantic routing across multi-index stores (OpenAI or local SBERT embeddings), plus advanced query formulation — Multi-query, RAG-Fusion, HyDE, CRAG, and Self-RAG.",
+    description: "Hybrid retrieval pipeline with semantic reranking, vector deduplication, and semantic routing across multi-index stores (OpenAI or local SBERT embeddings). It also supports advanced query-formulation methods like Multi-query, RAG-Fusion, HyDE, CRAG, and Self-RAG.",
     tags: ["RAG", "SBERT", "Hybrid Search", "Reranking"],
     repo: "crimsonKn1ght/rag-llm",
     icon: <ChartBar className="w-5 h-5 text-white" />
@@ -388,8 +388,8 @@ function App() {
     }, []);
 
     const publications = [
-        { id: 'osteoarthritis', image: publicationImage1, status: 'Published • Best Paper', statusColor: 'bg-green-500/20 text-green-300', meta: 'ISAI 2025 • Springer LNNS', title: 'Knee Osteoarthritis Detection and Categorization using Deep Learning Models', description: 'Achieved 80.46% accuracy in classifying knee X-ray images using the Kellgren-Lawrence grading scale.', tags: ['Deep Learning', 'Medical Imaging', 'Classification'], paperLink: { url: 'https://link.springer.com/chapter/10.1007/978-981-96-9239-2_9', label: 'Springer' }, details: { title: "Knee Osteoarthritis Detection and Categorization using Deep Learning Models", content: (<><p className="mb-4">Published in the Proceedings of ISAI 2025, Lecture Notes in Networks and Systems (Springer), and awarded one of three Best Paper Awards out of 78 accepted submissions.</p><p className="mb-4">This research achieved 80.46% accuracy in classifying knee X-ray images based on osteoarthritis severity using a deep learning model trained on the Kellgren-Lawrence (KL) grading scale.</p><a href="https://link.springer.com/chapter/10.1007/978-981-96-9239-2_9" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline underline-offset-2">Read on Springer →</a></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OA-detection-model' },
-        { id: 'osteoporosis', image: publicationImage2, status: 'Accepted', statusColor: 'bg-green-500/20 text-green-300', meta: 'ICADCML 2026', title: 'Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection', description: 'Novel framework achieving 88% binary and 84% multi-class classification accuracy for osteoporosis detection.', tags: ['U-Net', 'Attention Mechanism', 'Feature Extraction'], details: { title: "Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection", content: (<><p className="mb-4">Accepted at the International Conference on Advances in Distributed Computing and Machine Learning (ICADCML 2026).</p><p>A deep learning-based binary classification model was developed for detecting knee osteoporosis from X-ray images, achieving 88% and 84% accuracy in binary and multi-class osteoporosis classification, respectively.</p></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OP-detection-model' },
+        { id: 'osteoarthritis', image: publicationImage1, status: 'Published • Best Paper', statusColor: 'bg-green-500/20 text-green-300', meta: 'ISAI 2025 • Springer LNNS', title: 'Knee Osteoarthritis Detection and Categorization using Deep Learning Models', description: 'Achieved 80.46% accuracy in classifying knee X-ray images using the Kellgren-Lawrence grading scale.', tags: ['Deep Learning', 'Medical Imaging', 'Classification'], paperLink: { url: 'https://link.springer.com/chapter/10.1007/978-981-96-9239-2_9', label: 'Springer' }, details: { title: "Knee Osteoarthritis Detection and Categorization using Deep Learning Models", content: (<><p className="mb-4">Published in the Proceedings of ISAI 2025, Lecture Notes in Networks and Systems (Springer), and awarded one of three Best Paper Awards out of 78 accepted submissions.</p><p className="mb-4">The model reached 80.46% accuracy classifying knee X-ray images by osteoarthritis severity, trained on the Kellgren-Lawrence (KL) grading scale.</p><a href="https://link.springer.com/chapter/10.1007/978-981-96-9239-2_9" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline underline-offset-2">Read on Springer →</a></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OA-detection-model' },
+        { id: 'osteoporosis', image: publicationImage2, status: 'Accepted', statusColor: 'bg-green-500/20 text-green-300', meta: 'ICADCML 2026', title: 'Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection', description: 'A CBAM-enhanced U-Net that reaches 88% accuracy on binary and 84% on multi-class osteoporosis detection.', tags: ['U-Net', 'Attention Mechanism', 'Feature Extraction'], details: { title: "Texture-based Feature Extraction and CBAM-Enhanced U-Net for Automated Knee Osteoporosis Detection", content: (<><p className="mb-4">Accepted at the International Conference on Advances in Distributed Computing and Machine Learning (ICADCML 2026).</p><p>I built a deep learning model that detects knee osteoporosis from X-ray images, reaching 88% accuracy on binary classification and 84% on the multi-class setting.</p></>) }, codeLink: 'https://github.com/crimsonkn1ght/Code-OP-detection-model' },
         { id: 'astraqVl', image: astraqVlImage, status: 'Preprint', statusColor: 'bg-blue-500/20 text-blue-300', meta: 'Independent Research • Zenodo', title: 'AstraQ-VL: Efficient Astronomy Vision-Language Model with Frozen Encoder Alignment and LoRA Instruction Tuning', description: 'LLaVA-style astronomy VLM aligning frozen CLIP ViT-L/14 features with Qwen2.5-1.5B-Instruct, extended with LoRA-based visual instruction tuning.', tags: ['Vision-Language Models', 'Multimodal Learning', 'LoRA'], paperLink: { url: 'https://zenodo.org/records/21284851', label: 'Preprint' }, details: { title: "AstraQ-VL: Efficient Astronomy Vision-Language Model", content: (<><p className="mb-4">Independent research project: a LLaVA-style astronomy VLM built by aligning frozen CLIP ViT-L/14 features with Qwen2.5-1.5B-Instruct using a 3.9M-parameter connector, then extending to Stage-2 visual instruction tuning with LoRA adapters.</p><p className="mb-4">Trained on 161,653 caption/QA records with a 591-image held-out split; released reproducible checkpoints and model cards, with a held-out validation-loss improvement from 1.60 to 1.452 in Stage 2.</p><a href="https://zenodo.org/records/21284851" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline underline-offset-2">Zenodo Preprint →</a></>) }, codeLink: 'https://github.com/crimsonKn1ght/astraq-vl' }
     ];
 
@@ -435,7 +435,7 @@ function App() {
                     </div>
                 </nav>
 
-                {/* Hero Section — compact intro band */}
+                {/* Hero Section: compact intro band */}
                 <section id="hero" className="relative z-10 px-6 pt-32 pb-14 text-center max-w-5xl mx-auto">
                     <div ref={floatingElementsRef} className="absolute inset-0 transition-transform duration-1000 ease-out pointer-events-none">
                         <motion.div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full filter blur-2xl" animate={{ y: [0, 20, 0], x: [0, -10, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} />
@@ -449,7 +449,7 @@ function App() {
                         <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-3 py-1"><span className="text-xs sm:text-sm text-blue-400 font-semibold">Machine Learning Engineer</span></div>
                         <div className="border border-blue-500/50 bg-blue-500/10 backdrop-blur-sm rounded-full px-3 py-1"><span className="text-xs sm:text-sm text-blue-400 font-semibold">Computer Vision Researcher</span></div>
                     </motion.div>
-                    <motion.p className="text-slate-400 text-sm md:text-base mb-7 max-w-2xl mx-auto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.5 }}>Building multi-agent LLM systems, RAG pipelines, and deep learning models for medical imaging — published researcher with production exposure across LLM orchestration and real-time streaming workflows</motion.p>
+                    <motion.p className="text-slate-400 text-sm md:text-base mb-7 max-w-2xl mx-auto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.5 }}>I build multi-agent LLM systems and RAG pipelines, and I train deep learning models for medical imaging. My research is published, and I've taken LLM and real-time streaming work into production.</motion.p>
                     <motion.div className="flex flex-wrap justify-center gap-2 sm:gap-3" variants={listContainerVariants} initial="hidden" animate="visible" transition={{ delay: 0.6 }}>
                         <motion.a variants={listItemVariants} href="mailto:gourab.roy.aiml@gmail.com" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-2 bg-white/5 hover:bg-blue-500/20 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 rounded-full px-4 py-2 transition-all duration-300">
                             <MailsIcon size={16} className="text-slate-400 group-hover:text-blue-400 transition-colors" />
@@ -480,7 +480,7 @@ function App() {
                                     <BookmarkIcon size={28} className="mr-3 text-purple-400" />
                                     Research Publications
                                 </h2>
-                                <p className="text-sm text-slate-400 max-w-3xl">Peer-reviewed research and preprints in AI and computer vision</p>
+                                <p className="text-sm text-slate-400 max-w-3xl">My peer-reviewed papers and preprints in AI and computer vision</p>
                             </div>
                             <motion.div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" variants={listContainerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                                 {publications.map((pub) => (
@@ -499,7 +499,7 @@ function App() {
                                     <BlocksIcon size={28} className="mr-3 text-blue-400" />
                                     Featured Projects
                                 </h2>
-                                <p className="text-sm text-slate-400 max-w-3xl">Open-source implementations and practical applications of AI/ML concepts</p>
+                                <p className="text-sm text-slate-400 max-w-3xl">Open-source things I've built, from ML research to full-stack apps</p>
                             </div>
                             <motion.div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" variants={listContainerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                                 {projects.map((project) => (
@@ -518,7 +518,7 @@ function App() {
                                     <StarIcon size={28} className="mr-3 text-yellow-400" />
                                     Awards & Test Scores
                                 </h2>
-                                <p className="text-sm text-slate-400 max-w-3xl">Recognition, standardized test performance, and professional credentials</p>
+                                <p className="text-sm text-slate-400 max-w-3xl">Recognition, test scores, and a few professional credentials</p>
                             </div>
 
                             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -526,21 +526,21 @@ function App() {
                                     chip="ISAI 2025" chipColor="bg-yellow-500/20 text-yellow-300" emoji="🏆"
                                     title="Best Paper Award"
                                     org="International Symposium on Artificial Intelligence, NIT Sikkim"
-                                    description="One of three Best Paper Awards out of 78 accepted submissions, for outstanding research contribution in AI/ML"
+                                    description="One of three Best Paper Awards given out of 78 accepted submissions"
                                     image={awardImage}
                                 />
                                 <AwardCard
                                     chip="Kaggle" chipColor="bg-orange-500/20 text-orange-300" emoji="🥉"
                                     title="Bronze Medal"
                                     org="CSIRO Biomass Computer Vision Competition"
-                                    description="Finished in the top tier among global participants in the CSIRO Biomass computer vision competition on Kaggle"
+                                    description="A top-tier finish in the CSIRO Biomass computer vision competition on Kaggle"
                                     image={kaggleMedalImage}
                                 />
                                 <AwardCard
                                     chip="Invited Talk" chipColor="bg-purple-500/20 text-purple-300" emoji="🎤"
                                     title="Distinguished Speaker"
                                     org="6th International Conference on Future of Preventive Medicine and Public Health"
-                                    description="Invited as a Distinguished Speaker to present research at the international conference"
+                                    description="Invited to present my research as a distinguished speaker at the conference"
                                     image={speakerCertImage}
                                 />
                             </div>
@@ -598,7 +598,7 @@ function App() {
                                     <BoltIcon size={28} className="mr-3 text-yellow-400" />
                                     Technical Expertise
                                 </h2>
-                                <p className="text-sm text-slate-400 max-w-3xl">Skill set spanning AI/ML, computer vision, and data science</p>
+                                <p className="text-sm text-slate-400 max-w-3xl">The tools and areas I work with across AI/ML, computer vision, and data science</p>
                             </div>
                             <div className="grid md:grid-cols-2 gap-5 items-start">
                                 {Object.entries(skills).map(([category, skillList]) => (
@@ -642,7 +642,7 @@ function App() {
                                     </div>
                                     <span className="text-base font-bold text-white">Gourab Roy</span>
                                 </div>
-                                <p className="text-slate-400 text-sm mb-4">Machine learning engineer and researcher advancing computer vision and medical imaging through deep learning.</p>
+                                <p className="text-slate-400 text-sm mb-4">Machine learning engineer and researcher working on computer vision and medical imaging.</p>
                                 <div className="flex space-x-4">
                                     <a href="mailto:gourab.roy.aiml@gmail.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-400 transition-colors"><MailsIcon className="w-4 h-4" /></a>
                                     <a href="https://www.linkedin.com/in/gourab-roy/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-400 transition-colors"><LinkedInIcon className="w-4 h-4" /></a>
