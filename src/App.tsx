@@ -24,7 +24,6 @@ import publicationImage2 from './assets/publication2.webp';
 import astraqVlImage from './assets/astraq-vl.webp';
 import awardImage from './assets/award.webp';
 import kaggleMedalImage from './assets/kaggle-medal.webp';
-import speakerCertImage from './assets/speaker-certificate.webp';
 import img1 from './assets/img1.webp';
 import img2 from './assets/img2.webp';
 import badge1 from './assets/badge1.webp';
@@ -536,7 +535,7 @@ function App() {
                                 <p className="text-sm text-slate-400 max-w-3xl">Recognition, test scores, and a few professional credentials</p>
                             </div>
 
-                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                            <div className="grid sm:grid-cols-2 gap-4 mb-8">
                                 <AwardCard
                                     chip="ISAI 2025" chipColor="bg-yellow-500/20 text-yellow-300" emoji="🏆"
                                     title="Best Paper Award"
@@ -550,13 +549,6 @@ function App() {
                                     org="CSIRO Biomass Computer Vision Competition"
                                     description="A top-tier finish in the CSIRO Biomass computer vision competition on Kaggle"
                                     image={kaggleMedalImage}
-                                />
-                                <AwardCard
-                                    chip="Invited Talk" chipColor="bg-purple-500/20 text-purple-300" emoji="🎤"
-                                    title="Distinguished Speaker"
-                                    org="6th International Conference on Future of Preventive Medicine and Public Health"
-                                    description="Invited to present my research as a distinguished speaker at the conference"
-                                    image={speakerCertImage}
                                 />
                             </div>
 
