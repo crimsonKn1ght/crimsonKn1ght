@@ -1,0 +1,63 @@
+name: Refresh public repositories badge
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the public repositories badge
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -uo pipefail
+          value="view repos"
+          color="#6a737d"
+          if response="$(curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 30 \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            "https://api.github.com/users/${GITHUB_REPOSITORY_OWNER}")"; then
+            if count="$(jq -er '.public_repos | select(type == "number")' <<<"$response")"; then
+              value="$count"
+              color="#007ec6"
+            fi
+          fi
+          right_width=$(( ${#value} * 7 + 10 ))
+          if [ "$right_width" -lt 30 ]; then right_width=30; fi
+          badge_width=$(( 89 + right_width ))
+          value_center=$(( 89 + right_width / 2 ))
+          cat > badges/public-repos.svg <<EOF
+          <svg xmlns="http://www.w3.org/2000/svg" width="$badge_width" height="20" role="img" aria-label="Public Repos: $value">
+          <title>Public Repos: $value</title>
+          <clipPath id="r"><rect width="$badge_width" height="20" rx="3"/></clipPath>
+          <g clip-path="url(#r)">
+          <rect width="89" height="20" fill="#555"/>
+          <rect x="89" width="$right_width" height="20" fill="$color"/>
+          </g>
+          <g fill="#fff" text-anchor="middle" font-family="Verdana,DejaVu Sans,sans-serif" font-size="11">
+          <text x="44.5" y="15" fill="#010101" fill-opacity=".3">Public Repos</text>
+          <text x="44.5" y="14">Public Repos</text>
+          <text x="$value_center" y="15" fill="#010101" fill-opacity=".3">$value</text>
+          <text x="$value_center" y="14">$value</text>
+          </g>
+          </svg>
+          EOF
+
+      - name: Commit the badge when its state changed
+        run: |
+          if git diff --quiet -- badges/public-repos.svg; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add badges/public-repos.svg
+          git commit -m "chore: refresh public repositories badge"
+          git push

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="119" height="20" role="img" aria-label="Public Repos: 33">
+<title>Public Repos: 33</title>
+<clipPath id="r"><rect width="119" height="20" rx="3"/></clipPath>
+<g clip-path="url(#r)">
+<rect width="89" height="20" fill="#555"/>
+<rect x="89" width="30" height="20" fill="#007ec6"/>
+</g>
+<g fill="#fff" text-anchor="middle" font-family="Verdana,DejaVu Sans,sans-serif" font-size="11">
+<text x="44.5" y="15" fill="#010101" fill-opacity=".3">Public Repos</text>
+<text x="44.5" y="14">Public Repos</text>
+<text x="104" y="15" fill="#010101" fill-opacity=".3">33</text>
+<text x="104" y="14">33</text>
+</g>
+</svg>

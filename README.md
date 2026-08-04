@@ -3,7 +3,7 @@
 </p>
 
 ![Followers](https://img.shields.io/github/followers/crimsonKn1ght?style=flat)
-![Repos](https://img.shields.io/badge/dynamic/json?label=Public%20Repos&query=%24.public_repos&url=https://api.github.com/users/crimsonKn1ght)
+[![Public Repos](https://raw.githubusercontent.com/crimsonKn1ght/crimsonKn1ght/main/badges/public-repos.svg)](https://github.com/crimsonKn1ght?tab=repositories)
 ![Visitor Count](https://komarev.com/ghpvc/?username=crimsonKn1ght&label=Visitor+Count&color=0e75b6&style=flat)
 
 <p align="center">
