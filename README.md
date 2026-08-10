@@ -22,12 +22,36 @@
 # Projects
 
 <details>
+<summary><b>Vision-Language Models</b></summary>
+
+- [PointCal-C](https://github.com/crimsonKn1ght/pointcal-c): Low-cost selective zero-shot 3D recognition under corruption — audits how a frozen CLIP backbone's accuracy and confidence reliability degrade across corrupted point clouds, and fits a lightweight abstention rule on top.
+- [EditCheck-VL](https://github.com/crimsonKn1ght/editCheck-VL): Low-cost calibrated counterfactual visual-change verification — a frozen SigLIP2/DINOv2 backbone plus a ≤1M-parameter probe decides whether a claimed before/after scene change holds, localizes it, and abstains when the evidence is ambiguous.
+- [vlm-model](https://github.com/crimsonKn1ght/vlm-model): A minimal Vision-Language Model (frozen CLIP encoder + frozen LLM + trainable connector) following the LLaVA architecture.
+- [medical-rag-vlm-ii](https://github.com/crimsonKn1ght/medical-rag-vlm-ii): Year-1 evaluation harness for reducing hallucination in medical VLMs via retrieval-augmented grounding — runs pretrained medical VLMs on radiology VQA / report generation and scores outputs for factual consistency and hallucination.
+- [medical-rag-vlm](https://github.com/crimsonKn1ght/medical-rag-vlm): Early-stage minimal LLaVA-style VLM scaffold for the medical RAG-VLM research line.
+
+</details>
+
+<details>
+<summary><b>Astronomy / Space ML</b></summary>
+
+- [AstraQ-VL](https://github.com/crimsonKn1ght/astraq-vl): Minimal, efficient astronomy Vision-Language Model (LLaVA-style, CLIP + Qwen, LoRA instruction tuning) for solar/astronomical imagery.
+- [TerraQ-VL](https://github.com/crimsonKn1ght/terraq-vl): Sibling to AstraQ-VL — the same LLaVA-style VLM recipe adapted for Earth-observation / remote-sensing imagery (VRSBench).
+- [astroclip-galaxy10](https://github.com/crimsonKn1ght/astroclip-galaxy10): LLaVA-style VLM (CLIP + Qwen, LoRA instruction tuning) trained for astronomy image-text alignment on the Galaxy10 dataset.
+- [galaxy-image-spectrum-clip](https://github.com/crimsonKn1ght/galaxy-image-spectrum-clip): Cross-modal (image ↔ spectrum) representation learning on the Multimodal Universe (MMU) dataset.
+- [space-net](https://github.com/crimsonKn1ght/space-net): Research-grade PyTorch pipeline for detecting, denoising, and localizing gravitational-wave chirp signals in noise, structured as a multi-level curriculum.
+
+</details>
+
+<details>
 <summary><b>NLP / LLMs</b></summary>
 
 - [Docqnatool](https://github.com/crimsonKn1ght/docqnatool): Docqnatool is a smart document Q&A assistant that lets you upload your files and ask meaningful questions about their content. [Click for demo](https://docqnatool.streamlit.app/).
 - [DocuMindGPT](https://github.com/crimsonKn1ght/DocuMindGPT): DocuMindGPT is a document-grounded Q&A CLI that uses RAG (Retrieval-Augmented Generation) to answer questions based on your PDFs or text files. It features a built-in evaluation agent that scores answers for hallucinations and relevance.
 - [rag-llm](https://github.com/crimsonKn1ght/rag-llm): Retrieval-Augmented Generation (RAG) demo built with LangChain, Chroma, and Streamlit, from scratch.
 - [mini-gpt](https://github.com/crimsonKn1ght/mini-gpt): Mini gpt based off Andrej's course.
+- [llm-app-agent-frontend_v1](https://github.com/crimsonKn1ght/llm-app-agent-frontend_v1): React + Vite frontend for an LLM chat agent with streaming responses, chat history, Markdown rendering, and optional web search.
+- [llm-app-agent-data-science_v1](https://github.com/crimsonKn1ght/llm-app-agent-data-science_v1): Async FastAPI service that routes questions through a LangGraph workflow and streams progress and answers as NDJSON, with conversation memory for follow-ups.
 
 </details>
 
@@ -39,13 +63,21 @@
 - [CT scan reconstruction](https://github.com/crimsonKn1ght/ct_scan_reconstruction): This repository implements an end-to-end CT image reconstruction pipeline that maps sinograms → reconstructed CT images using deep learning
 - [Real-time object detector](https://github.com/crimsonKn1ght/real-time-object-detector): A web-based real-time object detection application + standalone version which is a general purpose real-time detector
 - [Image generation](https://github.com/crimsonKn1ght/img-gen): Image generation using huggingface models.
+- [Out of Sight, Not Out of Mind](https://github.com/crimsonKn1ght/out-of-sight-not-mind): Reproduction of OSNOM's Lift-Match-Keep method — tracks where objects are in 3D from egocentric video, including while they're outside the camera's view.
+
+</details>
+
+<details>
+<summary><b>Diffusion / Generative</b></summary>
+
+- [compact-clad](https://github.com/crimsonKn1ght/compact-clad): Reproduction of CLAD used as the starting point for a lighter formulation — tests whether the diffusion state can be made smaller.
 
 </details>
 
 <details>
 <summary><b>Kaggle</b></summary>
 
-- [Kaggle notebooks](https://github.com/crimsonKn1ght/best-kaggle-submissions): Some of my best Kaggle copies.
+- [Kaggle notebooks](https://github.com/crimsonKn1ght/kaggle_submissions): Some of my best Kaggle copies.
 - [Machine Learning codes](https://github.com/crimsonKn1ght/machine-learning): Some copies pertaining to Machine learning.
 
 </details>
@@ -55,6 +87,7 @@
 
 - [Movie Recommender](https://github.com/crimsonKn1ght/movie-recommender): A comprehensive movie recommendation system implementing multiple machine learning algorithms with an interactive React frontend.
 - [Misc. AI / ML codes](https://github.com/crimsonKn1ght/My-AI-ML-codes): Some AI/ML tools written by me.
+- [model-pedia](https://github.com/crimsonKn1ght/model-pedia): Small, self-contained reference implementations of the models you meet on the way into deep learning — each one readable in a sitting and runnable in minutes on a laptop CPU.
 
 </details>
 
