@@ -28,7 +28,7 @@ export function TimelineDemo() {
         <div>
           <BackgroundGradient containerClassName="rounded-2xl">
             <div className="mb-5 bg-slate-800/60 border border-slate-700 rounded-2xl p-4 sm:p-5">
-              <EntryHeader role="Data Scientist" org="Axtria, Bengaluru" period="Sept 2025 - Present" logo={axtriaLogo} logoAlt="Axtria" />
+              <EntryHeader role="Data Scientist" org="Axtria (Noida, India)" period="Sept 2025 - Present" logo={axtriaLogo} logoAlt="Axtria" />
               <p className="text-xs sm:text-sm text-slate-300 italic mb-2">Multi-agent LLM platform for enterprise insights, retrieval-augmented analytics, and real-time conversational workflows.</p>
               <ul className="list-disc list-inside text-xs sm:text-sm text-white space-y-1">
                 <li>Architected a multi-agent LangGraph workflow handling query decomposition, intent classification, retrieval orchestration, analytical tool execution, and web-augmented LLM reasoning with redaction and citation formatting.</li>
@@ -51,7 +51,7 @@ export function TimelineDemo() {
           </BackgroundGradient>
           <BackgroundGradient containerClassName="rounded-2xl">
             <div className="mb-5 bg-slate-800/60 border border-slate-700 rounded-2xl p-4 sm:p-5">
-              <EntryHeader role="M.Tech in Computer Science and Engineering" org="IIT (ISM) Dhanbad" period="2023 - 2025 · GPA: 8.57/10" logo={iitDhanbadLogo} logoAlt="IIT Dhanbad" />
+              <EntryHeader role="M.Tech in Computer Science and Engineering" org="IIT (ISM) Dhanbad, India" period="2023 - 2025 · GPA: 8.57/10" logo={iitDhanbadLogo} logoAlt="IIT Dhanbad" />
               <ul className="list-disc list-inside text-xs sm:text-sm text-white space-y-1">
                   <li><b>Thesis:</b> Multi-Stage Deep Learning Framework for Knee Osteoarthritis & Osteoporosis Detection. Achieved 80.46% accuracy in multiclass classification of osteoarthritis severity and 88% accuracy in binary classification of osteoporosis from knee X-ray images.</li>
                   <li>Published 2 peer-reviewed papers from the thesis: a Best Paper winner at ISAI 2025 (Springer LNNS), and one accepted at ICADCML 2026.</li>
